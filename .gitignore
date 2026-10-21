@@ -1,0 +1,37 @@
+# Personal learning notes (kept on your own machine, never committed)
+learning/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+build/
+dist/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large or regenerable data, model weights and run outputs
+data/raw/
+data/cache/
+models/
+outputs/
+*.safetensors
+*.bin
+*.pt
+*.sqlite
+*.db
+
+# Secrets and local settings
+.env
+*.token
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
