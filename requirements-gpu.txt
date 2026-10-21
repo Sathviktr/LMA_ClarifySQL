@@ -1,0 +1,7 @@
+# Kaggle / Colab GPU notebooks. PyTorch with CUDA is already installed there.
+# Qwen3 needs transformers >= 4.51. bitsandbytes provides 4-bit (NF4) loading for QLoRA.
+transformers>=4.51
+peft>=0.13
+accelerate>=0.34
+bitsandbytes>=0.45
+datasets>=2.19
