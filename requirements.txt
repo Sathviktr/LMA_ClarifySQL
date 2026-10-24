@@ -11,3 +11,5 @@ nbformat>=5.9
 transformers>=4.51
 peft>=0.13
 accelerate>=0.34
+# Google Drive downloads (benchmark datasets)
+gdown>=5.0
