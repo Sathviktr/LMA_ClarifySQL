@@ -17,6 +17,15 @@
     "homepage": "https://yale-lily.github.io/spider",
     "downloaded": "2026-10-24"
   },
+  "testsuite": {
+    "archive": "testsuite_databases.zip",
+    "bytes": 1269456098,
+    "sha256": "9ec24ea8debc6bd04abfe137b5f1a739b5a8836f32c0464e4dfc94eb7f41da96",
+    "license": "Apache-2.0 (evaluator); databases derived from Spider",
+    "source": "https://drive.google.com/file/d/1mkCx2GOFIqNesD4y8TDAO1yX1QZORP5w/view",
+    "homepage": "https://github.com/taoyds/test-suite-sql-eval",
+    "downloaded": "2026-10-24"
+  },
   "trustsql": {
     "archive": "trustsql_dataset.zip",
     "bytes": 120930255,
