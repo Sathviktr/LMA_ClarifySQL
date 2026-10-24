@@ -20,9 +20,9 @@ and limits. Everything runs on free Kaggle/Colab T4 GPUs, without any paid API.
 
 | Phase | Content | Status |
 |---|---|---|
-| 1 | Setup, foundations, compute pilot | in progress |
-| 2 | Data (Spider, CoSQL, TrustSQL), splits, safe read-only SQL layer, tools | planned |
-| 3 | Building episodes (clear / ambiguous / partly answered / definition / unanswerable) | planned |
+| 1 | Setup, foundations, compute pilot | done (pilot: `results/pilot/`) |
+| 2 | Data (Spider, CoSQL, TrustSQL), splits, safe read-only SQL layer, tools | done (SQL writer: `results/direct/`) |
+| 3 | Building episodes (clear / ambiguous / partly answered / definition / unanswerable) | in progress |
 | 4 | Agent controller, simulated user, baselines B1–B3 | planned |
 | 5 | QLoRA fine-tuning (two seeds + no-slot ablation) | planned |
 | 6 | Evaluation, statistics, human audits | planned |
