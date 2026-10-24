@@ -1,0 +1,869 @@
+{
+  "tokenizer": "Qwen/Qwen3-4B-Instruct-2507",
+  "per_database": {
+    "activity_1": {
+      "split": "train",
+      "create_table_tokens": 240,
+      "catalog_tokens": 73
+    },
+    "aircraft": {
+      "split": "train",
+      "create_table_tokens": 408,
+      "catalog_tokens": 121
+    },
+    "allergy_1": {
+      "split": "train",
+      "create_table_tokens": 145,
+      "catalog_tokens": 45
+    },
+    "apartment_rentals": {
+      "split": "train",
+      "create_table_tokens": 396,
+      "catalog_tokens": 132
+    },
+    "architecture": {
+      "split": "train",
+      "create_table_tokens": 157,
+      "catalog_tokens": 49
+    },
+    "assets_maintenance": {
+      "split": "train",
+      "create_table_tokens": 1086,
+      "catalog_tokens": 282
+    },
+    "baseball_1": {
+      "split": "train",
+      "create_table_tokens": 2106,
+      "catalog_tokens": 974
+    },
+    "behavior_monitoring": {
+      "split": "train",
+      "create_table_tokens": 950,
+      "catalog_tokens": 264
+    },
+    "bike_1": {
+      "split": "train",
+      "create_table_tokens": 318,
+      "catalog_tokens": 181
+    },
+    "body_builder": {
+      "split": "train",
+      "create_table_tokens": 108,
+      "catalog_tokens": 39
+    },
+    "book_2": {
+      "split": "train",
+      "create_table_tokens": 91,
+      "catalog_tokens": 26
+    },
+    "browser_web": {
+      "split": "train",
+      "create_table_tokens": 137,
+      "catalog_tokens": 40
+    },
+    "candidate_poll": {
+      "split": "train",
+      "create_table_tokens": 122,
+      "catalog_tokens": 45
+    },
+    "chinook_1": {
+      "split": "train",
+      "create_table_tokens": 1296,
+      "catalog_tokens": 187
+    },
+    "cinema": {
+      "split": "train",
+      "create_table_tokens": 179,
+      "catalog_tokens": 58
+    },
+    "climbing": {
+      "split": "train",
+      "create_table_tokens": 113,
+      "catalog_tokens": 37
+    },
+    "coffee_shop": {
+      "split": "train",
+      "create_table_tokens": 209,
+      "catalog_tokens": 69
+    },
+    "college_1": {
+      "split": "train",
+      "create_table_tokens": 482,
+      "catalog_tokens": 185
+    },
+    "college_2": {
+      "split": "train",
+      "create_table_tokens": 1030,
+      "catalog_tokens": 138
+    },
+    "college_3": {
+      "split": "train",
+      "create_table_tokens": 469,
+      "catalog_tokens": 122
+    },
+    "company_1": {
+      "split": "train",
+      "create_table_tokens": 170,
+      "catalog_tokens": 94
+    },
+    "company_employee": {
+      "split": "train",
+      "create_table_tokens": 196,
+      "catalog_tokens": 63
+    },
+    "company_office": {
+      "split": "train",
+      "create_table_tokens": 168,
+      "catalog_tokens": 54
+    },
+    "county_public_safety": {
+      "split": "train",
+      "create_table_tokens": 155,
+      "catalog_tokens": 60
+    },
+    "cre_Doc_Control_Systems": {
+      "split": "train",
+      "create_table_tokens": 629,
+      "catalog_tokens": 153
+    },
+    "cre_Doc_Tracking_DB": {
+      "split": "train",
+      "create_table_tokens": 599,
+      "catalog_tokens": 152
+    },
+    "cre_Docs_and_Epenses": {
+      "split": "train",
+      "create_table_tokens": 364,
+      "catalog_tokens": 94
+    },
+    "cre_Drama_Workshop_Groups": {
+      "split": "train",
+      "create_table_tokens": 1517,
+      "catalog_tokens": 417
+    },
+    "cre_Theme_park": {
+      "split": "train",
+      "create_table_tokens": 939,
+      "catalog_tokens": 254
+    },
+    "csu_1": {
+      "split": "train",
+      "create_table_tokens": 323,
+      "catalog_tokens": 76
+    },
+    "culture_company": {
+      "split": "train",
+      "create_table_tokens": 201,
+      "catalog_tokens": 69
+    },
+    "customer_deliveries": {
+      "split": "train",
+      "create_table_tokens": 871,
+      "catalog_tokens": 212
+    },
+    "customers_and_addresses": {
+      "split": "train",
+      "create_table_tokens": 461,
+      "catalog_tokens": 122
+    },
+    "customers_and_invoices": {
+      "split": "train",
+      "create_table_tokens": 800,
+      "catalog_tokens": 209
+    },
+    "customers_and_products_contacts": {
+      "split": "train",
+      "create_table_tokens": 448,
+      "catalog_tokens": 125
+    },
+    "customers_campaigns_ecommerce": {
+      "split": "train",
+      "create_table_tokens": 610,
+      "catalog_tokens": 175
+    },
+    "customers_card_transactions": {
+      "split": "train",
+      "create_table_tokens": 316,
+      "catalog_tokens": 99
+    },
+    "debate": {
+      "split": "train",
+      "create_table_tokens": 178,
+      "catalog_tokens": 53
+    },
+    "decoration_competition": {
+      "split": "train",
+      "create_table_tokens": 144,
+      "catalog_tokens": 42
+    },
+    "department_management": {
+      "split": "train",
+      "create_table_tokens": 150,
+      "catalog_tokens": 45
+    },
+    "department_store": {
+      "split": "train",
+      "create_table_tokens": 911,
+      "catalog_tokens": 234
+    },
+    "device": {
+      "split": "train",
+      "create_table_tokens": 153,
+      "catalog_tokens": 44
+    },
+    "document_management": {
+      "split": "train",
+      "create_table_tokens": 529,
+      "catalog_tokens": 129
+    },
+    "dorm_1": {
+      "split": "train",
+      "create_table_tokens": 238,
+      "catalog_tokens": 71
+    },
+    "driving_school": {
+      "split": "train",
+      "create_table_tokens": 521,
+      "catalog_tokens": 151
+    },
+    "e_government": {
+      "split": "train",
+      "create_table_tokens": 742,
+      "catalog_tokens": 210
+    },
+    "e_learning": {
+      "split": "train",
+      "create_table_tokens": 444,
+      "catalog_tokens": 133
+    },
+    "election": {
+      "split": "train",
+      "create_table_tokens": 187,
+      "catalog_tokens": 63
+    },
+    "entertainment_awards": {
+      "split": "train",
+      "create_table_tokens": 153,
+      "catalog_tokens": 44
+    },
+    "entrepreneur": {
+      "split": "train",
+      "create_table_tokens": 101,
+      "catalog_tokens": 35
+    },
+    "epinions_1": {
+      "split": "train",
+      "create_table_tokens": 233,
+      "catalog_tokens": 38
+    },
+    "farm": {
+      "split": "train",
+      "create_table_tokens": 258,
+      "catalog_tokens": 88
+    },
+    "film_rank": {
+      "split": "train",
+      "create_table_tokens": 161,
+      "catalog_tokens": 56
+    },
+    "flight_1": {
+      "split": "train",
+      "create_table_tokens": 195,
+      "catalog_tokens": 43
+    },
+    "flight_4": {
+      "split": "train",
+      "create_table_tokens": 519,
+      "catalog_tokens": 69
+    },
+    "flight_company": {
+      "split": "train",
+      "create_table_tokens": 176,
+      "catalog_tokens": 61
+    },
+    "formula_1": {
+      "split": "train",
+      "create_table_tokens": 1036,
+      "catalog_tokens": 275
+    },
+    "game_1": {
+      "split": "train",
+      "create_table_tokens": 205,
+      "catalog_tokens": 73
+    },
+    "game_injury": {
+      "split": "train",
+      "create_table_tokens": 180,
+      "catalog_tokens": 62
+    },
+    "gas_company": {
+      "split": "train",
+      "create_table_tokens": 192,
+      "catalog_tokens": 68
+    },
+    "gymnast": {
+      "split": "train",
+      "create_table_tokens": 141,
+      "catalog_tokens": 62
+    },
+    "hospital_1": {
+      "split": "train",
+      "create_table_tokens": 1213,
+      "catalog_tokens": 216
+    },
+    "hr_1": {
+      "split": "train",
+      "create_table_tokens": 694,
+      "catalog_tokens": 137
+    },
+    "icfp_1": {
+      "split": "train",
+      "create_table_tokens": 164,
+      "catalog_tokens": 38
+    },
+    "inn_1": {
+      "split": "train",
+      "create_table_tokens": 152,
+      "catalog_tokens": 43
+    },
+    "insurance_and_eClaims": {
+      "split": "train",
+      "create_table_tokens": 430,
+      "catalog_tokens": 145
+    },
+    "insurance_fnol": {
+      "split": "train",
+      "create_table_tokens": 347,
+      "catalog_tokens": 95
+    },
+    "insurance_policies": {
+      "split": "train",
+      "create_table_tokens": 285,
+      "catalog_tokens": 118
+    },
+    "journal_committee": {
+      "split": "train",
+      "create_table_tokens": 129,
+      "catalog_tokens": 31
+    },
+    "loan_1": {
+      "split": "train",
+      "create_table_tokens": 155,
+      "catalog_tokens": 59
+    },
+    "local_govt_and_lot": {
+      "split": "train",
+      "create_table_tokens": 699,
+      "catalog_tokens": 206
+    },
+    "local_govt_in_alabama": {
+      "split": "train",
+      "create_table_tokens": 163,
+      "catalog_tokens": 41
+    },
+    "local_govt_mdm": {
+      "split": "train",
+      "create_table_tokens": 429,
+      "catalog_tokens": 119
+    },
+    "machine_repair": {
+      "split": "train",
+      "create_table_tokens": 219,
+      "catalog_tokens": 64
+    },
+    "manufactory_1": {
+      "split": "train",
+      "create_table_tokens": 104,
+      "catalog_tokens": 22
+    },
+    "manufacturer": {
+      "split": "train",
+      "create_table_tokens": 178,
+      "catalog_tokens": 54
+    },
+    "match_season": {
+      "split": "train",
+      "create_table_tokens": 244,
+      "catalog_tokens": 69
+    },
+    "medicine_enzyme_interaction": {
+      "split": "train",
+      "create_table_tokens": 146,
+      "catalog_tokens": 45
+    },
+    "mountain_photos": {
+      "split": "train",
+      "create_table_tokens": 154,
+      "catalog_tokens": 46
+    },
+    "movie_1": {
+      "split": "train",
+      "create_table_tokens": 92,
+      "catalog_tokens": 28
+    },
+    "music_1": {
+      "split": "train",
+      "create_table_tokens": 326,
+      "catalog_tokens": 60
+    },
+    "musical": {
+      "split": "train",
+      "create_table_tokens": 115,
+      "catalog_tokens": 36
+    },
+    "network_2": {
+      "split": "train",
+      "create_table_tokens": 75,
+      "catalog_tokens": 19
+    },
+    "news_report": {
+      "split": "train",
+      "create_table_tokens": 171,
+      "catalog_tokens": 44
+    },
+    "party_host": {
+      "split": "train",
+      "create_table_tokens": 153,
+      "catalog_tokens": 48
+    },
+    "party_people": {
+      "split": "train",
+      "create_table_tokens": 233,
+      "catalog_tokens": 65
+    },
+    "performance_attendance": {
+      "split": "train",
+      "create_table_tokens": 157,
+      "catalog_tokens": 38
+    },
+    "perpetrator": {
+      "split": "train",
+      "create_table_tokens": 118,
+      "catalog_tokens": 42
+    },
+    "phone_market": {
+      "split": "train",
+      "create_table_tokens": 153,
+      "catalog_tokens": 46
+    },
+    "pilot_record": {
+      "split": "train",
+      "create_table_tokens": 202,
+      "catalog_tokens": 65
+    },
+    "product_catalog": {
+      "split": "train",
+      "create_table_tokens": 386,
+      "catalog_tokens": 129
+    },
+    "products_for_hire": {
+      "split": "train",
+      "create_table_tokens": 658,
+      "catalog_tokens": 193
+    },
+    "products_gen_characteristics": {
+      "split": "train",
+      "create_table_tokens": 407,
+      "catalog_tokens": 106
+    },
+    "program_share": {
+      "split": "train",
+      "create_table_tokens": 218,
+      "catalog_tokens": 53
+    },
+    "protein_institute": {
+      "split": "train",
+      "create_table_tokens": 216,
+      "catalog_tokens": 75
+    },
+    "railway": {
+      "split": "train",
+      "create_table_tokens": 238,
+      "catalog_tokens": 69
+    },
+    "restaurant_1": {
+      "split": "train",
+      "create_table_tokens": 241,
+      "catalog_tokens": 78
+    },
+    "riding_club": {
+      "split": "train",
+      "create_table_tokens": 288,
+      "catalog_tokens": 83
+    },
+    "roller_coaster": {
+      "split": "train",
+      "create_table_tokens": 124,
+      "catalog_tokens": 41
+    },
+    "school_bus": {
+      "split": "train",
+      "create_table_tokens": 151,
+      "catalog_tokens": 44
+    },
+    "school_finance": {
+      "split": "train",
+      "create_table_tokens": 200,
+      "catalog_tokens": 77
+    },
+    "school_player": {
+      "split": "train",
+      "create_table_tokens": 259,
+      "catalog_tokens": 86
+    },
+    "ship_1": {
+      "split": "train",
+      "create_table_tokens": 107,
+      "catalog_tokens": 35
+    },
+    "ship_mission": {
+      "split": "train",
+      "create_table_tokens": 112,
+      "catalog_tokens": 40
+    },
+    "shop_membership": {
+      "split": "train",
+      "create_table_tokens": 224,
+      "catalog_tokens": 60
+    },
+    "small_bank_1": {
+      "split": "train",
+      "create_table_tokens": 110,
+      "catalog_tokens": 25
+    },
+    "soccer_1": {
+      "split": "train",
+      "create_table_tokens": 932,
+      "catalog_tokens": 322
+    },
+    "soccer_2": {
+      "split": "train",
+      "create_table_tokens": 181,
+      "catalog_tokens": 33
+    },
+    "solvency_ii": {
+      "split": "train",
+      "create_table_tokens": 515,
+      "catalog_tokens": 130
+    },
+    "sports_competition": {
+      "split": "train",
+      "create_table_tokens": 308,
+      "catalog_tokens": 80
+    },
+    "station_weather": {
+      "split": "train",
+      "create_table_tokens": 236,
+      "catalog_tokens": 57
+    },
+    "store_1": {
+      "split": "train",
+      "create_table_tokens": 854,
+      "catalog_tokens": 175
+    },
+    "store_product": {
+      "split": "train",
+      "create_table_tokens": 267,
+      "catalog_tokens": 81
+    },
+    "storm_record": {
+      "split": "train",
+      "create_table_tokens": 150,
+      "catalog_tokens": 48
+    },
+    "student_1": {
+      "split": "train",
+      "create_table_tokens": 83,
+      "catalog_tokens": 20
+    },
+    "student_assessment": {
+      "split": "train",
+      "create_table_tokens": 513,
+      "catalog_tokens": 145
+    },
+    "swimming": {
+      "split": "train",
+      "create_table_tokens": 259,
+      "catalog_tokens": 90
+    },
+    "theme_gallery": {
+      "split": "train",
+      "create_table_tokens": 153,
+      "catalog_tokens": 44
+    },
+    "tracking_grants_for_research": {
+      "split": "train",
+      "create_table_tokens": 746,
+      "catalog_tokens": 171
+    },
+    "tracking_orders": {
+      "split": "train",
+      "create_table_tokens": 425,
+      "catalog_tokens": 105
+    },
+    "tracking_share_transactions": {
+      "split": "train",
+      "create_table_tokens": 390,
+      "catalog_tokens": 87
+    },
+    "tracking_software_problems": {
+      "split": "train",
+      "create_table_tokens": 472,
+      "catalog_tokens": 125
+    },
+    "train_station": {
+      "split": "train",
+      "create_table_tokens": 161,
+      "catalog_tokens": 52
+    },
+    "twitter_1": {
+      "split": "train",
+      "create_table_tokens": 219,
+      "catalog_tokens": 31
+    },
+    "university_basketball": {
+      "split": "train",
+      "create_table_tokens": 171,
+      "catalog_tokens": 78
+    },
+    "voter_2": {
+      "split": "train",
+      "create_table_tokens": 265,
+      "catalog_tokens": 69
+    },
+    "wedding": {
+      "split": "train",
+      "create_table_tokens": 172,
+      "catalog_tokens": 48
+    },
+    "wine_1": {
+      "split": "train",
+      "create_table_tokens": 201,
+      "catalog_tokens": 54
+    },
+    "workshop_paper": {
+      "split": "train",
+      "create_table_tokens": 140,
+      "catalog_tokens": 35
+    },
+    "wrestler": {
+      "split": "train",
+      "create_table_tokens": 126,
+      "catalog_tokens": 43
+    },
+    "city_record": {
+      "split": "validation",
+      "create_table_tokens": 251,
+      "catalog_tokens": 78
+    },
+    "club_1": {
+      "split": "validation",
+      "create_table_tokens": 161,
+      "catalog_tokens": 51
+    },
+    "customer_complaints": {
+      "split": "validation",
+      "create_table_tokens": 384,
+      "catalog_tokens": 119
+    },
+    "election_representative": {
+      "split": "validation",
+      "create_table_tokens": 115,
+      "catalog_tokens": 37
+    },
+    "music_2": {
+      "split": "validation",
+      "create_table_tokens": 372,
+      "catalog_tokens": 75
+    },
+    "music_4": {
+      "split": "validation",
+      "create_table_tokens": 194,
+      "catalog_tokens": 58
+    },
+    "phone_1": {
+      "split": "validation",
+      "create_table_tokens": 203,
+      "catalog_tokens": 70
+    },
+    "race_track": {
+      "split": "validation",
+      "create_table_tokens": 97,
+      "catalog_tokens": 30
+    },
+    "sakila_1": {
+      "split": "validation",
+      "create_table_tokens": 1364,
+      "catalog_tokens": 275
+    },
+    "scientist_1": {
+      "split": "validation",
+      "create_table_tokens": 112,
+      "catalog_tokens": 21
+    },
+    "battle_death": {
+      "split": "test",
+      "create_table_tokens": 172,
+      "catalog_tokens": 57
+    },
+    "car_1": {
+      "split": "test",
+      "create_table_tokens": 301,
+      "catalog_tokens": 72
+    },
+    "concert_singer": {
+      "split": "test",
+      "create_table_tokens": 234,
+      "catalog_tokens": 68
+    },
+    "course_teach": {
+      "split": "test",
+      "create_table_tokens": 132,
+      "catalog_tokens": 35
+    },
+    "cre_Doc_Template_Mgt": {
+      "split": "test",
+      "create_table_tokens": 226,
+      "catalog_tokens": 69
+    },
+    "dog_kennels": {
+      "split": "test",
+      "create_table_tokens": 651,
+      "catalog_tokens": 174
+    },
+    "employee_hire_evaluation": {
+      "split": "test",
+      "create_table_tokens": 199,
+      "catalog_tokens": 53
+    },
+    "flight_2": {
+      "split": "test",
+      "create_table_tokens": 144,
+      "catalog_tokens": 45
+    },
+    "museum_visit": {
+      "split": "test",
+      "create_table_tokens": 151,
+      "catalog_tokens": 45
+    },
+    "network_1": {
+      "split": "test",
+      "create_table_tokens": 124,
+      "catalog_tokens": 23
+    },
+    "orchestra": {
+      "split": "test",
+      "create_table_tokens": 247,
+      "catalog_tokens": 84
+    },
+    "pets_1": {
+      "split": "test",
+      "create_table_tokens": 152,
+      "catalog_tokens": 47
+    },
+    "poker_player": {
+      "split": "test",
+      "create_table_tokens": 111,
+      "catalog_tokens": 43
+    },
+    "real_estate_properties": {
+      "split": "test",
+      "create_table_tokens": 545,
+      "catalog_tokens": 184
+    },
+    "singer": {
+      "split": "test",
+      "create_table_tokens": 108,
+      "catalog_tokens": 35
+    },
+    "student_transcripts_tracking": {
+      "split": "test",
+      "create_table_tokens": 838,
+      "catalog_tokens": 223
+    },
+    "tvshow": {
+      "split": "test",
+      "create_table_tokens": 220,
+      "catalog_tokens": 88
+    },
+    "voter_1": {
+      "split": "test",
+      "create_table_tokens": 183,
+      "catalog_tokens": 35
+    },
+    "world_1": {
+      "split": "test",
+      "create_table_tokens": 428,
+      "catalog_tokens": 69
+    },
+    "wta_1": {
+      "split": "test",
+      "create_table_tokens": 343,
+      "catalog_tokens": 134
+    }
+  },
+  "train": {
+    "create_table": {
+      "databases": 130,
+      "median": 219.0,
+      "p90": 800,
+      "max": 2106,
+      "largest": "baseball_1"
+    },
+    "catalog": {
+      "databases": 130,
+      "median": 69.0,
+      "p90": 193,
+      "max": 974,
+      "largest": "baseball_1"
+    }
+  },
+  "validation": {
+    "create_table": {
+      "databases": 10,
+      "median": 198.5,
+      "p90": 384,
+      "max": 1364,
+      "largest": "sakila_1"
+    },
+    "catalog": {
+      "databases": 10,
+      "median": 64.0,
+      "p90": 119,
+      "max": 275,
+      "largest": "sakila_1"
+    }
+  },
+  "test": {
+    "create_table": {
+      "databases": 20,
+      "median": 209.5,
+      "p90": 545,
+      "max": 838,
+      "largest": "student_transcripts_tracking"
+    },
+    "catalog": {
+      "databases": 20,
+      "median": 62.5,
+      "p90": 174,
+      "max": 223,
+      "largest": "student_transcripts_tracking"
+    }
+  },
+  "core_train": {
+    "create_table": {
+      "databases": 140,
+      "median": 218.5,
+      "p90": 800,
+      "max": 2106,
+      "largest": "baseball_1"
+    },
+    "catalog": {
+      "databases": 140,
+      "median": 69.0,
+      "p90": 193,
+      "max": 974,
+      "largest": "baseball_1"
+    }
+  }
+}
