@@ -133,8 +133,8 @@ CELLS = [
     - **Colab:** click the **folder icon** in the left bar → `/content/results/pilot/pilot_metrics.json` →
       right-click → **Download**.
 
-    Copy the file to `LMA_ClarifySQL/results/pilot/pilot_metrics.json` on your laptop and tell Claude the
-    pilot is done. Then **stop the session** (Kaggle: power icon / *Stop session*), so it does not use up GPU
+    Copy the file to `LMA_ClarifySQL/results/pilot/pilot_metrics.json` on your laptop and commit it: the
+    next phase uses these numbers. Then **stop the session** (Kaggle: power icon / *Stop session*), so it does not use up GPU
     quota while idle.
     """),
 ]
