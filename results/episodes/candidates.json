@@ -1,0 +1,26 @@
+{
+  "train": {
+    "unique_questions": 3689,
+    "threshold": 326,
+    "ranking": 567,
+    "both": 8,
+    "date": 67,
+    "entity": 261
+  },
+  "validation": {
+    "unique_questions": 288,
+    "threshold": 24,
+    "ranking": 57,
+    "both": 0,
+    "date": 6,
+    "entity": 1
+  },
+  "test": {
+    "unique_questions": 553,
+    "threshold": 55,
+    "ranking": 99,
+    "both": 2,
+    "date": 4,
+    "entity": 22
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "max_tokens": 1024,
+  "train": {
+    "states": 694,
+    "dropped_over_limit": 6,
+    "episodes": 340,
+    "target_actions": {
+      "inspect": 208,
+      "clarify": 149,
+      "execute": 292,
+      "abstain": 45
+    },
+    "states_by_kind": {
+      "ambiguous": 357,
+      "two_slot": 60,
+      "definition": 58,
+      "clear": 129,
+      "unanswerable": 90
+    },
+    "tokens": {
+      "median": 451.5,
+      "p90": 574,
+      "max": 1511,
+      "over_limit": 6
+    }
+  },
+  "train_noslot": {
+    "states": 694,
+    "dropped_over_limit": 6,
+    "episodes": 340,
+    "target_actions": {
+      "inspect": 208,
+      "clarify": 149,
+      "execute": 292,
+      "abstain": 45
+    },
+    "states_by_kind": {
+      "ambiguous": 357,
+      "two_slot": 60,
+      "definition": 58,
+      "clear": 129,
+      "unanswerable": 90
+    },
+    "tokens": {
+      "median": 409.0,
+      "p90": 530,
+      "max": 1388,
+      "over_limit": 6
+    }
+  },
+  "validation": {
+    "states": 104,
+    "dropped_over_limit": 0,
+    "episodes": 56,
+    "target_actions": {
+      "inspect": 32,
+      "clarify": 16,
+      "execute": 44,
+      "abstain": 12
+    },
+    "states_by_kind": {
+      "ambiguous": 36,
+      "two_slot": 8,
+      "definition": 12,
+      "clear": 24,
+      "unanswerable": 24
+    },
+    "tokens": {
+      "median": 418.5,
+      "p90": 549,
+      "max": 773,
+      "over_limit": 0
+    }
+  },
+  "validation_noslot": {
+    "states": 104,
+    "dropped_over_limit": 0,
+    "episodes": 56,
+    "target_actions": {
+      "inspect": 32,
+      "clarify": 16,
+      "execute": 44,
+      "abstain": 12
+    },
+    "states_by_kind": {
+      "ambiguous": 36,
+      "two_slot": 8,
+      "definition": 12,
+      "clear": 24,
+      "unanswerable": 24
+    },
+    "tokens": {
+      "median": 380.5,
+      "p90": 516,
+      "max": 740,
+      "over_limit": 0
+    }
+  }
+}

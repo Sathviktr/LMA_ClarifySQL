@@ -1,0 +1,89 @@
+{
+  "train": {
+    "targets": {
+      "clear": 130,
+      "ambiguous": 120,
+      "two_slot": 15,
+      "definition": 30,
+      "unanswerable": 45
+    },
+    "built": {
+      "ambiguous": 120,
+      "two_slot": 15,
+      "definition": 30,
+      "clear": 130,
+      "unanswerable": 45
+    },
+    "available": {
+      "ambiguity_candidates": 617,
+      "with_rule_draft": 435,
+      "two_slot": 56,
+      "clear_pool": 3458
+    },
+    "checks": {
+      "episodes": 340,
+      "passed": 340,
+      "problems": {}
+    }
+  },
+  "validation": {
+    "targets": {
+      "clear": 24,
+      "ambiguous": 16,
+      "two_slot": 2,
+      "definition": 6,
+      "unanswerable": 12
+    },
+    "built": {
+      "ambiguous": 16,
+      "two_slot": 2,
+      "definition": 6,
+      "clear": 24,
+      "unanswerable": 12
+    },
+    "available": {
+      "ambiguity_candidates": 50,
+      "with_rule_draft": 37,
+      "two_slot": 4,
+      "clear_pool": 264
+    },
+    "checks": {
+      "episodes": 60,
+      "passed": 55,
+      "problems": {
+        "request still has to be written by the team": 4,
+        "the request still names the hidden measure": 1
+      }
+    }
+  },
+  "test": {
+    "targets": {
+      "clear": 80,
+      "ambiguous": 56,
+      "two_slot": 8,
+      "definition": 16,
+      "unanswerable": 40
+    },
+    "built": {
+      "ambiguous": 56,
+      "two_slot": 8,
+      "definition": 16,
+      "clear": 80,
+      "unanswerable": 40
+    },
+    "available": {
+      "ambiguity_candidates": 114,
+      "with_rule_draft": 82,
+      "two_slot": 9,
+      "clear_pool": 473
+    },
+    "checks": {
+      "episodes": 200,
+      "passed": 179,
+      "problems": {
+        "request still has to be written by the team": 20,
+        "the request still names the hidden measure": 6
+      }
+    }
+  }
+}
