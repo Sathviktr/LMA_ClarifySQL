@@ -50,7 +50,8 @@ def test_describe_slot_makes_readable_terms_and_questions():
     d = describe_slot(t, "Find the policy type used by many customers.", "policy",
                       "Find the policy type used by more than 4 customers.")
     assert d == {"term": "many customers", "definition": "more than 4 customers", "aliases": [],
-                 "question": 'How many customers count as "many"?'}
+                 "question": 'How many customers count as "many"?',
+                 "meanings": ["number of customers above some value (which?)"]}
     r = Slot("ranking", "Population", "with the largest population", "population", "ranks highest",
              ["city.Area_km_2", "city.Population"])
     d = describe_slot(r, "List the name of the city that ranks highest.", "record")

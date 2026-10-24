@@ -142,24 +142,34 @@ def describe_slot(slot: Slot | dict, request: str, entity: str, source_question:
     if vague in ("many", "few"):
         thing = noun or plural(entity)
         return {"term": f"{vague} {thing}", "definition": f"{s['hidden']} {thing}", "aliases": [],
-                "question": f'How many {thing} count as "{vague}"?'}
+                "question": f'How many {thing} count as "{vague}"?',
+                "meanings": _threshold_meanings(s["value"], f"number of {thing}")}
     if vague in ("older", "younger"):
         return {"term": f"{vague} {entity}", "definition": f"{col} {s['hidden']}", "aliases": [],
-                "question": f'What {col} counts as "{vague}"?'}
+                "question": f'What {col} counts as "{vague}"?', "meanings": _threshold_meanings(s["value"], col)}
     if vague in ("recently", "long ago"):
         adj = "recent" if vague == "recently" else "early"
         return {"term": f"{adj} {entity}", "definition": f"{col} {s['hidden']}", "aliases": [f"{entity} {vague}"],
-                "question": f'Which {col} do you mean by "{vague}"?'}
+                "question": f'Which {col} do you mean by "{vague}"?', "meanings": _threshold_meanings(s["value"], col)}
     if vague == "within a certain range":
         return {"term": f"{col} range", "definition": f"{col} {s['hidden']}", "aliases": [],
-                "question": f"Which range of {col} do you mean?"}
+                "question": f"Which range of {col} do you mean?", "meanings": _threshold_meanings(s["value"], col)}
     if vague in _ADJ:
         nxt = following_noun(request, vague)
         word = humanize(nxt) if (nxt and col == "number") else col  # a count: use the noun the request says
         return {"term": f"{vague} {word}", "definition": f"{word} {s['hidden']}", "aliases": [],
-                "question": f'What {word} counts as "{vague}"?'}
+                "question": f'What {word} counts as "{vague}"?', "meanings": _threshold_meanings(s["value"], word)}
     return {"term": f"{vague} {entity}", "definition": f"{col} {s['hidden']}", "aliases": [],
-            "question": f'What do you mean by "{vague}"?'}
+            "question": f'What do you mean by "{vague}"?', "meanings": _threshold_meanings(s["value"], col)}
+
+
+def _threshold_meanings(value: str, subject: str) -> list[str]:
+    """Readable form of a threshold slot's open question, e.g. 'number of customers above some value (which?)'."""
+    op = value.split()[0] if value else ""
+    if op == "between":
+        return [f"{subject} between two values (which?)"]
+    word = {">": "above", ">=": "at least", "<": "below", "<=": "at most"}.get(op, "compared with")
+    return [f"{subject} {word} some value (which?)"]
 
 
 # ----------------------------------------------------------------------------------- candidate records
@@ -262,12 +272,15 @@ def build_split(split: str, seed: int = SEED) -> tuple[list[Episode], dict]:
     def glossary_for(db: str, own_terms: set[str], own_hidden: list[str], own_source: str,
                      include: list[dict]) -> list[dict]:
         own_words = {w for t in own_terms for w in t.split()} - _GENERIC
+        own_numbers = {n for h in own_hidden for n in re.findall(r"-?\d+(?:\.\d+)?", h or "")}
         seen, others = set(own_terms), []
         for g in entries_by_db[db]:
             if g["source_id"] == own_source or g["term"] in seen or set(g["term"].split()) & own_words:
                 continue
             if any(h and h.lower() in g["definition"].lower() for h in own_hidden):
                 continue
+            if own_numbers & set(re.findall(r"-?\d+(?:\.\d+)?", g["definition"])):
+                continue  # no distractor may state the hidden number, even for another term
             seen.add(g["term"])
             others.append(g)
         pick = random.Random(own_source).sample(others, min(MAX_DISTRACTORS, len(others)))
