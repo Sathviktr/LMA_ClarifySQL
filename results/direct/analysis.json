@@ -1,0 +1,173 @@
+{
+  "validation_oracle_repair2": {
+    "items": 537,
+    "accuracy_before_repair": 0.8864,
+    "accuracy_after_repair": 0.8901,
+    "first_pass_crashes": 3,
+    "fixed_by_repair": 2,
+    "error_types": {
+      "different number of rows": 28,
+      "same shape, different values": 16,
+      "extra columns": 8,
+      "missing columns": 3,
+      "duplicates differ": 3,
+      "wrong row order": 1
+    },
+    "per_database_accuracy": {
+      "city_record": {
+        "n": 40,
+        "accuracy": 0.8
+      },
+      "sakila_1": {
+        "n": 82,
+        "accuracy": 0.805
+      },
+      "customer_complaints": {
+        "n": 46,
+        "accuracy": 0.826
+      },
+      "music_4": {
+        "n": 60,
+        "accuracy": 0.85
+      },
+      "phone_1": {
+        "n": 29,
+        "accuracy": 0.862
+      },
+      "scientist_1": {
+        "n": 48,
+        "accuracy": 0.875
+      },
+      "election_representative": {
+        "n": 20,
+        "accuracy": 0.95
+      },
+      "race_track": {
+        "n": 42,
+        "accuracy": 0.952
+      },
+      "club_1": {
+        "n": 70,
+        "accuracy": 0.957
+      },
+      "music_2": {
+        "n": 100,
+        "accuracy": 0.98
+      }
+    },
+    "seconds_per_item": {
+      "median": 0.628,
+      "p90": 2.0,
+      "max": 4.252
+    }
+  },
+  "test_oracle_repair2": {
+    "items": 1034,
+    "accuracy_before_repair": 0.764,
+    "accuracy_after_repair": 0.7708,
+    "first_pass_crashes": 31,
+    "fixed_by_repair": 7,
+    "error_types": {
+      "different number of rows": 111,
+      "same shape, different values": 72,
+      "extra columns": 22,
+      "duplicates differ": 15,
+      "missing columns": 14,
+      "did not run": 3
+    },
+    "per_database_accuracy": {
+      "real_estate_properties": {
+        "n": 4,
+        "accuracy": 0.5
+      },
+      "car_1": {
+        "n": 92,
+        "accuracy": 0.511
+      },
+      "world_1": {
+        "n": 120,
+        "accuracy": 0.642
+      },
+      "dog_kennels": {
+        "n": 82,
+        "accuracy": 0.707
+      },
+      "tvshow": {
+        "n": 62,
+        "accuracy": 0.726
+      },
+      "student_transcripts_tracking": {
+        "n": 78,
+        "accuracy": 0.731
+      },
+      "wta_1": {
+        "n": 62,
+        "accuracy": 0.758
+      },
+      "concert_singer": {
+        "n": 45,
+        "accuracy": 0.8
+      },
+      "battle_death": {
+        "n": 16,
+        "accuracy": 0.812
+      },
+      "cre_Doc_Template_Mgt": {
+        "n": 84,
+        "accuracy": 0.821
+      },
+      "network_1": {
+        "n": 56,
+        "accuracy": 0.821
+      },
+      "course_teach": {
+        "n": 30,
+        "accuracy": 0.833
+      },
+      "orchestra": {
+        "n": 40,
+        "accuracy": 0.85
+      },
+      "pets_1": {
+        "n": 42,
+        "accuracy": 0.857
+      },
+      "flight_2": {
+        "n": 80,
+        "accuracy": 0.887
+      },
+      "voter_1": {
+        "n": 15,
+        "accuracy": 0.933
+      },
+      "singer": {
+        "n": 30,
+        "accuracy": 0.933
+      },
+      "museum_visit": {
+        "n": 18,
+        "accuracy": 0.944
+      },
+      "employee_hire_evaluation": {
+        "n": 38,
+        "accuracy": 0.947
+      },
+      "poker_player": {
+        "n": 40,
+        "accuracy": 0.975
+      }
+    },
+    "seconds_per_item": {
+      "median": 0.709,
+      "p90": 1.487,
+      "max": 5.387
+    },
+    "testsuite_accuracy": 0.6847,
+    "judge_agreement": {
+      "both_correct": 695,
+      "both_wrong": 224,
+      "exec_only_correct": 102,
+      "suite_only_correct": 13
+    }
+  }
+}

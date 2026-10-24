@@ -1,0 +1,22 @@
+{
+  "split": "validation",
+  "system": "oracle",
+  "backend": "hf",
+  "max_repairs": 2,
+  "batch_size": 16,
+  "wall_seconds": 469.1,
+  "items": 537,
+  "execution_accuracy": 0.8901,
+  "execution_accuracy_before_repair": 0.8864,
+  "status_counts": {
+    "ok": 537
+  },
+  "reason_counts": {
+    "match": 478,
+    "different_result": 59
+  },
+  "repaired_items": 3,
+  "mean_seconds_per_item": 0.87,
+  "mean_new_tokens": 39.4,
+  "mean_prompt_tokens": 494.4
+}
