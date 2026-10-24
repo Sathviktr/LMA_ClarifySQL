@@ -28,6 +28,37 @@ POLICY_SYSTEM_NOSLOTS = POLICY_SYSTEM_SLOTS.replace(
     '{"action":"clarify","question":Q}  ask the user ONE short question about the missing detail')
 
 
+B3_EXAMPLES = """
+
+Examples (on a different, made-up database: student(id, name, age, dept_id), dept(id, name, budget)):
+1. Request: List the names of students older than 20.
+   -> {"action":"execute","request":"List the names of students older than 20."}
+2. Request: Show the older students.
+   -> {"action":"inspect","tool":"search_definitions","args":{"query":"older students"}}
+   result: no stored definition matches "older students"
+   -> {"action":"clarify","slots":[{"name":"threshold","term":"older students","meanings":["age above some value (which?)"]}],"question":"What age counts as \\"older\\"?"}
+   user: I mean older than 25.
+   -> {"action":"execute","request":"Show the students older than 25."}
+3. Request: Which department ranks highest?
+   -> {"action":"inspect","tool":"search_definitions","args":{"query":"department ranks highest"}}
+   result: department ranks highest: ranked by budget
+   -> {"action":"execute","request":"Which department has the highest budget?"}
+4. Request: What is the email address of each student?
+   -> {"action":"inspect","tool":"describe_table","args":{"table":"student"}}
+   result: table student (40 rows): id int PK, name text, age int, dept_id int
+   -> {"action":"abstain","missing":"The database has no email addresses of students."}"""
+
+
+def b3_system_prompt(with_slots: bool = True) -> str:
+    """The prompted baseline B3: the same instructions plus worked examples (tuned on validation only)."""
+    examples = B3_EXAMPLES
+    if not with_slots:
+        examples = examples.replace(
+            '{"action":"clarify","slots":[{"name":"threshold","term":"older students","meanings":["age above some '
+            'value (which?)"]}],"question":', '{"action":"clarify","question":')
+    return system_prompt(with_slots) + examples
+
+
 def system_prompt(with_slots: bool = True) -> str:
     return POLICY_SYSTEM_SLOTS if with_slots else POLICY_SYSTEM_NOSLOTS
 
