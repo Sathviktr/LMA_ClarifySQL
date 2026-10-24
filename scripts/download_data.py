@@ -3,6 +3,7 @@
 Usage (from the repository root):
     python -I scripts/download_data.py                 # all three datasets
     python -I scripts/download_data.py --only spider   # just one
+    python -I scripts/download_data.py --only testsuite   # optional: test-suite evaluator databases
 
 The data folder is clarifysql.config.data_dir() (set CLARIFYSQL_DATA to choose it). Each archive is saved
 in <data>/downloads/ and extracted into its own folder <data>/<name>/. Its size and SHA-256 checksum are
@@ -45,7 +46,15 @@ SOURCES = {
         "license": "CC BY 4.0",
         "homepage": "https://github.com/glee4810/TrustSQL",
     },
+    # Optional (large): database variants for the test-suite evaluator, used for final test scoring.
+    "testsuite": {
+        "gdrive_id": "1mkCx2GOFIqNesD4y8TDAO1yX1QZORP5w",
+        "archive": "testsuite_databases.zip",
+        "license": "Apache-2.0 (evaluator); databases derived from Spider",
+        "homepage": "https://github.com/taoyds/test-suite-sql-eval",
+    },
 }
+DEFAULT = ("cosql", "spider", "trustsql")
 
 
 def sha256(path: Path) -> str:
@@ -86,7 +95,7 @@ def download(name: str, root: Path) -> dict:
 
         print(f"[{name}] downloading {src['archive']} from Google Drive ...")
         tmp = archive.with_suffix(".part")
-        result = gdown.download(id=src["gdrive_id"], output=str(tmp), quiet=False)
+        result = gdown.download(id=src["gdrive_id"], output=str(tmp), quiet=False, resume=True)
         if not result or not tmp.exists():
             sys.exit(f"[{name}] automatic download failed. Download it in a browser:\n  {link}\n"
                      f"and save it as {archive}, then run this script again.")
@@ -111,7 +120,8 @@ def download(name: str, root: Path) -> dict:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--only", nargs="+", choices=sorted(SOURCES), default=sorted(SOURCES))
+    ap.add_argument("--only", nargs="+", choices=sorted(SOURCES), default=list(DEFAULT),
+                    help="datasets to fetch (default: cosql spider trustsql; 'testsuite' is optional)")
     args = ap.parse_args()
     root = data_dir()
     print(f"data folder: {root}")
