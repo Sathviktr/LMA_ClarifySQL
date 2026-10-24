@@ -71,8 +71,3 @@ Start with `notebooks/01_pilot.ipynb`. On Kaggle: *Settings → Accelerator → 
 Spider and CoSQL are CC BY-SA 4.0 and TrustSQL is CC BY 4.0. Raw benchmark files are downloaded by script
 and are not stored in this repository. The derived episode set will be released under CC BY-SA 4.0, as
 Spider requires. Only public benchmark data and made-up records are used; no real student data.
-
-## AI assistance
-
-Parts of the code were written with help from an AI coding assistant (Claude Code), as allowed by the
-course. Every team member is responsible for understanding and being able to explain all of the code.

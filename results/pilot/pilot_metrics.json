@@ -1,0 +1,116 @@
+{
+  "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+  "env": {
+    "python": "3.13.15",
+    "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "accelerate": "1.14.0",
+    "bitsandbytes": "0.50.2",
+    "cuda": "12.8",
+    "gpus": [
+      {
+        "name": "Tesla T4",
+        "memory_gb": 15.64,
+        "compute_capability": "7.5",
+        "native_bf16": false
+      },
+      {
+        "name": "Tesla T4",
+        "memory_gb": 15.64,
+        "compute_capability": "7.5",
+        "native_bf16": false
+      }
+    ]
+  },
+  "fp16_load": {
+    "seconds": 51.5,
+    "peak_allocated_gb": 8.045,
+    "allocated_gb": 8.045,
+    "free_gb": 7.477,
+    "total_gb": 15.636
+  },
+  "fp16_sanity": {
+    "logits_finite": true,
+    "max_abs_logit": 51.41,
+    "prompt": "Schema: marks(dept TEXT, student TEXT, mark INTEGER)\nQuestion: Show departments whose average mark is above 80.",
+    "sample_answer": "SELECT dept \nFROM marks \nGROUP BY dept \nHAVING AVG(mark) > 80;"
+  },
+  "fp16_generation": [
+    {
+      "batch_size": 1,
+      "new_tokens": 128,
+      "seconds": 7.799,
+      "tokens_per_second": 16.41,
+      "peak_allocated_gb": 8.092
+    },
+    {
+      "batch_size": 4,
+      "new_tokens": 512,
+      "seconds": 8.112,
+      "tokens_per_second": 63.11,
+      "peak_allocated_gb": 8.215
+    }
+  ],
+  "fp16_call_latency": {
+    "prompt_tokens": 636,
+    "new_tokens": 60,
+    "seconds": 4.055
+  },
+  "nf4_load": {
+    "seconds": 9.9,
+    "peak_allocated_gb": 2.727,
+    "allocated_gb": 2.688,
+    "free_gb": 12.758,
+    "total_gb": 15.636
+  },
+  "nf4_generation": [
+    {
+      "batch_size": 1,
+      "new_tokens": 64,
+      "seconds": 5.255,
+      "tokens_per_second": 12.18,
+      "peak_allocated_gb": 2.713
+    }
+  ],
+  "lora_formula_params": 33030144,
+  "qlora": {
+    "r": 16,
+    "alpha": 32,
+    "targets": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "trainable_params": 33030144,
+    "runs": [
+      {
+        "seq_len": 1024,
+        "status": "ok",
+        "seconds_per_step": 3.546,
+        "first_step_seconds": 3.634,
+        "tokens_per_second": 288.8,
+        "peak_allocated_gb": 6.907,
+        "loss_first": 13.321,
+        "loss_last": 12.305
+      },
+      {
+        "seq_len": 2048,
+        "status": "ok",
+        "seconds_per_step": 9.797,
+        "first_step_seconds": 9.313,
+        "tokens_per_second": 209.0,
+        "peak_allocated_gb": 9.165,
+        "loss_first": 12.275,
+        "loss_last": 12.056
+      }
+    ]
+  },
+  "finished_at": "2026-10-24T08:26:17"
+}
