@@ -5,3 +5,8 @@ peft>=0.13
 accelerate>=0.34
 bitsandbytes>=0.45
 datasets>=2.19
+# Google Drive downloads (benchmark datasets)
+gdown>=5.0
+# official test-suite evaluator (cloned separately, see src/clarifysql/eval/testsuite.py)
+sqlparse>=0.4
+tqdm>=4.0

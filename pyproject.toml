@@ -20,3 +20,5 @@ where = ["src"]
 testpaths = ["tests"]
 pythonpath = ["src"]
 addopts = "-q"
+# the official test-suite evaluator has old-style regex strings that Python 3.12+ warns about
+filterwarnings = ["ignore::SyntaxWarning"]

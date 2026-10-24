@@ -1,0 +1,190 @@
+{
+  "spider": {
+    "train": {
+      "questions": 7000,
+      "databases": 140,
+      "distinct_queries": 3977,
+      "distinct_queries_ignoring_literal_case": 3977
+    },
+    "train_others": {
+      "questions": 1659,
+      "databases": 6,
+      "distinct_queries": 750,
+      "distinct_queries_ignoring_literal_case": 750
+    },
+    "dev": {
+      "questions": 1034,
+      "databases": 20,
+      "distinct_queries": 553,
+      "distinct_queries_ignoring_literal_case": 551
+    },
+    "test": {
+      "questions": 2147,
+      "databases": 40,
+      "distinct_queries": 1168,
+      "distinct_queries_ignoring_literal_case": 1163
+    },
+    "database_overlaps": {
+      "train&train_others": 0,
+      "dev&train": 0,
+      "dev&train_others": 0,
+      "dev&test": 0,
+      "test&train": 0,
+      "test&train_others": 0
+    },
+    "dev_gold_execution": {
+      "status_counts": {
+        "ok": 1034
+      },
+      "empty_results": 49,
+      "empty_percent": 4.7,
+      "slow_over_1s": []
+    }
+  },
+  "cosql": {
+    "train": {
+      "user_turns": 11228,
+      "AMBIGUOUS": 875,
+      "CANNOT_ANSWER": 184
+    },
+    "dev": {
+      "user_turns": 1507,
+      "AMBIGUOUS": 107,
+      "CANNOT_ANSWER": 20
+    }
+  },
+  "trustsql": {
+    "infeasible": 527,
+    "by_note": {
+      "non-sql": 100,
+      "ext-know": 127,
+      "column-unrelated": 100,
+      "column-surface": 100,
+      "column-related": 100
+    },
+    "missing_column": 300,
+    "databases": [
+      "dog_kennels",
+      "network_1",
+      "orchestra",
+      "poker_player",
+      "real_estate_properties",
+      "singer",
+      "student_transcripts_tracking",
+      "tvshow",
+      "voter_1",
+      "world_1"
+    ],
+    "all_on_spider_dev": true
+  },
+  "claims": [
+    {
+      "claim": "Spider core train: 7,000 questions",
+      "measured": 7000,
+      "proposal": 7000,
+      "match": true
+    },
+    {
+      "claim": "... on 140 databases",
+      "measured": 140,
+      "proposal": 140,
+      "match": true
+    },
+    {
+      "claim": "legacy train_others: 1,659 questions",
+      "measured": 1659,
+      "proposal": 1659,
+      "match": true
+    },
+    {
+      "claim": "... on 6 databases",
+      "measured": 6,
+      "proposal": 6,
+      "match": true
+    },
+    {
+      "claim": "dev: 1,034 questions",
+      "measured": 1034,
+      "proposal": 1034,
+      "match": true
+    },
+    {
+      "claim": "... on 20 databases",
+      "measured": 20,
+      "proposal": 20,
+      "match": true
+    },
+    {
+      "claim": "test: 2,147 questions",
+      "measured": 2147,
+      "proposal": 2147,
+      "match": true
+    },
+    {
+      "claim": "... on 40 databases",
+      "measured": 40,
+      "proposal": 40,
+      "match": true
+    },
+    {
+      "claim": "no database in two splits",
+      "measured": 0,
+      "proposal": 0,
+      "match": true
+    },
+    {
+      "claim": "dev: 551 distinct queries (ignoring literal case)",
+      "measured": 551,
+      "proposal": 551,
+      "match": true
+    },
+    {
+      "claim": "all dev gold queries run read-only",
+      "measured": 1034,
+      "proposal": 1034,
+      "match": true
+    },
+    {
+      "claim": "4.7% of dev gold queries return no rows",
+      "measured": 4.7,
+      "proposal": 4.7,
+      "match": true
+    },
+    {
+      "claim": "CoSQL train AMBIGUOUS 875",
+      "measured": 875,
+      "proposal": 875,
+      "match": true
+    },
+    {
+      "claim": "CoSQL train CANNOT_ANSWER 184",
+      "measured": 184,
+      "proposal": 184,
+      "match": true
+    },
+    {
+      "claim": "CoSQL dev AMBIGUOUS 107",
+      "measured": 107,
+      "proposal": 107,
+      "match": true
+    },
+    {
+      "claim": "CoSQL dev CANNOT_ANSWER 20",
+      "measured": 20,
+      "proposal": 20,
+      "match": true
+    },
+    {
+      "claim": "TrustSQL infeasible (Spider test): 527",
+      "measured": 527,
+      "proposal": 527,
+      "match": true
+    },
+    {
+      "claim": "... of which missing-column: 300",
+      "measured": 300,
+      "proposal": 300,
+      "match": true
+    }
+  ]
+}

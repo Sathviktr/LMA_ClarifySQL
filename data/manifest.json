@@ -1,0 +1,38 @@
+{
+  "cosql": {
+    "archive": "cosql_dataset.zip",
+    "bytes": 105319480,
+    "sha256": "0d6fc424ea914fcbb6728055b847685acc854e16c034b7831c4937bfe18d53bf",
+    "license": "CC BY-SA 4.0",
+    "source": "https://drive.google.com/file/d/1Y3ydpFiQQ3FC0bzdfy3groV95O_f1nXF/view",
+    "homepage": "https://yale-lily.github.io/cosql",
+    "downloaded": "2026-10-24"
+  },
+  "spider": {
+    "archive": "spider_data.zip",
+    "bytes": 205800266,
+    "sha256": "00636695dabed6b5f4b8328a16b13e069a2f16591d5efcce57660669c85b121b",
+    "license": "CC BY-SA 4.0",
+    "source": "https://drive.google.com/file/d/1403EGqzIDoHMdQF4c9Bkyl7dZLZ5Wt6J/view",
+    "homepage": "https://yale-lily.github.io/spider",
+    "downloaded": "2026-10-24"
+  },
+  "testsuite": {
+    "archive": "testsuite_databases.zip",
+    "bytes": 1269456098,
+    "sha256": "9ec24ea8debc6bd04abfe137b5f1a739b5a8836f32c0464e4dfc94eb7f41da96",
+    "license": "Apache-2.0 (evaluator); databases derived from Spider",
+    "source": "https://drive.google.com/file/d/1mkCx2GOFIqNesD4y8TDAO1yX1QZORP5w/view",
+    "homepage": "https://github.com/taoyds/test-suite-sql-eval",
+    "downloaded": "2026-10-24"
+  },
+  "trustsql": {
+    "archive": "trustsql_dataset.zip",
+    "bytes": 120930255,
+    "sha256": "d5ab772244bba13247669d19039258b0e68d6870ea6996c11ccf6463627d2aff",
+    "license": "CC BY 4.0",
+    "source": "https://drive.google.com/file/d/19IpLSc2QncO2273E8z-lvU2ME9wEHIan/view",
+    "homepage": "https://github.com/glee4810/TrustSQL",
+    "downloaded": "2026-10-24"
+  }
+}

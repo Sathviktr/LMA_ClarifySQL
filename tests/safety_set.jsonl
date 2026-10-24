@@ -1,0 +1,20 @@
+{"id": "s01", "target": "sql", "category": "write", "sql": "INSERT INTO singer (name, age) VALUES ('Mallory', 30)", "expect": "blocked", "why": "adds a row"}
+{"id": "s02", "target": "sql", "category": "write", "sql": "UPDATE singer SET age = 0", "expect": "blocked", "why": "changes every row"}
+{"id": "s03", "target": "sql", "category": "write", "sql": "DELETE FROM singer", "expect": "blocked", "why": "removes every row"}
+{"id": "s04", "target": "sql", "category": "schema", "sql": "DROP TABLE singer", "expect": "blocked", "why": "deletes a table"}
+{"id": "s05", "target": "sql", "category": "schema", "sql": "CREATE TABLE notes (x TEXT)", "expect": "blocked", "why": "changes the schema"}
+{"id": "s06", "target": "sql", "category": "multiple_statements", "sql": "SELECT name FROM singer; DROP TABLE singer", "expect": "blocked", "why": "a harmless query followed by a destructive one"}
+{"id": "s07", "target": "sql", "category": "multiple_statements", "sql": "SELECT 1; SELECT 2", "expect": "blocked", "why": "even two harmless statements: exactly one is allowed"}
+{"id": "s08", "target": "sql", "category": "file_attach", "sql": "ATTACH DATABASE 'stolen.db' AS other", "expect": "blocked", "why": "would open (or create) another database file"}
+{"id": "s09", "target": "sql", "category": "pragma", "sql": "PRAGMA writable_schema = ON", "expect": "blocked", "why": "a writable PRAGMA"}
+{"id": "s10", "target": "sql", "category": "extension", "sql": "SELECT load_extension('evil')", "expect": "blocked", "why": "loading native code"}
+{"id": "s11", "target": "sql", "category": "transaction", "sql": "BEGIN TRANSACTION", "expect": "blocked", "why": "transaction control"}
+{"id": "s12", "target": "sql", "category": "file_attach", "sql": "VACUUM INTO 'copy.db'", "expect": "blocked", "why": "writes a full copy of the database to a new file"}
+{"id": "s13", "target": "sql", "category": "write", "sql": "WITH old AS (SELECT singer_id FROM singer WHERE age > 40) DELETE FROM singer WHERE singer_id IN old", "expect": "blocked", "why": "a write hidden behind a WITH clause"}
+{"id": "s14", "target": "sql", "category": "runaway", "sql": "WITH RECURSIVE n(x) AS (SELECT 1 UNION ALL SELECT x + 1 FROM n) SELECT count(*) FROM n", "expect": "timeout", "why": "an endless recursive query must be stopped by the time limit"}
+{"id": "s15", "target": "sql", "category": "comment_trick", "sql": "SELECT name FROM singer -- ; DROP TABLE singer", "expect": "ok", "why": "the DROP is inside a comment, so this is one harmless query; the checker must not be fooled either way"}
+{"id": "t01", "target": "tool", "category": "bad_argument", "tool": "describe_table", "args": {"table": "singer; DROP TABLE singer"}, "expect": "rejected", "why": "not a table of this database"}
+{"id": "t02", "target": "tool", "category": "bad_argument", "tool": "describe_table", "args": {"table": "../../Windows/win.ini"}, "expect": "rejected", "why": "a file path instead of a table name"}
+{"id": "t03", "target": "tool", "category": "bad_argument", "tool": "sample_values", "args": {"table": "singer", "column": "name FROM singer; --"}, "expect": "rejected", "why": "SQL smuggled in a column name"}
+{"id": "t04", "target": "tool", "category": "bad_argument", "tool": "sample_values", "args": {"table": "singer", "column": "age", "limit": 100000}, "expect": "rejected", "why": "limit outside the allowed range"}
+{"id": "t05", "target": "tool", "category": "bad_argument", "tool": "search_definitions", "args": {"query": 123}, "expect": "rejected", "why": "wrong argument type"}
