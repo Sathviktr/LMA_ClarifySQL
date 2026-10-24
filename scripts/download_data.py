@@ -127,8 +127,14 @@ def main() -> None:
     print(f"data folder: {root}")
     manifest_path = root / "manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
+    repo_manifest_path = REPO_ROOT / "data" / "manifest.json"
+    expected = json.loads(repo_manifest_path.read_text(encoding="utf-8")) if repo_manifest_path.exists() else {}
     for name in args.only:
         manifest[name] = download(name, root)
+        want = expected.get(name, {}).get("sha256")
+        if want:
+            same = want == manifest[name]["sha256"]
+            print(f"[{name}] SHA-256 {'matches' if same else 'DIFFERS FROM'} the repository manifest")
     text = json.dumps(dict(sorted(manifest.items())), indent=2) + "\n"
     manifest_path.write_text(text, encoding="utf-8")
     (REPO_ROOT / "data").mkdir(exist_ok=True)
