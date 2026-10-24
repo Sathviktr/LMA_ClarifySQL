@@ -1,0 +1,26 @@
+{
+  "split": "test",
+  "system": "oracle",
+  "backend": "hf",
+  "max_repairs": 2,
+  "batch_size": 16,
+  "wall_seconds": 906.5,
+  "items": 1034,
+  "execution_accuracy": 0.7708,
+  "execution_accuracy_before_repair": 0.764,
+  "status_counts": {
+    "ok": 1031,
+    "sql_error": 3
+  },
+  "reason_counts": {
+    "match": 797,
+    "different_result": 234,
+    "pred_sql_error": 3
+  },
+  "repaired_items": 31,
+  "mean_seconds_per_item": 0.862,
+  "mean_new_tokens": 42.3,
+  "mean_prompt_tokens": 417.2,
+  "testsuite_accuracy": 0.6847,
+  "testsuite_accuracy_before_repair": 0.6799
+}
