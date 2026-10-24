@@ -65,3 +65,40 @@ def candidates(examples: Iterable[Example]) -> dict[str, list[Example]]:
     unique = dedupe(examples)
     return {"threshold": [e for e in unique if is_threshold(e)],
             "ranking": [e for e in unique if is_ranking(e)]}
+
+
+# ----------------------------------------------------------------------------- date and entity (reserve)
+_DATE_NAME = re.compile(r"(^|_)(date|time|datetime|timestamp|year|day)(_|$)", re.I)
+_DATE_TYPES = {"date", "datetime", "timestamp"}
+_EQ_LITERAL = re.compile(r"=\s*'([^']+)'|=\s*\"([^\"]+)\"")
+
+
+def date_columns(table) -> list[str]:
+    return [c.name for c in table.columns if _DATE_NAME.search(c.name) or c.type in _DATE_TYPES]
+
+
+def is_date_ambiguous(ex: Example, schema) -> bool:
+    """The SQL filters or sorts on a date column of a table that has at least one other date column."""
+    clauses = " ".join(re.findall(r"\b(?:where|order\s+by|having)\b(.*)", ex.query, re.I | re.S))
+    for table in schema.tables.values():
+        cols = date_columns(table)
+        if len(cols) >= 2 and any(re.search(rf"\b{re.escape(c)}\b", clauses, re.I) for c in cols):
+            return True
+    return False
+
+
+def entity_columns(ex: Example, schema, con) -> dict[str, list[str]]:
+    """For each `= 'value'` in the SQL, the text columns of the database that contain that exact value."""
+    out = {}
+    for a, b in _EQ_LITERAL.findall(ex.query):
+        value = a or b
+        hits = []
+        for table in schema.tables.values():
+            for col in table.columns:
+                if col.type and not any(k in col.type for k in ("char", "text", "varchar")):
+                    continue
+                q = f'SELECT 1 FROM "{table.name}" WHERE "{col.name}" = ? LIMIT 1'
+                if con.execute(q, (value,)).fetchone():
+                    hits.append(f"{table.name}.{col.name}")
+        out[value] = hits
+    return out
