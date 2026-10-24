@@ -3,7 +3,7 @@
 Usage:  python -I scripts/build_sft.py
 Writes data/sft/{train,validation}.jsonl (slot version, our main adapter) and
 data/sft/{train,validation}_noslot.jsonl (no slots or meanings: ablation A2), plus results/sft/sft_stats.json
-with the action mix and the token lengths (prompt + target, Qwen3 chat template).
+with the action mix and the token lengths (prompt + target, Qwen3 chat format; no PyTorch needed).
 """
 
 from __future__ import annotations
@@ -12,17 +12,15 @@ import json
 import statistics
 from collections import Counter
 
-from transformers import AutoTokenizer
-
-from clarifysql.config import MODEL_ID, REPO_ROOT, results_dir
+from clarifysql.config import REPO_ROOT, results_dir
 from clarifysql.episodes.schema import load_episodes
 from clarifysql.episodes.states import episode_states
+from clarifysql.llm.tokens import count_chat_tokens
 
 MAX_TOKENS = 1024
 
 
 def main() -> None:
-    tok = AutoTokenizer.from_pretrained(MODEL_ID)
     out_dir = REPO_ROOT / "data" / "sft"
     out_dir.mkdir(parents=True, exist_ok=True)
     stats = {"max_tokens": MAX_TOKENS}
@@ -33,9 +31,7 @@ def main() -> None:
             rows = [s for ep in episodes for s in episode_states(ep, with_slots)]
             lengths = []
             for r in rows:
-                text = tok.apply_chat_template(r["messages"] + [{"role": "assistant", "content": r["target"]}],
-                                               tokenize=False)
-                r["tokens"] = len(tok(text)["input_ids"])
+                r["tokens"] = count_chat_tokens(r["messages"] + [{"role": "assistant", "content": r["target"]}])
                 lengths.append(r["tokens"])
             kept = [r for r in rows if r["tokens"] <= MAX_TOKENS]  # longer states are dropped, not truncated
             with open(out_dir / f"{split}{suffix}.jsonl", "w", encoding="utf-8") as f:

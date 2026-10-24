@@ -18,9 +18,9 @@
       "unanswerable": 90
     },
     "tokens": {
-      "median": 451.5,
+      "median": 452.0,
       "p90": 574,
-      "max": 1511,
+      "max": 1515,
       "over_limit": 6
     }
   },
@@ -44,7 +44,7 @@
     "tokens": {
       "median": 409.0,
       "p90": 530,
-      "max": 1388,
+      "max": 1392,
       "over_limit": 6
     }
   },
