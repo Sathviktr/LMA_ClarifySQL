@@ -154,8 +154,10 @@ def describe_slot(slot: Slot | dict, request: str, entity: str, source_question:
         return {"term": f"{col} range", "definition": f"{col} {s['hidden']}", "aliases": [],
                 "question": f"Which range of {col} do you mean?"}
     if vague in _ADJ:
-        return {"term": f"{vague} {col}", "definition": f"{col} {s['hidden']}", "aliases": [],
-                "question": f'What {col} counts as "{vague}"?'}
+        nxt = following_noun(request, vague)
+        word = humanize(nxt) if (nxt and col == "number") else col  # a count: use the noun the request says
+        return {"term": f"{vague} {word}", "definition": f"{word} {s['hidden']}", "aliases": [],
+                "question": f'What {word} counts as "{vague}"?'}
     return {"term": f"{vague} {entity}", "definition": f"{col} {s['hidden']}", "aliases": [],
             "question": f'What do you mean by "{vague}"?'}
 
