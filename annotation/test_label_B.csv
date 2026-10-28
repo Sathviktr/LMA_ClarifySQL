@@ -1,11 +1,11 @@
-﻿episode_id,db_id,tables,glossary,request,decision (execute / clarify / abstain),comment
-test-b2f42bc8,world_1,"city(ID, Name, CountryCode, District, Population)
+﻿"episode_id","db_id","tables","glossary","request","decision (execute / clarify / abstain)","comment"
+"test-b2f42bc8","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","country ranks highest: ranked by number of records
 countrylanguage ranks highest: ranked by percentage
 big surfacearea: surfacearea bigger than 3000
-city ranks highest: ranked by population",Which cities have a medium-sized population?,,
-test-3f1aabae,dog_kennels,"Breeds(breed_code, breed_name)
+city ranks highest: ranked by population","Which cities have a medium-sized population?","clarify","Population bounds for medium-sized are not defined."
+"test-3f1aabae","dog_kennels","Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
 Treatment_Types(treatment_type_code, treatment_type_description)
@@ -15,41 +15,41 @@ Professionals(professional_id, role_code, first_name, street, city, state, zip_c
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","many treatments: more than 2 treatments
 owner ranks highest: ranked by number of records
 high sum(cost of treatment: sum(cost of treatment more than 1000
-dog ranks lowest: ranked by number of records",What is the most common dog color?,,
-test-fa2861ab,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+dog ranks lowest: ranked by number of records","What is the most common dog color?","abstain","Dog color is not stored."
+"test-fa2861ab","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","people ranks highest: ranked by number of records
 high height: height higher than 200
 low earnings: earnings less than 200000
-player ranks lowest: ranked by earnings",What is the sum of the height of Teodor Salparov and his pet?,,
-test-80e415b3,course_teach,"course(Course_ID, Staring_Date, Course)
+player ranks lowest: ranked by earnings","What is the sum of the height of Teodor Salparov and his pet?","abstain","Pet identities and heights are not stored."
+"test-80e415b3","course_teach","course(Course_ID, Staring_Date, Course)
 teacher(Teacher_ID, Name, Age, Hometown)
-course_arrange(Course_ID, Teacher_ID, Grade)",,How many teachers are there?,,
-test-5c470496,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+course_arrange(Course_ID, Teacher_ID, Grade)","","How many teachers are there?","execute","Count teacher records."
+"test-5c470496","tvshow","TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
 TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
-Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",tv sery ranks highest: ranked by rating,"How many cartoons were written by ""Joseph Kuhr""?",,
-test-05d28bae,employee_hire_evaluation,"employee(Employee_ID, Name, Age, City)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)","tv sery ranks highest: ranked by rating","How many cartoons were written by ""Joseph Kuhr""?","execute","Count cartoons filtered by Written_by."
+"test-05d28bae","employee_hire_evaluation","employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","many products: more than 10000 products
-shop ranks highest: ranked by number of records",Find the name of the top employee in the evaluations.,,
-test-b276bcb6,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+shop ranks highest: ranked by number of records","Find the name of the top employee in the evaluations.","clarify","Specify how employees are ranked in evaluations."
+"test-b276bcb6","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","high earnings: earnings higher than 300000
 low earnings: earnings less than 200000
 player ranks highest: ranked by earnings
-player ranks lowest: ranked by earnings",Count the number of female poker players taller than 180cm.,,
-test-c50dfbfb,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+player ranks lowest: ranked by earnings","Count the number of female poker players taller than 180cm.","abstain","Player sex or gender is not stored."
+"test-c50dfbfb","museum_visit","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","museum ranks highest: ranked by number of records
 early museum: open year before 2009
 visit ranks highest: ranked by num of ticket
 high level of membership: level of membership higher than 4
-visitor ranks highest: ranked by total spent","Find the names of the visitors whose membership level is high, and order the results by the level from high to low.",,
-test-95b52a2f,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+visitor ranks highest: ranked by total spent","Find the names of the visitors whose membership level is high, and order the results by the level from high to low.","execute","Glossary defines high membership as level greater than 4."
+"test-95b52a2f","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","high height: height higher than 200
 player ranks highest: ranked by earnings
 player ranks lowest: ranked by earnings
-people ranks highest: ranked by height",What are the names of poker players whose earnings are high?,,
-test-90d733df,dog_kennels,"Breeds(breed_code, breed_name)
+people ranks highest: ranked by height","What are the names of poker players whose earnings are high?","clarify","Specify the earnings threshold for high."
+"test-90d733df","dog_kennels","Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
 Treatment_Types(treatment_type_code, treatment_type_description)
@@ -59,56 +59,56 @@ Professionals(professional_id, role_code, first_name, street, city, state, zip_c
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","high sum(cost of treatment: sum(cost of treatment more than 1000
 many treatments: more than 2 treatments
 dog ranks lowest: ranked by number of records
-owner ranks highest: ranked by number of records",What is the most common unit of measure among the breeds?,,
-test-3d4528c4,world_1,"city(ID, Name, CountryCode, District, Population)
+owner ranks highest: ranked by number of records","What is the most common unit of measure among the breeds?","abstain","Breeds have no unit-of-measure field."
+"test-3d4528c4","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","countrylanguage ranks highest: ranked by percentage
 continent ranks highest: ranked by diverse languages
 city ranks highest: ranked by population
-big surfacearea: surfacearea bigger than 3000",Find the average life expectancy and total population for each continent where the average life expectancy is short?,,
-test-3e2283c5,cre_Doc_Template_Mgt,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
+big surfacearea: surfacearea bigger than 3000","Find the average life expectancy and total population for each continent where the average life expectancy is short?","clarify","Specify the threshold for short average life expectancy."
+"test-3e2283c5","cre_Doc_Template_Mgt","Ref_Template_Types(Template_Type_Code, Template_Type_Description)
 Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
 Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
 Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)","code ranks highest: ranked by number of templates
-template ranks highest: ranked by number of records",What are the ids of templates with template type code PP or PPT?,,
-test-93d116fb,world_1,"city(ID, Name, CountryCode, District, Population)
+template ranks highest: ranked by number of records","What are the ids of templates with template type code PP or PPT?","execute","Template type codes and template IDs are stored."
+"test-93d116fb","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","early country: indep year before 1930
 recent country: indep year after 1950
 population range: population between 160000 and 900000
-big surfacearea: surfacearea bigger than 3000",What is name of the country that speaks the largest number of languages?,,
-test-164db837,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+big surfacearea: surfacearea bigger than 3000","What is name of the country that speaks the largest number of languages?","execute","Rank countries by their number of language records."
+"test-164db837","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","high earnings: earnings higher than 300000
 people ranks highest: ranked by height
 high height: height higher than 200
-low earnings: earnings less than 200000",What is the money rank of the poker player with the highest earnings?,,
-test-5b28a69e,employee_hire_evaluation,"employee(Employee_ID, Name, Age, City)
+low earnings: earnings less than 200000","What is the money rank of the poker player with the highest earnings?","execute","Select Money_Rank for the maximum Earnings."
+"test-5b28a69e","employee_hire_evaluation","employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","many products: more than 10000 products
 employee ranks highest: ranked by number of records
-shop ranks highest: ranked by number of records",How many employees are there?,,
-test-e8294c0e,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+shop ranks highest: ranked by number of records","How many employees are there?","execute","Count employee records."
+"test-e8294c0e","singer","singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","singer ranks highest: ranked by net worth
-early singer: birth year before 1945",How many singers are there?,,
-test-a1f41e51,voter_1,"AREA_CODE_STATE(area_code, state)
+early singer: birth year before 1945","How many singers are there?","execute","Count singer records."
+"test-a1f41e51","voter_1","AREA_CODE_STATE(area_code, state)
 CONTESTANTS(contestant_number, contestant_name)
 VOTES(vote_id, phone_number, state, contestant_number, created)","contestant ranks lowest: ranked by votes
-area code state ranks highest: ranked by number of records",What are the contestant numbers and names of the contestants who had at least two votes?,,
-test-e900b4ae,battle_death,"battle(id, name, date, bulgarian_commander, latin_commander, result)
+area code state ranks highest: ranked by number of records","What are the contestant numbers and names of the contestants who had at least two votes?","execute","Count votes per contestant and retain counts of at least two."
+"test-e900b4ae","battle_death","battle(id, name, date, bulgarian_commander, latin_commander, result)
 ship(lost_in_battle, id, name, tonnage, ship_type, location, disposition_of_ship)
 death(caused_by_ship_id, id, note, killed, injured)","ship ranks highest: ranked by number of records
-many people: more than 10 people",List the name and date the battle that has lost the ship named 'Lettice' and the ship named 'HMS Atalanta',,
-test-e4874733,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+many people: more than 10 people","List the name and date the battle that has lost the ship named 'Lettice' and the ship named 'HMS Atalanta'","execute","Find battles linked to both named ships."
+"test-e4874733","singer","singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","singer ranks highest: ranked by net worth
 early singer: birth year before 1945
-singer ranks highest: ranked by number of records",What is the name of the fan club for the singer with the highest net worth?,,
-test-ae2d9ab3,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+singer ranks highest: ranked by number of records","What is the name of the fan club for the singer with the highest net worth?","abstain","Fan clubs are not stored."
+"test-ae2d9ab3","museum_visit","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","visit ranks highest: ranked by num of ticket
 visitor ranks highest: ranked by total spent
-high level of membership: level of membership higher than 4",What is the name of the visitor who visited both a museum opened long ago and a museum opened recently?,,
-test-68a11083,dog_kennels,"Breeds(breed_code, breed_name)
+high level of membership: level of membership higher than 4","What is the name of the visitor who visited both a museum opened long ago and a museum opened recently?","clarify","Specify the year cutoffs for long ago and recently."
+"test-68a11083","dog_kennels","Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
 Treatment_Types(treatment_type_code, treatment_type_description)
@@ -117,40 +117,40 @@ Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_b
 Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","dog ranks lowest: ranked by number of records
 owner ranks highest: ranked by number of records
-many treatments: more than 2 treatments","Which professionals live in the state of Indiana or have done many treatments? List his or her id, last name and cell phone.",,
-test-db257212,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+many treatments: more than 2 treatments","Which professionals live in the state of Indiana or have done many treatments? List his or her id, last name and cell phone.","execute","Glossary defines many treatments as more than 2."
+"test-db257212","orchestra","conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","recent orchestra: year of founded after 2003
-orchestra ranks highest: ranked by number of records",List the name of the most senior conductor.,,
-test-e0e48d2f,network_1,"Highschooler(ID, name, grade)
+orchestra ranks highest: ranked by number of records","List the name of the most senior conductor.","clarify","Specify whether seniority means age or years of work."
+"test-e0e48d2f","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","many students: at least 4 students
 schooler ranks highest: ranked by number of friends
 grade ranks highest: ranked by high schoolers
-many likes: at least 2 likes",How many high schoolers are there in grade 9 or 10?,,
-test-5afad14f,pets_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
+many likes: at least 2 likes","How many high schoolers are there in grade 9 or 10?","execute","Count students whose grade is 9 or 10."
+"test-5afad14f","pets_1","Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Has_Pet(StuID, PetID)
-Pets(PetID, PetType, pet_age, weight)",pet ranks lowest: ranked by pet age,Find the average age of students who do not have any pet .,,
-test-054822e9,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+Pets(PetID, PetType, pet_age, weight)","pet ranks lowest: ranked by pet age","Find the average age of students who do not have any pet .","execute","Average ages of students with no Has_Pet records."
+"test-054822e9","museum_visit","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","museum ranks highest: ranked by number of records
 visitor ranks highest: ranked by total spent
 visit ranks highest: ranked by num of ticket
-early museum: open year before 2009",What is the average age of the visitors whose membership level is not high?,,
-test-a548980b,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+early museum: open year before 2009","What is the average age of the visitors whose membership level is not high?","clarify","Specify the membership threshold for high."
+"test-a548980b","museum_visit","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","visitor ranks highest: ranked by total spent
 high level of membership: level of membership higher than 4
 visit ranks highest: ranked by num of ticket
-early museum: open year before 2009",Find the average number of staff working for the museums that were open before 2009.,,
-test-d5fa8a37,world_1,"city(ID, Name, CountryCode, District, Population)
+early museum: open year before 2009","Find the average number of staff working for the museums that were open before 2009.","execute","Average staff counts for museums opened before 2009."
+"test-d5fa8a37","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","continent ranks highest: ranked by diverse languages
 city ranks highest: ranked by population
 population range: population between 160000 and 900000
-countrylanguage ranks highest: ranked by percentage","What are the population, name and leader of the biggest country?",,
-test-a32c91f4,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+countrylanguage ranks highest: ranked by percentage","What are the population, name and leader of the biggest country?","clarify","Specify whether biggest means population, area, or another measure."
+"test-a32c91f4","student_transcripts_tracking","Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
 Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
@@ -161,22 +161,22 @@ Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
 Transcript_Contents(student_course_id, transcript_id)","many course: at least 2 course
-few sections: at most 2 sections",Find the loudest student.,,
-test-b7b78093,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+few sections: at most 2 sections","Find the loudest student.","abstain","Student loudness is not stored."
+"test-b7b78093","tvshow","TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
 TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
-Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",tv sery ranks highest: ranked by rating,What is the average number of horses owned by the channels?,,
-test-262961f7,real_estate_properties,"Ref_Feature_Types(feature_type_code, feature_type_name)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)","tv sery ranks highest: ranked by rating","What is the average number of horses owned by the channels?","abstain","Channel horse ownership is not stored."
+"test-262961f7","real_estate_properties","Ref_Feature_Types(feature_type_code, feature_type_name)
 Ref_Property_Types(property_type_code, property_type_description)
 Other_Available_Features(feature_id, feature_type_code, feature_name, feature_description)
 Properties(property_id, property_type_code, date_on_market, date_sold, property_name, property_address, room_count, vendor_requested_price, buyer_offered_price, agreed_selling_price, apt_feature_1, apt_feature_2, apt_feature_3, fld_feature_1, fld_feature_2, fld_feature_3, hse_feature_1, hse_feature_2, hse_feature_3, oth_feature_1, oth_feature_2, oth_feature_3, shp_feature_1, shp_feature_2, shp_feature_3, other_property_details)
-Other_Property_Features(property_id, feature_id, property_feature_description)",many room: more than 1 room,What are the names of properties that are either houses or apartments with many rooms?,,
-test-d486a04f,employee_hire_evaluation,"employee(Employee_ID, Name, Age, City)
+Other_Property_Features(property_id, feature_id, property_feature_description)","many room: more than 1 room","What are the names of properties that are either houses or apartments with many rooms?","execute","Property types are stored; glossary defines many rooms as more than 1."
+"test-d486a04f","employee_hire_evaluation","employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","shop ranks highest: ranked by number of records
 employee ranks highest: ranked by number of records
-many products: more than 10000 products",Find the names of employees who never won any award in the evaluation.,,
-test-96d8a43f,dog_kennels,"Breeds(breed_code, breed_name)
+many products: more than 10000 products","Find the names of employees who never won any award in the evaluation.","execute","Find employees without evaluation award records."
+"test-96d8a43f","dog_kennels","Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
 Treatment_Types(treatment_type_code, treatment_type_description)
@@ -186,8 +186,8 @@ Professionals(professional_id, role_code, first_name, street, city, state, zip_c
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","owner ranks highest: ranked by number of records
 high sum(cost of treatment: sum(cost of treatment more than 1000
 many treatments: more than 2 treatments
-dog ranks lowest: ranked by number of records",What are the first name and last name of the professionals who have done treatment with cost below average?,,
-test-1a19d63d,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+dog ranks lowest: ranked by number of records","What are the first name and last name of the professionals who have done treatment with cost below average?","execute","Find professionals with a treatment costing less than the overall average."
+"test-1a19d63d","student_transcripts_tracking","Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
 Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
@@ -198,124 +198,124 @@ Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
 Transcript_Contents(student_course_id, transcript_id)","many course: at least 2 course
-few sections: at most 2 sections",Which courses have the fewest number of credits?,,
-test-c6a052d1,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+few sections: at most 2 sections","Which courses have the fewest number of credits?","abstain","Course credits are not stored."
+"test-c6a052d1","concert_singer","stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","stadium ranks highest: ranked by average attendance
 capacity range: capacity between 5000 and 10000
 low age: age below 30
-recent concert: year after 2013",Show location and name for all stadiums with a capacity within a certain range.,,
-test-859bd008,voter_1,"AREA_CODE_STATE(area_code, state)
+recent concert: year after 2013","Show location and name for all stadiums with a capacity within a certain range.","execute","Glossary defines the capacity range as 5000 through 10000."
+"test-859bd008","voter_1","AREA_CODE_STATE(area_code, state)
 CONTESTANTS(contestant_number, contestant_name)
 VOTES(vote_id, phone_number, state, contestant_number, created)","area code state ranks highest: ranked by number of records
-contestant ranks lowest: ranked by votes",What is the area code that ranks highest?,,
-test-b9ed9f40,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+contestant ranks lowest: ranked by votes","What is the area code that ranks highest?","execute","Using the glossary's area-code ranking by record count."
+"test-b9ed9f40","flight_2","airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","airport ranks lowest: ranked by number of flights
 few flights: fewer than 200 flights
 many flights: at least 10 flights
-city ranks highest: ranked by number of arriving flights",Which airline is the biggest?,,
-test-e0e69462,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+city ranks highest: ranked by number of arriving flights","Which airline is the biggest?","clarify","Specify the measure of airline size."
+"test-e0e69462","museum_visit","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","visitor ranks highest: ranked by total spent
 visit ranks highest: ranked by num of ticket
 museum ranks highest: ranked by number of records
-high level of membership: level of membership higher than 4",find the names of museums which have more staff than the minimum staff number of all museums opened after 2010.,,
-test-f0b8a860,pets_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
+high level of membership: level of membership higher than 4","find the names of museums which have more staff than the minimum staff number of all museums opened after 2010.","execute","Compare staff counts with the minimum for museums opened after 2010."
+"test-f0b8a860","pets_1","Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Has_Pet(StuID, PetID)
-Pets(PetID, PetType, pet_age, weight)",pet ranks lowest: ranked by pet age,Find number of pets owned by students who are older than 20.,,
-test-51aad14b,world_1,"city(ID, Name, CountryCode, District, Population)
+Pets(PetID, PetType, pet_age, weight)","pet ranks lowest: ranked by pet age","Find number of pets owned by students who are older than 20.","execute","Count pets linked to students older than 20."
+"test-51aad14b","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","continent ranks highest: ranked by diverse languages
 countrylanguage ranks highest: ranked by percentage
 city ranks highest: ranked by population
-big surfacearea: surfacearea bigger than 3000",What is the total number of unique official languages spoken in the countries that became independent long ago?,,
-test-cbfdeb92,real_estate_properties,"Ref_Feature_Types(feature_type_code, feature_type_name)
+big surfacearea: surfacearea bigger than 3000","What is the total number of unique official languages spoken in the countries that became independent long ago?","clarify","Specify the independence-year cutoff for long ago."
+"test-cbfdeb92","real_estate_properties","Ref_Feature_Types(feature_type_code, feature_type_name)
 Ref_Property_Types(property_type_code, property_type_description)
 Other_Available_Features(feature_id, feature_type_code, feature_name, feature_description)
 Properties(property_id, property_type_code, date_on_market, date_sold, property_name, property_address, room_count, vendor_requested_price, buyer_offered_price, agreed_selling_price, apt_feature_1, apt_feature_2, apt_feature_3, fld_feature_1, fld_feature_2, fld_feature_3, hse_feature_1, hse_feature_2, hse_feature_3, oth_feature_1, oth_feature_2, oth_feature_3, shp_feature_1, shp_feature_2, shp_feature_3, other_property_details)
-Other_Property_Features(property_id, feature_id, property_feature_description)",many room: more than 1 room,How many available features are there in total?,,
-test-3f86326a,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+Other_Property_Features(property_id, feature_id, property_feature_description)","many room: more than 1 room","How many available features are there in total?","execute","Count available feature records."
+"test-3f86326a","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","high height: height higher than 200
 player ranks lowest: ranked by earnings
 low earnings: earnings less than 200000
-player ranks highest: ranked by earnings",What is the leading nationality among the people?,,
-test-c72f99dd,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
+player ranks highest: ranked by earnings","What is the leading nationality among the people?","clarify","Specify how to determine the leading nationality."
+"test-c72f99dd","wta_1","players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","many players: more than 50 players
 ranking ranks highest: ranked by tours
 year ranks highest: ranked by number of matches
-match ranks lowest: ranked by winner age",Find the names of tourneys that have many matches.,,
-test-2c46e6e3,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+match ranks lowest: ranked by winner age","Find the names of tourneys that have many matches.","clarify","Specify the match-count threshold for many."
+"test-2c46e6e3","museum_visit","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","high level of membership: level of membership higher than 4
 museum ranks highest: ranked by number of records
 visit ranks highest: ranked by num of ticket
-visitor ranks highest: ranked by total spent",What is the total ticket expense of the visitors whose membership level is 1?,,
-test-8392d5f5,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+visitor ranks highest: ranked by total spent","What is the total ticket expense of the visitors whose membership level is 1?","execute","Sum Total_spent for visitors at membership level 1."
+"test-8392d5f5","orchestra","conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","orchestra ranks highest: ranked by number of records
 recent orchestra: year of founded after 2003
 conductor ranks highest: ranked by number of records
-conductor ranks highest: ranked by years of work",How many show sponsors are there?,,
-test-05a95fa6,world_1,"city(ID, Name, CountryCode, District, Population)
+conductor ranks highest: ranked by years of work","How many show sponsors are there?","abstain","Show sponsors are not stored."
+"test-05a95fa6","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","city ranks highest: ranked by population
 continent ranks highest: ranked by diverse languages
 country ranks lowest: ranked by lifeexpectancy
-early country: indep year before 1930",Which languages are spoken by only one country in republic governments?,,
-test-423a792b,voter_1,"AREA_CODE_STATE(area_code, state)
+early country: indep year before 1930","Which languages are spoken by only one country in republic governments?","execute","Count countries per language among republic governments."
+"test-423a792b","voter_1","AREA_CODE_STATE(area_code, state)
 CONTESTANTS(contestant_number, contestant_name)
 VOTES(vote_id, phone_number, state, contestant_number, created)","area code state ranks highest: ranked by number of records
-contestant ranks lowest: ranked by votes","List the vote ids, phone numbers and states of all votes.",,
-test-971c8f02,cre_Doc_Template_Mgt,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
+contestant ranks lowest: ranked by votes","List the vote ids, phone numbers and states of all votes.","execute","Select the requested fields from VOTES."
+"test-971c8f02","cre_Doc_Template_Mgt","Ref_Template_Types(Template_Type_Code, Template_Type_Description)
 Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
 Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
 Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)","code ranks highest: ranked by number of templates
-template ranks highest: ranked by number of records",How many paragraphs for the document with name 'Summer Show'?,,
-test-68a953f5,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+template ranks highest: ranked by number of records","How many paragraphs for the document with name 'Summer Show'?","execute","Count paragraphs linked to the named document."
+"test-68a953f5","singer","singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","singer ranks highest: ranked by net worth
-early singer: birth year before 1945",What are the birth year and citizenship of singers?,,
-test-42d17e0a,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+early singer: birth year before 1945","What are the birth year and citizenship of singers?","execute","Select Birth_Year and Citizenship from singer."
+"test-42d17e0a","flight_2","airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","few flights: fewer than 200 flights
 airline ranks lowest: ranked by number of flights
 city ranks highest: ranked by number of arriving flights
-airline ranks highest: ranked by number of flights",What is the code of the busiest airport?,,
-test-1df13b73,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
+airline ranks highest: ranked by number of flights","What is the code of the busiest airport?","clarify","Specify how to measure airport busyness, including flight direction."
+"test-1df13b73","wta_1","players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","winner ranks highest: ranked by rank points
 match ranks highest: ranked by number of records
 many matches: more than 10 matches
-many players: more than 50 players",Find the number of distinct name of losers.,,
-test-4d626fba,pets_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
+many players: more than 50 players","Find the number of distinct name of losers.","execute","Count distinct loser_name values."
+"test-4d626fba","pets_1","Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Has_Pet(StuID, PetID)
-Pets(PetID, PetType, pet_age, weight)",pet ranks lowest: ranked by pet age,Find the number of distinct type of pets.,,
-test-c9e3c517,network_1,"Highschooler(ID, name, grade)
+Pets(PetID, PetType, pet_age, weight)","pet ranks lowest: ranked by pet age","Find the number of distinct type of pets.","execute","Count distinct PetType values."
+"test-c9e3c517","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","schooler ranks highest: ranked by number of friends
 many friends: at least 3 friends
 grade ranks highest: ranked by high schoolers
-many students: at least 4 students",Show the names of high school students and their corresponding number of friends.,,
-test-0ffb8779,car_1,"continents(ContId, Continent)
+many students: at least 4 students","Show the names of high school students and their corresponding number of friends.","execute","Count Friend records for each student."
+"test-0ffb8779","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","model ranks highest: ranked by horsepower
 many models: at least 2 models
-few cylinders: less than 4 cylinders",Which makers designed many car models? List full name and the id.,,
-test-ed40aaf8,car_1,"continents(ContId, Continent)
+few cylinders: less than 4 cylinders","Which makers designed many car models? List full name and the id.","execute","Glossary defines many models as at least 2."
+"test-ed40aaf8","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","few cylinders: less than 4 cylinders
 model ranks highest: ranked by horsepower
-many models: at least 2 models",Which model is the most efficient?,,
-test-0931b5d6,dog_kennels,"Breeds(breed_code, breed_name)
+many models: at least 2 models","Which model is the most efficient?","clarify","Specify the efficiency measure, such as MPG."
+"test-0931b5d6","dog_kennels","Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
 Treatment_Types(treatment_type_code, treatment_type_description)
@@ -325,18 +325,18 @@ Professionals(professional_id, role_code, first_name, street, city, state, zip_c
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","many treatments: more than 2 treatments
 owner ranks highest: ranked by number of records
 high sum(cost of treatment: sum(cost of treatment more than 1000
-dog ranks lowest: ranked by number of records","Which owner owns the most dogs? List the owner id, first name and last name.",,
-test-242594ea,voter_1,"AREA_CODE_STATE(area_code, state)
+dog ranks lowest: ranked by number of records","Which owner owns the most dogs? List the owner id, first name and last name.","execute","Rank owners by the count of their dogs."
+"test-242594ea","voter_1","AREA_CODE_STATE(area_code, state)
 CONTESTANTS(contestant_number, contestant_name)
 VOTES(vote_id, phone_number, state, contestant_number, created)","contestant ranks lowest: ranked by votes
-area code state ranks highest: ranked by number of records",What is the average contestant age?,,
-test-ad6342ef,employee_hire_evaluation,"employee(Employee_ID, Name, Age, City)
+area code state ranks highest: ranked by number of records","What is the average contestant age?","abstain","Contestant ages are not stored."
+"test-ad6342ef","employee_hire_evaluation","employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","employee ranks highest: ranked by one time bonus
 many products: more than 10000 products
-shop ranks highest: ranked by number of records",Find the name of the employee who ranks highest.,,
-test-12db2041,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+shop ranks highest: ranked by number of records","Find the name of the employee who ranks highest.","execute","Glossary defines the employee ranking by one-time bonus."
+"test-12db2041","student_transcripts_tracking","Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
 Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
@@ -347,13 +347,13 @@ Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
 Transcript_Contents(student_course_id, transcript_id)","few sections: at most 2 sections
-many course: at least 2 course",Find the program which most number of students are enrolled in. List both the id and the summary.,,
-test-a61e6f0a,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+many course: at least 2 course","Find the program which most number of students are enrolled in. List both the id and the summary.","execute","Rank degree programs by enrolled student count."
+"test-a61e6f0a","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","player ranks highest: ranked by earnings
 low earnings: earnings less than 200000
 high height: height higher than 200
-player ranks lowest: ranked by earnings",How many distinct nationalities are there?,,
-test-8b705282,car_1,"continents(ContId, Continent)
+player ranks lowest: ranked by earnings","How many distinct nationalities are there?","execute","Count distinct Nationality values."
+"test-8b705282","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
@@ -361,41 +361,41 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","car ranks highest: ranked by accelerate
 high horsepower: horsepower more than 150
 many cylinders: more than 4 cylinders
-high weight: weight more than 3500",How many car models were produced by the maker with full name American Motor Company?,,
-test-259b23b2,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+high weight: weight more than 3500","How many car models were produced by the maker with full name American Motor Company?","execute","Count model records linked to the named maker."
+"test-259b23b2","museum_visit","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","visitor ranks highest: ranked by total spent
 museum ranks highest: ranked by number of records
 visit ranks highest: ranked by num of ticket
-high level of membership: level of membership higher than 4",Find the number of visitors who did not visit any museum opened after 2010.,,
-test-fd435f3f,car_1,"continents(ContId, Continent)
+high level of membership: level of membership higher than 4","Find the number of visitors who did not visit any museum opened after 2010.","execute","Count visitors without visits to museums opened after 2010."
+"test-fd435f3f","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","many models: at least 2 models
 high weight: weight no less than 3000
-many cylinders: more than 4 cylinders",What are the id and names of the countries which have many car makers or produce the 'fiat' model?,,
-test-f13f8e0a,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+many cylinders: more than 4 cylinders","What are the id and names of the countries which have many car makers or produce the 'fiat' model?","clarify","Specify the car-maker count threshold for many."
+"test-f13f8e0a","orchestra","conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","orchestra ranks highest: ranked by number of records
 conductor ranks highest: ranked by years of work
 recent orchestra: year of founded after 2003
-conductor ranks highest: ranked by number of records",Show the name of the performance with the type Auditions 1.,,
-test-af536526,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+conductor ranks highest: ranked by number of records","Show the name of the performance with the type Auditions 1.","abstain","Performance names are not stored; orchestra names identify a different entity."
+"test-af536526","flight_2","airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","airport ranks lowest: ranked by number of flights
 city ranks highest: ranked by number of arriving flights
 few flights: fewer than 200 flights
 airline ranks highest: ranked by number of flights
-airline ranks lowest: ranked by number of flights",Find all airlines that have few flights.,,
-test-4462de70,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+airline ranks lowest: ranked by number of flights","Find all airlines that have few flights.","execute","Glossary defines few flights as fewer than 200."
+"test-4462de70","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","high earnings: earnings higher than 300000
 people ranks highest: ranked by height
 low earnings: earnings less than 200000
-player ranks lowest: ranked by earnings",Which political party is Maksim Botin affiliated with?,,
-test-b70f6922,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+player ranks lowest: ranked by earnings","Which political party is Maksim Botin affiliated with?","abstain","Political party affiliation is not stored."
+"test-b70f6922","student_transcripts_tracking","Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
 Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
@@ -406,97 +406,97 @@ Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
 Transcript_Contents(student_course_id, transcript_id)","many course: at least 2 course
-few sections: at most 2 sections",What is the mobile phone number of the student named Timmothy Ward ?,,
-test-3765a3a7,voter_1,"AREA_CODE_STATE(area_code, state)
+few sections: at most 2 sections","What is the mobile phone number of the student named Timmothy Ward ?","execute","Select the named student's cell_mobile_number."
+"test-3765a3a7","voter_1","AREA_CODE_STATE(area_code, state)
 CONTESTANTS(contestant_number, contestant_name)
 VOTES(vote_id, phone_number, state, contestant_number, created)","contestant ranks lowest: ranked by votes
-area code state ranks highest: ranked by number of records",How many contestants did not get voted?,,
-test-d99ce193,network_1,"Highschooler(ID, name, grade)
+area code state ranks highest: ranked by number of records","How many contestants did not get voted?","execute","Count contestants with no vote records."
+"test-d99ce193","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","schooler ranks highest: ranked by number of likes
 grade ranks highest: ranked by high schoolers
 many likes: at least 2 likes
-schooler ranks highest: ranked by number of friends",How many high school students are male?,,
-test-9cb4e88e,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+schooler ranks highest: ranked by number of friends","How many high school students are male?","abstain","Student sex or gender is not stored."
+"test-9cb4e88e","museum_visit","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","high level of membership: level of membership higher than 4
 visit ranks highest: ranked by num of ticket
-visitor ranks highest: ranked by total spent",What are the id and name of the most popular museum?,,
-test-0ffed20b,voter_1,"AREA_CODE_STATE(area_code, state)
+visitor ranks highest: ranked by total spent","What are the id and name of the most popular museum?","clarify","Specify the measure of museum popularity."
+"test-0ffed20b","voter_1","AREA_CODE_STATE(area_code, state)
 CONTESTANTS(contestant_number, contestant_name)
 VOTES(vote_id, phone_number, state, contestant_number, created)","area code state ranks highest: ranked by number of records
-contestant ranks lowest: ranked by votes",How many states are there?,,
-test-37cf452f,network_1,"Highschooler(ID, name, grade)
+contestant ranks lowest: ranked by votes","How many states are there?","execute","Count distinct states in AREA_CODE_STATE."
+"test-37cf452f","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","many friends: at least 3 friends
 many likes: at least 2 likes
 schooler ranks highest: ranked by number of friends
-grade ranks highest: ranked by high schoolers",Show me all grades that have many students.,,
-test-fd14d10f,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+grade ranks highest: ranked by high schoolers","Show me all grades that have many students.","clarify","Specify the student-count threshold for many."
+"test-fd14d10f","concert_singer","stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","capacity ranks highest: ranked by number of concerts
 low age: age below 30
 capacity range: capacity between 5000 and 10000
-recent concert: year after 2013",What is the name and capacity of the most popular stadium?,,
-test-430f3a4c,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
+recent concert: year after 2013","What is the name and capacity of the most popular stadium?","clarify","Specify the measure of stadium popularity."
+"test-430f3a4c","wta_1","players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","many matches: more than 10 matches
 match ranks lowest: ranked by winner age
 match ranks highest: ranked by number of records
-ranking ranks highest: ranked by tours",Find the total number of players.,,
-test-a63da7ba,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
+ranking ranks highest: ranked by tours","Find the total number of players.","execute","Count player records."
+"test-a63da7ba","wta_1","players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","ranking ranks highest: ranked by tours
 winner ranks highest: ranked by rank points
 many matches: more than 10 matches
-year ranks highest: ranked by number of matches",Find the codes of countries that have many players.,,
-test-7fadb980,network_1,"Highschooler(ID, name, grade)
+year ranks highest: ranked by number of matches","Find the codes of countries that have many players.","clarify","Specify the player-count threshold for many."
+"test-7fadb980","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","many friends: at least 3 friends
 many students: at least 4 students
 grade ranks highest: ranked by high schoolers
-many likes: at least 2 likes",What is the name of the most active high schooler?,,
-test-affb8465,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+many likes: at least 2 likes","What is the name of the most active high schooler?","clarify","Specify how student activity should be measured."
+"test-affb8465","tvshow","TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
 TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
-Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",tv sery ranks highest: ranked by rating,"List the title of all cartoon directed by ""Ben Jones"" or ""Brandon Vietti"".",,
-test-fd94a964,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)","tv sery ranks highest: ranked by rating","List the title of all cartoon directed by ""Ben Jones"" or ""Brandon Vietti"".","execute","Filter cartoons by either named director."
+"test-fd94a964","orchestra","conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","orchestra ranks highest: ranked by number of records
 recent orchestra: year of founded after 2003
-conductor ranks highest: ranked by years of work","What are the maximum and minimum share of performances whose type is not ""Live final"".",,
-test-151487c5,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+conductor ranks highest: ranked by years of work","What are the maximum and minimum share of performances whose type is not ""Live final"".","execute","Find maximum and minimum Share excluding Live final performances."
+"test-151487c5","orchestra","conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","recent orchestra: year of founded after 2003
 orchestra ranks highest: ranked by number of records
-conductor ranks highest: ranked by years of work","Find the number of orchestras whose record format is ""CD"" or ""DVD"".",,
-test-5cc34c01,network_1,"Highschooler(ID, name, grade)
+conductor ranks highest: ranked by years of work","Find the number of orchestras whose record format is ""CD"" or ""DVD"".","execute","Count orchestras with CD or DVD as their record format."
+"test-5cc34c01","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","many friends: at least 2 friends
 schooler ranks highest: ranked by number of likes
 many friends: at least 3 friends
-many students: at least 4 students",What is the age of the high school student named Tiffany?,,
-test-91814820,network_1,"Highschooler(ID, name, grade)
+many students: at least 4 students","What is the age of the high school student named Tiffany?","abstain","Student ages are not stored in Highschooler."
+"test-91814820","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","schooler ranks highest: ranked by number of friends
 many students: at least 4 students
 many friends: at least 3 friends
-many likes: at least 2 likes",Which grade is the largest?,,
-test-0a6884fc,world_1,"city(ID, Name, CountryCode, District, Population)
+many likes: at least 2 likes","Which grade is the largest?","clarify","Specify whether largest refers to enrollment count or grade number."
+"test-0a6884fc","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","short avg(life expectancy: avg(life expectancy shorter than 72
 big surfacearea: surfacearea bigger than 3000
 recent country: indep year after 1950
-country ranks lowest: ranked by lifeexpectancy",What is the total number of people living in the nations that do not use English?,,
-test-30d5f539,world_1,"city(ID, Name, CountryCode, District, Population)
+country ranks lowest: ranked by lifeexpectancy","What is the total number of people living in the nations that do not use English?","execute","Sum populations of countries without English language records."
+"test-30d5f539","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","early country: indep year before 1930
 big surfacearea: surfacearea bigger than 3000
 continent ranks highest: ranked by diverse languages
-recent country: indep year after 1950",What are the African countries that have a  population less than any country in Asia?,,
-test-bbf39964,dog_kennels,"Breeds(breed_code, breed_name)
+recent country: indep year after 1950","What are the African countries that have a  population less than any country in Asia?","execute","Compare African populations with the minimum population in Asia."
+"test-bbf39964","dog_kennels","Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
 Treatment_Types(treatment_type_code, treatment_type_description)
@@ -506,41 +506,41 @@ Professionals(professional_id, role_code, first_name, street, city, state, zip_c
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","many treatments: more than 2 treatments
 high sum(cost of treatment: sum(cost of treatment more than 1000
 dog ranks lowest: ranked by number of records
-owner ranks highest: ranked by number of records",Which states have both owners and professionals living there?,,
-test-ff2cfca5,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+owner ranks highest: ranked by number of records","Which states have both owners and professionals living there?","execute","Intersect states listed for owners and professionals."
+"test-ff2cfca5","tvshow","TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
 TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
-Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",tv sery ranks highest: ranked by rating,Tell me the total number of subscribers for all TV channels.,,
-test-3bbc81a8,car_1,"continents(ContId, Continent)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)","tv sery ranks highest: ranked by rating","Tell me the total number of subscribers for all TV channels.","abstain","TV channel subscriber counts are not stored."
+"test-3bbc81a8","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","many cylinders: more than 4 cylinders
-high horsepower: horsepower more than 150",Which car makers produce many models and many cars? List the id and the maker.,,
-test-eb93fb96,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
+high horsepower: horsepower more than 150","Which car makers produce many models and many cars? List the id and the maker.","clarify","Specify both the model-count and car-count thresholds for many."
+"test-eb93fb96","wta_1","players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","year ranks highest: ranked by number of matches
 match ranks lowest: ranked by winner age
 match ranks highest: ranked by number of records
-many players: more than 50 players",Find the highest rank of losers in all matches.,,
-test-5fda068c,course_teach,"course(Course_ID, Staring_Date, Course)
+many players: more than 50 players","Find the highest rank of losers in all matches.","execute","Aggregate the recorded loser_rank values to find the highest rank."
+"test-5fda068c","course_teach","course(Course_ID, Staring_Date, Course)
 teacher(Teacher_ID, Name, Age, Hometown)
-course_arrange(Course_ID, Teacher_ID, Grade)",,Show names of teachers and the number of courses they teach.,,
-test-230a185f,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+course_arrange(Course_ID, Teacher_ID, Grade)","","Show names of teachers and the number of courses they teach.","execute","Count course assignments for each teacher."
+"test-230a185f","flight_2","airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","few flights: fewer than 200 flights
 airport ranks highest: ranked by number of flights
 city ranks highest: ranked by number of arriving flights
-many flights: at least 10 flights",Find all airlines that have flights from both airports 'APG' and 'CVO'.,,
-test-da3d42d1,voter_1,"AREA_CODE_STATE(area_code, state)
+many flights: at least 10 flights","Find all airlines that have flights from both airports 'APG' and 'CVO'.","execute","Find airlines with departures from both named airports."
+"test-da3d42d1","voter_1","AREA_CODE_STATE(area_code, state)
 CONTESTANTS(contestant_number, contestant_name)
 VOTES(vote_id, phone_number, state, contestant_number, created)","area code state ranks highest: ranked by number of records
-contestant ranks lowest: ranked by votes",Which floor is Jessie Alloway's office on?,,
-test-c9face02,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+contestant ranks lowest: ranked by votes","Which floor is Jessie Alloway's office on?","abstain","Office locations and floors are not stored."
+"test-c9face02","orchestra","conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
-show(Show_ID, Performance_ID, If_first_show, Result, Attendance)",conductor ranks highest: ranked by years of work,Show the record companies shared by orchestras founded long ago and orchestras founded recently.,,
-test-3b2caf04,car_1,"continents(ContId, Continent)
+show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","conductor ranks highest: ranked by years of work","Show the record companies shared by orchestras founded long ago and orchestras founded recently.","clarify","Specify the founding-year cutoffs for long ago and recently."
+"test-3b2caf04","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
@@ -549,34 +549,34 @@ cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","mo
 many cylinders: over 6 cylinders
 high horsepower: horsepower more than 150
 many car: at least 3 car
-high weight: weight more than 3500",How many cars have many cylinders?,,
-test-454ba4dc,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+high weight: weight more than 3500","How many cars have many cylinders?","execute","This row's glossary defines many cylinders as over 6."
+"test-454ba4dc","orchestra","conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","conductor ranks highest: ranked by years of work
-orchestra ranks highest: ranked by number of records",Which recording company ranks highest among the orchestras?,,
-test-a5eb2cd7,course_teach,"course(Course_ID, Staring_Date, Course)
+orchestra ranks highest: ranked by number of records","Which recording company ranks highest among the orchestras?","clarify","Specify the recording-company ranking measure."
+"test-a5eb2cd7","course_teach","course(Course_ID, Staring_Date, Course)
 teacher(Teacher_ID, Name, Age, Hometown)
-course_arrange(Course_ID, Teacher_ID, Grade)",,List the names of teachers in ascending order of age.,,
-test-95eb1376,network_1,"Highschooler(ID, name, grade)
+course_arrange(Course_ID, Teacher_ID, Grade)","","List the names of teachers in ascending order of age.","execute","Order teacher names by Age ascending."
+"test-95eb1376","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","many students: at least 4 students
-schooler ranks highest: ranked by number of friends",Show the names of students who have a high grade and have many friends.,,
-test-04f96d1d,voter_1,"AREA_CODE_STATE(area_code, state)
+schooler ranks highest: ranked by number of friends","Show the names of students who have a high grade and have many friends.","clarify","Specify the thresholds for high grade and many friends."
+"test-04f96d1d","voter_1","AREA_CODE_STATE(area_code, state)
 CONTESTANTS(contestant_number, contestant_name)
 VOTES(vote_id, phone_number, state, contestant_number, created)","area code state ranks highest: ranked by number of records
-contestant ranks lowest: ranked by votes",What is last date created of votes from the state 'CA'?,,
-test-6d93ed6f,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+contestant ranks lowest: ranked by votes","What is last date created of votes from the state 'CA'?","execute","Find the latest created value among CA votes."
+"test-6d93ed6f","tvshow","TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
 TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
-Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",tv sery ranks highest: ranked by rating,What is the running time of the TV series with the highest viewers?,,
-test-d3598652,car_1,"continents(ContId, Continent)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)","tv sery ranks highest: ranked by rating","What is the running time of the TV series with the highest viewers?","abstain","TV series running time is not stored."
+"test-d3598652","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","few cylinders: less than 4 cylinders
-many models: at least 2 models",What is the maximum miles per gallon of the cars with 8 cylinders or produced long ago?,,
-test-9e282b9d,car_1,"continents(ContId, Continent)
+many models: at least 2 models","What is the maximum miles per gallon of the cars with 8 cylinders or produced long ago?","clarify","Specify the production-year cutoff for long ago."
+"test-9e282b9d","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
@@ -584,57 +584,57 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","high horsepower: horsepower more than 150
 cars data ranks highest: ranked by horsepower
 few cylinders: less than 4 cylinders
-car ranks highest: ranked by accelerate","For the cars with 4 cylinders, which model performs best?",,
-test-c5304121,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+car ranks highest: ranked by accelerate","For the cars with 4 cylinders, which model performs best?","clarify","Specify the performance measure used to rank models."
+"test-c5304121","tvshow","TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
 TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
-Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",tv sery ranks highest: ranked by rating,List the title of all cartoons in alphabetical order.,,
-test-bca7a362,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)","tv sery ranks highest: ranked by rating","List the title of all cartoons in alphabetical order.","execute","Order cartoon titles alphabetically."
+"test-bca7a362","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","player ranks lowest: ranked by earnings
 people ranks highest: ranked by height
 high height: height higher than 200
-player ranks highest: ranked by earnings",What is the maximum number of final tables made among poker players with low earnings?,,
-test-5bc351a6,real_estate_properties,"Ref_Feature_Types(feature_type_code, feature_type_name)
+player ranks highest: ranked by earnings","What is the maximum number of final tables made among poker players with low earnings?","clarify","Specify the earnings threshold for low."
+"test-5bc351a6","real_estate_properties","Ref_Feature_Types(feature_type_code, feature_type_name)
 Ref_Property_Types(property_type_code, property_type_description)
 Other_Available_Features(feature_id, feature_type_code, feature_name, feature_description)
 Properties(property_id, property_type_code, date_on_market, date_sold, property_name, property_address, room_count, vendor_requested_price, buyer_offered_price, agreed_selling_price, apt_feature_1, apt_feature_2, apt_feature_3, fld_feature_1, fld_feature_2, fld_feature_3, hse_feature_1, hse_feature_2, hse_feature_3, oth_feature_1, oth_feature_2, oth_feature_3, shp_feature_1, shp_feature_2, shp_feature_3, other_property_details)
-Other_Property_Features(property_id, feature_id, property_feature_description)",many room: more than 1 room,How many properties were built prior to 2000?,,
-test-a576dfd2,battle_death,"battle(id, name, date, bulgarian_commander, latin_commander, result)
+Other_Property_Features(property_id, feature_id, property_feature_description)","many room: more than 1 room","How many properties were built prior to 2000?","abstain","Property construction dates are not stored."
+"test-a576dfd2","battle_death","battle(id, name, date, bulgarian_commander, latin_commander, result)
 ship(lost_in_battle, id, name, tonnage, ship_type, location, disposition_of_ship)
 death(caused_by_ship_id, id, note, killed, injured)","ship ranks highest: ranked by number of records
-many people: more than 10 people",What is the id and name of the ship that ranks highest for casualties?,,
-test-95f6aa68,real_estate_properties,"Ref_Feature_Types(feature_type_code, feature_type_name)
+many people: more than 10 people","What is the id and name of the ship that ranks highest for casualties?","clarify","Specify whether casualties means killed, injured, their total, or another measure."
+"test-95f6aa68","real_estate_properties","Ref_Feature_Types(feature_type_code, feature_type_name)
 Ref_Property_Types(property_type_code, property_type_description)
 Other_Available_Features(feature_id, feature_type_code, feature_name, feature_description)
 Properties(property_id, property_type_code, date_on_market, date_sold, property_name, property_address, room_count, vendor_requested_price, buyer_offered_price, agreed_selling_price, apt_feature_1, apt_feature_2, apt_feature_3, fld_feature_1, fld_feature_2, fld_feature_3, hse_feature_1, hse_feature_2, hse_feature_3, oth_feature_1, oth_feature_2, oth_feature_3, shp_feature_1, shp_feature_2, shp_feature_3, other_property_details)
-Other_Property_Features(property_id, feature_id, property_feature_description)",many room: more than 1 room,Show the property type descriptions of properties belonging to that code.,,
-test-710b9406,real_estate_properties,"Ref_Feature_Types(feature_type_code, feature_type_name)
+Other_Property_Features(property_id, feature_id, property_feature_description)","many room: more than 1 room","Show the property type descriptions of properties belonging to that code.","clarify","Specify the property type code referred to by that code."
+"test-710b9406","real_estate_properties","Ref_Feature_Types(feature_type_code, feature_type_name)
 Ref_Property_Types(property_type_code, property_type_description)
 Other_Available_Features(feature_id, feature_type_code, feature_name, feature_description)
 Properties(property_id, property_type_code, date_on_market, date_sold, property_name, property_address, room_count, vendor_requested_price, buyer_offered_price, agreed_selling_price, apt_feature_1, apt_feature_2, apt_feature_3, fld_feature_1, fld_feature_2, fld_feature_3, hse_feature_1, hse_feature_2, hse_feature_3, oth_feature_1, oth_feature_2, oth_feature_3, shp_feature_1, shp_feature_2, shp_feature_3, other_property_details)
-Other_Property_Features(property_id, feature_id, property_feature_description)",many room: more than 1 room,What is the minimum down payment for properties with fewer than 5 rooms?,,
-test-04e96ffd,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+Other_Property_Features(property_id, feature_id, property_feature_description)","many room: more than 1 room","What is the minimum down payment for properties with fewer than 5 rooms?","abstain","Property down payments are not stored."
+"test-04e96ffd","museum_visit","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","visitor ranks highest: ranked by total spent
 high level of membership: level of membership higher than 4
-visit ranks highest: ranked by num of ticket",How many museums were opened after 2013 or long ago?,,
-test-6b65255e,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+visit ranks highest: ranked by num of ticket","How many museums were opened after 2013 or long ago?","clarify","Specify the opening-year cutoff for long ago."
+"test-6b65255e","singer","singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","singer ranks highest: ranked by number of records
 singer ranks highest: ranked by net worth
-early singer: birth year before 1945",Which singer has the manager with the most net worth?,,
-test-3d241e10,world_1,"city(ID, Name, CountryCode, District, Population)
+early singer: birth year before 1945","Which singer has the manager with the most net worth?","abstain","Singer managers and their net worth are not stored."
+"test-3d241e10","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","country ranks highest: ranked by area
 city ranks highest: ranked by population
 country ranks highest: ranked by surfacearea
-big surfacearea: surfacearea bigger than 3000",What is the average horsepower of the countries?,,
-test-fec3391a,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+big surfacearea: surfacearea bigger than 3000","What is the average horsepower of the countries?","abstain","Country horsepower is not stored."
+"test-fec3391a","concert_singer","stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","capacity ranks highest: ranked by number of concerts
 stadium ranks highest: ranked by average attendance
 low age: age below 30
-recent concert: year after 2013",Show the name and the release year of the song by the youngest singer.,,
-test-bc2a1e1f,car_1,"continents(ContId, Continent)
+recent concert: year after 2013","Show the name and the release year of the song by the youngest singer.","execute","Select song name and release year for the singer with minimum Age."
+"test-bc2a1e1f","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
@@ -642,8 +642,8 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","many cylinders: more than 4 cylinders
 high horsepower: horsepower more than 150
 car ranks lowest: ranked by horsepower
-recent cars data: year after 1980",What is the average horsepower of the cars before 1980?,,
-test-e30e3573,car_1,"continents(ContId, Continent)
+recent cars data: year after 1980","What is the average horsepower of the cars before 1980?","execute","Average Horsepower for cars with Year before 1980."
+"test-e30e3573","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
@@ -651,14 +651,14 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","high horsepower: horsepower more than 150
 early cars data: year before 1980
 cars data ranks highest: ranked by horsepower
-model ranks highest: ranked by horsepower",In which years were medium-weight cars produced?,,
-test-fc215557,network_1,"Highschooler(ID, name, grade)
+model ranks highest: ranked by horsepower","In which years were medium-weight cars produced?","clarify","Specify the weight bounds for medium-weight."
+"test-fc215557","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","many likes: at least 2 likes
 many students: at least 4 students
 schooler ranks highest: ranked by number of friends
-many friends: at least 2 friends",What is Kyle's SSN?,,
-test-52c77e32,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+many friends: at least 2 friends","What is Kyle's SSN?","abstain","Student SSNs are not stored in this schema."
+"test-52c77e32","student_transcripts_tracking","Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
 Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
@@ -669,18 +669,18 @@ Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
 Transcript_Contents(student_course_id, transcript_id)","few sections: at most 2 sections
-many course: at least 2 course","Who is enrolled in a Bachelor degree program? List the first name, middle name, last name.",,
-test-450e0089,voter_1,"AREA_CODE_STATE(area_code, state)
+many course: at least 2 course","Who is enrolled in a Bachelor degree program? List the first name, middle name, last name.","execute","Join students and enrollments to Bachelor degree programs."
+"test-450e0089","voter_1","AREA_CODE_STATE(area_code, state)
 CONTESTANTS(contestant_number, contestant_name)
 VOTES(vote_id, phone_number, state, contestant_number, created)","contestant ranks lowest: ranked by votes
-area code state ranks highest: ranked by number of records",What is the average lake size among the contestants?,,
-test-62a4eecb,world_1,"city(ID, Name, CountryCode, District, Population)
+area code state ranks highest: ranked by number of records","What is the average lake size among the contestants?","abstain","Contestant lake sizes are not stored."
+"test-62a4eecb","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","population range: population between 160000 and 900000
 early country: indep year before 1930
 short avg(life expectancy: avg(life expectancy shorter than 72
-continent ranks highest: ranked by diverse languages",What is the total population and average area of countries in the continent of North America whose area is big?,,
-test-c12c5bd5,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+continent ranks highest: ranked by diverse languages","What is the total population and average area of countries in the continent of North America whose area is big?","clarify","Specify the surface-area threshold for big."
+"test-c12c5bd5","student_transcripts_tracking","Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
 Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
@@ -691,15 +691,15 @@ Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
 Transcript_Contents(student_course_id, transcript_id)","few sections: at most 2 sections
-many course: at least 2 course","On average, when were the transcripts printed?",,
-test-775bab2f,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+many course: at least 2 course","On average, when were the transcripts printed?","execute","Interpreting transcript_date as the printing date; average those dates."
+"test-775bab2f","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","player ranks highest: ranked by earnings
 high height: height higher than 200
 high earnings: earnings higher than 300000
-player ranks lowest: ranked by earnings",How much did it rain on the birthday of Roman Bragin?,,
-test-016c6059,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
-song(Song_ID, Title, Singer_ID, Sales, Highest_Position)",singer ranks highest: ranked by number of records,Please show the citizenship that ranks highest among singers.,,
-test-b30a6ee5,car_1,"continents(ContId, Continent)
+player ranks lowest: ranked by earnings","How much did it rain on the birthday of Roman Bragin?","abstain","Rainfall and weather observations are not stored."
+"test-016c6059","singer","singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","singer ranks highest: ranked by number of records","Please show the citizenship that ranks highest among singers.","clarify","Specify how citizenships should be ranked."
+"test-b30a6ee5","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
@@ -707,39 +707,39 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","many cylinders: more than 4 cylinders
 model ranks highest: ranked by horsepower
 many models: at least 2 models
-country ranks highest: ranked by car makers",Which countries in europe have many car manufacturers?,,
-test-c856d25a,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+country ranks highest: ranked by car makers","Which countries in europe have many car manufacturers?","clarify","Specify the manufacturer-count threshold for many."
+"test-c856d25a","tvshow","TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
 TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
-Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",tv sery ranks highest: ranked by rating,List the names of all the states of the directors.,,
-test-21ca97d9,real_estate_properties,"Ref_Feature_Types(feature_type_code, feature_type_name)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)","tv sery ranks highest: ranked by rating","List the names of all the states of the directors.","abstain","Directors' states are not stored."
+"test-21ca97d9","real_estate_properties","Ref_Feature_Types(feature_type_code, feature_type_name)
 Ref_Property_Types(property_type_code, property_type_description)
 Other_Available_Features(feature_id, feature_type_code, feature_name, feature_description)
 Properties(property_id, property_type_code, date_on_market, date_sold, property_name, property_address, room_count, vendor_requested_price, buyer_offered_price, agreed_selling_price, apt_feature_1, apt_feature_2, apt_feature_3, fld_feature_1, fld_feature_2, fld_feature_3, hse_feature_1, hse_feature_2, hse_feature_3, oth_feature_1, oth_feature_2, oth_feature_3, shp_feature_1, shp_feature_2, shp_feature_3, other_property_details)
-Other_Property_Features(property_id, feature_id, property_feature_description)",many room: more than 1 room,What is the feature type name of feature AirCon?,,
-test-c24cb18f,employee_hire_evaluation,"employee(Employee_ID, Name, Age, City)
+Other_Property_Features(property_id, feature_id, property_feature_description)","many room: more than 1 room","What is the feature type name of feature AirCon?","execute","Join the named feature to its feature type."
+"test-c24cb18f","employee_hire_evaluation","employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","many products: more than 10000 products
 employee ranks highest: ranked by number of records
-shop ranks highest: ranked by number of records",How many different store locations are there?,,
-test-8e0d9b36,car_1,"continents(ContId, Continent)
+shop ranks highest: ranked by number of records","How many different store locations are there?","execute","Count distinct shop Location values."
+"test-8e0d9b36","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","few cylinders: less than 4 cylinders
 many cylinders: more than 4 cylinders
-high weight: weight more than 3500",How many countries have many car makers?,,
-test-b71c8ac8,employee_hire_evaluation,"employee(Employee_ID, Name, Age, City)
+high weight: weight more than 3500","How many countries have many car makers?","clarify","Specify the car-maker count threshold for many."
+"test-b71c8ac8","employee_hire_evaluation","employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","many products: more than 10000 products
-employee ranks highest: ranked by number of records",What is the name of the biggest shop?,,
-test-34645b23,battle_death,"battle(id, name, date, bulgarian_commander, latin_commander, result)
+employee ranks highest: ranked by number of records","What is the name of the biggest shop?","clarify","Specify the measure of shop size."
+"test-34645b23","battle_death","battle(id, name, date, bulgarian_commander, latin_commander, result)
 ship(lost_in_battle, id, name, tonnage, ship_type, location, disposition_of_ship)
 death(caused_by_ship_id, id, note, killed, injured)","ship ranks highest: ranked by number of records
-many people: more than 10 people",How many different results are there for the battles?,,
-test-7546bd2e,dog_kennels,"Breeds(breed_code, breed_name)
+many people: more than 10 people","How many different results are there for the battles?","execute","Count distinct battle result values."
+"test-7546bd2e","dog_kennels","Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
 Treatment_Types(treatment_type_code, treatment_type_description)
@@ -748,42 +748,42 @@ Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_b
 Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","dog ranks lowest: ranked by number of records
 high sum(cost of treatment: sum(cost of treatment more than 1000
-many treatments: more than 2 treatments",Which owner's dogs have had the most treatment? List the owner id and last name.,,
-test-035d08a7,network_1,"Highschooler(ID, name, grade)
+many treatments: more than 2 treatments","Which owner's dogs have had the most treatment? List the owner id and last name.","execute","Count treatment records across each owner's dogs."
+"test-035d08a7","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","grade ranks highest: ranked by high schoolers
 many students: at least 4 students
 schooler ranks highest: ranked by number of friends
-many likes: at least 2 likes",How many high schoolers are there?,,
-test-807f6a4c,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+many likes: at least 2 likes","How many high schoolers are there?","execute","Count Highschooler records."
+"test-807f6a4c","museum_visit","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","museum ranks highest: ranked by number of records
 high level of membership: level of membership higher than 4
 visit ranks highest: ranked by num of ticket
-early museum: open year before 2009","What are the id, name and membership level of the top visitor?",,
-test-59811d69,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+early museum: open year before 2009","What are the id, name and membership level of the top visitor?","clarify","Specify the visitor ranking measure."
+"test-59811d69","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","high height: height higher than 200
 people ranks highest: ranked by height
 player ranks highest: ranked by earnings
-high earnings: earnings higher than 300000","Show names of people whose nationality is not ""Russia"".",,
-test-fb013c4e,cre_Doc_Template_Mgt,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
+high earnings: earnings higher than 300000","Show names of people whose nationality is not ""Russia"".","execute","Filter people whose Nationality is not Russia."
+"test-fb013c4e","cre_Doc_Template_Mgt","Ref_Template_Types(Template_Type_Code, Template_Type_Description)
 Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
 Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
 Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)","template ranks highest: ranked by number of records
-code ranks highest: ranked by number of templates","What is the document id, template id and description for document named ""Robbin CV""?",,
-test-8c7cecde,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
+code ranks highest: ranked by number of templates","What is the document id, template id and description for document named ""Robbin CV""?","execute","Select the requested fields for the named document."
+"test-8c7cecde","wta_1","players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","winner ranks highest: ranked by rank points
 ranking ranks highest: ranked by tours
 match ranks lowest: ranked by winner age
-many players: more than 50 players",Find the busiest year.,,
-test-e78ae6fd,network_1,"Highschooler(ID, name, grade)
+many players: more than 50 players","Find the busiest year.","clarify","Specify the measure of yearly busyness."
+"test-e78ae6fd","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","grade ranks highest: ranked by high schoolers
 schooler ranks highest: ranked by number of friends
 many likes: at least 2 likes
-many students: at least 4 students",Show the names of high schoolers who have many friends.,,
-test-5cc1ba79,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+many students: at least 4 students","Show the names of high schoolers who have many friends.","clarify","Specify the friend-count threshold for many."
+"test-5cc1ba79","student_transcripts_tracking","Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
 Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
@@ -793,44 +793,44 @@ Students(student_id, current_address_id, permanent_address_id, first_name, middl
 Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_id, other_details)
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
-Transcript_Contents(student_course_id, transcript_id)",,What are the names and ids of courses that have few sections?,,
-test-d248ed45,network_1,"Highschooler(ID, name, grade)
+Transcript_Contents(student_course_id, transcript_id)","","What are the names and ids of courses that have few sections?","clarify","Specify the section-count threshold for few."
+"test-d248ed45","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","schooler ranks highest: ranked by number of friends
 many friends: at least 3 friends
 grade ranks highest: ranked by high schoolers
-many likes: at least 2 likes",What is the capacity of Jordan?,,
-test-1c08f8b2,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
-song(Song_ID, Title, Singer_ID, Sales, Highest_Position)",,What is the name of the most successful singer?,,
-test-9a77e5a2,world_1,"city(ID, Name, CountryCode, District, Population)
+many likes: at least 2 likes","What is the capacity of Jordan?","abstain","Student capacity is not stored."
+"test-1c08f8b2","singer","singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","","What is the name of the most successful singer?","clarify","Specify the measure of singer success."
+"test-9a77e5a2","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","big surfacearea: surfacearea bigger than 3000
 city ranks highest: ranked by population
 short avg(life expectancy: avg(life expectancy shorter than 72
-population range: population between 160000 and 900000",Which language is the most widespread in Asia?,,
-test-bfc08d5a,battle_death,"battle(id, name, date, bulgarian_commander, latin_commander, result)
+population range: population between 160000 and 900000","Which language is the most widespread in Asia?","clarify","Specify whether widespread means country count, speakers, or another measure."
+"test-bfc08d5a","battle_death","battle(id, name, date, bulgarian_commander, latin_commander, result)
 ship(lost_in_battle, id, name, tonnage, ship_type, location, disposition_of_ship)
 death(caused_by_ship_id, id, note, killed, injured)","many people: more than 10 people
-ship ranks highest: ranked by number of records",What are the name and results of the battles when the bulgarian commander is not 'Boril',,
-test-42f1a00a,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+ship ranks highest: ranked by number of records","What are the name and results of the battles when the bulgarian commander is not 'Boril'","execute","Select battle names and results excluding the named commander."
+"test-42f1a00a","concert_singer","stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","capacity range: capacity between 5000 and 10000
 low age: age below 30
-capacity ranks highest: ranked by number of concerts",What is the name and capacity of the busiest stadium in recent years?,,
-test-051b7d1d,world_1,"city(ID, Name, CountryCode, District, Population)
+capacity ranks highest: ranked by number of concerts","What is the name and capacity of the busiest stadium in recent years?","clarify","Specify the stadium busyness measure and the cutoff for recent years."
+"test-051b7d1d","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","recent country: indep year after 1950
 countrylanguage ranks highest: ranked by number of records
 country ranks highest: ranked by area
-country ranks highest: ranked by area",What is the currency of the country with the longest life expectancy?,,
-test-64837dea,network_1,"Highschooler(ID, name, grade)
+country ranks highest: ranked by area","What is the currency of the country with the longest life expectancy?","abstain","Country currencies are not stored."
+"test-64837dea","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","many students: at least 4 students
 many likes: at least 2 likes
 schooler ranks highest: ranked by number of friends
-grade ranks highest: ranked by high schoolers",Show name of all students who have some friends and also are liked by someone else.,,
-test-c1bd82ea,dog_kennels,"Breeds(breed_code, breed_name)
+grade ranks highest: ranked by high schoolers","Show name of all students who have some friends and also are liked by someone else.","execute","Find students with at least one friend and at least one incoming like."
+"test-c1bd82ea","dog_kennels","Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
 Treatment_Types(treatment_type_code, treatment_type_description)
@@ -840,60 +840,60 @@ Professionals(professional_id, role_code, first_name, street, city, state, zip_c
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","owner ranks highest: ranked by number of records
 high sum(cost of treatment: sum(cost of treatment more than 1000
 many treatments: more than 2 treatments
-dog ranks lowest: ranked by number of records",What is the name of the breed with the most dogs?,,
-test-6ee0ea0e,pets_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
+dog ranks lowest: ranked by number of records","What is the name of the breed with the most dogs?","execute","Rank breeds by their number of dogs."
+"test-6ee0ea0e","pets_1","Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Has_Pet(StuID, PetID)
-Pets(PetID, PetType, pet_age, weight)",pet ranks lowest: ranked by pet age,Find the first name of students who have cat or dog pet.,,
-test-d87e3ffd,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+Pets(PetID, PetType, pet_age, weight)","pet ranks lowest: ranked by pet age","Find the first name of students who have cat or dog pet.","execute","Find students linked to a cat or dog."
+"test-d87e3ffd","singer","singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","early singer: birth year before 1945
-singer ranks highest: ranked by net worth",Show the name of singers whose birth year is either 1948 or 1949?,,
-test-92173c3c,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+singer ranks highest: ranked by net worth","Show the name of singers whose birth year is either 1948 or 1949?","execute","Filter singers born in 1948 or 1949."
+"test-92173c3c","flight_2","airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","airport ranks lowest: ranked by number of flights
 many flights: at least 10 flights
 airport ranks highest: ranked by number of flights
-airline ranks lowest: ranked by number of flights",How many 'United Airlines' flights go to Airport 'ASY'?,,
-test-ce373325,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+airline ranks lowest: ranked by number of flights","How many 'United Airlines' flights go to Airport 'ASY'?","execute","Count United Airlines flights with destination ASY."
+"test-ce373325","singer","singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","singer ranks highest: ranked by net worth
-early singer: birth year before 1945",List the name of singers that do not have any song.,,
-test-67cf8bea,voter_1,"AREA_CODE_STATE(area_code, state)
+early singer: birth year before 1945","List the name of singers that do not have any song.","execute","Find singers without song records."
+"test-67cf8bea","voter_1","AREA_CODE_STATE(area_code, state)
 CONTESTANTS(contestant_number, contestant_name)
 VOTES(vote_id, phone_number, state, contestant_number, created)","area code state ranks highest: ranked by number of records
-contestant ranks lowest: ranked by votes",What are the performance scores of the contestants whose names contain the substring 'man'?,,
-test-4323f674,battle_death,"battle(id, name, date, bulgarian_commander, latin_commander, result)
+contestant ranks lowest: ranked by votes","What are the performance scores of the contestants whose names contain the substring 'man'?","abstain","Contestant performance scores are not stored."
+"test-4323f674","battle_death","battle(id, name, date, bulgarian_commander, latin_commander, result)
 ship(lost_in_battle, id, name, tonnage, ship_type, location, disposition_of_ship)
 death(caused_by_ship_id, id, note, killed, injured)","many people: more than 10 people
-ship ranks highest: ranked by number of records",What is maximum and minimum death toll caused each time?,,
-test-25da3f6f,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+ship ranks highest: ranked by number of records","What is maximum and minimum death toll caused each time?","execute","Find maximum and minimum recorded killed counts."
+"test-25da3f6f","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","people ranks highest: ranked by height
 player ranks lowest: ranked by earnings
 people ranks highest: ranked by number of records
-low earnings: earnings less than 200000",Find the contact of the poker player Teodor Salparov.,,
-test-533e62a8,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+low earnings: earnings less than 200000","Find the contact of the poker player Teodor Salparov.","abstain","Player contact details are not stored."
+"test-533e62a8","flight_2","airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","airline ranks highest: ranked by number of flights
 city ranks highest: ranked by number of arriving flights
 airport ranks lowest: ranked by number of flights
-airline ranks lowest: ranked by number of flights",Find all airlines that have many flights.,,
-test-26b436ca,cre_Doc_Template_Mgt,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
+airline ranks lowest: ranked by number of flights","Find all airlines that have many flights.","clarify","Specify the flight-count threshold for many."
+"test-26b436ca","cre_Doc_Template_Mgt","Ref_Template_Types(Template_Type_Code, Template_Type_Description)
 Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
 Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
-Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)",template ranks highest: ranked by number of records,Which type code is used the most?,,
-test-6de74f89,employee_hire_evaluation,"employee(Employee_ID, Name, Age, City)
+Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)","template ranks highest: ranked by number of records","Which type code is used the most?","execute","Count templates per Template_Type_Code and select the most frequent."
+"test-6de74f89","employee_hire_evaluation","employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","employee ranks highest: ranked by number of records
-shop ranks highest: ranked by number of records",Which district has both stores with few products and stores with many products?,,
-test-b202b3ea,pets_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
+shop ranks highest: ranked by number of records","Which district has both stores with few products and stores with many products?","clarify","Specify the product-count thresholds for few and many."
+"test-b202b3ea","pets_1","Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Has_Pet(StuID, PetID)
-Pets(PetID, PetType, pet_age, weight)",pet ranks lowest: ranked by pet age,Find the type and weight of the pet that ranks lowest.,,
-test-b1066bd0,world_1,"city(ID, Name, CountryCode, District, Population)
+Pets(PetID, PetType, pet_age, weight)","pet ranks lowest: ranked by pet age","Find the type and weight of the pet that ranks lowest.","execute","Glossary defines the lowest-ranked pet by pet_age."
+"test-b1066bd0","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","continent ranks highest: ranked by diverse languages
 big surfacearea: surfacearea bigger than 3000
 city ranks highest: ranked by population
-short avg(life expectancy: avg(life expectancy shorter than 72",What are the names of all the countries that became independent recently?,,
-test-c7bf25f8,dog_kennels,"Breeds(breed_code, breed_name)
+short avg(life expectancy: avg(life expectancy shorter than 72","What are the names of all the countries that became independent recently?","clarify","Specify the independence-year cutoff for recently."
+"test-c7bf25f8","dog_kennels","Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
 Treatment_Types(treatment_type_code, treatment_type_description)
@@ -903,94 +903,94 @@ Professionals(professional_id, role_code, first_name, street, city, state, zip_c
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","dog ranks lowest: ranked by number of records
 high sum(cost of treatment: sum(cost of treatment more than 1000
 many treatments: more than 2 treatments
-owner ranks highest: ranked by number of records",Count the dogs that have their own email addresses.,,
-test-d725a2bb,battle_death,"battle(id, name, date, bulgarian_commander, latin_commander, result)
+owner ranks highest: ranked by number of records","Count the dogs that have their own email addresses.","abstain","Dogs' own email addresses are not stored; owner emails are different."
+"test-d725a2bb","battle_death","battle(id, name, date, bulgarian_commander, latin_commander, result)
 ship(lost_in_battle, id, name, tonnage, ship_type, location, disposition_of_ship)
-death(caused_by_ship_id, id, note, killed, injured)",ship ranks highest: ranked by number of records,What are the ids and names of the battles in which many people were killed in total?,,
-test-7159ddfe,employee_hire_evaluation,"employee(Employee_ID, Name, Age, City)
+death(caused_by_ship_id, id, note, killed, injured)","ship ranks highest: ranked by number of records","What are the ids and names of the battles in which many people were killed in total?","clarify","Specify the total-deaths threshold for many."
+"test-7159ddfe","employee_hire_evaluation","employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","shop ranks highest: ranked by number of records
 many products: more than 10000 products
-employee ranks highest: ranked by number of records","Return the name, location and district of all shops in descending order of number of products.",,
-test-495b40bc,course_teach,"course(Course_ID, Staring_Date, Course)
+employee ranks highest: ranked by number of records","Return the name, location and district of all shops in descending order of number of products.","execute","Order shops by Number_products descending."
+"test-495b40bc","course_teach","course(Course_ID, Staring_Date, Course)
 teacher(Teacher_ID, Name, Age, Hometown)
-course_arrange(Course_ID, Teacher_ID, Grade)",,Show names of teachers and the courses they are arranged to teach in ascending alphabetical order of the teacher's name.,,
-test-fac915b2,world_1,"city(ID, Name, CountryCode, District, Population)
+course_arrange(Course_ID, Teacher_ID, Grade)","","Show names of teachers and the courses they are arranged to teach in ascending alphabetical order of the teacher's name.","execute","Join teachers to assigned courses and order by teacher name."
+"test-fac915b2","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","country ranks lowest: ranked by population
 country ranks highest: ranked by surfacearea
 short avg(life expectancy: avg(life expectancy shorter than 72
-big surfacearea: surfacearea bigger than 3000",Find the surface area of the city of Tilburg.,,
-test-a6494314,cre_Doc_Template_Mgt,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
+big surfacearea: surfacearea bigger than 3000","Find the surface area of the city of Tilburg.","abstain","City surface area is not stored; country area is different."
+"test-a6494314","cre_Doc_Template_Mgt","Ref_Template_Types(Template_Type_Code, Template_Type_Description)
 Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
 Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
 Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)","code ranks highest: ranked by number of templates
-template ranks highest: ranked by number of records",How many different templates do all document use?,,
-test-b3276122,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+template ranks highest: ranked by number of records","How many different templates do all document use?","execute","Count distinct Template_ID values used by Documents."
+"test-b3276122","concert_singer","stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","recent concert: year after 2013
 capacity range: capacity between 5000 and 10000
 low age: age below 30
-capacity ranks highest: ranked by number of concerts",Find the number of concerts held in the biggest stadium.,,
-test-053b2170,car_1,"continents(ContId, Continent)
+capacity ranks highest: ranked by number of concerts","Find the number of concerts held in the biggest stadium.","clarify","Specify the measure of stadium size."
+"test-053b2170","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","recent cars data: year after 1980
-high weight: weight more than 3500",Which distinct car models were produced recently?,,
-test-7c93ff42,cre_Doc_Template_Mgt,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
+high weight: weight more than 3500","Which distinct car models were produced recently?","execute","Glossary defines recent cars as those produced after 1980."
+"test-7c93ff42","cre_Doc_Template_Mgt","Ref_Template_Types(Template_Type_Code, Template_Type_Description)
 Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
 Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
-Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)",code ranks highest: ranked by number of templates,What are the id and type code of the main template?,,
-test-7c7e5eec,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)","code ranks highest: ranked by number of templates","What are the id and type code of the main template?","clarify","Specify which criterion identifies the main template."
+"test-7c7e5eec","flight_2","airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","city ranks highest: ranked by number of arriving flights
 airline ranks lowest: ranked by number of flights
 airline ranks highest: ranked by number of flights
-many flights: at least 10 flights","What are flight numbers of flights departing from City ""Aberdeen ""?",,
-test-fac9ecde,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+many flights: at least 10 flights","What are flight numbers of flights departing from City ""Aberdeen ""?","execute","Join departure airports to flights and filter by the named city."
+"test-fac9ecde","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","high earnings: earnings higher than 300000
 high height: height higher than 200
 people ranks highest: ranked by height
-player ranks lowest: ranked by earnings",Count the number of mentors of the players from Russia.,,
-test-67ff3c51,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+player ranks lowest: ranked by earnings","Count the number of mentors of the players from Russia.","abstain","Player mentors and mentorship links are not stored."
+"test-67ff3c51","tvshow","TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
 TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
-Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",tv sery ranks highest: ranked by rating,What are the cartoons with more than 3 million viewers?,,
-test-823b73a8,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)","tv sery ranks highest: ranked by rating","What are the cartoons with more than 3 million viewers?","abstain","Cartoon viewership is not stored; TV series viewership is a different entity."
+"test-823b73a8","flight_2","airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","few flights: fewer than 200 flights
 airline ranks lowest: ranked by number of flights
 airport ranks lowest: ranked by number of flights
-city ranks highest: ranked by number of arriving flights",List the airport code and name in the city of Anthony.,,
-test-0ae8ecd9,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+city ranks highest: ranked by number of arriving flights","List the airport code and name in the city of Anthony.","execute","Select airport codes and names for Anthony."
+"test-0ae8ecd9","concert_singer","stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","capacity range: capacity between 5000 and 10000
 recent concert: year after 2013
 capacity ranks highest: ranked by number of concerts
-stadium ranks highest: ranked by average attendance",How many concerts are there in year 2014 or 2015?,,
-test-32b815a4,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+stadium ranks highest: ranked by average attendance","How many concerts are there in year 2014 or 2015?","execute","Count concerts in 2014 or 2015."
+"test-32b815a4","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","player ranks lowest: ranked by earnings
 high height: height higher than 200
 low earnings: earnings less than 200000
 people ranks highest: ranked by height
-player ranks highest: ranked by earnings","Of all the people, what is the money rank of the one who ranks highest?",,
-test-dba78d05,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+player ranks highest: ranked by earnings","Of all the people, what is the money rank of the one who ranks highest?","execute","Glossary ranks people by Height; retrieve the associated Money_Rank."
+"test-dba78d05","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","low earnings: earnings less than 200000
 player ranks lowest: ranked by earnings
 high height: height higher than 200
-player ranks highest: ranked by earnings",List the names of people that are not poker players.,,
-test-375232d0,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+player ranks highest: ranked by earnings","List the names of people that are not poker players.","execute","Find people without matching poker_player records."
+"test-375232d0","orchestra","conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","conductor ranks highest: ranked by years of work
 orchestra ranks highest: ranked by number of records
 recent orchestra: year of founded after 2003
-conductor ranks highest: ranked by number of records",What is the most common currency among the performances?,,
-test-f82a21a8,dog_kennels,"Breeds(breed_code, breed_name)
+conductor ranks highest: ranked by number of records","What is the most common currency among the performances?","abstain","Performance currencies are not stored."
+"test-f82a21a8","dog_kennels","Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
 Treatment_Types(treatment_type_code, treatment_type_description)
@@ -998,16 +998,16 @@ Owners(owner_id, first_name, last_name, street, city, state, zip_code, email_add
 Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_birth, gender, weight, date_arrived, date_adopted, date_departed)
 Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","owner ranks highest: ranked by number of records
-dog ranks lowest: ranked by number of records",Which dogs have not cost their owner a lot for treatment? List the dog names.,,
-test-8dd2bc60,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
-song(Song_ID, Title, Singer_ID, Sales, Highest_Position)",,Show the citizenships shared by singers born long ago and singers born recently.,,
-test-150e6fad,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
+dog ranks lowest: ranked by number of records","Which dogs have not cost their owner a lot for treatment? List the dog names.","clarify","Specify the total treatment-cost threshold for a lot."
+"test-8dd2bc60","singer","singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","","Show the citizenships shared by singers born long ago and singers born recently.","clarify","Specify the birth-year cutoffs for long ago and recently."
+"test-150e6fad","wta_1","players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","year ranks highest: ranked by number of matches
 match ranks highest: ranked by number of records
 ranking ranks highest: ranked by tours
-winner ranks highest: ranked by rank points",Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.,,
-test-d3df5567,car_1,"continents(ContId, Continent)
+winner ranks highest: ranked by rank points","Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.","execute","Find the maximum winner_rank_points within Australian Open matches."
+"test-d3df5567","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
@@ -1015,12 +1015,12 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","high weight: weight more than 3500
 many models: at least 2 models
 recent cars data: year after 1980
-early cars data: year before 1980","Among the cars that do not have the minimum horsepower, what are the make ids and names of all those with few cylinders?",,
-test-10f632cd,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+early cars data: year before 1980","Among the cars that do not have the minimum horsepower, what are the make ids and names of all those with few cylinders?","clarify","Specify the cylinder-count threshold for few."
+"test-10f632cd","singer","singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","early singer: birth year before 1945
 singer ranks highest: ranked by number of records
-singer ranks highest: ranked by net worth",What are the invoice numbers of the songs?,,
-test-d0eed562,car_1,"continents(ContId, Continent)
+singer ranks highest: ranked by net worth","What are the invoice numbers of the songs?","abstain","Song invoice numbers are not stored."
+"test-d0eed562","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
@@ -1028,8 +1028,8 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","country ranks highest: ranked by car makers
 high horsepower: horsepower more than 150
 many car: at least 3 car
-model ranks highest: ranked by horsepower",What is the maximum accelerate for different number of cylinders?,,
-test-7c66ba5e,dog_kennels,"Breeds(breed_code, breed_name)
+model ranks highest: ranked by horsepower","What is the maximum accelerate for different number of cylinders?","execute","Group cars by Cylinders and compute maximum Accelerate."
+"test-7c66ba5e","dog_kennels","Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
 Treatment_Types(treatment_type_code, treatment_type_description)
@@ -1039,8 +1039,8 @@ Professionals(professional_id, role_code, first_name, street, city, state, zip_c
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","owner ranks highest: ranked by number of records
 high sum(cost of treatment: sum(cost of treatment more than 1000
 dog ranks lowest: ranked by number of records
-many treatments: more than 2 treatments",Show the first name of the youngest professional.,,
-test-58eeb071,car_1,"continents(ContId, Continent)
+many treatments: more than 2 treatments","Show the first name of the youngest professional.","abstain","Professional ages and birth dates are not stored."
+"test-58eeb071","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
@@ -1048,29 +1048,29 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","many cylinders: more than 4 cylinders
 country ranks highest: ranked by car makers
 high weight: weight more than 3500
-model ranks highest: ranked by horsepower","For model volvo, how many cylinders does the car with the least accelerate have?",,
-test-9926b6da,network_1,"Highschooler(ID, name, grade)
+model ranks highest: ranked by horsepower","For model volvo, how many cylinders does the car with the least accelerate have?","execute","For volvo, find the minimum Accelerate and return Cylinders."
+"test-9926b6da","network_1","Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","many students: at least 4 students
 grade ranks highest: ranked by high schoolers
 many friends: at least 3 friends
 many likes: at least 2 likes
-schooler ranks highest: ranked by number of friends",Show the names of high schoolers who have many likes.,,
-test-744d62e5,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+schooler ranks highest: ranked by number of friends","Show the names of high schoolers who have many likes.","execute","Glossary defines many likes as at least 2."
+"test-744d62e5","flight_2","airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","airline ranks lowest: ranked by number of flights
 many flights: at least 10 flights
 few flights: fewer than 200 flights
 city ranks highest: ranked by number of arriving flights
-airport ranks highest: ranked by number of flights",Find the abbreviation and country of the airline that ranks lowest?,,
-test-843bd88c,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+airport ranks highest: ranked by number of flights","Find the abbreviation and country of the airline that ranks lowest?","execute","Glossary ranks airlines by flight count; select the minimum."
+"test-843bd88c","concert_singer","stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","recent concert: year after 2013
 capacity ranks highest: ranked by number of concerts
 capacity range: capacity between 5000 and 10000
-low age: age below 30",Which year has most number of concerts?,,
-test-07d884d7,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+low age: age below 30","Which year has most number of concerts?","execute","Count concerts by Year and select the largest count."
+"test-07d884d7","student_transcripts_tracking","Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
 Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
@@ -1081,28 +1081,28 @@ Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
 Transcript_Contents(student_course_id, transcript_id)","few sections: at most 2 sections
-many course: at least 2 course",When was the linguistics department first registered?,,
-test-9e91c6fb,real_estate_properties,"Ref_Feature_Types(feature_type_code, feature_type_name)
+many course: at least 2 course","When was the linguistics department first registered?","abstain","Department registration dates are not stored."
+"test-9e91c6fb","real_estate_properties","Ref_Feature_Types(feature_type_code, feature_type_name)
 Ref_Property_Types(property_type_code, property_type_description)
 Other_Available_Features(feature_id, feature_type_code, feature_name, feature_description)
 Properties(property_id, property_type_code, date_on_market, date_sold, property_name, property_address, room_count, vendor_requested_price, buyer_offered_price, agreed_selling_price, apt_feature_1, apt_feature_2, apt_feature_3, fld_feature_1, fld_feature_2, fld_feature_3, hse_feature_1, hse_feature_2, hse_feature_3, oth_feature_1, oth_feature_2, oth_feature_3, shp_feature_1, shp_feature_2, shp_feature_3, other_property_details)
-Other_Property_Features(property_id, feature_id, property_feature_description)",many room: more than 1 room,What is the average rank point that Amenity earned?,,
-test-1db887a8,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+Other_Property_Features(property_id, feature_id, property_feature_description)","many room: more than 1 room","What is the average rank point that Amenity earned?","abstain","Feature rank points are not stored."
+"test-1db887a8","museum_visit","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","visitor ranks highest: ranked by total spent
 early museum: open year before 2009
 visit ranks highest: ranked by num of ticket
-museum ranks highest: ranked by number of records","Find the name and membership level of the visitors whose membership level is high, and sort by their age from old to young.",,
-test-0cc469d1,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+museum ranks highest: ranked by number of records","Find the name and membership level of the visitors whose membership level is high, and sort by their age from old to young.","clarify","Specify the membership threshold for high."
+"test-0cc469d1","poker_player","poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","people ranks highest: ranked by height
 player ranks lowest: ranked by earnings
 player ranks highest: ranked by earnings
-high earnings: earnings higher than 300000",What is the average earnings of tall poker players?,,
-test-41becf55,voter_1,"AREA_CODE_STATE(area_code, state)
+high earnings: earnings higher than 300000","What is the average earnings of tall poker players?","clarify","Specify the height threshold for tall."
+"test-41becf55","voter_1","AREA_CODE_STATE(area_code, state)
 CONTESTANTS(contestant_number, contestant_name)
 VOTES(vote_id, phone_number, state, contestant_number, created)","area code state ranks highest: ranked by number of records
-contestant ranks lowest: ranked by votes",How many contestants are from the state of CA?,,
-test-99413a60,car_1,"continents(ContId, Continent)
+contestant ranks lowest: ranked by votes","How many contestants are from the state of CA?","abstain","Contestant home states are not stored; vote states identify voters."
+"test-99413a60","car_1","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
@@ -1110,14 +1110,14 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","model ranks highest: ranked by horsepower
 country ranks highest: ranked by car makers
 early cars data: year before 1980
-many models: at least 2 models","Among the cars with more than the lowest horsepower, which ones do not have many cylinders? List the car make id and make name.",,
-test-62af65c3,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+many models: at least 2 models","Among the cars with more than the lowest horsepower, which ones do not have many cylinders? List the car make id and make name.","clarify","Specify the cylinder-count threshold for many."
+"test-62af65c3","orchestra","conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","conductor ranks highest: ranked by years of work
 recent orchestra: year of founded after 2003
-orchestra ranks highest: ranked by number of records",What is the average attendance of shows?,,
-test-5b30db80,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+orchestra ranks highest: ranked by number of records","What is the average attendance of shows?","execute","Average show Attendance."
+"test-5b30db80","student_transcripts_tracking","Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
 Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
@@ -1127,49 +1127,49 @@ Students(student_id, current_address_id, permanent_address_id, first_name, middl
 Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_id, other_details)
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
-Transcript_Contents(student_course_id, transcript_id)",,Show the date and id of the transcripts with many course results.,,
-test-250b42e7,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+Transcript_Contents(student_course_id, transcript_id)","","Show the date and id of the transcripts with many course results.","clarify","Specify the course-result count threshold for many."
+"test-250b42e7","concert_singer","stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","capacity ranks highest: ranked by number of concerts
 stadium ranks highest: ranked by average attendance
 capacity range: capacity between 5000 and 10000
-recent concert: year after 2013",Show countries where a singer above age 40 and a young singer are from.,,
-test-c0f2ed55,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+recent concert: year after 2013","Show countries where a singer above age 40 and a young singer are from.","clarify","Specify the age threshold for young."
+"test-c0f2ed55","concert_singer","stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","capacity ranks highest: ranked by number of concerts
 stadium ranks highest: ranked by average attendance
 low age: age below 30
-recent concert: year after 2013",what is the name and nation of the singer who have a song having 'Hey' in its name?,,
-test-ac622bfc,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+recent concert: year after 2013","what is the name and nation of the singer who have a song having 'Hey' in its name?","execute","Filter Song_Name containing Hey and return singer Name and Country."
+"test-ac622bfc","tvshow","TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
 TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
-Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",tv sery ranks highest: ranked by rating,List the language used least number of TV Channel. List language and number of TV Channel.,,
-test-90e97f25,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)","tv sery ranks highest: ranked by rating","List the language used least number of TV Channel. List language and number of TV Channel.","execute","Count channels by Language and select the smallest count."
+"test-90e97f25","concert_singer","stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","low age: age below 30
 stadium ranks highest: ranked by average attendance
-recent concert: year after 2013",Show the name and capacity of the busiest stadium from 2014 onward.,,
-test-61815c66,world_1,"city(ID, Name, CountryCode, District, Population)
+recent concert: year after 2013","Show the name and capacity of the busiest stadium from 2014 onward.","clarify","Specify how stadium busyness is measured."
+"test-61815c66","world_1","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","recent country: indep year after 1950
 city ranks highest: ranked by population
 short avg(life expectancy: avg(life expectancy shorter than 72
-continent ranks highest: ranked by diverse languages",What is the main language of Aruba?,,
-test-3b0a4ffa,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
+continent ranks highest: ranked by diverse languages","What is the main language of Aruba?","clarify","Specify whether main language means official status, largest share, or another measure."
+"test-3b0a4ffa","wta_1","players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","year ranks highest: ranked by number of matches
 many players: more than 50 players
 winner ranks highest: ranked by rank points
-match ranks lowest: ranked by winner age",Find the first name and country code of the top player.,,
-test-46ca0b26,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+match ranks lowest: ranked by winner age","Find the first name and country code of the top player.","clarify","Specify how players should be ranked."
+"test-46ca0b26","orchestra","conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","recent orchestra: year of founded after 2003
 orchestra ranks highest: ranked by number of records
-conductor ranks highest: ranked by years of work",Please show the different record companies and the corresponding number of orchestras.,,
-test-e1dd3ff9,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+conductor ranks highest: ranked by years of work","Please show the different record companies and the corresponding number of orchestras.","execute","Group orchestras by Record_Company and count each group."
+"test-e1dd3ff9","singer","singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","singer ranks highest: ranked by number of records
 early singer: birth year before 1945
-singer ranks highest: ranked by net worth",What is the birthplace of the singer Christy Walton?,,
+singer ranks highest: ranked by net worth","What is the birthplace of the singer Christy Walton?","abstain","Singer birthplaces are not stored."
