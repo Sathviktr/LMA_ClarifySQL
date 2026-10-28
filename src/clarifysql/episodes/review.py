@@ -2,7 +2,8 @@
 
 Only signed rows count, so a pre-filled sheet that nobody has touched changes nothing. An episode is dropped
 when the editor writes DROP, when the two annotators' resolved decision differs from the episode's intended
-first decision (it is not a clean example of its kind), or when the training audit marks it `drop`.
+first decision (it is not a clean example of its kind), or when the training audit marks it `drop`. NO_DATA lists
+the episodes we removed ourselves, with the reason.
 """
 
 from __future__ import annotations
@@ -14,6 +15,10 @@ from clarifysql.config import REPO_ROOT
 
 ANNOTATION = REPO_ROOT / "annotation"
 DECISIONS = ("execute", "clarify", "abstain")
+# Not a team decision: Spider's music_2 database has no rows. Execution cannot tell right SQL from wrong there, and
+# an agent that looks at the tables rightly finds nothing (seen at checkpoint 4), so its episodes are removed.
+NO_DATA = {"validation": {"validation-ambiguous-5258", "validation-clear-5178", "validation-clear-5184",
+                          "validation-unanswerable-6"}}
 
 
 def read_sheet(name: str, directory: Path = ANNOTATION) -> list[dict]:
@@ -56,7 +61,7 @@ def audit_drops(directory: Path = ANNOTATION) -> set[str]:
 
 
 def dropped(split: str, directory: Path = ANNOTATION) -> set[str]:
-    """Every episode of a split that the team's review removes."""
+    """Every episode of a split that the review removes: the team's decisions, plus NO_DATA."""
     if split == "train":
-        return audit_drops(directory)
-    return edit_drops(split, directory) | label_drops(split, directory)
+        return audit_drops(directory) | NO_DATA.get(split, set())
+    return edit_drops(split, directory) | label_drops(split, directory) | NO_DATA.get(split, set())

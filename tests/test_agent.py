@@ -7,7 +7,7 @@ from clarifysql.config import Budgets, data_dir
 from clarifysql.episodes.schema import EPISODE_DIR, Episode
 from clarifysql.eval.metrics import macro_f1, names_missing
 from clarifysql.llm.backend import MockBackend
-from clarifysql.simuser.simulated_user import NOT_SURE, SimulatedUser, choice_messages, parse_choice
+from clarifysql.simuser.simulated_user import NOT_SURE, SimulatedUser, choice_messages, parse_choices
 
 needs_data = pytest.mark.skipif(not (data_dir() / "spider").exists() or not (EPISODE_DIR / "validation.jsonl").exists(),
                                 reason="needs the episodes and the Spider databases")
@@ -33,14 +33,28 @@ def test_simulated_user_reads_only_the_question_and_answers_one_slot():
               "answer": "Rank them by population."}]
     chat = choice_messages("Show it.", "How many customers count as many?", slots)
     assert "slots" not in chat[1]["content"] and "C) none of these" in chat[1]["content"]
-    assert parse_choice("B", 2) == 1 and parse_choice("C", 2) is None and parse_choice("?", 2) is None
+    assert parse_choices("B", 2) == [1] and parse_choices("C", 2) == [] and parse_choices("?", 2) == []
+    assert parse_choices("B, A", 2) == [1, 0] and parse_choices("A,C", 2) == [0]
     user = SimulatedUser(MockBackend(lambda c, a: "A"))
-    items = [{"episode": "e", "request": "Show it.", "question": "How many?", "slots": slots, "answered": set()},
-             {"episode": "f", "request": "Clear.", "question": "Really?", "slots": [], "answered": set()}]
+    items = [{"episode": "e", "request": "Show it.", "question": "How many?", "slots": slots},
+             {"episode": "f", "request": "Clear.", "question": "Really?", "slots": []}]
     replies = user.answer_batch(items)
-    assert replies[0].text == "I mean more than 4." and replies[0].slot_index == 0
-    assert replies[1].slot_index is None and len(user.log) == 2
+    assert replies[0].text == "I mean more than 4." and replies[0].slot_indices == [0]
+    assert replies[1].slot_indices == [] and len(user.log) == 2
     assert SimulatedUser(MockBackend(lambda c, a: "C")).answer_batch(items[:1])[0].text == NOT_SURE
+
+
+def test_one_question_about_two_details_gets_both_answers_each_named():
+    slots = [{"kind": "threshold", "term": "long length", "hidden": "longer than 100", "value": "> 100",
+              "answer": "I mean longer than 100."},
+             {"kind": "threshold", "term": "high replacement cost", "hidden": "more than 200", "value": "> 200",
+              "answer": "I mean more than 200."}]
+    item = {"episode": "e", "request": "Long films except costly ones.", "question": "How long, and how costly?",
+            "slots": slots}
+    reply = SimulatedUser(MockBackend(lambda c, a: "A,B")).answer_batch([item])[0]
+    assert reply.slot_indices == [0, 1] and reply.choice == "A,B"
+    assert reply.text == ('For "long length": I mean longer than 100. '
+                          'For "high replacement cost": I mean more than 200.')
 
 
 def test_names_missing():
@@ -88,6 +102,16 @@ def test_budgets_format_retry_and_repairs():
     assert r.outcome == "executed" and r.repairs == 2 and r.sql_status == "sql_error" and r.calls == 4
     r = Controller(execute, broken, None, budgets=Budgets(max_model_calls=2)).run([ep])[0]
     assert r.outcome == "limit" and r.calls == 2
+
+
+@needs_data
+def test_a_detail_asked_again_gets_the_same_answer_again():
+    from clarifysql.episodes.schema import load_episodes
+
+    ep = next(e for e in load_episodes("validation") if e.kind == "ambiguous" and not e.draft.get("needs_writing"))
+    asker = MockBackend(lambda c, a: '{"action":"clarify","question":"Which one?"}')
+    r = Controller(asker, None, SimulatedUser(MockBackend(lambda c, a: "A"))).run([ep])[0]
+    assert [e["reply"] for e in r.events if e["role"] == "user"] == [ep.slots[0]["answer"]] * 2
 
 
 @needs_data

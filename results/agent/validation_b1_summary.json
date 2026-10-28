@@ -1,0 +1,68 @@
+{
+  "system": "direct",
+  "split": "validation",
+  "adapter": null,
+  "backend": "hf",
+  "wall_seconds": 72.3,
+  "name": "b1",
+  "episodes": 57,
+  "by_kind": {
+    "ambiguous": 14,
+    "two_slot": 2,
+    "definition": 5,
+    "clear": 24,
+    "unanswerable": 12
+  },
+  "execution_accuracy": 0.5333,
+  "execution_accuracy_by_kind": {
+    "ambiguous": 0.4286,
+    "two_slot": 0.0,
+    "definition": 0.0,
+    "clear": 0.75
+  },
+  "decision_macro_f1": 0.2247,
+  "decision_per_class": {
+    "clarify": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 16
+    },
+    "execute": {
+      "precision": 0.509,
+      "recall": 1.0,
+      "f1": 0.674,
+      "support": 29
+    },
+    "abstain": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 12
+    }
+  },
+  "decision_accuracy": 0.5088,
+  "unnecessary_question_rate_clear": 0.0,
+  "unnecessary_question_rate_definition": 0.0,
+  "correct_abstention_rate": 0.0,
+  "wrong_abstention_rate_answerable": 0.0,
+  "avg_clarification_turns": 0.0,
+  "avg_clarification_turns_vague": 0.0,
+  "invalid_output_rate": null,
+  "limit_rate": 0.0,
+  "invalid_episode_rate": 0.0,
+  "blocked_attempts": 0,
+  "reasons": {
+    "match": 24,
+    "pred_sql_error": 2,
+    "different_result": 19,
+    "executed": 12
+  },
+  "cost": {
+    "model_calls": 57,
+    "policy_calls": 0,
+    "tokens_in": 25654,
+    "tokens_out": 2632,
+    "gpu_seconds": 72.1
+  }
+}

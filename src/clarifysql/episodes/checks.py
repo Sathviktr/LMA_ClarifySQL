@@ -56,6 +56,8 @@ def _numbers(text: str) -> set[str]:
 def check_episode(ep: Episode) -> list[str]:
     problems = []
     db = spider.db_path(ep.db_id)
+    if not any(t.rows for t in schema_info(str(db)).tables.values()):
+        problems.append("the database has no rows")  # Spider's music_2: nothing to execute against
     if ep.kind == "unanswerable":
         if ep.gold_sql is not None:
             problems.append("unanswerable episode has gold SQL")

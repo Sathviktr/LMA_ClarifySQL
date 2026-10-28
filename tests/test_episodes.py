@@ -126,6 +126,14 @@ def test_episodes_never_mix_splits():
         assert {r["db_id"] for r in rows} <= set(s[split])
 
 
+@pytest.mark.skipif(not (data_dir() / "spider").exists(), reason="benchmark data not downloaded")
+def test_an_episode_on_a_database_without_rows_fails_the_checks():
+    from clarifysql.episodes.checks import check_episode
+
+    ep = Episode("x", "validation", "music_2", "clear", "List the songs.", gold_sql="SELECT Title FROM Songs")
+    assert "the database has no rows" in check_episode(ep)
+
+
 @built
 @pytest.mark.skipif(not (data_dir() / "spider").exists(), reason="benchmark data not downloaded")
 def test_every_training_episode_passes_the_checks():

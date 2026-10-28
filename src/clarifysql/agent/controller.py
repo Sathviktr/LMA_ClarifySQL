@@ -178,14 +178,12 @@ class Controller:
         need = [r for r in runs if r.pending == "user"]
         if not need:
             return
+        # definition episodes: the meaning is in the glossary, so the user has nothing to add
         items = [{"episode": r.ep.id, "request": r.ep.request, "question": r.question,
-                  "slots": [s for i, s in enumerate(r.ep.slots) if i not in r.answered] if r.ep.kind != "definition"
-                  else [], "answered": r.answered} for r in need]
+                  "slots": r.ep.slots if r.ep.kind != "definition" else []} for r in need]
         replies = self.user.answer_batch(items, batch_size=self.batch_size)
-        for r, it, rep in zip(need, items, replies):
-            if rep.slot_index is not None:
-                answered_slot = it["slots"][rep.slot_index]
-                r.answered.add(r.ep.slots.index(answered_slot))
+        for r, rep in zip(need, replies):
+            r.answered.update(rep.slot_indices)
             r.steps[-1]["result"] = rep.text
             r.memory.append(memory_line(r.question, rep.text))
             r.questions += 1
