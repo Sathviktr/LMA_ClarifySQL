@@ -2,39 +2,39 @@
 test-3f86326a,test-ambiguous-675,execute,clarify,clarify,What is the leading nationality among the people?,"high height: height higher than 200
 player ranks lowest: ranked by earnings
 low earnings: earnings less than 200000
-player ranks highest: ranked by earnings",Rank them by number of records.,unsure: read 'leading' as most common nationality; could mean highest earnings,Specify how to determine the leading nationality.,
+player ranks highest: ranked by earnings",Rank them by number of records.,unsure: read 'leading' as most common nationality; could mean highest earnings,Specify how to determine the leading nationality.,clarify
 test-42d17e0a,test-ambiguous-225,execute,clarify,clarify,What is the code of the busiest airport?,"few flights: fewer than 200 flights
 airline ranks lowest: ranked by number of flights
 city ranks highest: ranked by number of arriving flights
-airline ranks highest: ranked by number of flights",Rank them by number of flights.,unsure: read 'busiest' as most flights in or out,"Specify how to measure airport busyness, including flight direction.",
+airline ranks highest: ranked by number of flights",Rank them by number of flights.,unsure: read 'busiest' as most flights in or out,"Specify how to measure airport busyness, including flight direction.",clarify
 test-0ffb8779,test-ambiguous-149,execute,execute,clarify,Which makers designed many car models? List full name and the id.,"model ranks highest: ranked by horsepower
 many models: at least 2 models
-few cylinders: less than 4 cylinders",I mean more than 3.,,Glossary defines many models as at least 2.,
+few cylinders: less than 4 cylinders",I mean more than 3.,,Glossary defines many models as at least 2.,execute
 test-ed40aaf8,test-ambiguous-133,execute,clarify,clarify,Which model is the most efficient?,"few cylinders: less than 4 cylinders
 model ranks highest: ranked by horsepower
-many models: at least 2 models",Rank them by miles.,unsure: read 'most efficient' as highest MPG,"Specify the efficiency measure, such as MPG.",
+many models: at least 2 models",Rank them by miles.,unsure: read 'most efficient' as highest MPG,"Specify the efficiency measure, such as MPG.",execute
 test-91814820,test-ambiguous-878,execute,clarify,clarify,Which grade is the largest?,"schooler ranks highest: ranked by number of friends
 many students: at least 4 students
 many friends: at least 3 friends
-many likes: at least 2 likes",Rank them by high schoolers.,"unsure: read 'largest' as most students, not highest grade number",Specify whether largest refers to enrollment count or grade number.,
+many likes: at least 2 likes",Rank them by high schoolers.,"unsure: read 'largest' as most students, not highest grade number",Specify whether largest refers to enrollment count or grade number.,clarify
 test-454ba4dc,test-definition-852,clarify,clarify,execute,Which recording company ranks highest among the orchestras?,"conductor ranks highest: ranked by years of work
-orchestra ranks highest: ranked by number of records",Rank them by number of records.,"unsure: ranks highest by what? glossary term is for orchestras, not record companies",Specify the recording-company ranking measure.,
+orchestra ranks highest: ranked by number of records",Rank them by number of records.,"unsure: ranks highest by what? glossary term is for orchestras, not record companies",Specify the recording-company ranking measure.,clarify
 test-a576dfd2,test-definition-500,execute,clarify,execute,What is the id and name of the ship that ranks highest for casualties?,"ship ranks highest: ranked by number of records
-many people: more than 10 people",Rank them by number of records.,unsure: read casualties as killed + injured,"Specify whether casualties means killed, injured, their total, or another measure.",
-test-95f6aa68,test-clear-1032,clarify,clarify,execute,Show the property type descriptions of properties belonging to that code.,many room: more than 1 room,(nothing hidden: the request is as meant),unsure: 'that code' refers to nothing; maybe means each property type code,Specify the property type code referred to by that code.,
-test-016c6059,test-definition-1014,execute,clarify,execute,Please show the citizenship that ranks highest among singers.,singer ranks highest: ranked by number of records,Rank them by number of records.,,Specify how citizenships should be ranked.,
+many people: more than 10 people",Rank them by number of records.,unsure: read casualties as killed + injured,"Specify whether casualties means killed, injured, their total, or another measure.",execute
+test-95f6aa68,test-clear-1032,clarify,clarify,execute,Show the property type descriptions of properties belonging to that code.,many room: more than 1 room,(nothing hidden: the request is as meant),unsure: 'that code' refers to nothing; maybe means each property type code,Specify the property type code referred to by that code.,clarify
+test-016c6059,test-definition-1014,execute,clarify,execute,Please show the citizenship that ranks highest among singers.,singer ranks highest: ranked by number of records,Rank them by number of records.,,Specify how citizenships should be ranked.,clarify
 test-7546bd2e,test-ambiguous-936,execute,execute,clarify,Which owner's dogs have had the most treatment? List the owner id and last name.,"dog ranks lowest: ranked by number of records
 high sum(cost of treatment: sum(cost of treatment more than 1000
-many treatments: more than 2 treatments",Rank them by number of records.,,Count treatment records across each owner's dogs.,
+many treatments: more than 2 treatments",Rank them by number of records.,,Count treatment records across each owner's dogs.,execute
 test-8c7cecde,test-ambiguous-461,execute,clarify,clarify,Find the busiest year.,"winner ranks highest: ranked by rank points
 ranking ranks highest: ranked by tours
 match ranks lowest: ranked by winner age
-many players: more than 50 players",Rank them by number of matches.,unsure: read 'busiest' as most matches,Specify the measure of yearly busyness.,
-test-26b436ca,test-ambiguous-331,execute,execute,clarify,Which type code is used the most?,template ranks highest: ranked by number of records,Rank them by number of templates.,,Count templates per Template_Type_Code and select the most frequent.,
+many players: more than 50 players",Rank them by number of matches.,unsure: read 'busiest' as most matches,Specify the measure of yearly busyness.,clarify
+test-26b436ca,test-ambiguous-331,execute,execute,clarify,Which type code is used the most?,template ranks highest: ranked by number of records,Rank them by number of templates.,,Count templates per Template_Type_Code and select the most frequent.,execute
 test-b3276122,test-ambiguous-43,execute,clarify,clarify,Find the number of concerts held in the biggest stadium.,"recent concert: year after 2013
 capacity range: capacity between 5000 and 10000
 low age: age below 30
-capacity ranks highest: ranked by number of concerts",Rank them by capacity.,unsure: read 'biggest stadium' as highest capacity,Specify the measure of stadium size.,
+capacity ranks highest: ranked by number of concerts",Rank them by capacity.,unsure: read 'biggest stadium' as highest capacity,Specify the measure of stadium size.,execute
 test-90e97f25,test-ambiguous-24,execute,clarify,clarify,Show the name and capacity of the busiest stadium from 2014 onward.,"low age: age below 30
 stadium ranks highest: ranked by average attendance
-recent concert: year after 2013",Rank them by number of concerts.,unsure: read 'busiest' as most concerts from 2014 on,Specify how stadium busyness is measured.,
+recent concert: year after 2013",Rank them by number of concerts.,unsure: read 'busiest' as most concerts from 2014 on,Specify how stadium busyness is measured.,clarify
