@@ -159,10 +159,11 @@ def cosql_sheet(n_ambiguous: int = 25, n_cannot: int = 10, n_clear: int = 25, se
         pool = found[lab]
         picked += rng.sample(pool, min(n, len(pool)))
     rng.shuffle(picked)
-    header = ["turn_id", "db_id", "earlier_turns", "user_turn", "cosql_label", "mapped_decision",
+    header = ["turn_id", "db_id", "tables", "earlier_turns", "user_turn", "cosql_label", "mapped_decision",
               "cleaned_decision (execute / clarify / abstain / drop)", "annotator", "notes"]
-    rows = [[f"{dlg}#{idx}", db, "\n".join(ctx), text, lab, COSQL_MAP[lab], "", "", ""]
-            for dlg, db, idx, ctx, text, lab in picked]
+    # the tables are needed to judge abstain: does the database store what the user asks for?
+    rows = [[f"{dlg}#{idx}", db, compact_catalog(spider.db_path(db)), "\n".join(ctx), text, lab, COSQL_MAP[lab],
+             "", "", ""] for dlg, db, idx, ctx, text, lab in picked]
     print(write_csv(ANNOTATION / "cosql_dev_slice.csv", header, rows), f"({len(rows)} rows)",
           {k: len(v) for k, v in found.items()})
 

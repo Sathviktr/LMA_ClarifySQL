@@ -90,9 +90,10 @@ drops weak items rather than keeping them to reach a target size.
 
 ## 4. Clean the CoSQL slice: `cosql_dev_slice.csv`
 
-Sixty real user turns from CoSQL dev dialogues on our test databases, with the earlier turns as context and
-CoSQL's original label. CoSQL labels are noisy: for example, "How many students in this table?" is labelled
-CANNOT_ANSWER. For each row, fill **`cleaned_decision`** with `execute`, `clarify` or `abstain` (as in task 2), or
+Sixty real user turns from CoSQL dev dialogues on our test databases, with the database's `tables`, the earlier
+turns as context and CoSQL's original label. CoSQL labels are noisy: for example, "How many students in this
+table?" is labelled CANNOT_ANSWER. Judge each `user_turn` in the light of `earlier_turns`, and use `tables` to
+decide whether the data exists. For each row, fill **`cleaned_decision`** with `execute`, `clarify` or `abstain` (as in task 2), or
 `drop` if the turn is unusable (a greeting, broken text, or it depends on something not shown). Put your initials
 in **`annotator`**. The proposal keeps 40–60 cleaned turns and scores only the agent's first decision on them.
 

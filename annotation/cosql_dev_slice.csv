@@ -1,161 +1,369 @@
-﻿turn_id,db_id,earlier_turns,user_turn,cosql_label,mapped_decision,cleaned_decision (execute / clarify / abstain / drop),annotator,notes
-BEe6Th96F2jLbt8wr#11,museum_visit,"user: What is the ticket price at the Plaza Museum?
+﻿turn_id,db_id,tables,earlier_turns,user_turn,cosql_label,mapped_decision,cleaned_decision (execute / clarify / abstain / drop),annotator,notes
+BEe6Th96F2jLbt8wr#11,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+visitor(ID, Name, Level_of_membership, Age)
+visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","user: What is the ticket price at the Plaza Museum?
 system: The price per ticket at Plaza Museum is 16.006999999999998.
 user: How many people visited the plaza museum in 2009?
 system: Sorry, we do not have information on the number of visits in each year.",What is the average number of tickets sold at the Plaza Museum?,CANNOT_ANSWER,abstain,,,
-e5GJ85dKsuciJuTCe#2,orchestra,"user: Yes
+e5GJ85dKsuciJuTCe#2,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
+performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
+show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","user: Yes
 system: Hi, how can I help you?",Please answer the question.what is the orchestra of conductor?,AMBIGUOUS,clarify,,,
-icqkYq8gD8d6ji7wA#0,car_1,,What are the cars with the lowest horsepower?,AMBIGUOUS,clarify,,,
-oWyH7xrAb6YiGfTyh#3,network_1,"user: What are the names of all of the high schoolers?
+icqkYq8gD8d6ji7wA#0,car_1,"continents(ContId, Continent)
+countries(CountryId, CountryName, Continent)
+car_makers(Id, Maker, FullName, Country)
+model_list(ModelId, Maker, Model)
+car_names(MakeId, Model, Make)
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)",,What are the cars with the lowest horsepower?,AMBIGUOUS,clarify,,,
+oWyH7xrAb6YiGfTyh#3,network_1,"Highschooler(ID, name, grade)
+Friend(student_id, friend_id)
+Likes(student_id, liked_id)","user: What are the names of all of the high schoolers?
 system: the names of all of the high schoolers are shown  in  the table",What is the value of the greatest number of likes for each high schooler?,AMBIGUOUS,clarify,,,
-opf7vntErjDWeapQq#6,student_transcripts_tracking,"user: Can you list the transcript date that appears least often?
+opf7vntErjDWeapQq#6,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+Courses(course_id, course_name, course_description, other_details)
+Departments(department_id, department_name, department_description, other_details)
+Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
+Sections(section_id, course_id, section_name, section_description, other_details)
+Semesters(semester_id, semester_name, semester_description, other_details)
+Students(student_id, current_address_id, permanent_address_id, first_name, middle_name, last_name, cell_mobile_number, email_address, ssn, date_first_registered, date_left, other_student_details)
+Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_id, other_details)
+Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
+Transcripts(transcript_id, transcript_date, other_details)
+Transcript_Contents(student_course_id, transcript_id)","user: Can you list the transcript date that appears least often?
 system: 1975-05-06 12:04:47 is the transcript date that appears least often.
 user: How many times does the transcript date 1975-05-06 12:04:47	show up in the table?
 system: There is one transcript with a date 1975-05-06 12:04:47.",Which transcript date shows up the most number of times?,INFORM_SQL,execute,,,
-DrNNoYLJBDedMmGN8#0,car_1,,What is the weight of make id 1?,AMBIGUOUS,clarify,,,
-PeCoL6c7piJRp9PB8#6,dog_kennels,"user: How many dog owner's are there?
+DrNNoYLJBDedMmGN8#0,car_1,"continents(ContId, Continent)
+countries(CountryId, CountryName, Continent)
+car_makers(Id, Maker, FullName, Country)
+model_list(ModelId, Maker, Model)
+car_names(MakeId, Model, Make)
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)",,What is the weight of make id 1?,AMBIGUOUS,clarify,,,
+PeCoL6c7piJRp9PB8#6,dog_kennels,"Breeds(breed_code, breed_name)
+Charges(charge_id, charge_type, charge_amount)
+Sizes(size_code, size_description)
+Treatment_Types(treatment_type_code, treatment_type_description)
+Owners(owner_id, first_name, last_name, street, city, state, zip_code, email_address, home_phone, cell_number)
+Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_birth, gender, weight, date_arrived, date_adopted, date_departed)
+Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
+Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","user: How many dog owner's are there?
 system: The number of owners is 15.
 user: What is the age of the youngest dog?
 system: The age of the youngest dog is 1.",What is the name of the dog who is 1 year old?,INFORM_SQL,execute,,,
-Bgxi82LgWBfboxuQ6#5,course_teach,"system: Do you mean the grades of the math courses?
+Bgxi82LgWBfboxuQ6#5,course_teach,"course(Course_ID, Staring_Date, Course)
+teacher(Teacher_ID, Name, Age, Hometown)
+course_arrange(Course_ID, Teacher_ID, Grade)","system: Do you mean the grades of the math courses?
 user: Yes!
 user: Show the name of the teacher for the math course please?
 system: The names  of the teacher for the math course   are 
 Kearsley Brown,
 Vicente Carretero",What grades do they teach?,AMBIGUOUS,clarify,,,
-DxKEyfe87Wt4rX6bR#6,employee_hire_evaluation,"user: I'd like to see Shop names.
+DxKEyfe87Wt4rX6bR#6,employee_hire_evaluation,"employee(Employee_ID, Name, Age, City)
+shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
+hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
+evaluation(Employee_ID, Year_awarded, Bonus)","user: I'd like to see Shop names.
 system: here are the names of shop
 user: Which of these are hiring?
 system: here are the names of shop which are hiring",Which shop is hiring the highest number of employees?,AMBIGUOUS,clarify,,,
-cmEwyCu7RaWjeZpXo#8,cre_Doc_Template_Mgt,"user: what are all of the template ids?
+cmEwyCu7RaWjeZpXo#8,cre_Doc_Template_Mgt,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
+Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
+Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
+Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)","user: what are all of the template ids?
 system: Here are all the template ides.
 user: which of those is not used in a document
 system: These template ids are not used in a document.",are those still effective?,AMBIGUOUS,clarify,,,
-tQ8g8qfjfytAm5YYt#3,wta_1,"user: find the total ranking point for each player and their first name
+tQ8g8qfjfytAm5YYt#3,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
+matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
+rankings(ranking_date, ranking, player_id, ranking_points, tours)","user: find the total ranking point for each player and their first name
 system: Here is the result table of the total ranking point for each player and their first name. For example, one of the players is Aastha with the total ranking point being 68.",which player got first rank and their name,AMBIGUOUS,clarify,,,
-jW6hR5Ccs2hsoePEo#0,wta_1,,What is the player id for the youngest player?,INFORM_SQL,execute,,,
-hs4sXTtZAivcveuSs#7,car_1,"user: Yes
+jW6hR5Ccs2hsoePEo#0,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
+matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
+rankings(ranking_date, ranking, player_id, ranking_points, tours)",,What is the player id for the youngest player?,INFORM_SQL,execute,,,
+hs4sXTtZAivcveuSs#7,car_1,"continents(ContId, Continent)
+countries(CountryId, CountryName, Continent)
+car_makers(Id, Maker, FullName, Country)
+model_list(ModelId, Maker, Model)
+car_names(MakeId, Model, Make)
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","user: Yes
 system: American Motor Company is the full name of the car maker amc.
 user: What type of car making by german country?
 system: Sorry we don't have information about type of car. Can you clarify your question?",What kind of car is produced in Germany?,AMBIGUOUS,clarify,,,
-7sZnsgvFSz6XJWZro#5,flight_2,"user: hey
+7sZnsgvFSz6XJWZro#5,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+airports(City, AirportCode, AirportName, Country, CountryAbbrev)
+flights(Airline, FlightNo, SourceAirport, DestAirport)","user: hey
 system: hi, how can i help you?
 user: Find all airlines that have fewer than 200 flights.
 system: The airlines that have fewer than 200 flights are shown in the result table.",which ones are London bound?,CANNOT_ANSWER,abstain,,,
-sAaX6wZwbASghndet#3,student_transcripts_tracking,"user: Find the program which most number of students are enrolled in. List both the id and the summary.
+sAaX6wZwbASghndet#3,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+Courses(course_id, course_name, course_description, other_details)
+Departments(department_id, department_name, department_description, other_details)
+Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
+Sections(section_id, course_id, section_name, section_description, other_details)
+Semesters(semester_id, semester_name, semester_description, other_details)
+Students(student_id, current_address_id, permanent_address_id, first_name, middle_name, last_name, cell_mobile_number, email_address, ssn, date_first_registered, date_left, other_student_details)
+Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_id, other_details)
+Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
+Transcripts(transcript_id, transcript_date, other_details)
+Transcript_Contents(student_course_id, transcript_id)","user: Find the program which most number of students are enrolled in. List both the id and the summary.
 system: the id and the summary of the program which most number of students are enrolled in is 9, Bachelor.","for id program 9, which degree summary is the most common",AMBIGUOUS,clarify,,,
-2cLoiJHaFhi6juXDY#6,student_transcripts_tracking,"user: Find the first name of the students who permanently live in the country Haiti.
+2cLoiJHaFhi6juXDY#6,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+Courses(course_id, course_name, course_description, other_details)
+Departments(department_id, department_name, department_description, other_details)
+Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
+Sections(section_id, course_id, section_name, section_description, other_details)
+Semesters(semester_id, semester_name, semester_description, other_details)
+Students(student_id, current_address_id, permanent_address_id, first_name, middle_name, last_name, cell_mobile_number, email_address, ssn, date_first_registered, date_left, other_student_details)
+Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_id, other_details)
+Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
+Transcripts(transcript_id, transcript_date, other_details)
+Transcript_Contents(student_course_id, transcript_id)","user: Find the first name of the students who permanently live in the country Haiti.
 system: Here are the first names of the students who permanently live in the country Haiti
 user: Please also find the first name of the students who have the cell phone number 09700166582
 system: the first name of the students who have the cell phone number 09700166582 is Jarvis",Can you show me the last name and address for him?,AMBIGUOUS,clarify,,,
-QajXo2aHqpizytedp#9,poker_player,"user: is that higher than the average money rank?
+QajXo2aHqpizytedp#9,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+people(People_ID, Nationality, Name, Birth_Date, Height)","user: is that higher than the average money rank?
 system: The average money rank of all poker players is 117.4. So it is higher.
 user: What is the highest earner's people ID?
 system: The poker player with the highest earning has a people ID of 6",What was their best finish?,INFORM_SQL,execute,,,
-mi7jBwN29udJSchmC#3,network_1,"user: Can you show me a list of student IDs and their friends IDs?
+mi7jBwN29udJSchmC#3,network_1,"Highschooler(ID, name, grade)
+Friend(student_id, friend_id)
+Likes(student_id, liked_id)","user: Can you show me a list of student IDs and their friends IDs?
 system: The table shows student IDs and their friends IDs",Can you show me a list of all student IDs?,AMBIGUOUS,clarify,,,
-pQeCKtXzXCviDYXpb#3,network_1,"user: Show the names of students who have at least 2 likes.
+pQeCKtXzXCviDYXpb#3,network_1,"Highschooler(ID, name, grade)
+Friend(student_id, friend_id)
+Likes(student_id, liked_id)","user: Show the names of students who have at least 2 likes.
 system: There isn't any student who has at least 2 likes.",How about 1 like?,INFORM_SQL,execute,,,
-y2BSt5zozpwqhy7RY#0,tvshow,,which countries tv channels are not playing any cartoon written todd casey,INFORM_SQL,execute,,,
-2CYRDmXBhQCDwhebu#0,concert_singer,,please list the singers,AMBIGUOUS,clarify,,,
-aR3YJ23rCNvXoEnQ3#0,car_1,,what models are produced by the make General Motors?,INFORM_SQL,execute,,,
-Ts2HuD7iQJ6x5oqLn#3,world_1,"user: What is the name of the country with the shortest life expectancy in Asia?
+y2BSt5zozpwqhy7RY#0,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",,which countries tv channels are not playing any cartoon written todd casey,INFORM_SQL,execute,,,
+2CYRDmXBhQCDwhebu#0,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
+concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
+singer_in_concert(concert_ID, Singer_ID)",,please list the singers,AMBIGUOUS,clarify,,,
+aR3YJ23rCNvXoEnQ3#0,car_1,"continents(ContId, Continent)
+countries(CountryId, CountryName, Continent)
+car_makers(Id, Maker, FullName, Country)
+model_list(ModelId, Maker, Model)
+car_names(MakeId, Model, Make)
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)",,what models are produced by the make General Motors?,INFORM_SQL,execute,,,
+Ts2HuD7iQJ6x5oqLn#3,world_1,"city(ID, Name, CountryCode, District, Population)
+country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
+countrylanguage(CountryCode, Language, IsOfficial, Percentage)","user: What is the name of the country with the shortest life expectancy in Asia?
 system: Afghanistan is the  country with the shortest life expectancy in Asia",And in Africa?,AMBIGUOUS,clarify,,,
-4Pvyr6rxSSwmmNxEM#9,battle_death,"user: What is the result of 31st January 1206?
+4Pvyr6rxSSwmmNxEM#9,battle_death,"battle(id, name, date, bulgarian_commander, latin_commander, result)
+ship(lost_in_battle, id, name, tonnage, ship_type, location, disposition_of_ship)
+death(caused_by_ship_id, id, note, killed, injured)","user: What is the result of 31st January 1206?
 system: The result of the battle with a date 31 Jan 1206 is Bulgarian victory
 user: Who is the Bulgarian commander on June 1205?
 system: The bulgarian commaned on Jun 1205 are Kaloyan and Boril",What is the name of battle who has Latin commander is Baldwin 1?,INFORM_SQL,execute,,,
-Dp8RfifejAW9zv32j#3,world_1,"user: LIST THE NATIONS WHICH DO NOT USE ENGLISH
+Dp8RfifejAW9zv32j#3,world_1,"city(ID, Name, CountryCode, District, Population)
+country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
+countrylanguage(CountryCode, Language, IsOfficial, Percentage)","user: LIST THE NATIONS WHICH DO NOT USE ENGLISH
 system: this shows the countries names which don‘t use English",WHAT IS THE POPULATION OF THE PEOPLE LIVING IN THE NATIONS NOT USING ENGLISH,AMBIGUOUS,clarify,,,
-DrNNoYLJBDedMmGN8#5,car_1,"user: What is the weight of make id 1?
+DrNNoYLJBDedMmGN8#5,car_1,"continents(ContId, Continent)
+countries(CountryId, CountryName, Continent)
+car_makers(Id, Maker, FullName, Country)
+model_list(ModelId, Maker, Model)
+car_names(MakeId, Model, Make)
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","user: What is the weight of make id 1?
 system: Did you mean to ask for the weight of the car with make id 1?
 user: Yes
 system: The weight of the car with make id 1 is 3504.",Which year launch the car model  buick?,AMBIGUOUS,clarify,,,
-eGCB3Lp5qautyxWvE#0,cre_Doc_Template_Mgt,,What are the templates ever used by any document?,INFORM_SQL,execute,,,
-XYttm9a6iZZnerRk2#0,tvshow,,Which country tv channels some cartoon written by todd casey?,INFORM_SQL,execute,,,
-Z9APu4AtdMhatspdd#3,museum_visit,"user: What are the names who have a membership level higher than 4?
+eGCB3Lp5qautyxWvE#0,cre_Doc_Template_Mgt,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
+Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
+Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
+Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)",,What are the templates ever used by any document?,INFORM_SQL,execute,,,
+XYttm9a6iZZnerRk2#0,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",,Which country tv channels some cartoon written by todd casey?,INFORM_SQL,execute,,,
+Z9APu4AtdMhatspdd#3,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+visitor(ID, Name, Level_of_membership, Age)
+visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","user: What are the names who have a membership level higher than 4?
 system: The name of the visitors who have a membership higher than 4 are shown in the result table.",And can you add a column showing their age?,INFORM_SQL,execute,,,
-tdfvGyL4u98qiPmTS#0,museum_visit,,How many customers are there?,CANNOT_ANSWER,abstain,,,
-e3DuGNWW9v8aXujmC#6,concert_singer,"user: What are the names of the singers whose song release year is greater than the average song release year
+tdfvGyL4u98qiPmTS#0,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+visitor(ID, Name, Level_of_membership, Age)
+visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)",,How many customers are there?,CANNOT_ANSWER,abstain,,,
+e3DuGNWW9v8aXujmC#6,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
+concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
+singer_in_concert(concert_ID, Singer_ID)","user: What are the names of the singers whose song release year is greater than the average song release year
 system: Here are the names of the singers whose song release year is greater than the average song release year.
 user: What is the average song release year?
 system: 2007.6666666666667 is the average song release year of all singers.",List the songs in increasing release years,AMBIGUOUS,clarify,,,
-mi7jBwN29udJSchmC#17,network_1,"user: Can you tell me the total number of student IDs?
+mi7jBwN29udJSchmC#17,network_1,"Highschooler(ID, name, grade)
+Friend(student_id, friend_id)
+Likes(student_id, liked_id)","user: Can you tell me the total number of student IDs?
 system: The total number of High schooler ids is 16.
 user: Can you tell me the total number of Friend IDs?
 system: The total number of Friend IDs is 15.",Can you tell me which Student ID is not on the list of Friend IDs?,AMBIGUOUS,clarify,,,
-Dv7EcQ2p9iKDfxJiZ#0,car_1,,How many different cars on this list were produced in 1974?,INFORM_SQL,execute,,,
-TYz8tgRejiLyB4xYQ#0,flight_2,,How many flights in this table?,INFORM_SQL,execute,,,
-PKGktQpRdLxYc6iyy#6,car_1,"user: how many car makers are their in germany
+Dv7EcQ2p9iKDfxJiZ#0,car_1,"continents(ContId, Continent)
+countries(CountryId, CountryName, Continent)
+car_makers(Id, Maker, FullName, Country)
+model_list(ModelId, Maker, Model)
+car_names(MakeId, Model, Make)
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)",,How many different cars on this list were produced in 1974?,INFORM_SQL,execute,,,
+TYz8tgRejiLyB4xYQ#0,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+airports(City, AirportCode, AirportName, Country, CountryAbbrev)
+flights(Airline, FlightNo, SourceAirport, DestAirport)",,How many flights in this table?,INFORM_SQL,execute,,,
+PKGktQpRdLxYc6iyy#6,car_1,"continents(ContId, Continent)
+countries(CountryId, CountryName, Continent)
+car_makers(Id, Maker, FullName, Country)
+model_list(ModelId, Maker, Model)
+car_names(MakeId, Model, Make)
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","user: how many car makers are their in germany
 system: There are 4 car makers in germany.
 user: what are their names
 system: The names of the car makers in germany are shown in the result table.",how many cars are their in usa,AMBIGUOUS,clarify,,,
-PQBzpysQdC42vywNY#6,employee_hire_evaluation,"user: Which cities do more than one employee under age 30 come from?
+PQBzpysQdC42vywNY#6,employee_hire_evaluation,"employee(Employee_ID, Name, Age, City)
+shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
+hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
+evaluation(Employee_ID, Year_awarded, Bonus)","user: Which cities do more than one employee under age 30 come from?
 system: Bath has more than one employee under age 30.
 user: Which cities do more than one employee over age 30 come from?
 system: None has more than one employee under age 30.",What are the names and ages of all employees over age 30?,INFORM_SQL,execute,,,
-imGir6su9dXf32mYz#3,student_transcripts_tracking,"user: Show me the date and id of the transcript with at least 2 course results.
+imGir6su9dXf32mYz#3,student_transcripts_tracking,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
+Courses(course_id, course_name, course_description, other_details)
+Departments(department_id, department_name, department_description, other_details)
+Degree_Programs(degree_program_id, department_id, degree_summary_name, degree_summary_description, other_details)
+Sections(section_id, course_id, section_name, section_description, other_details)
+Semesters(semester_id, semester_name, semester_description, other_details)
+Students(student_id, current_address_id, permanent_address_id, first_name, middle_name, last_name, cell_mobile_number, email_address, ssn, date_first_registered, date_left, other_student_details)
+Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_id, other_details)
+Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
+Transcripts(transcript_id, transcript_date, other_details)
+Transcript_Contents(student_course_id, transcript_id)","user: Show me the date and id of the transcript with at least 2 course results.
 system: The result table of the date and id of the transcripts with at least 2 course results is shown.",Show me other details of those transcripts,AMBIGUOUS,clarify,,,
-sG34KKAMRwmamiHiK#3,dog_kennels,"user: whats is total cost of treatment?
+sG34KKAMRwmamiHiK#3,dog_kennels,"Breeds(breed_code, breed_name)
+Charges(charge_id, charge_type, charge_amount)
+Sizes(size_code, size_description)
+Treatment_Types(treatment_type_code, treatment_type_description)
+Owners(owner_id, first_name, last_name, street, city, state, zip_code, email_address, home_phone, cell_number)
+Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_birth, gender, weight, date_arrived, date_adopted, date_departed)
+Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
+Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","user: whats is total cost of treatment?
 system: the total cost of treatment is 7361",could you please find who's provide lowest cost of treatment?,AMBIGUOUS,clarify,,,
-pTAFbSig3eQ5AdGRR#6,flight_2,"user: what is the dest airport of airline 1
+pTAFbSig3eQ5AdGRR#6,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+airports(City, AirportCode, AirportName, Country, CountryAbbrev)
+flights(Airline, FlightNo, SourceAirport, DestAirport)","user: what is the dest airport of airline 1
 system: Here is the result table of the dest airports of airline 1. For example, one of them is ASY.
 user: what is the country of united airlines
 system: the country of united airlines is USA",what is the source airport of ASY,AMBIGUOUS,clarify,,,
-xFt3kw4awEsWWS2ou#12,world_1,"user: Can you give me the total population for each of those continents?
+xFt3kw4awEsWWS2ou#12,world_1,"city(ID, Name, CountryCode, District, Population)
+country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
+countrylanguage(CountryCode, Language, IsOfficial, Percentage)","user: Can you give me the total population for each of those continents?
 system: Here are the total populations for the continents with an average life expectancy shorter than 72.  For example, Africa has a population of 784475000.
 user: What is the average life expectancy of those continents?
 system: Here are the average life expectancies for the continents with an average life expectancy shorter than 72.  For example, Africa has an average life expectancy of 52.571929824561394.",Find the average life expectancy and total population for each continent where the average life expectancy is shorter than 72?,INFORM_SQL,execute,,,
-Xy8tejWspLpMhEy83#6,wta_1,"user: What are the codes of countries that have more than 50 players?
+Xy8tejWspLpMhEy83#6,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
+matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
+rankings(ranking_date, ranking, player_id, ranking_points, tours)","user: What are the codes of countries that have more than 50 players?
 system: Here are the codes  of countries with more than 50 players
 user: What are the codes of countries that have less than 40 players?
 system: Here is the list of the code of countries that have less than 40 players.",What are the player names from the country code AHO?,AMBIGUOUS,clarify,,,
-pTAFbSig3eQ5AdGRR#14,flight_2,"user: dest airport
+pTAFbSig3eQ5AdGRR#14,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+airports(City, AirportCode, AirportName, Country, CountryAbbrev)
+flights(Airline, FlightNo, SourceAirport, DestAirport)","user: dest airport
 system: There is no destination airport for ASY.
 user: what is the country of us airways
 system: the country of us airways is the USA",what is the airline of country usa,INFORM_SQL,execute,,,
-Tm6YoJHxqEG8WgfB8#0,world_1,,What are the countries where either English or Dutch is the official language?,INFORM_SQL,execute,,,
-ES4dPccQyjg9hWuci#10,voter_1,"user: can you send the total contestant number?
+Tm6YoJHxqEG8WgfB8#0,world_1,"city(ID, Name, CountryCode, District, Population)
+country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
+countrylanguage(CountryCode, Language, IsOfficial, Percentage)",,What are the countries where either English or Dutch is the official language?,INFORM_SQL,execute,,,
+ES4dPccQyjg9hWuci#10,voter_1,"AREA_CODE_STATE(area_code, state)
+CONTESTANTS(contestant_number, contestant_name)
+VOTES(vote_id, phone_number, state, contestant_number, created)","user: can you send the total contestant number?
 system: The number of contestants is 11.
 user: how is about the summer?
 system: I am sorry, I cannot understand that question. Can you rephrase it?",how many female contestants are there?,CANNOT_ANSWER,abstain,,,
-SKPTWoKoX5b2pqxSE#3,flight_2,"user: Howdy!  Can you show me a list of all flight numbers?
+SKPTWoKoX5b2pqxSE#3,flight_2,"airlines(uid, Airline, Abbreviation, Country)
+airports(City, AirportCode, AirportName, Country, CountryAbbrev)
+flights(Airline, FlightNo, SourceAirport, DestAirport)","user: Howdy!  Can you show me a list of all flight numbers?
 system: Here is the result table of all flight numbers. For example, one of them is 28.",Excellent!  Can you update this list to include a column with the destination airport code for each of these?,INFORM_SQL,execute,,,
-ajqy8ztcfjLTahSiR#14,dog_kennels,"user: List the role of the professional named Taryn.
+ajqy8ztcfjLTahSiR#14,dog_kennels,"Breeds(breed_code, breed_name)
+Charges(charge_id, charge_type, charge_amount)
+Sizes(size_code, size_description)
+Treatment_Types(treatment_type_code, treatment_type_description)
+Owners(owner_id, first_name, last_name, street, city, state, zip_code, email_address, home_phone, cell_number)
+Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_birth, gender, weight, date_arrived, date_adopted, date_departed)
+Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
+Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","user: List the role of the professional named Taryn.
 system: The role code of the professional with first name Taryn is Employee
 user: List the role, street, city, and state of the professional with first name Taryn.
 system: Here are the role, street, city, and state of the professional with first name Taryn",List the name of all professionals with the same state as Taryn.,CANNOT_ANSWER,abstain,,,
-QbDPZ33turCRayb2H#3,orchestra,"user: How many orchestras are there?
+QbDPZ33turCRayb2H#3,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
+orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
+performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
+show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","user: How many orchestras are there?
 system: There are 12 distinct orchestras.",How many of them are there have no performance?,AMBIGUOUS,clarify,,,
-WWAdWhEKsFv4Wpsq8#3,poker_player,"user: How much did the winning poker player make?
+WWAdWhEKsFv4Wpsq8#3,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+people(People_ID, Nationality, Name, Birth_Date, Height)","user: How much did the winning poker player make?
 system: The following table shows the earnings of all poker players.",Cool who was the winner?,CANNOT_ANSWER,abstain,,,
-rg25Kr45ojiYTsay2#3,concert_singer,"user: How many stadiums can accommodate more than 1000 people in average.?
+rg25Kr45ojiYTsay2#3,concert_singer,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
+singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
+concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
+singer_in_concert(concert_ID, Singer_ID)","user: How many stadiums can accommodate more than 1000 people in average.?
 system: The number of stadiums can accommodate more than 1000 people on average is 2.",What is the name of the stadium with the highest average  lowest attendance?,CANNOT_ANSWER,abstain,,,
-9xrXeNXErF7cvGh29#0,tvshow,,Which titles were directed by Ben Jones or Brandon Vietti?,INFORM_SQL,execute,,,
-evCyHgQ5q8Z7MiFth#0,dog_kennels,,What are the ids of the professionals?,INFORM_SQL,execute,,,
-fqhvFDLumNeeY3P4p#3,dog_kennels,"user: Which first names are used for professionals or owners?
+9xrXeNXErF7cvGh29#0,tvshow,"TV_Channel(id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option)
+TV_series(id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel)
+Cartoon(id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel)",,Which titles were directed by Ben Jones or Brandon Vietti?,INFORM_SQL,execute,,,
+evCyHgQ5q8Z7MiFth#0,dog_kennels,"Breeds(breed_code, breed_name)
+Charges(charge_id, charge_type, charge_amount)
+Sizes(size_code, size_description)
+Treatment_Types(treatment_type_code, treatment_type_description)
+Owners(owner_id, first_name, last_name, street, city, state, zip_code, email_address, home_phone, cell_number)
+Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_birth, gender, weight, date_arrived, date_adopted, date_departed)
+Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
+Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)",,What are the ids of the professionals?,INFORM_SQL,execute,,,
+fqhvFDLumNeeY3P4p#3,dog_kennels,"Breeds(breed_code, breed_name)
+Charges(charge_id, charge_type, charge_amount)
+Sizes(size_code, size_description)
+Treatment_Types(treatment_type_code, treatment_type_description)
+Owners(owner_id, first_name, last_name, street, city, state, zip_code, email_address, home_phone, cell_number)
+Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_birth, gender, weight, date_arrived, date_adopted, date_departed)
+Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
+Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","user: Which first names are used for professionals or owners?
 system: Here are the first names used for professionals or owners","Which first names are used for professionals or owners, but are not used as dog names?",INFORM_SQL,execute,,,
-wD2aCNMsJzz6ouL8A#3,car_1,"user: Hi! which countries are in europe?
+wD2aCNMsJzz6ouL8A#3,car_1,"continents(ContId, Continent)
+countries(CountryId, CountryName, Continent)
+car_makers(Id, Maker, FullName, Country)
+model_list(ModelId, Maker, Model)
+car_names(MakeId, Model, Make)
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","user: Hi! which countries are in europe?
 system: Here is a list of countries in Europe.",How many car manufacturers are in each of those countries?,INFORM_SQL,execute,,,
-k9FJbtoxaxadL3t7h#5,singer,"user: who is the singers name?
+k9FJbtoxaxadL3t7h#5,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
+song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","user: who is the singers name?
 system: did you mean List the names of all singers
 user: yes tell me singers name?
 system: this shows  singers name",how much sales in christmas ?,CANNOT_ANSWER,abstain,,,
-MKi8c2KsKDmXSgMQb#9,world_1,"user: How many languages are spoken in Canada?
+MKi8c2KsKDmXSgMQb#9,world_1,"city(ID, Name, CountryCode, District, Population)
+country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
+countrylanguage(CountryCode, Language, IsOfficial, Percentage)","user: How many languages are spoken in Canada?
 system: There are 12 languages spoken in Canada
 user: What are the names of those languages?
 system: Here are the languages spoken by Canada.",Which of these is spoken in the most other countries?,CANNOT_ANSWER,abstain,,,
-prJy7q4Z4SPz8HoKj#6,network_1,"user: what is the average of grades?
+prJy7q4Z4SPz8HoKj#6,network_1,"Highschooler(ID, name, grade)
+Friend(student_id, friend_id)
+Likes(student_id, liked_id)","user: what is the average of grades?
 system: The average grade is 10.5.
 user: what is the name of higshoolers that starting with 'A'?
 system: These are the names of highschoolers that start with 'A'",what is the best grade ?,AMBIGUOUS,clarify,,,
-aSEAWHdnM6wHJaknH#0,poker_player,,Which height of Aleksey Ostapenko?,INFORM_SQL,execute,,,
-hs4sXTtZAivcveuSs#5,car_1,"user: What are the full name of amc?
+aSEAWHdnM6wHJaknH#0,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+people(People_ID, Nationality, Name, Birth_Date, Height)",,Which height of Aleksey Ostapenko?,INFORM_SQL,execute,,,
+hs4sXTtZAivcveuSs#5,car_1,"continents(ContId, Continent)
+countries(CountryId, CountryName, Continent)
+car_makers(Id, Maker, FullName, Country)
+model_list(ModelId, Maker, Model)
+car_names(MakeId, Model, Make)
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","user: What are the full name of amc?
 system: Did you mean the full name of the car maker amc?
 user: Yes
 system: American Motor Company is the full name of the car maker amc.",What type of car making by german country?,CANNOT_ANSWER,abstain,,,
-pseyF5CZEDhTKnipS#12,poker_player,"user: What is the name of the poker player with the highest earnings?
+pseyF5CZEDhTKnipS#12,poker_player,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
+people(People_ID, Nationality, Name, Birth_Date, Height)","user: What is the name of the poker player with the highest earnings?
 system: Maksim Botin is the poker player with the highest earnings
 user: What about the poker player with the lowest earnings?
 system: The poker player with the lowest earnings is Yevgeni Sivozhelez",What was his best finish?,INFORM_SQL,execute,,,
-9Swsq6CznKNJfN4o6#0,museum_visit,,what are the name of the museums?,INFORM_SQL,execute,,,
+9Swsq6CznKNJfN4o6#0,museum_visit,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
+visitor(ID, Name, Level_of_membership, Age)
+visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)",,what are the name of the museums?,INFORM_SQL,execute,,,
