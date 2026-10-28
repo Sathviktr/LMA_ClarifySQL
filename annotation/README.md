@@ -18,10 +18,10 @@ python -I scripts/annotation_status.py
 | 1. Edit the validation and test requests | one editor | 36 + 120 | ~2 h | **done** (SR) |
 | 2. Blind labels | two people, A and B, ideally not the editor | 57 + 196 each | ~2 h each | **done** (κ 0.971 / 0.926) |
 | 3. Resolve the label disagreements | A and B together | only the rows they disagree on | ~30 min | **done** (8 test dropped) |
-| 4. Clean the CoSQL slice | one person | 60 | ~1 h | to do |
-| 5. Audit the training data | one person | 144 | ~1 h | to do |
+| 4. Clean the CoSQL slice | one person | 60 | ~1 h | **done** (59 kept) |
+| 5. Audit the training data | one person | 144 | ~1 h | **done** (30 dropped) |
 
-Tasks 4 and 5 can run at the same time.
+All hand work for Phase 4 is done.
 
 ## How to fill a sheet
 
@@ -88,7 +88,11 @@ If your resolved decision differs from `intended`, the episode is **removed**. F
 that a "vague" request is clear after all. Such an episode is not a clean example of its kind, and the proposal
 drops weak items rather than keeping them to reach a target size.
 
-## 4. Clean the CoSQL slice: `cosql_dev_slice.csv`
+## 4. Clean the CoSQL slice: `cosql_dev_slice.csv` (done)
+
+All 60 turns are cleaned: 59 kept (45 execute, 13 clarify, 1 abstain), 1 dropped. CoSQL's own label matches the
+cleaned decision on only 36 of the 59 kept turns: 14 "ambiguous" turns are clear and 9 "cannot answer" turns are
+answerable or need a question.
 
 Sixty real user turns from CoSQL dev dialogues on our test databases, with the database's `tables`, the earlier
 turns as context and CoSQL's original label. CoSQL labels are noisy: for example, "How many students in this
@@ -97,7 +101,10 @@ decide whether the data exists. For each row, fill **`cleaned_decision`** with `
 `drop` if the turn is unusable (a greeting, broken text, or it depends on something not shown). Put your initials
 in **`annotator`**. The proposal keeps 40–60 cleaned turns and scores only the agent's first decision on them.
 
-## 5. Audit the training data: `train_audit.csv`
+## 5. Audit the training data: `train_audit.csv` (done)
+
+All 144 rows are audited and 30 were dropped, leaving 310 training episodes. The keep rate per stratum is in
+`results/episodes/train_audit.json`.
 
 The training requests were made by our rules, by a template or by the base model's paraphrasing. The sheet
 contains **every** episode our rules or template wrote (113) plus a fixed sample of the others: 10 plain Spider

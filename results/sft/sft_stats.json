@@ -1,49 +1,49 @@
 {
   "max_tokens": 1024,
   "train": {
-    "states": 694,
+    "states": 611,
     "dropped_over_limit": 6,
-    "episodes": 340,
+    "episodes": 310,
     "target_actions": {
-      "inspect": 208,
-      "clarify": 149,
-      "execute": 292,
-      "abstain": 45
+      "inspect": 178,
+      "clarify": 126,
+      "execute": 265,
+      "abstain": 42
     },
     "states_by_kind": {
-      "ambiguous": 357,
-      "two_slot": 60,
-      "definition": 58,
+      "ambiguous": 318,
+      "two_slot": 40,
+      "definition": 40,
       "clear": 129,
-      "unanswerable": 90
+      "unanswerable": 84
     },
     "tokens": {
-      "median": 451.0,
-      "p90": 574,
+      "median": 450,
+      "p90": 578,
       "max": 1515,
       "over_limit": 6
     }
   },
   "train_noslot": {
-    "states": 694,
+    "states": 611,
     "dropped_over_limit": 6,
-    "episodes": 340,
+    "episodes": 310,
     "target_actions": {
-      "inspect": 208,
-      "clarify": 149,
-      "execute": 292,
-      "abstain": 45
+      "inspect": 178,
+      "clarify": 126,
+      "execute": 265,
+      "abstain": 42
     },
     "states_by_kind": {
-      "ambiguous": 357,
-      "two_slot": 60,
-      "definition": 58,
+      "ambiguous": 318,
+      "two_slot": 40,
+      "definition": 40,
       "clear": 129,
-      "unanswerable": 90
+      "unanswerable": 84
     },
     "tokens": {
-      "median": 409.0,
-      "p90": 530,
+      "median": 405,
+      "p90": 534,
       "max": 1392,
       "over_limit": 6
     }

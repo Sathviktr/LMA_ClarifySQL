@@ -9,13 +9,13 @@ student(ID, name, dept_name, tot_cred)
 takes(ID, course_id, sec_id, semester, year, grade)
 advisor(s_ID, i_ID)
 time_slot(time_slot_id, day, start_hr, start_min, end_hr, end_min)
-prereq(course_id, prereq_id)",Find the name of the department that offers the highest total credits?,Find the name of the department that offers the highest total credits?,,,"1. execute ""Find the name of the department that offers the highest total credits?""",,,
+prereq(course_id, prereq_id)",Find the name of the department that offers the highest total credits?,Find the name of the department that offers the highest total credits?,,,"1. execute ""Find the name of the department that offers the highest total credits?""",keep,SR,
 train-clear-2321,clear,Spider question,perpetrator,"perpetrator(Perpetrator_ID, People_ID, Date, Year, Location, Country, Killed, Injured)
-people(People_ID, Name, Height, Weight, Home Town)",How many distinct locations of perpetrators are there?,How many distinct locations of perpetrators are there?,,,"1. execute ""How many distinct locations of perpetrators are there?""",,,
+people(People_ID, Name, Height, Weight, Home Town)",How many distinct locations of perpetrators are there?,How many distinct locations of perpetrators are there?,,,"1. execute ""How many distinct locations of perpetrators are there?""",keep,SR,
 train-clear-3157,clear,Spider question,station_weather,"train(id, train_number, name, origin, destination, time, interval)
 station(id, network_name, services, local_authority)
 route(train_id, station_id)
-weekly_weather(station_id, day_of_week, high_temperature, low_temperature, precipitation, wind_speed_mph)",list the local authorities and services provided by all stations.,list the local authorities and services provided by all stations.,,,"1. execute ""list the local authorities and services provided by all stations.""",,,
+weekly_weather(station_id, day_of_week, high_temperature, low_temperature, precipitation, wind_speed_mph)",list the local authorities and services provided by all stations.,list the local authorities and services provided by all stations.,,,"1. execute ""list the local authorities and services provided by all stations.""",keep,SR,
 train-clear-3649,clear,Spider question,baseball_1,"all_star(player_id, year, game_num, game_id, team_id, league_id, gp, starting_pos)
 appearances(year, team_id, league_id, player_id, g_all, gs, g_batting, g_defense, g_p, g_c, g_1b, g_2b, g_3b, g_ss, g_lf, g_cf, g_rf, g_of, g_dh, g_ph, g_pr)
 manager_award(player_id, award_id, year, league_id, tie, notes)
@@ -41,7 +41,7 @@ college(college_id, name_full, city, state, country)
 postseason(year, round, team_id_winner, league_id_winner, team_id_loser, league_id_loser, wins, losses, ties)
 team(year, league_id, team_id, franchise_id, div_id, rank, g, ghome, w, l, div_win, wc_win, lg_win, ws_win, r, ab, h, double, triple, hr, bb, so, sb, cs, hbp, sf, ra, er, era, cg, sho, sv, ipouts, ha, hra, bba, soa, e, dp, fp, name, park, attendance, bpf, ppf, team_id_br, team_id_lahman45, team_id_retro)
 team_franchise(franchise_id, franchise_name, active, na_assoc)
-team_half(year, league_id, team_id, half, div_id, div_win, rank, g, w, l)",List three countries which are the origins of the least players.,List three countries which are the origins of the least players.,,,"1. execute ""List three countries which are the origins of the least players.""",,,
+team_half(year, league_id, team_id, half, div_id, div_win, rank, g, w, l)",List three countries which are the origins of the least players.,List three countries which are the origins of the least players.,,,"1. execute ""List three countries which are the origins of the least players.""",keep,SR,
 train-clear-4597,clear,Spider question,solvency_ii,"Addresses(Address_ID, address_details)
 Locations(Location_ID, Other_Details)
 Products(Product_ID, Product_Type_Code, Product_Name, Product_Price)
@@ -53,35 +53,35 @@ Events(Event_ID, Address_ID, Channel_ID, Event_Type_Code, Finance_ID, Location_I
 Products_in_Events(Product_in_Event_ID, Event_ID, Product_ID)
 Parties_in_Events(Party_ID, Event_ID, Role_Code)
 Agreements(Document_ID, Event_ID)
-Assets_in_Events(Asset_ID, Event_ID)",List the names of products that are not in any event.,List the names of products that are not in any event.,,,"1. execute ""List the names of products that are not in any event.""",,,
+Assets_in_Events(Asset_ID, Event_ID)",List the names of products that are not in any event.,List the names of products that are not in any event.,,,"1. execute ""List the names of products that are not in any event.""",keep,SR,
 train-clear-4864,clear,Spider question,school_player,"school(School_ID, School, Location, Enrollment, Founded, Denomination, Boys_or_Girls, Day_or_Boarding, Year_Entered_Competition, School_Colors)
 school_details(School_ID, Nickname, Colors, League, Class, Division)
 school_performance(School_Id, School_Year, Class_A, Class_AA)
-player(Player_ID, Player, Team, Age, Position, School_ID)",List the locations of schools in descending order of founded year.,List the locations of schools in descending order of founded year.,,,"1. execute ""List the locations of schools in descending order of founded year.""",,,
+player(Player_ID, Player, Team, Age, Position, School_ID)",List the locations of schools in descending order of founded year.,List the locations of schools in descending order of founded year.,,,"1. execute ""List the locations of schools in descending order of founded year.""",keep,SR,
 train-clear-4972,clear,Spider question,soccer_2,"College(cName, state, enr)
 Player(pID, pName, yCard, HS)
-Tryout(pID, cName, pPos, decision)",Find the players whose names contain letter 'a'.,Find the players whose names contain letter 'a'.,,,"1. execute ""Find the players whose names contain letter 'a'.""",,,
+Tryout(pID, cName, pPos, decision)",Find the players whose names contain letter 'a'.,Find the players whose names contain letter 'a'.,,,"1. execute ""Find the players whose names contain letter 'a'.""",keep,SR,
 train-clear-5060,clear,Spider question,device,"device(Device_ID, Device, Carrier, Package_Version, Applications, Software_Platform)
 shop(Shop_ID, Shop_Name, Location, Open_Date, Open_Year)
-stock(Shop_ID, Device_ID, Quantity)",What are the names and location of the shops in ascending alphabetical order of name.,What are the names and location of the shops in ascending alphabetical order of name.,,,"1. execute ""What are the names and location of the shops in ascending alphabetical order of name.""",,,
+stock(Shop_ID, Device_ID, Quantity)",What are the names and location of the shops in ascending alphabetical order of name.,What are the names and location of the shops in ascending alphabetical order of name.,,,"1. execute ""What are the names and location of the shops in ascending alphabetical order of name.""",keep,SR,
 train-clear-6957,clear,Spider question,architecture,"architect(id, name, nationality, gender)
 bridge(architect_id, id, name, location, length_meters, length_feet)
-mill(architect_id, id, location, name, type, built_year, notes)",Which of the mill names contains the french word 'Moulin'?,Which of the mill names contains the french word 'Moulin'?,,,"1. execute ""Which of the mill names contains the french word 'Moulin'?""",,,
+mill(architect_id, id, location, name, type, built_year, notes)",Which of the mill names contains the french word 'Moulin'?,Which of the mill names contains the french word 'Moulin'?,,,"1. execute ""Which of the mill names contains the french word 'Moulin'?""",keep,SR,
 train-clear-973,clear,Spider question,medicine_enzyme_interaction,"medicine(id, name, Trade_Name, FDA_approved)
 enzyme(id, name, Location, Product, Chromosome, OMIM, Porphyria)
-medicine_enzyme_interaction(enzyme_id, medicine_id, interaction_type)","Which enzyme names have the substring ""ALA""?","Which enzyme names have the substring ""ALA""?",,,"1. execute ""Which enzyme names have the substring ""ALA""?""",,,
+medicine_enzyme_interaction(enzyme_id, medicine_id, interaction_type)","Which enzyme names have the substring ""ALA""?","Which enzyme names have the substring ""ALA""?",,,"1. execute ""Which enzyme names have the substring ""ALA""?""",keep,SR,
 train-ambiguous-1146,ambiguous,our rules,climbing,"mountain(Mountain_ID, Name, Height, Prominence, Range, Country)
 climber(Climber_ID, Name, Country, Time, Points, Mountain_ID)",Show the range that has the most number of mountains.,Show the range that ranks highest.,ranking: has the most number of mountains (user means: number of mountains),,"1. search_definitions(range ranks highest)
 2. ask ""Ranked by what: height, prominence or number of records?"" -> user: ""Rank them by number of mountains.""
-3. execute ""Show the range that has the most number of mountains.""",,,
+3. execute ""Show the range that has the most number of mountains.""",keep,SR,
 train-ambiguous-1148,ambiguous,our rules,climbing,"mountain(Mountain_ID, Name, Height, Prominence, Range, Country)
 climber(Climber_ID, Name, Country, Time, Points, Mountain_ID)",Show the names of mountains with height more than 5000 or prominence more than 1000.,Show the names of mountains with height more than 5000 or high prominence.,threshold: more than 1000 (user means: > 1000),,"1. search_definitions(high prominence)
 2. ask ""What prominence counts as ""high""?"" -> user: ""I mean more than 1000.""
-3. execute ""Show the names of mountains with height more than 5000 or prominence more than 1000.""",,,
+3. execute ""Show the names of mountains with height more than 5000 or prominence more than 1000.""",keep,SR,
 train-ambiguous-1159,ambiguous,model paraphrase,body_builder,"body_builder(Body_Builder_ID, People_ID, Snatch, Clean_Jerk, Total)
 people(People_ID, Name, Height, Weight, Birth_Date, Birth_Place)",What are the birth date and birth place of the body builder with the highest total points?,What are the birth date and birth place of the body builder who ranks highest?,ranking: with the highest total points (user means: total points),,"1. search_definitions(builder ranks highest)
 2. ask ""Ranked by what: clean jerk, snatch or total?"" -> user: ""Rank them by total points.""
-3. execute ""What are the birth date and birth place of the body builder with the highest total points?""",,,
+3. execute ""What are the birth date and birth place of the body builder with the highest total points?""",keep,SR,
 train-ambiguous-1224,ambiguous,our rules,apartment_rentals,"Apartment_Buildings(building_id, building_short_name, building_full_name, building_description, building_address, building_manager, building_phone)
 Apartments(apt_id, building_id, apt_type_code, apt_number, bathroom_count, bedroom_count, room_count)
 Apartment_Facilities(apt_id, facility_code)
@@ -89,7 +89,7 @@ Guests(guest_id, gender_code, guest_first_name, guest_last_name, date_of_birth)
 Apartment_Bookings(apt_booking_id, apt_id, guest_id, booking_status_code, booking_start_date, booking_end_date)
 View_Unit_Status(apt_id, apt_booking_id, status_date, available_yn)",What are the booking start and end dates of the apartments with more than 2 bedrooms?,What are the booking start and end dates of the apartments with many bedrooms?,threshold: more than 2 (user means: > 2),,"1. search_definitions(many bedrooms)
 2. ask ""How many bedrooms count as ""many""?"" -> user: ""I mean more than 2.""
-3. execute ""What are the booking start and end dates of the apartments with more than 2 bedrooms?""",,,
+3. execute ""What are the booking start and end dates of the apartments with more than 2 bedrooms?""",keep,SR,
 train-ambiguous-1252,ambiguous,our rules,apartment_rentals,"Apartment_Buildings(building_id, building_short_name, building_full_name, building_description, building_address, building_manager, building_phone)
 Apartments(apt_id, building_id, apt_type_code, apt_number, bathroom_count, bedroom_count, room_count)
 Apartment_Facilities(apt_id, facility_code)
@@ -97,7 +97,7 @@ Guests(guest_id, gender_code, guest_first_name, guest_last_name, date_of_birth)
 Apartment_Bookings(apt_booking_id, apt_id, guest_id, booking_status_code, booking_start_date, booking_end_date)
 View_Unit_Status(apt_id, apt_booking_id, status_date, available_yn)",Return the apartment number with the largest number of bedrooms.,Return the apartment number that ranks highest.,ranking: with the largest number of bedrooms (user means: number of bedrooms),,"1. search_definitions(number ranks highest)
 2. ask ""Ranked by what: bathroom count or bedroom count?"" -> user: ""Rank them by number of bedrooms.""
-3. execute ""Return the apartment number with the largest number of bedrooms.""",,,
+3. execute ""Return the apartment number with the largest number of bedrooms.""",keep,SR,
 train-ambiguous-1300,ambiguous,our rules,soccer_1,"Player_Attributes(id, player_fifa_api_id, player_api_id, date, overall_rating, potential, preferred_foot, attacking_work_rate, defensive_work_rate, crossing, finishing, heading_accuracy, short_passing, volleys, dribbling, curve, free_kick_accuracy, long_passing, ball_control, acceleration, sprint_speed, agility, reactions, balance, shot_power, jumping, stamina, strength, long_shots, aggression, interceptions, positioning, vision, penalties, marking, standing_tackle, sliding_tackle, gk_diving, gk_handling, gk_kicking, gk_positioning, gk_reflexes)
 Player(id, player_api_id, player_name, player_fifa_api_id, birthday, height, weight)
 League(id, country_id, name)
@@ -105,7 +105,7 @@ Country(id, name)
 Team(id, team_api_id, team_fifa_api_id, team_long_name, team_short_name)
 Team_Attributes(id, team_fifa_api_id, team_api_id, date, buildUpPlaySpeed, buildUpPlaySpeedClass, buildUpPlayDribbling, buildUpPlayDribblingClass, buildUpPlayPassing, buildUpPlayPassingClass, buildUpPlayPositioningClass, chanceCreationPassing, chanceCreationPassingClass, chanceCreationCrossing, chanceCreationCrossingClass, chanceCreationShooting, chanceCreationShootingClass, chanceCreationPositioningClass, defencePressure, defencePressureClass, defenceAggression, defenceAggressionClass, defenceTeamWidth, defenceTeamWidthClass, defenceDefenderLineClass)",List the names of all left-footed players who have overall rating between 85 and 90.,List the names of all left-footed players who have overall rating within a certain range.,threshold: between 85 and 90 (user means: between 85 and 90),,"1. search_definitions(overall rating range)
 2. ask ""Which range of overall rating do you mean?"" -> user: ""I mean between 85 and 90.""
-3. execute ""List the names of all left-footed players who have overall rating between 85 and 90.""",,,
+3. execute ""List the names of all left-footed players who have overall rating between 85 and 90.""",keep,SR,
 train-ambiguous-1408,ambiguous,our rules,college_2,"classroom(building, room_number, capacity)
 department(dept_name, building, budget)
 course(course_id, title, dept_name, credits)
@@ -118,12 +118,12 @@ advisor(s_ID, i_ID)
 time_slot(time_slot_id, day, start_hr, start_min, end_hr, end_min)
 prereq(course_id, prereq_id)",Find the name of department has the highest amount of students?,Find the name of department ranks highest?,ranking: has the highest amount of students (user means: amount of students),,"1. search_definitions(department ranks highest)
 2. ask ""Ranked by what: number of records or tot cred?"" -> user: ""Rank them by amount of students.""
-3. execute ""Find the name of department has the highest amount of students?""",,,
+3. execute ""Find the name of department has the highest amount of students?""",drop,SR,broken English: 'name of department ranks highest'
 train-ambiguous-1499,ambiguous,our rules,debate,"people(People_ID, District, Name, Party, Age)
 debate(Debate_ID, Date, Venue, Num_of_Audience)
 debate_people(Debate_ID, Affirmative, Negative, If_Affirmative_Win)",Show the party that has the most people.,Show the party that ranks highest.,ranking: has the most people (user means: people),,"1. search_definitions(party ranks highest)
 2. ask ""Ranked by what: number of records or age?"" -> user: ""Rank them by people.""
-3. execute ""Show the party that has the most people.""",,,
+3. execute ""Show the party that has the most people.""",keep,SR,
 train-ambiguous-1513,ambiguous,our rules,insurance_and_eClaims,"Customers(Customer_ID, Customer_Details)
 Staff(Staff_ID, Staff_Details)
 Policies(Policy_ID, Customer_ID, Policy_Type_Code, Start_Date, End_Date)
@@ -132,7 +132,7 @@ Claims_Documents(Claim_ID, Document_Type_Code, Created_by_Staff_ID, Created_Date
 Claims_Processing_Stages(Claim_Stage_ID, Next_Claim_Stage_ID, Claim_Status_Name, Claim_Status_Description)
 Claims_Processing(Claim_Processing_ID, Claim_ID, Claim_Outcome_Code, Claim_Stage_ID, Staff_ID)",Find all the policy types that are used by more than 2 customers.,Find all the policy types that are used by many customers.,threshold: more than 2 (user means: > 2),,"1. search_definitions(many customers)
 2. ask ""How many customers count as ""many""?"" -> user: ""I mean more than 2.""
-3. execute ""Find all the policy types that are used by more than 2 customers.""",,,
+3. execute ""Find all the policy types that are used by more than 2 customers.""",keep,SR,
 train-ambiguous-1591,ambiguous,our rules,customers_and_invoices,"Customers(customer_id, customer_first_name, customer_middle_initial, customer_last_name, gender, email_address, login_name, login_password, phone_number, town_city, state_county_province, country)
 Orders(order_id, customer_id, date_order_placed, order_details)
 Invoices(invoice_number, order_id, invoice_date)
@@ -143,58 +143,58 @@ Financial_Transactions(transaction_id, account_id, invoice_number, transaction_t
 Order_Items(order_item_id, order_id, product_id, product_quantity, other_order_item_details)
 Invoice_Line_Items(order_item_id, invoice_number, product_id, product_title, product_quantity, product_price, derived_product_cost, derived_vat_payable, derived_total_cost)",Show the account id with most number of transactions.,Show the account id that ranks highest.,ranking: with most number of transactions (user means: number of transactions),,"1. search_definitions(id ranks highest)
 2. ask ""Ranked by what: invoice number, transaction amount or number of records?"" -> user: ""Rank them by number of transactions.""
-3. execute ""Show the account id with most number of transactions.""",,,
+3. execute ""Show the account id with most number of transactions.""",keep,SR,
 train-ambiguous-1629,ambiguous,our rules,wedding,"people(People_ID, Name, Country, Is_Male, Age)
 church(Church_ID, Name, Organized_by, Open_Date, Continuation_of)
 wedding(Church_ID, Male_ID, Female_ID, Year)",How many churches opened before 1850 are there?,How many churches opened long ago are there?,threshold: before 1850 (user means: < 1850),,"1. search_definitions(early church)
 2. ask ""Which open date do you mean by ""long ago""?"" -> user: ""I mean before 1850.""
-3. execute ""How many churches opened before 1850 are there?""",,,
+3. execute ""How many churches opened before 1850 are there?""",keep,SR,
 train-ambiguous-1657,ambiguous,our rules,theme_gallery,"artist(Artist_ID, Name, Country, Year_Join, Age)
 exhibition(Exhibition_ID, Year, Theme, Artist_ID, Ticket_Price)
 exhibition_record(Exhibition_ID, Date, Attendance)",How many artists are above age 46 and joined after 1990?,How many artists are above age 46 and joined recently?,threshold: after 1990 (user means: > 1990),,"1. search_definitions(recent artist)
 2. ask ""Which year join do you mean by ""recently""?"" -> user: ""I mean after 1990.""
-3. execute ""How many artists are above age 46 and joined after 1990?""",,,
+3. execute ""How many artists are above age 46 and joined after 1990?""",keep,SR,
 train-ambiguous-1669,ambiguous,our rules,theme_gallery,"artist(Artist_ID, Name, Country, Year_Join, Age)
 exhibition(Exhibition_ID, Year, Theme, Artist_ID, Ticket_Price)
 exhibition_record(Exhibition_ID, Date, Attendance)",What is the name and country for the artist with most number of exhibitions?,What is the name and country for the artist that ranks highest?,ranking: with most number of exhibitions (user means: number of exhibitions),,"1. search_definitions(artist ranks highest)
 2. ask ""Ranked by what: age, year join or ticket price?"" -> user: ""Rank them by number of exhibitions.""
-3. execute ""What is the name and country for the artist with most number of exhibitions?""",,,
+3. execute ""What is the name and country for the artist with most number of exhibitions?""",keep,SR,
 train-ambiguous-1704,ambiguous,our rules,epinions_1,"item(i_id, title)
 review(a_id, u_id, i_id, rating, rank)
 useracct(u_id, name)
 trust(source_u_id, target_u_id, trust)",Find the name of the item with the lowest average rating.,Find the name of the item that ranks lowest.,ranking: with the lowest average rating (user means: average rating),,"1. search_definitions(item ranks lowest)
 2. ask ""Ranked by what: rank or rating?"" -> user: ""Rank them by average rating.""
-3. execute ""Find the name of the item with the lowest average rating.""",,,
+3. execute ""Find the name of the item with the lowest average rating.""",keep,SR,
 train-ambiguous-1758,ambiguous,model paraphrase,gymnast,"gymnast(Gymnast_ID, Floor_Exercise_Points, Pommel_Horse_Points, Rings_Points, Vault_Points, Parallel_Bars_Points, Horizontal_Bar_Points, Total_Points)
 people(People_ID, Name, Age, Height, Hometown)",What are the distinct hometowns of gymnasts with total points more than 57.5?,What are the distinct hometowns of gymnasts with high total points?,threshold: more than 57.5 (user means: > 57.5),,"1. search_definitions(high total points)
 2. ask ""What total points counts as ""high""?"" -> user: ""I mean more than 57.5.""
-3. execute ""What are the distinct hometowns of gymnasts with total points more than 57.5?""",,,
+3. execute ""What are the distinct hometowns of gymnasts with total points more than 57.5?""",keep,SR,
 train-ambiguous-1900,ambiguous,our rules,school_finance,"School(School_id, School_name, Location, Mascot, Enrollment, IHSAA_Class, IHSAA_Football_Class, County)
 budget(School_id, Year, Budgeted, total_budget_percent_budgeted, Invested, total_budget_percent_invested, Budget_invested_percent)
 endowment(endowment_id, School_id, donator_name, amount)",How many budgets are above 3000 in year 2001 or before?,How many budgets are high in year 2001 or before?,threshold: above 3000 (user means: > 3000),,"1. search_definitions(high budgeted)
 2. ask ""What budgeted counts as ""high""?"" -> user: ""I mean above 3000.""
-3. execute ""How many budgets are above 3000 in year 2001 or before?""",,,
+3. execute ""How many budgets are above 3000 in year 2001 or before?""",keep,SR,
 train-ambiguous-1926,ambiguous,our rules,protein_institute,"building(building_id, Name, Street_address, Years_as_tallest, Height_feet, Floors)
 Institution(Institution_id, Institution, Location, Founded, Type, Enrollment, Team, Primary_Conference, building_id)
 protein(common_name, protein_name, divergence_from_human_lineage, accession_number, sequence_length, sequence_identity_to_human_protein, Institution_id)","How many proteins are associated with an institution founded after 1880 or an institution with type ""Private""?","How many proteins are associated with an institution founded recently or an institution with type ""Private""?",threshold: after 1880 (user means: > 1880),,"1. search_definitions(recent institution)
 2. ask ""Which founded do you mean by ""recently""?"" -> user: ""I mean after 1880.""
-3. execute ""How many proteins are associated with an institution founded after 1880 or an institution with type ""Private""?""",,,
+3. execute ""How many proteins are associated with an institution founded after 1880 or an institution with type ""Private""?""",keep,SR,
 train-ambiguous-1942,ambiguous,our rules,cinema,"film(Film_ID, Rank_in_series, Number_in_season, Title, Directed_by, Original_air_date, Production_code)
 cinema(Cinema_ID, Name, Openning_year, Capacity, Location)
 schedule(Cinema_ID, Film_ID, Date, Show_times_per_day, Price)",What is the location with the most cinemas opened in year 2010 or later?,What is the location that ranks highest in year 2010 or later?,ranking: with the most cinemas opened (user means: cinemas opened),,"1. search_definitions(location ranks highest)
 2. ask ""Ranked by what: capacity, openning year or number of records?"" -> user: ""Rank them by cinemas opened.""
-3. execute ""What is the location with the most cinemas opened in year 2010 or later?""",,,
+3. execute ""What is the location with the most cinemas opened in year 2010 or later?""",keep,SR,
 train-ambiguous-1986,ambiguous,our rules,phone_market,"phone(Name, Phone_ID, Memory_in_G, Carrier, Price)
 market(Market_ID, District, Num_of_employees, Num_of_shops, Ranking)
 phone_market(Market_ID, Phone_ID, Num_of_stock)",Show the carriers that have both phones with memory smaller than 32 and phones with memory bigger than 64.,Show the carriers that have both phones with small memory and phones with memory bigger than 64.,threshold: smaller than 32 (user means: < 32),,"1. search_definitions(small memory in g)
 2. ask ""What memory in g counts as ""small""?"" -> user: ""I mean smaller than 32.""
-3. execute ""Show the carriers that have both phones with memory smaller than 32 and phones with memory bigger than 64.""",,,
+3. execute ""Show the carriers that have both phones with memory smaller than 32 and phones with memory bigger than 64.""",keep,SR,
 train-ambiguous-199,ambiguous,our rules,bike_1,"station(id, name, lat, long, dock_count, city, installation_date)
 status(station_id, bikes_available, docks_available, time)
 trip(id, duration, start_date, start_station_name, start_station_id, end_date, end_station_name, end_station_id, bike_id, subscription_type, zip_code)
 weather(date, max_temperature_f, mean_temperature_f, min_temperature_f, max_dew_point_f, mean_dew_point_f, min_dew_point_f, max_humidity, mean_humidity, min_humidity, max_sea_level_pressure_inches, mean_sea_level_pressure_inches, min_sea_level_pressure_inches, max_visibility_miles, mean_visibility_miles, min_visibility_miles, max_wind_Speed_mph, mean_wind_speed_mph, max_gust_speed_mph, precipitation_inches, cloud_cover, events, wind_dir_degrees, zip_code)",What are the dates in which the mean sea level pressure was between 30.3 and 31?,What are the dates in which the mean sea level pressure was within a certain range?,threshold: between 30.3 and 31 (user means: between 30.3 and 31),,"1. search_definitions(mean sea level pressure inches range)
 2. ask ""Which range of mean sea level pressure inches do you mean?"" -> user: ""I mean between 30.3 and 31.""
-3. execute ""What are the dates in which the mean sea level pressure was between 30.3 and 31?""",,,
+3. execute ""What are the dates in which the mean sea level pressure was between 30.3 and 31?""",keep,SR,
 train-ambiguous-2165,ambiguous,our rules,formula_1,"circuits(circuitId, circuitRef, name, location, country, lat, lng, alt, url)
 races(raceId, year, round, circuitId, name, date, time, url)
 drivers(driverId, driverRef, number, code, forename, surname, dob, nationality, url)
@@ -209,7 +209,7 @@ qualifying(qualifyId, raceId, driverId, constructorId, number, position, q1, q2,
 pitStops(raceId, driverId, stop, lap, time, duration, milliseconds)
 lapTimes(raceId, driverId, lap, position, time, milliseconds)",What are the forename and surname of the driver who has the smallest laptime?,What are the forename and surname of the driver who ranks lowest?,ranking: has the smallest laptime (user means: laptime),,"1. search_definitions(driver ranks lowest)
 2. ask ""Ranked by what: lap, milliseconds or position?"" -> user: ""Rank them by laptime.""
-3. execute ""What are the forename and surname of the driver who has the smallest laptime?""",,,
+3. execute ""What are the forename and surname of the driver who has the smallest laptime?""",keep,SR,
 train-ambiguous-2203,ambiguous,our rules,formula_1,"circuits(circuitId, circuitRef, name, location, country, lat, lng, alt, url)
 races(raceId, year, round, circuitId, name, date, time, url)
 drivers(driverId, driverRef, number, code, forename, surname, dob, nationality, url)
@@ -224,11 +224,11 @@ qualifying(qualifyId, raceId, driverId, constructorId, number, position, q1, q2,
 pitStops(raceId, driverId, stop, lap, time, duration, milliseconds)
 lapTimes(raceId, driverId, lap, position, time, milliseconds)",What are the names of races held between 2009 and 2011?,What are the names of races held within a certain range?,threshold: between 2009 and 2011 (user means: between 2009 and 2011),,"1. search_definitions(year range)
 2. ask ""Which range of year do you mean?"" -> user: ""I mean between 2009 and 2011.""
-3. execute ""What are the names of races held between 2009 and 2011?""",,,
+3. execute ""What are the names of races held between 2009 and 2011?""",keep,SR,
 train-ambiguous-2281,ambiguous,our rules,entrepreneur,"entrepreneur(Entrepreneur_ID, People_ID, Company, Money_Requested, Investor)
 people(People_ID, Name, Height, Weight, Date_of_Birth)",What is the total money requested by entrepreneurs with height more than 1.85?,What is the total money requested by entrepreneurs with high height?,threshold: more than 1.85 (user means: > 1.85),,"1. search_definitions(high height)
 2. ask ""What height counts as ""high""?"" -> user: ""I mean more than 1.85.""
-3. execute ""What is the total money requested by entrepreneurs with height more than 1.85?""",,,
+3. execute ""What is the total money requested by entrepreneurs with height more than 1.85?""",keep,SR,
 train-ambiguous-2348,ambiguous,our rules,csu_1,"Campuses(Id, Campus, Location, County, Year)
 csu_fees(Campus, Year, CampusFee)
 degrees(Year, Campus, Degrees)
@@ -236,86 +236,86 @@ discipline_enrollments(Campus, Discipline, Year, Undergraduate, Graduate)
 enrollments(Campus, Year, TotalEnrollment_AY, FTE_AY)
 faculty(Campus, Year, Faculty)",Which campus has the most degrees conferred in all times?,Which campus ranks highest in all times?,ranking: has the most degrees conferred (user means: degrees conferred),,"1. search_definitions(campu ranks highest)
 2. ask ""Ranked by what: campus, degrees or year?"" -> user: ""Rank them by degrees conferred.""
-3. execute ""Which campus has the most degrees conferred in all times?""",,,
+3. execute ""Which campus has the most degrees conferred in all times?""",drop,SR,ask offers 'campus' and 'year' as measures; search term 'campu'
 train-ambiguous-24,ambiguous,our rules,farm,"city(City_ID, Official_Name, Status, Area_km_2, Population, Census_Ranking)
 farm(Farm_ID, Year, Total_Horses, Working_Horses, Total_Cattle, Oxen, Bulls, Cows, Pigs, Sheep_and_Goats)
 farm_competition(Competition_ID, Year, Theme, Host_city_ID, Hosts)
 competition_record(Competition_ID, Farm_ID, Rank)",What is the average number of working horses of farms with more than 5000 total number of horses?,What is the average number of working horses of farms with many total number of horses?,threshold: more than 5000 (user means: > 5000),,"1. search_definitions(many total)
 2. ask ""How many total count as ""many""?"" -> user: ""I mean more than 5000.""
-3. execute ""What is the average number of working horses of farms with more than 5000 total number of horses?""",,,
+3. execute ""What is the average number of working horses of farms with more than 5000 total number of horses?""",drop,SR,broken English: 'many total number of horses'; ask 'How many total'
 train-ambiguous-2400,ambiguous,our rules,candidate_poll,"candidate(Candidate_ID, People_ID, Poll_Source, Date, Support_rate, Consider_rate, Oppose_rate, Unsure_rate)
 people(People_ID, Sex, Name, Date_of_Birth, Height, Weight)",Find the id of the candidate who got the lowest oppose rate.,Find the id of the candidate who ranks lowest.,ranking: got the lowest oppose rate (user means: oppose rate),,"1. search_definitions(candidate ranks lowest)
 2. ask ""Ranked by what: consider rate, oppose rate or support rate?"" -> user: ""Rank them by oppose rate.""
-3. execute ""Find the id of the candidate who got the lowest oppose rate.""",,,
+3. execute ""Find the id of the candidate who got the lowest oppose rate.""",keep,SR,
 train-ambiguous-2546,ambiguous,our rules,county_public_safety,"county_public_safety(County_ID, Name, Population, Police_officers, Residents_per_officer, Case_burden, Crime_rate, Police_force, Location)
 city(City_ID, County_ID, Name, White, Black, Amerindian, Asian, Multiracial, Hispanic)",List the name of the county with the largest population.,List the name of the county that ranks highest.,ranking: with the largest population (user means: population),,"1. search_definitions(county ranks highest)
 2. ask ""Ranked by what: case burden, crime rate or police officers?"" -> user: ""Rank them by population.""
-3. execute ""List the name of the county with the largest population.""",,,
+3. execute ""List the name of the county with the largest population.""",keep,SR,
 train-ambiguous-2612,ambiguous,our rules,inn_1,"Rooms(RoomId, roomName, beds, bedType, maxOccupancy, basePrice, decor)
 Reservations(Code, Room, CheckIn, CheckOut, Rate, LastName, FirstName, Adults, Kids)",Find the name of the room with the maximum occupancy.,Find the name of the room that ranks highest.,ranking: with the maximum occupancy (user means: occupancy),,"1. search_definitions(room ranks highest)
 2. ask ""Ranked by what: base price, beds or max occupancy?"" -> user: ""Rank them by occupancy.""
-3. execute ""Find the name of the room with the maximum occupancy.""",,,
+3. execute ""Find the name of the room with the maximum occupancy.""",keep,SR,
 train-ambiguous-2676,ambiguous,our rules,party_host,"party(Party_ID, Party_Theme, Location, First_year, Last_year, Number_of_hosts)
 host(Host_ID, Name, Nationality, Age)
 party_host(Party_ID, Host_ID, Is_Main_in_Charge)",Show the nations that have both hosts older than 45 and hosts younger than 35.,Show the nations that have both hosts older than 45 and hosts younger.,threshold: younger than 35 (user means: < 35),,"1. search_definitions(younger host)
 2. ask ""What age counts as ""younger""?"" -> user: ""I mean younger than 35.""
-3. execute ""Show the nations that have both hosts older than 45 and hosts younger than 35.""",,,
+3. execute ""Show the nations that have both hosts older than 45 and hosts younger than 35.""",drop,SR,"'hosts younger' reads as younger than 45, not the hidden 35"
 train-ambiguous-284,ambiguous,our rules,twitter_1,"follows(f1, f2)
 tweets(id, uid, text, createdate)
 user_profiles(uid, name, email, partitionid, followers)",Find the name and email of the users who have more than 1000 followers.,Find the name and email of the users who have many followers.,threshold: more than 1000 (user means: > 1000),,"1. search_definitions(many followers)
 2. ask ""How many followers count as ""many""?"" -> user: ""I mean more than 1000.""
-3. execute ""Find the name and email of the users who have more than 1000 followers.""",,,
+3. execute ""Find the name and email of the users who have more than 1000 followers.""",keep,SR,
 train-ambiguous-3050,ambiguous,our rules,loan_1,"bank(branch_ID, bname, no_of_customers, city, state)
 customer(cust_ID, cust_name, acc_type, acc_bal, no_of_loans, credit_score, branch_ID, state)
 loan(loan_ID, loan_type, cust_ID, branch_ID, amount)","Find the name, account type, and account balance of the customer who has the highest credit score.","Find the name, account type, and account balance of the customer who ranks highest.",ranking: has the highest credit score (user means: credit score),,"1. search_definitions(customer ranks highest)
 2. ask ""Ranked by what: acc bal, credit score or no of loans?"" -> user: ""Rank them by credit score.""
-3. execute ""Find the name, account type, and account balance of the customer who has the highest credit score.""",,,
+3. execute ""Find the name, account type, and account balance of the customer who has the highest credit score.""",keep,SR,
 train-ambiguous-32,ambiguous,model paraphrase,farm,"city(City_ID, Official_Name, Status, Area_km_2, Population, Census_Ranking)
 farm(Farm_ID, Year, Total_Horses, Working_Horses, Total_Cattle, Oxen, Bulls, Cows, Pigs, Sheep_and_Goats)
 farm_competition(Competition_ID, Year, Theme, Host_city_ID, Hosts)
 competition_record(Competition_ID, Farm_ID, Rank)",List the official name and status of the city with the largest population.,List the official name and status of the top one.,ranking: with the largest population (user means: population),,"1. search_definitions(city ranks highest)
 2. ask ""Ranked by what: area km 2 or population?"" -> user: ""Rank them by population.""
-3. execute ""List the official name and status of the city with the largest population.""",,,
+3. execute ""List the official name and status of the city with the largest population.""",drop,SR,'the top one' names no entity
 train-ambiguous-3404,ambiguous,our rules,manufacturer,"manufacturer(Manufacturer_ID, Open_Year, Name, Num_of_Factories, Num_of_Shops)
 furniture(Furniture_ID, Name, Num_of_Component, Market_Rate)
 furniture_manufacte(Manufacturer_ID, Furniture_ID, Price_in_Dollar)",Find the name of the company that produces both furnitures with less than 6 components and furnitures with more than 10 components.,Find the name of the company that produces both furnitures with less than 6 components and furnitures with many components.,threshold: more than 10 (user means: > 10),,"1. search_definitions(many components)
 2. ask ""How many components count as ""many""?"" -> user: ""I mean more than 10.""
-3. execute ""Find the name of the company that produces both furnitures with less than 6 components and furnitures with more than 10 components.""",,,
+3. execute ""Find the name of the company that produces both furnitures with less than 6 components and furnitures with more than 10 components.""",keep,SR,
 train-ambiguous-3559,ambiguous,our rules,music_1,"genre(g_name, rating, most_popular_in)
 artist(artist_name, country, gender, preferred_genre)
 files(f_id, artist_name, file_size, duration, formats)
 song(song_name, artist_name, country, f_id, genre_is, rating, languages, releasedate, resolution)",What is the average duration of songs that have mp3 format and resolution below 800?,What is the average duration of songs that have mp3 format and low resolution?,threshold: below 800 (user means: < 800),,"1. search_definitions(low resolution)
 2. ask ""What resolution counts as ""low""?"" -> user: ""I mean below 800.""
-3. execute ""What is the average duration of songs that have mp3 format and resolution below 800?""",,,
+3. execute ""What is the average duration of songs that have mp3 format and resolution below 800?""",keep,SR,
 train-ambiguous-3718,ambiguous,our rules,mountain_photos,"mountain(id, name, Height, Prominence, Range, Country)
 camera_lens(id, brand, name, focal_length_mm, max_aperture)
 photos(id, camera_lens_id, mountain_id, color, name)",What are the id and name of the mountains that have at least 2 photos?,What are the id and name of the mountains that have many photos?,threshold: at least 2 (user means: >= 2),,"1. search_definitions(many photos)
 2. ask ""How many photos count as ""many""?"" -> user: ""I mean at least 2.""
-3. execute ""What are the id and name of the mountains that have at least 2 photos?""",,,
+3. execute ""What are the id and name of the mountains that have at least 2 photos?""",keep,SR,
 train-ambiguous-3732,ambiguous,our rules,program_share,"program(Program_ID, Name, Origin, Launch, Owner)
 channel(Channel_ID, Name, Owner, Share_in_percent, Rating_in_percent)
 broadcast(Channel_ID, Program_ID, Time_of_day)
 broadcast_share(Channel_ID, Program_ID, Date, Share_in_percent)",What is the owner of the channel that has the highest rating ratio?,What is the owner of the channel that ranks highest?,ranking: has the highest rating ratio (user means: rating ratio),,"1. search_definitions(channel ranks highest)
 2. ask ""Ranked by what: rating in percent or share in percent?"" -> user: ""Rank them by rating ratio.""
-3. execute ""What is the owner of the channel that has the highest rating ratio?""",,,
+3. execute ""What is the owner of the channel that has the highest rating ratio?""",keep,SR,
 train-ambiguous-3852,ambiguous,our rules,insurance_policies,"Customers(Customer_ID, Customer_Details)
 Customer_Policies(Policy_ID, Customer_ID, Policy_Type_Code, Start_Date, End_Date)
 Claims(Claim_ID, Policy_ID, Date_Claim_Made, Date_Claim_Settled, Amount_Claimed, Amount_Settled)
 Settlements(Settlement_ID, Claim_ID, Date_Claim_Made, Date_Claim_Settled, Amount_Claimed, Amount_Settled, Customer_Policy_ID)
 Payments(Payment_ID, Settlement_ID, Payment_Method_Code, Date_Payment_Made, Amount_Payment)",Which customer had at least 2 policies but did not file any claims? List the customer details and id.,Which customer had many policies but did not file any claims? List the customer details and id.,threshold: at least 2 (user means: >= 2),,"1. search_definitions(many policies)
 2. ask ""How many policies count as ""many""?"" -> user: ""I mean at least 2.""
-3. execute ""Which customer had at least 2 policies but did not file any claims? List the customer details and id.""",,,
+3. execute ""Which customer had at least 2 policies but did not file any claims? List the customer details and id.""",keep,SR,
 train-ambiguous-397,ambiguous,model paraphrase,flight_1,"flight(flno, origin, destination, distance, departure_date, arrival_date, price, aid)
 aircraft(aid, name, distance)
 employee(eid, name, salary)
 certificate(eid, aid)",Show the flight number and distance of the flight with maximum price.,Show the flight number and distance of the top flight.,ranking: with maximum price (user means: price),,"1. search_definitions(flight ranks highest)
 2. ask ""Ranked by what: distance, flno or price?"" -> user: ""Rank them by price.""
-3. execute ""Show the flight number and distance of the flight with maximum price.""",,,
+3. execute ""Show the flight number and distance of the flight with maximum price.""",keep,SR,
 train-ambiguous-4156,ambiguous,model paraphrase,film_rank,"film(Film_ID, Title, Studio, Director, Gross_in_dollar)
 market(Market_ID, Country, Number_cities)
 film_market_estimation(Estimation_ID, Low_Estimate, High_Estimate, Film_ID, Type, Market_ID, Year)",What is the title of the film that has the highest high market estimation.,What is the title of the film that ranks highest among all?,ranking: has the highest high market estimation (user means: high market estimation),,"1. search_definitions(film ranks highest)
 2. ask ""Ranked by what: gross in dollar, high estimate or low estimate?"" -> user: ""Rank them by high market estimation.""
-3. execute ""What is the title of the film that has the highest high market estimation.""",,,
+3. execute ""What is the title of the film that has the highest high market estimation.""",keep,SR,
 train-ambiguous-4230,ambiguous,our rules,cre_Doc_Tracking_DB,"Ref_Document_Types(Document_Type_Code, Document_Type_Name, Document_Type_Description)
 Ref_Calendar(Calendar_Date, Day_Number)
 Ref_Locations(Location_Code, Location_Name, Location_Description)
@@ -325,22 +325,22 @@ Employees(Employee_ID, Role_Code, Employee_Name, Gender_MFU, Date_of_Birth, Othe
 Document_Locations(Document_ID, Location_Code, Date_in_Location_From, Date_in_Locaton_To)
 Documents_to_be_Destroyed(Document_ID, Destruction_Authorised_by_Employee_ID, Destroyed_by_Employee_ID, Planned_Destruction_Date, Actual_Destruction_Date, Other_Details)",Show the location codes with at least 3 documents.,Show the location codes with many documents.,threshold: at least 3 (user means: >= 3),,"1. search_definitions(many documents)
 2. ask ""How many documents count as ""many""?"" -> user: ""I mean at least 3.""
-3. execute ""Show the location codes with at least 3 documents.""",,,
+3. execute ""Show the location codes with at least 3 documents.""",keep,SR,
 train-ambiguous-433,ambiguous,our rules,flight_1,"flight(flno, origin, destination, distance, departure_date, arrival_date, price, aid)
 aircraft(aid, name, distance)
 employee(eid, name, salary)
 certificate(eid, aid)",Show the name and distance of the aircrafts with more than 5000 distance and which at least 5 people have its certificate.,Show the name and distance of the aircrafts with more than 5000 distance and which many people have its certificate.,threshold: at least 5 (user means: >= 5),,"1. search_definitions(many people)
 2. ask ""How many people count as ""many""?"" -> user: ""I mean at least 5.""
-3. execute ""Show the name and distance of the aircrafts with more than 5000 distance and which at least 5 people have its certificate.""",,,
+3. execute ""Show the name and distance of the aircrafts with more than 5000 distance and which at least 5 people have its certificate.""",keep,SR,
 train-ambiguous-4416,ambiguous,our rules,network_2,"Person(name, age, city, gender, job)
 PersonFriend(name, friend, year)",Who is the person whose age is below 30?,Who is the person whose age is low?,threshold: below 30 (user means: < 30),,"1. search_definitions(low age)
 2. ask ""What age counts as ""low""?"" -> user: ""I mean below 30.""
-3. execute ""Who is the person whose age is below 30?""",,,
+3. execute ""Who is the person whose age is below 30?""",keep,SR,
 train-ambiguous-4559,ambiguous,our rules,company_office,"buildings(id, name, City, Height, Stories, Status)
 Companies(id, name, Headquarters, Industry, Sales_billion, Profits_billion, Assets_billion, Market_Value_billion)
 Office_locations(building_id, company_id, move_in_year)",Find the stories of the building with the largest height.,Find the stories of the building that ranks highest.,ranking: with the largest height (user means: height),,"1. search_definitions(building ranks highest)
 2. ask ""Ranked by what: height or stories?"" -> user: ""Rank them by height.""
-3. execute ""Find the stories of the building with the largest height.""",,,
+3. execute ""Find the stories of the building with the largest height.""",keep,SR,
 train-ambiguous-4628,ambiguous,our rules,customers_campaigns_ecommerce,"Premises(premise_id, premises_type, premise_details)
 Products(product_id, product_category, product_name)
 Customers(customer_id, payment_method, customer_name, customer_phone, customer_email, customer_address, customer_login, customer_password)
@@ -350,7 +350,7 @@ Customer_Orders(order_id, customer_id, order_status_code, shipping_method_code, 
 Mailshot_Customers(mailshot_id, customer_id, outcome_code, mailshot_customer_date)
 Order_Items(item_id, order_item_status_code, order_id, product_id, item_status_code, item_delivered_datetime, item_order_quantity)",Show the names of customers who have at least 2 mailshots with outcome code 'Order'.,Show the names of customers who have many mailshots with outcome code 'Order'.,threshold: at least 2 (user means: >= 2),,"1. search_definitions(many mailshots)
 2. ask ""How many mailshots count as ""many""?"" -> user: ""I mean at least 2.""
-3. execute ""Show the names of customers who have at least 2 mailshots with outcome code 'Order'.""",,,
+3. execute ""Show the names of customers who have at least 2 mailshots with outcome code 'Order'.""",keep,SR,
 train-ambiguous-4848,ambiguous,our rules,local_govt_and_lot,"Customers(customer_id, customer_details)
 Properties(property_id, property_type_code, property_address, other_details)
 Residents(resident_id, property_id, date_moved_in, date_moved_out, other_details)
@@ -363,40 +363,40 @@ Customer_Event_Notes(Customer_Event_Note_ID, Customer_Event_ID, service_type_cod
 Timed_Status_of_Things(thing_id, Date_and_Date, Status_of_Thing_Code)
 Timed_Locations_of_Things(thing_id, Date_and_Time, Location_Code)",What are the id and details of the customers who have at least 3 events?,What are the id and details of the customers who have many events?,threshold: at least 3 (user means: >= 3),,"1. search_definitions(many events)
 2. ask ""How many events count as ""many""?"" -> user: ""I mean at least 3.""
-3. execute ""What are the id and details of the customers who have at least 3 events?""",,,
+3. execute ""What are the id and details of the customers who have at least 3 events?""",keep,SR,
 train-ambiguous-4894,ambiguous,our rules,school_player,"school(School_ID, School, Location, Enrollment, Founded, Denomination, Boys_or_Girls, Day_or_Boarding, Year_Entered_Competition, School_Colors)
 school_details(School_ID, Nickname, Colors, League, Class, Division)
 school_performance(School_Id, School_Year, Class_A, Class_AA)
 player(Player_ID, Player, Team, Age, Position, School_ID)",Show the denomination shared by schools founded before 1890 and schools founded after 1900,Show the denomination shared by schools founded long ago and schools founded after 1900,threshold: before 1890 (user means: < 1890),,"1. search_definitions(early school)
 2. ask ""Which founded do you mean by ""long ago""?"" -> user: ""I mean before 1890.""
-3. execute ""Show the denomination shared by schools founded before 1890 and schools founded after 1900""",,,
+3. execute ""Show the denomination shared by schools founded before 1890 and schools founded after 1900""",keep,SR,
 train-ambiguous-4924,ambiguous,our rules,store_product,"product(product_id, product, dimensions, dpi, pages_per_minute_color, max_page_size, interface)
 store(Store_ID, Store_Name, Type, Area_size, Number_of_product_category, Ranking)
 district(District_ID, District_name, Headquartered_City, City_Population, City_Area)
 store_product(Store_ID, Product_ID)
 store_district(Store_ID, District_ID)",Find the city with the most number of stores.,Find the city that ranks highest.,ranking: with the most number of stores (user means: number of stores),,"1. search_definitions(city ranks highest)
 2. ask ""Ranked by what: city area, city population or number of records?"" -> user: ""Rank them by number of stores.""
-3. execute ""Find the city with the most number of stores.""",,,
+3. execute ""Find the city with the most number of stores.""",keep,SR,
 train-ambiguous-5072,ambiguous,model paraphrase,device,"device(Device_ID, Device, Carrier, Package_Version, Applications, Software_Platform)
 shop(Shop_ID, Shop_Name, Location, Open_Date, Open_Year)
 stock(Shop_ID, Device_ID, Quantity)",Show the name of the shop that has the most kind of devices in stock.,Show the name of the shop that is the top one in stock.,ranking: has the most kind of devices (user means: kind of devices),,"1. search_definitions(shop ranks highest)
 2. ask ""Ranked by what: number of records, open year or quantity?"" -> user: ""Rank them by kind of devices.""
-3. execute ""Show the name of the shop that has the most kind of devices in stock.""",,,
+3. execute ""Show the name of the shop that has the most kind of devices in stock.""",keep,SR,
 train-ambiguous-5084,ambiguous,our rules,device,"device(Device_ID, Device, Carrier, Package_Version, Applications, Software_Platform)
 shop(Shop_ID, Shop_Name, Location, Open_Date, Open_Year)
 stock(Shop_ID, Device_ID, Quantity)",Show the locations shared by shops with open year later than 2012 and shops with open year before 2008.,Show the locations shared by shops with open year later than 2012 and shops with open year long ago.,threshold: before 2008 (user means: < 2008),,"1. search_definitions(early shop)
 2. ask ""Which open year do you mean by ""long ago""?"" -> user: ""I mean before 2008.""
-3. execute ""Show the locations shared by shops with open year later than 2012 and shops with open year before 2008.""",,,
+3. execute ""Show the locations shared by shops with open year later than 2012 and shops with open year before 2008.""",drop,SR,unnatural: 'shops with open year long ago'
 train-ambiguous-5290,ambiguous,our rules,manufactory_1,"Manufacturers(Code, Name, Headquarter, Founder, Revenue)
 Products(Code, Name, Price, Manufacturer)",Find the name of companies whose revenue is between 100 and 150.,Find the name of companies whose revenue is within a certain range.,threshold: between 100 and 150 (user means: between 100 and 150),,"1. search_definitions(revenue range)
 2. ask ""Which range of revenue do you mean?"" -> user: ""I mean between 100 and 150.""
-3. execute ""Find the name of companies whose revenue is between 100 and 150.""",,,
+3. execute ""Find the name of companies whose revenue is between 100 and 150.""",keep,SR,
 train-ambiguous-5418,ambiguous,our rules,shop_membership,"member(Member_ID, Card_Number, Name, Hometown, Level)
 branch(Branch_ID, Name, Open_year, Address_road, City, membership_amount)
 membership_register_branch(Member_ID, Branch_ID, Register_Year)
 purchase(Member_ID, Branch_ID, Year, Total_pounds)",Show the membership level with most number of members.,Show the membership level that ranks highest.,ranking: with most number of members (user means: number of members),,"1. search_definitions(level ranks highest)
 2. ask ""Ranked by what: level or number of records?"" -> user: ""Rank them by number of members.""
-3. execute ""Show the membership level with most number of members.""",,,
+3. execute ""Show the membership level with most number of members.""",keep,SR,
 train-ambiguous-5548,ambiguous,our rules,products_gen_characteristics,"Ref_Characteristic_Types(characteristic_type_code, characteristic_type_description)
 Ref_Colors(color_code, color_description)
 Ref_Product_Categories(product_category_code, product_category_description, unit_of_measure)
@@ -404,19 +404,19 @@ Characteristics(characteristic_id, characteristic_type_code, characteristic_data
 Products(product_id, color_code, product_category_code, product_name, typical_buying_price, typical_selling_price, product_description, other_product_details)
 Product_Characteristics(product_id, characteristic_id, product_characteristic_value)",Find the id and color description of the products with at least 2 characteristics.,Find the id and color description of the products with many characteristics.,threshold: at least 2 (user means: >= 2),,"1. search_definitions(many characteristics)
 2. ask ""How many characteristics count as ""many""?"" -> user: ""I mean at least 2.""
-3. execute ""Find the id and color description of the products with at least 2 characteristics.""",,,
+3. execute ""Find the id and color description of the products with at least 2 characteristics.""",keep,SR,
 train-ambiguous-5608,ambiguous,our rules,swimming,"swimmer(ID, name, Nationality, meter_100, meter_200, meter_300, meter_400, meter_500, meter_600, meter_700, Time)
 stadium(ID, name, Capacity, City, Country, Opening_year)
 event(ID, Name, Stadium_ID, Year)
 record(ID, Result, Swimmer_ID, Event_ID)",Find the country that has the most stadiums.,Find the country that ranks highest.,ranking: has the most stadiums (user means: stadiums),,"1. search_definitions(country ranks highest)
 2. ask ""Ranked by what: number of records, capacity or opening year?"" -> user: ""Rank them by stadiums.""
-3. execute ""Find the country that has the most stadiums.""",,,
+3. execute ""Find the country that has the most stadiums.""",keep,SR,
 train-ambiguous-5613,ambiguous,our rules,swimming,"swimmer(ID, name, Nationality, meter_100, meter_200, meter_300, meter_400, meter_500, meter_600, meter_700, Time)
 stadium(ID, name, Capacity, City, Country, Opening_year)
 event(ID, Name, Stadium_ID, Year)
 record(ID, Result, Swimmer_ID, Event_ID)",Which countries do not have a stadium that was opened after 2006?,Which countries do not have a stadium that was opened recently?,threshold: after 2006 (user means: > 2006),,"1. search_definitions(recent stadium)
 2. ask ""Which opening year do you mean by ""recently""?"" -> user: ""I mean after 2006.""
-3. execute ""Which countries do not have a stadium that was opened after 2006?""",,,
+3. execute ""Which countries do not have a stadium that was opened after 2006?""",keep,SR,
 train-ambiguous-565,ambiguous,model paraphrase,store_1,"artists(id, name)
 albums(id, title, artist_id)
 employees(id, last_name, first_name, title, reports_to, birth_date, hire_date, address, city, state, country, postal_code, phone, fax, email)
@@ -429,21 +429,21 @@ invoice_lines(id, invoice_id, track_id, unit_price, quantity)
 playlists(id, name)
 playlist_tracks(playlist_id, track_id)",List the state in the US with the most invoices.,List the state in the US that ranks highest in terms of activity.,ranking: with the most invoices (user means: invoices),,"1. search_definitions(us ranks highest)
 2. ask ""Ranked by what: total or number of records?"" -> user: ""Rank them by invoices.""
-3. execute ""List the state in the US with the most invoices.""",,,
+3. execute ""List the state in the US with the most invoices.""",keep,SR,
 train-ambiguous-5756,ambiguous,our rules,dorm_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Dorm(dormid, dorm_name, student_capacity, gender)
 Dorm_amenity(amenid, amenity_name)
 Has_amenity(dormid, amenid)
 Lives_in(stuid, dormid, room_number)",Find the first name of students who are living in the dorm that has most number of amenities.,Find the first name of students who are living in the dorm that ranks highest.,ranking: has most number of amenities (user means: number of amenities),,"1. search_definitions(dorm ranks highest)
 2. ask ""Ranked by what: student capacity, room number or advisor?"" -> user: ""Rank them by number of amenities.""
-3. execute ""Find the first name of students who are living in the dorm that has most number of amenities.""",,,
+3. execute ""Find the first name of students who are living in the dorm that has most number of amenities.""",drop,SR,ask offers 'room number' and 'advisor' for dorms
 train-ambiguous-5758,ambiguous,our rules,dorm_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Dorm(dormid, dorm_name, student_capacity, gender)
 Dorm_amenity(amenid, amenity_name)
 Has_amenity(dormid, amenid)
 Lives_in(stuid, dormid, room_number)",Find the name and capacity of the dorm with least number of amenities.,Find the name and capacity of the dorm that ranks lowest.,ranking: with least number of amenities (user means: number of amenities),,"1. search_definitions(dorm ranks lowest)
 2. ask ""Ranked by what: student capacity or number of records?"" -> user: ""Rank them by number of amenities.""
-3. execute ""Find the name and capacity of the dorm with least number of amenities.""",,,
+3. execute ""Find the name and capacity of the dorm with least number of amenities.""",keep,SR,
 train-ambiguous-5864,ambiguous,model paraphrase,tracking_share_transactions,"Investors(investor_id, Investor_details)
 Lots(lot_id, investor_id, lot_details)
 Ref_Transaction_Types(transaction_type_code, transaction_type_description)
@@ -452,7 +452,7 @@ Sales(sales_transaction_id, sales_details)
 Purchases(purchase_transaction_id, purchase_details)
 Transactions_Lots(transaction_id, lot_id)",What are the lot details of lots associated with transactions with share count smaller than 50?,What are the lot details of lots associated with transactions involving small share counts?,threshold: smaller than 50 (user means: < 50),,"1. search_definitions(small share count)
 2. ask ""What share count counts as ""small""?"" -> user: ""I mean smaller than 50.""
-3. execute ""What are the lot details of lots associated with transactions with share count smaller than 50?""",,,
+3. execute ""What are the lot details of lots associated with transactions with share count smaller than 50?""",keep,SR,
 train-ambiguous-5913,ambiguous,our rules,cre_Theme_park,"Ref_Hotel_Star_Ratings(star_rating_code, star_rating_description)
 Locations(Location_ID, Location_Name, Address, Other_Details)
 Ref_Attraction_Types(Attraction_Type_Code, Attraction_Type_Description)
@@ -470,19 +470,19 @@ Photos(Photo_ID, Tourist_Attraction_ID, Name, Description, Filename, Other_Detai
 Staff(Staff_ID, Tourist_Attraction_ID, Name, Other_Details)
 Tourist_Attraction_Features(Tourist_Attraction_ID, Feature_ID)",What are the star rating descriptions of the hotels with price above 10000?,What are the star rating descriptions of the hotels with high price?,threshold: above 10000 (user means: > 10000),,"1. search_definitions(high price range)
 2. ask ""What price range counts as ""high""?"" -> user: ""I mean above 10000.""
-3. execute ""What are the star rating descriptions of the hotels with price above 10000?""",,,
+3. execute ""What are the star rating descriptions of the hotels with price above 10000?""",keep,SR,
 train-ambiguous-6017,ambiguous,our rules,game_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Video_Games(GameID, GName, GType)
 Plays_Games(StuID, GameID, Hours_Played)
 SportsInfo(StuID, SportName, HoursPerWeek, GamesPlayed, OnScholarship)",What is the first name and last name of the student who have most number of sports?,What is the first name and last name of the student who ranks highest?,ranking: have most number of sports (user means: number of sports),,"1. search_definitions(student ranks highest)
 2. ask ""Ranked by what: games played, hours per week or advisor?"" -> user: ""Rank them by number of sports.""
-3. execute ""What is the first name and last name of the student who have most number of sports?""",,,
+3. execute ""What is the first name and last name of the student who have most number of sports?""",drop,SR,ask offers 'advisor' as a ranking measure
 train-ambiguous-6045,ambiguous,model paraphrase,game_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Video_Games(GameID, GName, GType)
 Plays_Games(StuID, GameID, Hours_Played)
 SportsInfo(StuID, SportName, HoursPerWeek, GamesPlayed, OnScholarship)",Show all game names played by at least 1000 hours.,Show all game names played by high hours.,threshold: at least 1000 hours (user means: >= 1000),,"1. search_definitions(high total hours played)
 2. ask ""What total hours played counts as ""high""?"" -> user: ""I mean at least 1000 hours.""
-3. execute ""Show all game names played by at least 1000 hours.""",,,
+3. execute ""Show all game names played by at least 1000 hours.""",drop,SR,unnatural: 'played by high hours'
 train-ambiguous-6093,ambiguous,our rules,customers_and_addresses,"Addresses(address_id, address_content, city, zip_postcode, state_province_county, country, other_address_details)
 Products(product_id, product_details)
 Customers(customer_id, payment_method, customer_name, date_became_customer, other_customer_details)
@@ -491,11 +491,11 @@ Customer_Contact_Channels(customer_id, channel_code, active_from_date, active_to
 Customer_Orders(order_id, customer_id, order_status, order_date, order_details)
 Order_Items(order_id, product_id, order_quantity)",List the countries having more than 4 addresses listed.,List the countries having many addresses listed.,threshold: more than 4 (user means: > 4),,"1. search_definitions(many addresses)
 2. ask ""How many addresses count as ""many""?"" -> user: ""I mean more than 4.""
-3. execute ""List the countries having more than 4 addresses listed.""",,,
+3. execute ""List the countries having more than 4 addresses listed.""",keep,SR,
 train-ambiguous-6224,ambiguous,our rules,ship_1,"captain(Captain_ID, Name, Ship_ID, age, Class, Rank)
 Ship(Ship_ID, Name, Type, Built_Year, Class, Flag)",How many captains with younger than 50 are in each rank?,How many captains with younger are in each rank?,threshold: younger than 50 (user means: < 50),,"1. search_definitions(younger captain)
 2. ask ""What age counts as ""younger""?"" -> user: ""I mean younger than 50.""
-3. execute ""How many captains with younger than 50 are in each rank?""",,,
+3. execute ""How many captains with younger than 50 are in each rank?""",drop,SR,broken English: 'captains with younger'
 train-ambiguous-6334,ambiguous,our rules,e_government,"Addresses(address_id, line_1_number_building, town_city, zip_postcode, state_province_county, country)
 Services(service_id, service_type_code, service_name, service_descriptio)
 Forms(form_id, form_type_code, service_id, form_number, form_name, form_description)
@@ -507,17 +507,17 @@ Party_Addresses(party_id, address_id, date_address_from, address_type_code, date
 Party_Forms(party_id, form_id, date_completion_started, form_status_code, date_fully_completed)
 Party_Services(booking_id, customer_id, service_id, service_datetime, booking_made_date)",Find the payment method code used by more than 3 parties.,Find the payment method code used by many parties.,threshold: more than 3 (user means: > 3),,"1. search_definitions(many parties)
 2. ask ""How many parties count as ""many""?"" -> user: ""I mean more than 3.""
-3. execute ""Find the payment method code used by more than 3 parties.""",,,
+3. execute ""Find the payment method code used by more than 3 parties.""",keep,SR,
 train-ambiguous-6353,ambiguous,our rules,school_bus,"driver(Driver_ID, Name, Party, Home_city, Age)
 school(School_ID, Grade, School, Location, Type)
 school_bus(School_ID, Driver_ID, Years_Working, If_full_time)",Show the home city with the most number of drivers.,Show the home city that ranks highest.,ranking: with the most number of drivers (user means: number of drivers),,"1. search_definitions(city ranks highest)
 2. ask ""Ranked by what: age or number of records?"" -> user: ""Rank them by number of drivers.""
-3. execute ""Show the home city with the most number of drivers.""",,,
+3. execute ""Show the home city with the most number of drivers.""",keep,SR,
 train-ambiguous-6366,ambiguous,our rules,flight_company,"airport(id, City, Country, IATA, ICAO, name)
 operate_company(id, name, Type, Principal_activities, Incorporated_in, Group_Equity_Shareholding)
 flight(id, Vehicle_Flight_number, Date, Pilot, Velocity, Altitude, airport_id, company_id)",How many flights have a velocity larger than 200?,How many flights have a large velocity?,threshold: larger than 200 (user means: > 200),,"1. search_definitions(large velocity)
 2. ask ""What velocity counts as ""large""?"" -> user: ""I mean larger than 200.""
-3. execute ""How many flights have a velocity larger than 200?""",,,
+3. execute ""How many flights have a velocity larger than 200?""",keep,SR,
 train-ambiguous-6421,ambiguous,our rules,cre_Docs_and_Epenses,"Ref_Document_Types(Document_Type_Code, Document_Type_Name, Document_Type_Description)
 Ref_Budget_Codes(Budget_Type_Code, Budget_Type_Description)
 Projects(Project_ID, Project_Details)
@@ -526,62 +526,62 @@ Statements(Statement_ID, Statement_Details)
 Documents_with_Expenses(Document_ID, Budget_Type_Code, Document_Details)
 Accounts(Account_ID, Statement_ID, Account_Details)",Show the document type code with fewer than 3 documents.,Show the document type code with few documents.,threshold: fewer than 3 (user means: < 3),,"1. search_definitions(few documents)
 2. ask ""How many documents count as ""few""?"" -> user: ""I mean fewer than 3.""
-3. execute ""Show the document type code with fewer than 3 documents.""",,,
+3. execute ""Show the document type code with fewer than 3 documents.""",keep,SR,
 train-ambiguous-6519,ambiguous,model paraphrase,wine_1,"grapes(ID, Grape, Color)
 appellations(No, Appelation, County, State, Area, isAVA)
 wine(No, Grape, Winery, Appelation, State, Name, Year, Price, Score, Cases, Drink)",Which winery is the wine that has the highest score from?,Which winery is the wine that ranks the top from?,ranking: has the highest score (user means: score),,"1. search_definitions(wine ranks lowest)
 2. ask ""Ranked by what: cases, no or price?"" -> user: ""Rank them by score.""
-3. execute ""Which winery is the wine that has the highest score from?""",,,
+3. execute ""Which winery is the wine that has the highest score from?""",drop,SR,broken English; searches 'wine ranks lowest' for a top request; ask offers 'no'
 train-ambiguous-6607,ambiguous,our rules,train_station,"station(Station_ID, Name, Annual_entry_exit, Annual_interchanges, Total_Passengers, Location, Main_Services, Number_of_Platforms)
 train(Train_ID, Name, Time, Service)
 train_station(Train_ID, Station_ID)",Show all locations which don't have a train station with at least 15 platforms.,Show all locations which don't have a train station with many platforms.,threshold: at least 15 (user means: >= 15),,"1. search_definitions(many platforms)
 2. ask ""How many platforms count as ""many""?"" -> user: ""I mean at least 15.""
-3. execute ""Show all locations which don't have a train station with at least 15 platforms.""",,,
+3. execute ""Show all locations which don't have a train station with at least 15 platforms.""",keep,SR,
 train-ambiguous-6608,ambiguous,our rules,train_station,"station(Station_ID, Name, Annual_entry_exit, Annual_interchanges, Total_Passengers, Location, Main_Services, Number_of_Platforms)
 train(Train_ID, Name, Time, Service)
 train_station(Train_ID, Station_ID)",Show the location with most number of train stations.,Show the location that ranks highest.,ranking: with most number of train stations (user means: number of train stations),,"1. search_definitions(location ranks highest)
 2. ask ""Ranked by what: number of records, annual entry exit or annual interchanges?"" -> user: ""Rank them by number of train stations.""
-3. execute ""Show the location with most number of train stations.""",,,
+3. execute ""Show the location with most number of train stations.""",keep,SR,
 train-ambiguous-6759,ambiguous,our rules,activity_1,"Activity(actid, activity_name)
 Participates_in(stuid, actid)
 Faculty_Participates_in(FacID, actid)
 Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Faculty(FacID, Lname, Fname, Rank, Sex, Phone, Room, Building)",What are the first and last name of the faculty who has the most students?,What are the first and last name of the faculty who ranks highest?,ranking: has the most students (user means: students),,"1. search_definitions(faculty ranks highest)
 2. ask ""Ranked by what: phone, advisor or age?"" -> user: ""Rank them by students.""
-3. execute ""What are the first and last name of the faculty who has the most students?""",,,
+3. execute ""What are the first and last name of the faculty who has the most students?""",drop,SR,"ask offers 'phone, advisor or age' for faculty"
 train-ambiguous-6761,ambiguous,our rules,activity_1,"Activity(actid, activity_name)
 Participates_in(stuid, actid)
 Faculty_Participates_in(FacID, actid)
 Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Faculty(FacID, Lname, Fname, Rank, Sex, Phone, Room, Building)",Show the ids for all the faculty members who have at least 2 students.,Show the ids for all the faculty members who have many students.,threshold: at least 2 (user means: >= 2),,"1. search_definitions(many students)
 2. ask ""How many students count as ""many""?"" -> user: ""I mean at least 2.""
-3. execute ""Show the ids for all the faculty members who have at least 2 students.""",,,
+3. execute ""Show the ids for all the faculty members who have at least 2 students.""",keep,SR,
 train-ambiguous-6853,ambiguous,our rules,flight_4,"routes(rid, dst_apid, dst_ap, src_apid, src_ap, alid, airline, codeshare)
 airports(apid, name, city, country, x, y, elevation, iata, icao)
 airlines(alid, name, iata, icao, callsign, country, active)",How many cities are there that have more than 3 airports?,How many cities are there that have many airports?,threshold: more than 3 (user means: > 3),,"1. search_definitions(many airports)
 2. ask ""How many airports count as ""many""?"" -> user: ""I mean more than 3.""
-3. execute ""How many cities are there that have more than 3 airports?""",,,
+3. execute ""How many cities are there that have more than 3 airports?""",keep,SR,
 train-ambiguous-6953,ambiguous,our rules,architecture,"architect(id, name, nationality, gender)
 bridge(architect_id, id, name, location, length_meters, length_feet)
 mill(architect_id, id, location, name, type, built_year, notes)",What are the ids and names of the architects who built at least 3 bridges ?,What are the ids and names of the architects who built many bridges?,threshold: at least 3 (user means: >= 3),,"1. search_definitions(many bridges)
 2. ask ""How many bridges count as ""many""?"" -> user: ""I mean at least 3.""
-3. execute ""What are the ids and names of the architects who built at least 3 bridges ?""",,,
+3. execute ""What are the ids and names of the architects who built at least 3 bridges ?""",keep,SR,
 train-ambiguous-6972,ambiguous,our rules,culture_company,"book_club(book_club_id, Year, Author_or_Editor, Book_Title, Publisher, Category, Result)
 movie(movie_id, Title, Year, Director, Budget_million, Gross_worldwide)
 culture_company(Company_name, Type, Incorporated_in, Group_Equity_Shareholding, book_club_id, movie_id)",What is the publisher with most number of books?,What is the publisher that ranks highest?,ranking: with most number of books (user means: number of books),,"1. search_definitions(publisher ranks highest)
 2. ask ""Ranked by what: year or number of records?"" -> user: ""Rank them by number of books.""
-3. execute ""What is the publisher with most number of books?""",,,
+3. execute ""What is the publisher with most number of books?""",keep,SR,
 train-ambiguous-7,ambiguous,our rules,department_management,"department(Department_ID, Name, Creation, Ranking, Budget_in_Billions, Num_Employees)
 head(head_ID, name, born_state, age)
 management(department_ID, head_ID, temporary_acting)",What are the names of the states where at least 3 heads were born?,What are the names of the states where many heads were born?,threshold: at least 3 (user means: >= 3),,"1. search_definitions(many heads)
 2. ask ""How many heads count as ""many""?"" -> user: ""I mean at least 3.""
-3. execute ""What are the names of the states where at least 3 heads were born?""",,,
+3. execute ""What are the names of the states where at least 3 heads were born?""",keep,SR,
 train-ambiguous-723,ambiguous,our rules,customers_card_transactions,"Accounts(account_id, customer_id, account_name, other_account_details)
 Customers(customer_id, customer_first_name, customer_last_name, customer_address, customer_phone, customer_email, other_customer_details)
 Customers_Cards(card_id, customer_id, card_type_code, card_number, date_valid_from, date_valid_to, other_card_details)
 Financial_Transactions(transaction_id, previous_transaction_id, account_id, card_id, transaction_type, transaction_date, transaction_amount, transaction_comment, other_transaction_details)",Show card type codes with at least 5 cards.,Show card type codes with many cards.,threshold: at least 5 (user means: >= 5),,"1. search_definitions(many cards)
 2. ask ""How many cards count as ""many""?"" -> user: ""I mean at least 5.""
-3. execute ""Show card type codes with at least 5 cards.""",,,
+3. execute ""Show card type codes with at least 5 cards.""",keep,SR,
 train-ambiguous-869,ambiguous,our rules,chinook_1,"Album(AlbumId, Title, ArtistId)
 Artist(ArtistId, Name)
 Customer(CustomerId, FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email, SupportRepId)
@@ -594,7 +594,7 @@ Playlist(PlaylistId, Name)
 PlaylistTrack(PlaylistId, TrackId)
 Track(TrackId, Name, AlbumId, MediaTypeId, GenreId, Composer, Milliseconds, Bytes, UnitPrice)",Please show the employee first names and ids of employees who serve at least 10 customers.,Please show the employee first names and ids of employees who serve many customers.,threshold: at least 10 (user means: >= 10),,"1. search_definitions(many customers)
 2. ask ""How many customers count as ""many""?"" -> user: ""I mean at least 10.""
-3. execute ""Please show the employee first names and ids of employees who serve at least 10 customers.""",,,
+3. execute ""Please show the employee first names and ids of employees who serve at least 10 customers.""",keep,SR,
 train-ambiguous-899,ambiguous,our rules,insurance_fnol,"Customers(Customer_ID, Customer_name)
 Services(Service_ID, Service_name)
 Available_Policies(Policy_ID, policy_type_code, Customer_Phone)
@@ -603,45 +603,45 @@ First_Notification_of_Loss(FNOL_ID, Customer_ID, Policy_ID, Service_ID)
 Claims(Claim_ID, FNOL_ID, Effective_Date)
 Settlements(Settlement_ID, Claim_ID, Effective_Date, Settlement_Amount)",Find the policy type used by more than 4 customers.,Find the policy type used by many customers.,threshold: more than 4 (user means: > 4),,"1. search_definitions(many customers)
 2. ask ""How many customers count as ""many""?"" -> user: ""I mean more than 4.""
-3. execute ""Find the policy type used by more than 4 customers.""",,,
+3. execute ""Find the policy type used by more than 4 customers.""",keep,SR,
 train-ambiguous-981,ambiguous,our rules,university_basketball,"basketball_match(Team_ID, School_ID, Team_Name, ACC_Regular_Season, ACC_Percent, ACC_Home, ACC_Road, All_Games, All_Games_Percent, All_Home, All_Road, All_Neutral)
 university(School_ID, School, Location, Founded, Affiliation, Enrollment, Nickname, Primary_conference)",When was the school with the largest enrollment founded?,When was the school that ranks highest?,ranking: with the largest enrollment founded (user means: enrollment founded),,"1. search_definitions(school ranks highest)
 2. ask ""Ranked by what: enrollment or founded?"" -> user: ""Rank them by enrollment founded.""
-3. execute ""When was the school with the largest enrollment founded?""",,,
+3. execute ""When was the school with the largest enrollment founded?""",drop,SR,broken: 'When was the school that ranks highest?'; answer 'enrollment founded'
 train-ambiguous-989,ambiguous,our rules,university_basketball,"basketball_match(Team_ID, School_ID, Team_Name, ACC_Regular_Season, ACC_Percent, ACC_Home, ACC_Road, All_Games, All_Games_Percent, All_Home, All_Road, All_Neutral)
 university(School_ID, School, Location, Founded, Affiliation, Enrollment, Nickname, Primary_conference)",What is the primary conference of the school that has the lowest acc percent score in the competition?,What is the primary conference of the school that ranks lowest in the competition?,ranking: has the lowest acc percent score (user means: acc percent score),,"1. search_definitions(school ranks lowest)
 2. ask ""Ranked by what: acc percent, all games percent or enrollment?"" -> user: ""Rank them by acc percent score.""
-3. execute ""What is the primary conference of the school that has the lowest acc percent score in the competition?""",,,
+3. execute ""What is the primary conference of the school that has the lowest acc percent score in the competition?""",keep,SR,
 train-two_slot-1637,two_slot,our rules,wedding,"people(People_ID, Name, Country, Is_Male, Age)
 church(Church_ID, Name, Organized_by, Open_Date, Continuation_of)
 wedding(Church_ID, Male_ID, Female_ID, Year)",Show the country where people older than 30 and younger than 25 are from.,Show the country where people older and younger are from.,threshold: younger than 25 (user means: < 25) | threshold: older than 30 (user means: > 30),,"1. search_definitions(younger people)
 2. ask ""What age counts as ""younger""?"" -> user: ""I mean younger than 25.""
 3. ask ""What age counts as ""older""?"" -> user: ""I mean older than 30.""
-4. execute ""Show the country where people older than 30 and younger than 25 are from.""",,,
+4. execute ""Show the country where people older than 30 and younger than 25 are from.""",drop,SR,broken English: 'people older and younger are from'
 train-two_slot-1915,two_slot,our rules,protein_institute,"building(building_id, Name, Street_address, Years_as_tallest, Height_feet, Floors)
 Institution(Institution_id, Institution, Location, Founded, Type, Enrollment, Team, Primary_Conference, building_id)
 protein(common_name, protein_name, divergence_from_human_lineage, accession_number, sequence_length, sequence_identity_to_human_protein, Institution_id)",List the names of buildings with at least 200 feet of height and with at least 20 floors.,List the names of buildings with many feet of height and with many floors.,threshold: at least 20 (user means: >= 20) | threshold: at least 200 (user means: >= 200),,"1. search_definitions(many floors)
 2. ask ""How many floors count as ""many""?"" -> user: ""I mean at least 20.""
 3. ask ""How many feet count as ""many""?"" -> user: ""I mean at least 200.""
-4. execute ""List the names of buildings with at least 200 feet of height and with at least 20 floors.""",,,
+4. execute ""List the names of buildings with at least 200 feet of height and with at least 20 floors.""",keep,SR,
 train-two_slot-205,two_slot,our rules,bike_1,"station(id, name, lat, long, dock_count, city, installation_date)
 status(station_id, bikes_available, docks_available, time)
 trip(id, duration, start_date, start_station_name, start_station_id, end_date, end_station_name, end_station_id, bike_id, subscription_type, zip_code)
 weather(date, max_temperature_f, mean_temperature_f, min_temperature_f, max_dew_point_f, mean_dew_point_f, min_dew_point_f, max_humidity, mean_humidity, min_humidity, max_sea_level_pressure_inches, mean_sea_level_pressure_inches, min_sea_level_pressure_inches, max_visibility_miles, mean_visibility_miles, min_visibility_miles, max_wind_Speed_mph, mean_wind_speed_mph, max_gust_speed_mph, precipitation_inches, cloud_cover, events, wind_dir_degrees, zip_code)",Give me the zip code where the average mean humidity is below 70 and at least 100 trips took place.,Give me the zip code where the average mean humidity is low and many trips took place.,threshold: at least 100 (user means: >= 100) | threshold: below 70 (user means: < 70),,"1. search_definitions(many trips)
 2. ask ""How many trips count as ""many""?"" -> user: ""I mean at least 100.""
 3. ask ""What average mean humidity counts as ""low""?"" -> user: ""I mean below 70.""
-4. execute ""Give me the zip code where the average mean humidity is below 70 and at least 100 trips took place.""",,,
+4. execute ""Give me the zip code where the average mean humidity is below 70 and at least 100 trips took place.""",keep,SR,
 train-two_slot-230,two_slot,our rules,book_2,"publication(Publication_ID, Book_ID, Publisher, Publication_Date, Price)
 book(Book_ID, Title, Issues, Writer)",Show the publishers that have publications with price higher than 10000000 and publications with price lower than 5000000.,Show the publishers that have publications with high price and publications with low price.,threshold: higher than 10000000 (user means: > 10000000) | threshold: lower than 5000000 (user means: < 5000000),,"1. search_definitions(high price)
 2. ask ""What price counts as ""high""?"" -> user: ""I mean higher than 10000000.""
 3. ask ""What price counts as ""low""?"" -> user: ""I mean lower than 5000000.""
-4. execute ""Show the publishers that have publications with price higher than 10000000 and publications with price lower than 5000000.""",,,
+4. execute ""Show the publishers that have publications with price higher than 10000000 and publications with price lower than 5000000.""",keep,SR,
 train-two_slot-2810,two_slot,model paraphrase,news_report,"event(Event_ID, Date, Venue, Name, Event_Attendance)
 journalist(journalist_ID, Name, Nationality, Age, Years_working)
 news_report(journalist_ID, Event_ID, Work_Type)",Show the nations that have both journalists with more than 10 years of working and journalists with less than 3 years of working.,Show the nations that have both journalists with high experience and journalists with low experience.,threshold: more than 10 years (user means: > 10) | threshold: less than 3 years (user means: < 3),,"1. search_definitions(high years working)
 2. ask ""What years working counts as ""high""?"" -> user: ""I mean more than 10 years.""
 3. ask ""What years working counts as ""low""?"" -> user: ""I mean less than 3 years.""
-4. execute ""Show the nations that have both journalists with more than 10 years of working and journalists with less than 3 years of working.""",,,
+4. execute ""Show the nations that have both journalists with more than 10 years of working and journalists with less than 3 years of working.""",keep,SR,
 train-two_slot-331,two_slot,our rules,product_catalog,"Attribute_Definitions(attribute_id, attribute_name, attribute_data_type)
 Catalogs(catalog_id, catalog_name, catalog_publisher, date_of_publication, date_of_latest_revision)
 Catalog_Structure(catalog_level_number, catalog_id, catalog_level_name)
@@ -649,13 +649,13 @@ Catalog_Contents(catalog_entry_id, catalog_level_number, parent_entry_id, previo
 Catalog_Contents_Additional_Attributes(catalog_entry_id, catalog_level_number, attribute_id, attribute_value)",Find the names of the products with length smaller than 3 or height greater than 5.,Find the names of the products with small length or large height.,threshold: smaller than 3 (user means: < 3) | threshold: greater than 5 (user means: > 5),,"1. search_definitions(small length)
 2. ask ""What length counts as ""small""?"" -> user: ""I mean smaller than 3.""
 3. ask ""What width counts as ""large""?"" -> user: ""I mean greater than 5.""
-4. execute ""Find the names of the products with length smaller than 3 or height greater than 5.""",,,
+4. execute ""Find the names of the products with length smaller than 3 or height greater than 5.""",drop,SR,"second ask is about width, request says height"
 train-two_slot-3398,two_slot,our rules,manufacturer,"manufacturer(Manufacturer_ID, Open_Year, Name, Num_of_Factories, Num_of_Shops)
 furniture(Furniture_ID, Name, Num_of_Component, Market_Rate)
 furniture_manufacte(Manufacturer_ID, Furniture_ID, Price_in_Dollar)",Give me the name and year of opening of the manufacturers that have either less than 10 factories or more than 10 shops.,Give me the name and year of opening of the manufacturers that have either few factories or many shops.,threshold: more than 10 (user means: > 10) | threshold: less than 10 (user means: < 10),,"1. search_definitions(many shops)
 2. ask ""How many shops count as ""many""?"" -> user: ""I mean more than 10.""
 3. ask ""How many factories count as ""few""?"" -> user: ""I mean less than 10.""
-4. execute ""Give me the name and year of opening of the manufacturers that have either less than 10 factories or more than 10 shops.""",,,
+4. execute ""Give me the name and year of opening of the manufacturers that have either less than 10 factories or more than 10 shops.""",keep,SR,
 train-two_slot-5698,two_slot,our rules,dorm_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Dorm(dormid, dorm_name, student_capacity, gender)
 Dorm_amenity(amenid, amenity_name)
@@ -663,7 +663,7 @@ Has_amenity(dormid, amenid)
 Lives_in(stuid, dormid, room_number)",Find the name and gender type of the dorms whose capacity is greater than 300 or less than 100.,Find the name and gender type of the dorms whose capacity is large or low.,threshold: less than 100 (user means: < 100) | threshold: greater than 300 (user means: > 300),,"1. search_definitions(low student capacity)
 2. ask ""What student capacity counts as ""low""?"" -> user: ""I mean less than 100.""
 3. ask ""What student capacity counts as ""large""?"" -> user: ""I mean greater than 300.""
-4. execute ""Find the name and gender type of the dorms whose capacity is greater than 300 or less than 100.""",,,
+4. execute ""Find the name and gender type of the dorms whose capacity is greater than 300 or less than 100.""",keep,SR,
 train-two_slot-5882,two_slot,model paraphrase,tracking_share_transactions,"Investors(investor_id, Investor_details)
 Lots(lot_id, investor_id, lot_details)
 Ref_Transaction_Types(transaction_type_code, transaction_type_description)
@@ -673,43 +673,43 @@ Purchases(purchase_transaction_id, purchase_details)
 Transactions_Lots(transaction_id, lot_id)",What are the dates of transactions with at least 100 share count or amount bigger than 100?,What are the dates of transactions with many shares or a big amount?,threshold: at least 100 (user means: >= 100) | threshold: bigger than 100 (user means: > 100),,"1. search_definitions(many share)
 2. ask ""How many share count as ""many""?"" -> user: ""I mean at least 100.""
 3. ask ""What share count counts as ""big""?"" -> user: ""I mean bigger than 100.""
-4. execute ""What are the dates of transactions with at least 100 share count or amount bigger than 100?""",,,
+4. execute ""What are the dates of transactions with at least 100 share count or amount bigger than 100?""",drop,SR,"second ask is about share count, request says amount"
 train-two_slot-6207,two_slot,model paraphrase,roller_coaster,"roller_coaster(Roller_Coaster_ID, Name, Park, Country_ID, Length, Height, Speed, Opened, Status)
 country(Country_ID, Name, Population, Area, Languages)",Show the statuses of roller coasters longer than 3300 or higher than 100.,Show the statuses of roller coasters that are long or high.,threshold: higher than 100 (user means: > 100) | threshold: longer than 3300 (user means: > 3300),,"1. search_definitions(high height)
 2. ask ""What height counts as ""high""?"" -> user: ""I mean higher than 100.""
 3. ask ""What length counts as ""long""?"" -> user: ""I mean longer than 3300.""
-4. execute ""Show the statuses of roller coasters longer than 3300 or higher than 100.""",,,
+4. execute ""Show the statuses of roller coasters longer than 3300 or higher than 100.""",keep,SR,
 train-two_slot-6606,two_slot,our rules,train_station,"station(Station_ID, Name, Annual_entry_exit, Annual_interchanges, Total_Passengers, Location, Main_Services, Number_of_Platforms)
 train(Train_ID, Name, Time, Service)
 train_station(Train_ID, Station_ID)",Show all locations that have train stations with at least 15 platforms and train stations with more than 25 total passengers.,Show all locations that have train stations with many platforms and train stations with many total passengers.,threshold: at least 15 (user means: >= 15) | threshold: more than 25 (user means: > 25),,"1. search_definitions(many platforms)
 2. ask ""How many platforms count as ""many""?"" -> user: ""I mean at least 15.""
 3. ask ""How many total count as ""many""?"" -> user: ""I mean more than 25.""
-4. execute ""Show all locations that have train stations with at least 15 platforms and train stations with more than 25 total passengers.""",,,
+4. execute ""Show all locations that have train stations with at least 15 platforms and train stations with more than 25 total passengers.""",drop,SR,broken ask: 'How many total count as many?'
 train-two_slot-795,two_slot,our rules,coffee_shop,"shop(Shop_ID, Address, Num_of_staff, Score, Open_Year)
 member(Member_ID, Name, Membership_card, Age, Time_of_purchase, Level_of_membership, Address)
 happy_hour(HH_ID, Shop_ID, Month, Num_of_shaff_in_charge)
 happy_hour_member(HH_ID, Member_ID, Total_amount)",Which address has both members younger than 30 and members older than 40?,Which address has both members younger and members older?,threshold: younger than 30 (user means: < 30) | threshold: older than 40 (user means: > 40),,"1. search_definitions(younger member)
 2. ask ""What age counts as ""younger""?"" -> user: ""I mean younger than 30.""
 3. ask ""What age counts as ""older""?"" -> user: ""I mean older than 40.""
-4. execute ""Which address has both members younger than 30 and members older than 40?""",,,
+4. execute ""Which address has both members younger than 30 and members older than 40?""",drop,SR,broken English: 'members younger and members older'
 train-definition-1122,definition,our rules,climbing,"mountain(Mountain_ID, Name, Height, Prominence, Range, Country)
 climber(Climber_ID, Name, Country, Time, Points, Mountain_ID)",What are the countries of mountains with height bigger than 5000?,What are the countries of mountains with big height?,threshold: bigger than 5000 (user means: > 5000),big height: height bigger than 5000,"1. search_definitions(big height)
-2. execute ""What are the countries of mountains with height bigger than 5000?""",,,
+2. execute ""What are the countries of mountains with height bigger than 5000?""",keep,SR,
 train-definition-1132,definition,our rules,climbing,"mountain(Mountain_ID, Name, Height, Prominence, Range, Country)
 climber(Climber_ID, Name, Country, Time, Points, Mountain_ID)",Show the height of the mountain climbed by the climber with the maximum points.,Show the height of the mountain climbed by the climber that ranks highest.,ranking: with the maximum points (user means: points),climber ranks highest: ranked by points,"1. search_definitions(climber ranks highest)
-2. execute ""Show the height of the mountain climbed by the climber with the maximum points.""",,,
+2. execute ""Show the height of the mountain climbed by the climber with the maximum points.""",keep,SR,
 train-definition-1834,definition,our rules,browser_web,"Web_client_accelerator(id, name, Operating_system, Client, Connection)
 browser(id, name, market_share)
 accelerator_compatible_browser(accelerator_id, browser_id, compatible_since_year)",What is the id and name of the browser that is compatible with the most web accelerators?,What is the id and name of the browser that is compatible that ranks highest?,ranking: with the most web accelerators (user means: web accelerators),compatible ranks highest: ranked by web accelerators,"1. search_definitions(compatible ranks highest)
-2. execute ""What is the id and name of the browser that is compatible with the most web accelerators?""",,,
+2. execute ""What is the id and name of the browser that is compatible with the most web accelerators?""",drop,SR,broken English; glossary term 'compatible ranks highest'
 train-definition-1870,definition,our rules,wrestler,"wrestler(Wrestler_ID, Name, Reign, Days_held, Location, Event)
 Elimination(Elimination_ID, Wrestler_ID, Team, Eliminated_By, Elimination_Move, Time)",What are the names of wrestlers days held less than 100?,What are the names of wrestlers days low held?,threshold: less than 100 (user means: < 100),low days held: days held less than 100,"1. search_definitions(low days held)
-2. execute ""What are the names of wrestlers days held less than 100?""",,,
+2. execute ""What are the names of wrestlers days held less than 100?""",drop,SR,broken English: 'wrestlers days low held'
 train-definition-2075,definition,our rules,party_people,"region(Region_ID, Region_name, Date, Label, Format, Catalogue)
 party(Party_ID, Minister, Took_office, Left_office, Region_ID, Party_name)
 member(Member_ID, Member_Name, Party_ID, In_office)
 party_events(Event_ID, Event_Name, Party_ID, Member_in_charge_ID)",What are the names of parties with at least 2 events?,What are the names of parties with many events?,threshold: at least 2 (user means: >= 2),many events: at least 2 events,"1. search_definitions(many events)
-2. execute ""What are the names of parties with at least 2 events?""",,,
+2. execute ""What are the names of parties with at least 2 events?""",keep,SR,
 train-definition-2126,definition,our rules,cre_Doc_Control_Systems,"Ref_Document_Types(document_type_code, document_type_description)
 Roles(role_code, role_description)
 Addresses(address_id, address_details)
@@ -721,20 +721,20 @@ Document_Drafts(document_id, draft_number, draft_details)
 Draft_Copies(document_id, draft_number, copy_number)
 Circulation_History(document_id, draft_number, copy_number, employee_id)
 Documents_Mailed(document_id, mailed_to_address_id, mailing_date)",Which documents have more than 1 draft copies? List document id and number of draft copies.,Which documents have many draft copies? List document id and number of draft copies.,threshold: more than 1 (user means: > 1),many draft: more than 1 draft,"1. search_definitions(many draft)
-2. execute ""Which documents have more than 1 draft copies? List document id and number of draft copies.""",,,
+2. execute ""Which documents have more than 1 draft copies? List document id and number of draft copies.""",drop,SR,glossary term 'many draft' does not match 'many draft copies'
 train-definition-2247,definition,our rules,machine_repair,"repair(repair_ID, name, Launch_Date, Notes)
 machine(Machine_ID, Making_Year, Class, Team, Machine_series, value_points, quality_rank)
 technician(technician_id, Name, Team, Starting_Year, Age)
 repair_assignment(technician_id, repair_ID, Machine_ID)",Please show the team that has the most number of technicians.,Please show the team that ranks highest.,ranking: has the most number of technicians (user means: number of technicians),team ranks highest: ranked by number of technicians,"1. search_definitions(team ranks highest)
-2. execute ""Please show the team that has the most number of technicians.""",,,
+2. execute ""Please show the team that has the most number of technicians.""",keep,SR,
 train-definition-2760,definition,our rules,election,"county(County_Id, County_name, Population, Zip_code)
 party(Party_ID, Year, Party, Governor, Lieutenant_Governor, Comptroller, Attorney_General, US_Senate)
 election(Election_ID, Counties_Represented, District, Delegate, Party, First_Elected, Committee)",Which delegates are from counties with population smaller than 100000?,Which delegates are from counties with small population?,threshold: smaller than 100000 (user means: < 100000),small population: population smaller than 100000,"1. search_definitions(small population)
-2. execute ""Which delegates are from counties with population smaller than 100000?""",,,
+2. execute ""Which delegates are from counties with population smaller than 100000?""",keep,SR,
 train-definition-2790,definition,our rules,election,"county(County_Id, County_name, Population, Zip_code)
 party(Party_ID, Year, Party, Governor, Lieutenant_Governor, Comptroller, Attorney_General, US_Senate)
 election(Election_ID, Counties_Represented, District, Delegate, Party, First_Elected, Committee)",Show the name of the party that has the most delegates.,Show the name of the party that ranks highest.,ranking: has the most delegates (user means: delegates),party ranks highest: ranked by delegates,"1. search_definitions(party ranks highest)
-2. execute ""Show the name of the party that has the most delegates.""",,,
+2. execute ""Show the name of the party that has the most delegates.""",keep,SR,
 train-definition-3303,definition,our rules,college_1,"CLASS(CLASS_CODE, CRS_CODE, CLASS_SECTION, CLASS_TIME, CLASS_ROOM, PROF_NUM)
 COURSE(CRS_CODE, DEPT_CODE, CRS_DESCRIPTION, CRS_CREDIT)
 DEPARTMENT(DEPT_CODE, DEPT_NAME, SCHOOL_CODE, EMP_NUM, DEPT_ADDRESS, DEPT_EXTENSION)
@@ -742,12 +742,12 @@ EMPLOYEE(EMP_NUM, EMP_LNAME, EMP_FNAME, EMP_INITIAL, EMP_JOBCODE, EMP_HIREDATE, 
 ENROLL(CLASS_CODE, STU_NUM, ENROLL_GRADE)
 PROFESSOR(EMP_NUM, DEPT_CODE, PROF_OFFICE, PROF_EXTENSION, PROF_HIGH_DEGREE)
 STUDENT(STU_NUM, STU_LNAME, STU_FNAME, STU_INIT, STU_DOB, STU_HRS, STU_CLASS, STU_GPA, STU_TRANSFER, DEPT_CODE, STU_PHONE, PROF_NUM)",Find the name and address of the department that has the highest number of students.,Find the name and address of the department that ranks highest.,ranking: has the highest number of students (user means: number of students),department ranks highest: ranked by number of students,"1. search_definitions(department ranks highest)
-2. execute ""Find the name and address of the department that has the highest number of students.""",,,
+2. execute ""Find the name and address of the department that has the highest number of students.""",keep,SR,
 train-definition-3619,definition,our rules,music_1,"genre(g_name, rating, most_popular_in)
 artist(artist_name, country, gender, preferred_genre)
 files(f_id, artist_name, file_size, duration, formats)
 song(song_name, artist_name, country, f_id, genre_is, rating, languages, releasedate, resolution)",Find the top 3 artists who have the largest number of songs works whose language is Bangla.,Find the top 3 artists who ranks highest whose language is Bangla.,ranking: have the largest number of songs works (user means: number of songs works),artist ranks highest: ranked by number of songs works,"1. search_definitions(artist ranks highest)
-2. execute ""Find the top 3 artists who have the largest number of songs works whose language is Bangla.""",,,
+2. execute ""Find the top 3 artists who have the largest number of songs works whose language is Bangla.""",drop,SR,broken English: 'artists who ranks highest whose language is Bangla'
 train-definition-3703,definition,our rules,baseball_1,"all_star(player_id, year, game_num, game_id, team_id, league_id, gp, starting_pos)
 appearances(year, team_id, league_id, player_id, g_all, gs, g_batting, g_defense, g_p, g_c, g_1b, g_2b, g_3b, g_ss, g_lf, g_cf, g_rf, g_of, g_dh, g_ph, g_pr)
 manager_award(player_id, award_id, year, league_id, tie, notes)
@@ -774,14 +774,14 @@ postseason(year, round, team_id_winner, league_id_winner, team_id_loser, league_
 team(year, league_id, team_id, franchise_id, div_id, rank, g, ghome, w, l, div_win, wc_win, lg_win, ws_win, r, ab, h, double, triple, hr, bb, so, sb, cs, hbp, sf, ra, er, era, cg, sho, sv, ipouts, ha, hra, bba, soa, e, dp, fp, name, park, attendance, bpf, ppf, team_id_br, team_id_lahman45, team_id_retro)
 team_franchise(franchise_id, franchise_name, active, na_assoc)
 team_half(year, league_id, team_id, half, div_id, div_win, rank, g, w, l)",List the names of states that have more than 2 parks.,List the names of states that have many parks.,threshold: more than 2 (user means: > 2),many parks: more than 2 parks,"1. search_definitions(many parks)
-2. execute ""List the names of states that have more than 2 parks.""",,,
+2. execute ""List the names of states that have more than 2 parks.""",keep,SR,
 train-definition-3824,definition,our rules,e_learning,"Course_Authors_and_Tutors(author_id, author_tutor_ATB, login_name, password, personal_name, middle_name, family_name, gender_mf, address_line_1)
 Students(student_id, date_of_registration, date_of_latest_logon, login_name, password, personal_name, middle_name, family_name)
 Subjects(subject_id, subject_name)
 Courses(course_id, author_id, subject_id, course_name, course_description)
 Student_Course_Enrolment(registration_id, student_id, course_id, date_of_enrolment, date_of_completion)
 Student_Tests_Taken(registration_id, date_test_taken, test_result)",What are the descriptions and names of the courses that have student enrollment bigger than 2?,What are the descriptions and names of the courses that have student big enrollment?,threshold: bigger than 2 (user means: > 2),big enrollment: enrollment bigger than 2,"1. search_definitions(big enrollment)
-2. execute ""What are the descriptions and names of the courses that have student enrollment bigger than 2?""",,,
+2. execute ""What are the descriptions and names of the courses that have student enrollment bigger than 2?""",drop,SR,broken English: 'have student big enrollment'
 train-definition-3902,definition,our rules,hospital_1,"Physician(EmployeeID, Name, Position, SSN)
 Department(DepartmentID, Name, Head)
 Affiliated_With(Physician, Department, PrimaryAffiliation)
@@ -797,7 +797,7 @@ Room(RoomNumber, RoomType, BlockFloor, BlockCode, Unavailable)
 On_Call(Nurse, BlockFloor, BlockCode, OnCallStart, OnCallEnd)
 Stay(StayID, Patient, Room, StayStart, StayEnd)
 Undergoes(Patient, Procedures, Stay, DateUndergoes, Physician, AssistingNurse)",what is the name and position of the head whose department has least number of employees?,What is the name and position of the head whose department ranks lowest?,ranking: has least number of employees (user means: number of employees),department ranks lowest: ranked by number of employees,"1. search_definitions(department ranks lowest)
-2. execute ""what is the name and position of the head whose department has least number of employees?""",,,
+2. execute ""what is the name and position of the head whose department has least number of employees?""",keep,SR,
 train-definition-4671,definition,our rules,college_3,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Faculty(FacID, Lname, Fname, Rank, Sex, Phone, Room, Building)
 Department(DNO, Division, DName, Room, Building, DPhone)
@@ -806,7 +806,7 @@ Course(CID, CName, Credits, Instructor, Days, Hours, DNO)
 Minor_in(StuID, DNO)
 Enrolled_in(StuID, CID, Grade)
 Gradeconversion(lettergrade, gradepoint)",Find the name of the department that has the biggest number of students minored in?,Find the name of the department that ranks highest in?,ranking: has the biggest number of students minored (user means: number of students minored),department ranks highest: ranked by number of students minored,"1. search_definitions(department ranks highest)
-2. execute ""Find the name of the department that has the biggest number of students minored in?""",,,
+2. execute ""Find the name of the department that has the biggest number of students minored in?""",drop,SR,broken English: 'ranks highest in?'
 train-definition-4675,definition,our rules,college_3,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Faculty(FacID, Lname, Fname, Rank, Sex, Phone, Room, Building)
 Department(DNO, Division, DName, Room, Building, DPhone)
@@ -815,11 +815,11 @@ Course(CID, CName, Credits, Instructor, Days, Hours, DNO)
 Minor_in(StuID, DNO)
 Enrolled_in(StuID, CID, Grade)
 Gradeconversion(lettergrade, gradepoint)",Find the name of the department that has the fewest members.,Find the name of the department that ranks lowest.,ranking: has the fewest members (user means: members),department ranks lowest: ranked by members,"1. search_definitions(department ranks lowest)
-2. execute ""Find the name of the department that has the fewest members.""",,,
+2. execute ""Find the name of the department that has the fewest members.""",keep,SR,
 train-definition-501,definition,our rules,allergy_1,"Allergy_Type(Allergy, AllergyType)
 Has_Allergy(StuID, Allergy)
 Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)",Which advisor has most number of students?,Which advisor ranks highest?,ranking: has most number of students (user means: number of students),advisor ranks highest: ranked by number of students,"1. search_definitions(advisor ranks highest)
-2. execute ""Which advisor has most number of students?""",,,
+2. execute ""Which advisor has most number of students?""",keep,SR,
 train-definition-5146,definition,our rules,cre_Drama_Workshop_Groups,"Ref_Payment_Methods(payment_method_code, payment_method_description)
 Ref_Service_Types(Service_Type_Code, Parent_Service_Type_Code, Service_Type_Description)
 Addresses(Address_ID, Line_1, Line_2, City_Town, State_County, Other_Details)
@@ -838,72 +838,72 @@ Invoices(Invoice_ID, Order_ID, payment_method_code, Product_ID, Order_Quantity, 
 Services(Service_ID, Service_Type_Code, Workshop_Group_ID, Product_Description, Product_Name, Product_Price, Other_Product_Service_Details)
 Bookings_Services(Order_ID, Product_ID)
 Invoice_Items(Invoice_Item_ID, Invoice_ID, Order_ID, Order_Item_ID, Product_ID, Order_Quantity, Other_Item_Details)",What are the order dates of orders with price higher than 1000?,What are the order dates of orders with high price?,threshold: higher than 1000 (user means: > 1000),high product price: product price higher than 1000,"1. search_definitions(high product price)
-2. execute ""What are the order dates of orders with price higher than 1000?""",,,
+2. execute ""What are the order dates of orders with price higher than 1000?""",keep,SR,
 train-definition-533,definition,our rules,allergy_1,"Allergy_Type(Allergy, AllergyType)
 Has_Allergy(StuID, Allergy)
 Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)",Find the number of students who are older than 18 and do not have allergy to either food or animal.,Find the number of students who are older and do not have allergy to either food or animal.,threshold: older than 18 (user means: > 18),older student: age older than 18,"1. search_definitions(older student)
-2. execute ""Find the number of students who are older than 18 and do not have allergy to either food or animal.""",,,
+2. execute ""Find the number of students who are older than 18 and do not have allergy to either food or animal.""",keep,SR,
 train-definition-5649,definition,our rules,railway,"railway(Railway_ID, Railway, Builder, Built, Wheels, Location, ObjectNumber)
 train(Train_ID, Train_Num, Name, From, Arrival, Railway_ID)
 manager(Manager_ID, Name, Country, Working_year_starts, Age, Level)
 railway_manage(Railway_ID, Manager_ID, From_Year)",Show the countries that have both managers of age above 50 and managers of age below 46.,Show the countries that have both managers of age above 50 and managers of low age.,threshold: below 46 (user means: < 46),low age: age below 46,"1. search_definitions(low age)
-2. execute ""Show the countries that have both managers of age above 50 and managers of age below 46.""",,,
+2. execute ""Show the countries that have both managers of age above 50 and managers of age below 46.""",keep,SR,
 train-definition-5738,definition,our rules,dorm_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Dorm(dormid, dorm_name, student_capacity, gender)
 Dorm_amenity(amenid, amenity_name)
 Has_amenity(dormid, amenid)
 Lives_in(stuid, dormid, room_number)",Find the number of amenities for each of the dorms that can accommodate more than 100 students.,Find the number of amenities for each of the dorms that can accommodate many students.,threshold: more than 100 (user means: > 100),many students: more than 100 students,"1. search_definitions(many students)
-2. execute ""Find the number of amenities for each of the dorms that can accommodate more than 100 students.""",,,
+2. execute ""Find the number of amenities for each of the dorms that can accommodate more than 100 students.""",keep,SR,
 train-definition-6363,definition,our rules,school_bus,"driver(Driver_ID, Name, Party, Home_city, Age)
 school(School_ID, Grade, School, Location, Type)
 school_bus(School_ID, Driver_ID, Years_Working, If_full_time)",How many drivers are from Hartford city or younger than 40?,How many drivers are from Hartford city or younger?,threshold: younger than 40 (user means: < 40),younger driver: age younger than 40,"1. search_definitions(younger driver)
-2. execute ""How many drivers are from Hartford city or younger than 40?""",,,
+2. execute ""How many drivers are from Hartford city or younger than 40?""",drop,SR,broken English: 'from Hartford city or younger?'
 train-definition-6373,definition,our rules,flight_company,"airport(id, City, Country, IATA, ICAO, name)
 operate_company(id, name, Type, Principal_activities, Incorporated_in, Group_Equity_Shareholding)
 flight(id, Vehicle_Flight_number, Date, Pilot, Velocity, Altitude, airport_id, company_id)",What are the distinct types of the companies that have operated any flights with velocity less than 200?,What are the distinct types of the companies that have operated any flights with low velocity?,threshold: less than 200 (user means: < 200),low velocity: velocity less than 200,"1. search_definitions(low velocity)
-2. execute ""What are the distinct types of the companies that have operated any flights with velocity less than 200?""",,,
+2. execute ""What are the distinct types of the companies that have operated any flights with velocity less than 200?""",keep,SR,
 train-definition-6688,definition,our rules,driving_school,"Addresses(address_id, line_1_number_building, city, zip_postcode, state_province_county, country)
 Staff(staff_id, staff_address_id, nickname, first_name, middle_name, last_name, date_of_birth, date_joined_staff, date_left_staff)
 Vehicles(vehicle_id, vehicle_details)
 Customers(customer_id, customer_address_id, customer_status_code, date_became_customer, date_of_birth, first_name, last_name, amount_outstanding, email_address, phone_number, cell_mobile_phone_number)
 Customer_Payments(customer_id, datetime_payment, payment_method_code, amount_payment)
 Lessons(lesson_id, customer_id, lesson_status_code, staff_id, vehicle_id, lesson_date, lesson_time, price)",Which city does has most number of customers?,Which city does ranks highest?,ranking: has most number of customers (user means: number of customers),doe ranks highest: ranked by number of customers,"1. search_definitions(doe ranks highest)
-2. execute ""Which city does has most number of customers?""",,,
+2. execute ""Which city does has most number of customers?""",drop,SR,broken English; glossary term 'doe ranks highest'
 train-definition-6829,definition,our rules,flight_4,"routes(rid, dst_apid, dst_ap, src_apid, src_ap, alid, airline, codeshare)
 airports(apid, name, city, country, x, y, elevation, iata, icao)
 airlines(alid, name, iata, icao, callsign, country, active)","Find the name, city, and country of the airport that has the lowest altitude.","Find the name, city, and country of the airport that ranks lowest.",ranking: has the lowest altitude (user means: altitude),airport ranks lowest: ranked by altitude,"1. search_definitions(airport ranks lowest)
-2. execute ""Find the name, city, and country of the airport that has the lowest altitude.""",,,
+2. execute ""Find the name, city, and country of the airport that has the lowest altitude.""",keep,SR,
 train-definition-6831,definition,our rules,flight_4,"routes(rid, dst_apid, dst_ap, src_apid, src_ap, alid, airline, codeshare)
 airports(apid, name, city, country, x, y, elevation, iata, icao)
 airlines(alid, name, iata, icao, callsign, country, active)","Find the name, city, and country of the airport that has the highest latitude.","Find the name, city, and country of the airport that ranks highest.",ranking: has the highest latitude (user means: latitude),airport ranks highest: ranked by latitude,"1. search_definitions(airport ranks highest)
-2. execute ""Find the name, city, and country of the airport that has the highest latitude.""",,,
+2. execute ""Find the name, city, and country of the airport that has the highest latitude.""",keep,SR,
 train-definition-6986,definition,our rules,culture_company,"book_club(book_club_id, Year, Author_or_Editor, Book_Title, Publisher, Category, Result)
 movie(movie_id, Title, Year, Director, Budget_million, Gross_worldwide)
 culture_company(Company_name, Type, Incorporated_in, Group_Equity_Shareholding, book_club_id, movie_id)",What is the title and director for the movie with highest worldwide gross in the year 2000 or before?,What is the title and director for the movie that ranks highest in the year 2000 or before?,ranking: with highest worldwide gross (user means: worldwide gross),movie ranks highest: ranked by worldwide gross,"1. search_definitions(movie ranks highest)
-2. execute ""What is the title and director for the movie with highest worldwide gross in the year 2000 or before?""",,,
+2. execute ""What is the title and director for the movie with highest worldwide gross in the year 2000 or before?""",keep,SR,
 train-definition-805,definition,our rules,coffee_shop,"shop(Shop_ID, Address, Num_of_staff, Score, Open_Year)
 member(Member_ID, Name, Membership_card, Age, Time_of_purchase, Level_of_membership, Address)
 happy_hour(HH_ID, Shop_ID, Month, Num_of_shaff_in_charge)
 happy_hour_member(HH_ID, Member_ID, Total_amount)",Which month has the most happy hours?,Which month ranks highest?,ranking: has the most happy hours (user means: happy hours),month ranks highest: ranked by happy hours,"1. search_definitions(month ranks highest)
-2. execute ""Which month has the most happy hours?""",,,
+2. execute ""Which month has the most happy hours?""",keep,SR,
 train-definition-806,definition,our rules,coffee_shop,"shop(Shop_ID, Address, Num_of_staff, Score, Open_Year)
 member(Member_ID, Name, Membership_card, Age, Time_of_purchase, Level_of_membership, Address)
 happy_hour(HH_ID, Shop_ID, Month, Num_of_shaff_in_charge)
 happy_hour_member(HH_ID, Member_ID, Total_amount)",Which months have more than 2 happy hours?,Which months have many happy hours?,threshold: more than 2 (user means: > 2),many happy: more than 2 happy,"1. search_definitions(many happy)
-2. execute ""Which months have more than 2 happy hours?""",,,
+2. execute ""Which months have more than 2 happy hours?""",drop,SR,glossary term 'many happy' does not match 'many happy hours'
 train-definition-963,definition,our rules,medicine_enzyme_interaction,"medicine(id, name, Trade_Name, FDA_approved)
 enzyme(id, name, Location, Product, Chromosome, OMIM, Porphyria)
 medicine_enzyme_interaction(enzyme_id, medicine_id, interaction_type)",What is the id and trade name of the medicines can interact with at least 3 enzymes?,What is the id and trade name of the medicines can interact with many enzymes?,threshold: at least 3 (user means: >= 3),many enzymes: at least 3 enzymes,"1. search_definitions(many enzymes)
-2. execute ""What is the id and trade name of the medicines can interact with at least 3 enzymes?""",,,
+2. execute ""What is the id and trade name of the medicines can interact with at least 3 enzymes?""",keep,SR,
 train-unanswerable-11,unanswerable,our template,machine_repair,"repair(repair_ID, name, Launch_Date, Notes)
 machine(Machine_ID, Making_Year, Class, Team, Machine_series, value_points, quality_rank)
 technician(technician_id, Name, Team, Starting_Year, Age)
 repair_assignment(technician_id, repair_ID, Machine_ID)",,Which machine has the highest customer satisfaction score?,The database has no information about the customer satisfaction score of machines.,,"1. describe_table(machine)
-2. abstain: ""The database has no information about the customer satisfaction score of machines.""",,,
+2. abstain: ""The database has no information about the customer satisfaction score of machines.""",keep,SR,
 train-unanswerable-15,unanswerable,our template,train_station,"station(Station_ID, Name, Annual_entry_exit, Annual_interchanges, Total_Passengers, Location, Main_Services, Number_of_Platforms)
 train(Train_ID, Name, Time, Service)
 train_station(Train_ID, Station_ID)",,Which train station has the highest customer satisfaction score?,The database has no information about the customer satisfaction score of train stations.,,"1. describe_table(train_station)
-2. abstain: ""The database has no information about the customer satisfaction score of train stations.""",,,
+2. abstain: ""The database has no information about the customer satisfaction score of train stations.""",keep,SR,
 train-unanswerable-17,unanswerable,model paraphrase,local_govt_and_lot,"Customers(customer_id, customer_details)
 Properties(property_id, property_type_code, property_address, other_details)
 Residents(resident_id, property_id, date_moved_in, date_moved_out, other_details)
@@ -915,14 +915,14 @@ Customer_Events(Customer_Event_ID, customer_id, date_moved_in, property_id, resi
 Customer_Event_Notes(Customer_Event_Note_ID, Customer_Event_ID, service_type_code, resident_id, property_id, date_moved_in)
 Timed_Status_of_Things(thing_id, Date_and_Date, Status_of_Thing_Code)
 Timed_Locations_of_Things(thing_id, Date_and_Time, Location_Code)",,What’s the energy consumption per resident?,The database has no information about the energy consumption of residents.,,"1. describe_table(Residents)
-2. abstain: ""The database has no information about the energy consumption of residents.""",,,
+2. abstain: ""The database has no information about the energy consumption of residents.""",keep,SR,
 train-unanswerable-2,unanswerable,model paraphrase,company_employee,"people(People_ID, Age, Name, Nationality, Graduation_College)
 company(Company_ID, Name, Headquarters, Industry, Sales_in_Billion, Profits_in_Billion, Assets_in_Billion, Market_Value_in_Billion)
 employment(Company_ID, People_ID, Year_working)",,Can you list all the companies along with their official motto?,The database has no information about the official motto of companies.,,"1. describe_table(company)
-2. abstain: ""The database has no information about the official motto of companies.""",,,
+2. abstain: ""The database has no information about the official motto of companies.""",keep,SR,
 train-unanswerable-22,unanswerable,model paraphrase,ship_mission,"mission(Mission_ID, Ship_ID, Code, Launched_Year, Location, Speed_knots, Fate)
 ship(Ship_ID, Name, Type, Nationality, Tonnage)",,Can you list all the missions along with their environmental rating?,The database has no information about the environmental rating of missions.,,"1. describe_table(mission)
-2. abstain: ""The database has no information about the environmental rating of missions.""",,,
+2. abstain: ""The database has no information about the environmental rating of missions.""",keep,SR,
 train-unanswerable-27,unanswerable,model paraphrase,customer_deliveries,"Products(product_id, product_name, product_price, product_description)
 Addresses(address_id, address_details, city, zip_postcode, state_province_county, country)
 Customers(customer_id, payment_method, customer_name, customer_phone, customer_email, date_became_customer)
@@ -936,7 +936,7 @@ Delivery_Route_Locations(location_code, route_id, location_address_id, location_
 Trucks(truck_id, truck_licence_number, truck_details)
 Employees(employee_id, employee_address_id, employee_name, employee_phone)
 Order_Deliveries(location_code, actual_order_id, delivery_status_code, driver_employee_id, truck_id, delivery_date)",,Which regular order has the longest opening hours?,The database has no information about the opening hours of regular orders.,,"1. describe_table(Regular_Orders)
-2. abstain: ""The database has no information about the opening hours of regular orders.""",,,
+2. abstain: ""The database has no information about the opening hours of regular orders.""",drop,SR,unnatural: orders do not have opening hours
 train-unanswerable-3,unanswerable,our template,department_store,"Addresses(address_id, address_details)
 Staff(staff_id, staff_gender, staff_name)
 Suppliers(supplier_id, supplier_name, supplier_phone)
@@ -951,20 +951,20 @@ Departments(department_id, dept_store_id, department_name)
 Order_Items(order_item_id, order_id, product_id)
 Product_Suppliers(product_id, supplier_id, date_supplied_from, date_supplied_to, total_amount_purchased, total_value_purchased)
 Staff_Department_Assignments(staff_id, department_id, date_assigned_from, job_title_code, date_assigned_to)",,Which customer order has the highest credit score?,The database has no information about the credit score of customer orders.,,"1. describe_table(Customer_Orders)
-2. abstain: ""The database has no information about the credit score of customer orders.""",,,
+2. abstain: ""The database has no information about the credit score of customer orders.""",drop,SR,unnatural: orders do not have credit scores
 train-unanswerable-30,unanswerable,model paraphrase,manufacturer,"manufacturer(Manufacturer_ID, Open_Year, Name, Num_of_Factories, Num_of_Shops)
 furniture(Furniture_ID, Name, Num_of_Component, Market_Rate)
 furniture_manufacte(Manufacturer_ID, Furniture_ID, Price_in_Dollar)",,Can you list all the manufacturers with their customer satisfaction score?,The database has no information about the customer satisfaction score of manufacturers.,,"1. describe_table(manufacturer)
-2. abstain: ""The database has no information about the customer satisfaction score of manufacturers.""",,,
+2. abstain: ""The database has no information about the customer satisfaction score of manufacturers.""",keep,SR,
 train-unanswerable-41,unanswerable,model paraphrase,party_host,"party(Party_ID, Party_Theme, Location, First_year, Last_year, Number_of_hosts)
 host(Host_ID, Name, Nationality, Age)
 party_host(Party_ID, Host_ID, Is_Main_in_Charge)",,What’s the marital status of each party host?,The database has no information about the marital status of party hosts.,,"1. describe_table(party_host)
-2. abstain: ""The database has no information about the marital status of party hosts.""",,,
+2. abstain: ""The database has no information about the marital status of party hosts.""",keep,SR,
 train-unanswerable-45,unanswerable,model paraphrase,news_report,"event(Event_ID, Date, Venue, Name, Event_Attendance)
 journalist(journalist_ID, Name, Nationality, Age, Years_working)
 news_report(journalist_ID, Event_ID, Work_Type)",,What's the carbon footprint of a single news report?,The database has no information about the carbon footprint of news reports.,,"1. describe_table(news_report)
-2. abstain: ""The database has no information about the carbon footprint of news reports.""",,,
+2. abstain: ""The database has no information about the carbon footprint of news reports.""",keep,SR,
 train-unanswerable-8,unanswerable,model paraphrase,performance_attendance,"member(Member_ID, Name, Nationality, Role)
 performance(Performance_ID, Date, Host, Location, Attendance)
 member_attendance(Member_ID, Performance_ID, Num_of_Pieces)",,What's the average insurance provider for the performances?,The database has no information about the insurance provider of performances.,,"1. describe_table(performance)
-2. abstain: ""The database has no information about the insurance provider of performances.""",,,
+2. abstain: ""The database has no information about the insurance provider of performances.""",drop,SR,unnatural: 'average insurance provider'

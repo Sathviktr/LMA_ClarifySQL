@@ -1,0 +1,46 @@
+{
+  "audited": 144,
+  "dropped": 30,
+  "by_stratum": {
+    "ambiguous/model paraphrase": {
+      "audited": 10,
+      "dropped": 3,
+      "kept_rate": 0.7
+    },
+    "ambiguous/our rules": {
+      "audited": 71,
+      "dropped": 10,
+      "kept_rate": 0.859
+    },
+    "clear/Spider question": {
+      "audited": 10,
+      "dropped": 0,
+      "kept_rate": 1.0
+    },
+    "definition/our rules": {
+      "audited": 30,
+      "dropped": 9,
+      "kept_rate": 0.7
+    },
+    "two_slot/model paraphrase": {
+      "audited": 3,
+      "dropped": 1,
+      "kept_rate": 0.667
+    },
+    "two_slot/our rules": {
+      "audited": 9,
+      "dropped": 4,
+      "kept_rate": 0.556
+    },
+    "unanswerable/model paraphrase": {
+      "audited": 8,
+      "dropped": 2,
+      "kept_rate": 0.75
+    },
+    "unanswerable/our template": {
+      "audited": 3,
+      "dropped": 1,
+      "kept_rate": 0.667
+    }
+  }
+}
