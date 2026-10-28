@@ -58,6 +58,14 @@ class HFBackend:
             self.model.eval()
             self.has_adapter = True
 
+    @classmethod
+    def wrap(cls, model, tok, has_adapter: bool = False) -> HFBackend:
+        """Use a model that is already loaded (evaluation during training, tests) instead of loading one."""
+        b = cls.__new__(cls)
+        b.model, b.tok, b.load_seconds, b.has_adapter = model, tok, 0.0, has_adapter
+        b.tok.padding_side = "left"
+        return b
+
     def _adapter_context(self, adapter: bool):
         if adapter and not self.has_adapter:
             raise ValueError("adapter=True but no adapter was loaded")

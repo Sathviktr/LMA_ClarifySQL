@@ -84,6 +84,7 @@ def greedy_config(model, max_new_tokens: int, min_new_tokens: int = 0):
     cfg.top_k = None
     cfg.max_new_tokens = max_new_tokens
     cfg.min_new_tokens = min_new_tokens
+    cfg.use_cache = True  # also after training switched the model's own cache setting off
     if cfg.pad_token_id is None:
         cfg.pad_token_id = cfg.eos_token_id[0] if isinstance(cfg.eos_token_id, list) else cfg.eos_token_id
     return cfg
