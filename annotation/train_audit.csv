@@ -480,8 +480,8 @@ SportsInfo(StuID, SportName, HoursPerWeek, GamesPlayed, OnScholarship)",What is 
 train-ambiguous-6045,ambiguous,model paraphrase,game_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Video_Games(GameID, GName, GType)
 Plays_Games(StuID, GameID, Hours_Played)
-SportsInfo(StuID, SportName, HoursPerWeek, GamesPlayed, OnScholarship)",Show all game names played by at least 1000 hours.,Show all game names played by high hours.,threshold: at least 1000 hours (user means: >= 1000),,"1. search_definitions(high sum(hours played)
-2. ask ""What sum(hours played counts as ""high""?"" -> user: ""I mean at least 1000 hours.""
+SportsInfo(StuID, SportName, HoursPerWeek, GamesPlayed, OnScholarship)",Show all game names played by at least 1000 hours.,Show all game names played by high hours.,threshold: at least 1000 hours (user means: >= 1000),,"1. search_definitions(high total hours played)
+2. ask ""What total hours played counts as ""high""?"" -> user: ""I mean at least 1000 hours.""
 3. execute ""Show all game names played by at least 1000 hours.""",,,
 train-ambiguous-6093,ambiguous,our rules,customers_and_addresses,"Addresses(address_id, address_content, city, zip_postcode, state_province_county, country, other_address_details)
 Products(product_id, product_details)
@@ -610,7 +610,7 @@ university(School_ID, School, Location, Founded, Affiliation, Enrollment, Nickna
 3. execute ""When was the school with the largest enrollment founded?""",,,
 train-ambiguous-989,ambiguous,our rules,university_basketball,"basketball_match(Team_ID, School_ID, Team_Name, ACC_Regular_Season, ACC_Percent, ACC_Home, ACC_Road, All_Games, All_Games_Percent, All_Home, All_Road, All_Neutral)
 university(School_ID, School, Location, Founded, Affiliation, Enrollment, Nickname, Primary_conference)",What is the primary conference of the school that has the lowest acc percent score in the competition?,What is the primary conference of the school that ranks lowest in the competition?,ranking: has the lowest acc percent score (user means: acc percent score),,"1. search_definitions(school ranks lowest)
-2. ask ""Ranked by what: all games percent, enrollment or founded?"" -> user: ""Rank them by acc percent score.""
+2. ask ""Ranked by what: acc percent, all games percent or enrollment?"" -> user: ""Rank them by acc percent score.""
 3. execute ""What is the primary conference of the school that has the lowest acc percent score in the competition?""",,,
 train-two_slot-1637,two_slot,our rules,wedding,"people(People_ID, Name, Country, Is_Male, Age)
 church(Church_ID, Name, Organized_by, Open_Date, Continuation_of)
@@ -629,7 +629,7 @@ status(station_id, bikes_available, docks_available, time)
 trip(id, duration, start_date, start_station_name, start_station_id, end_date, end_station_name, end_station_id, bike_id, subscription_type, zip_code)
 weather(date, max_temperature_f, mean_temperature_f, min_temperature_f, max_dew_point_f, mean_dew_point_f, min_dew_point_f, max_humidity, mean_humidity, min_humidity, max_sea_level_pressure_inches, mean_sea_level_pressure_inches, min_sea_level_pressure_inches, max_visibility_miles, mean_visibility_miles, min_visibility_miles, max_wind_Speed_mph, mean_wind_speed_mph, max_gust_speed_mph, precipitation_inches, cloud_cover, events, wind_dir_degrees, zip_code)",Give me the zip code where the average mean humidity is below 70 and at least 100 trips took place.,Give me the zip code where the average mean humidity is low and many trips took place.,threshold: at least 100 (user means: >= 100) | threshold: below 70 (user means: < 70),,"1. search_definitions(many trips)
 2. ask ""How many trips count as ""many""?"" -> user: ""I mean at least 100.""
-3. ask ""What avg(mean humidity counts as ""low""?"" -> user: ""I mean below 70.""
+3. ask ""What average mean humidity counts as ""low""?"" -> user: ""I mean below 70.""
 4. execute ""Give me the zip code where the average mean humidity is below 70 and at least 100 trips took place.""",,,
 train-two_slot-230,two_slot,our rules,book_2,"publication(Publication_ID, Book_ID, Publisher, Publication_Date, Price)
 book(Book_ID, Title, Issues, Writer)",Show the publishers that have publications with price higher than 10000000 and publications with price lower than 5000000.,Show the publishers that have publications with high price and publications with low price.,threshold: higher than 10000000 (user means: > 10000000) | threshold: lower than 5000000 (user means: < 5000000),,"1. search_definitions(high price)
