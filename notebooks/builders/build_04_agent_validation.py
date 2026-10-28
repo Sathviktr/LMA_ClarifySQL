@@ -6,7 +6,7 @@ CELLS = [
     md("""
     # ClarifySQL · Notebook 04 — The agent and the baselines on the validation episodes
 
-    **Goal.** Run every system that does not need a trained adapter on the 56 written validation episodes,
+    **Goal.** Run every system that does not need a trained adapter on the 57 validation episodes,
     with the same SQL writer, tools, simulated user and limits:
 
     | system | what it does |
