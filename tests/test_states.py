@@ -90,7 +90,7 @@ def test_no_leakage_of_the_hidden_intent():
             for i, slot in enumerate(ep.slots):
                 if ep.kind == "definition" or i < answered:
                     continue  # given by the user (or by the glossary, in a definition episode)
-                assert slot["hidden"] not in visible, (r["id"], slot["hidden"])
+                assert not slot["hidden"] or slot["hidden"] not in visible, (r["id"], slot["hidden"])
                 after_catalog = r["messages"][1]["content"].split("Request:")[1].split("Budget left:")[0]
                 for num in re.findall(r"-?\d+(?:\.\d+)?", slot["value"]):
                     assert not re.search(rf"(?<![\w.]){re.escape(num)}(?![\w.])", after_catalog), (r["id"], num)
