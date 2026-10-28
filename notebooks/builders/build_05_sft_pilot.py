@@ -20,7 +20,10 @@ CELLS = [
     md(SETUP_MD),
     code(SETUP_CODE),
     code(INSTALL_CODE + "!pip install -q -e {REPO} --no-deps  # lets the scripts import clarifysql\n"
-         "!pip install -q pytest\n"),
+         "!pip install -q pytest\n"
+         "# Kaggle ships an old torchao (0.10), and new peft versions then refuse to build LoRA layers.\n"
+         "# We do not use torchao, so it is removed.\n"
+         "!pip uninstall -y -q torchao\n"),
     md("""
     ## 2. Truncation: do all training states fit in 1,024 tokens? (about 1 minute)
 
