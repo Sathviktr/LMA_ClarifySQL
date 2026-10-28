@@ -5,65 +5,66 @@
   "backend": "hf",
   "wall_seconds": 286.5,
   "name": "b3zero",
-  "episodes": 57,
+  "episodes": 53,
   "by_kind": {
-    "ambiguous": 14,
+    "ambiguous": 13,
     "two_slot": 2,
     "definition": 5,
-    "clear": 24,
-    "unanswerable": 12
+    "clear": 22,
+    "unanswerable": 11
   },
-  "execution_accuracy": 0.4222,
+  "execution_accuracy": 0.4286,
   "execution_accuracy_by_kind": {
-    "ambiguous": 0.5,
+    "ambiguous": 0.5385,
     "two_slot": 0.0,
     "definition": 0.0,
     "clear": 0.5
   },
-  "decision_macro_f1": 0.6933,
+  "decision_macro_f1": 0.704,
   "decision_per_class": {
     "clarify": {
-      "precision": 0.452,
-      "recall": 0.875,
-      "f1": 0.596,
-      "support": 16
+      "precision": 0.464,
+      "recall": 0.867,
+      "f1": 0.605,
+      "support": 15
     },
     "execute": {
       "precision": 0.846,
-      "recall": 0.379,
-      "f1": 0.524,
-      "support": 29
+      "recall": 0.407,
+      "f1": 0.55,
+      "support": 27
     },
     "abstain": {
-      "precision": 0.923,
+      "precision": 0.917,
       "recall": 1.0,
-      "f1": 0.96,
-      "support": 12
+      "f1": 0.957,
+      "support": 11
     }
   },
-  "decision_accuracy": 0.6491,
-  "unnecessary_question_rate_clear": 0.5,
+  "decision_accuracy": 0.6604,
+  "unnecessary_question_rate_clear": 0.4545,
   "unnecessary_question_rate_definition": 1.0,
   "correct_abstention_rate": 1.0,
-  "wrong_abstention_rate_answerable": 0.2889,
-  "avg_clarification_turns": 0.6316,
-  "avg_clarification_turns_vague": 1.0625,
+  "wrong_abstention_rate_answerable": 0.2857,
+  "avg_clarification_turns": 0.6038,
+  "avg_clarification_turns_vague": 1.0,
+  "slot_accuracy": 0.2667,
   "invalid_output_rate": 0.0,
-  "limit_rate": 0.0351,
+  "limit_rate": 0.0189,
   "invalid_episode_rate": 0.0,
   "blocked_attempts": 0,
   "reasons": {
-    "match": 19,
+    "match": 18,
     "different_result": 11,
-    "abstained": 13,
-    "limit": 2,
-    "abstained, named": 12
+    "abstained": 12,
+    "limit": 1,
+    "abstained, named": 11
   },
   "cost": {
-    "model_calls": 228,
-    "policy_calls": 198,
-    "tokens_in": 113391,
-    "tokens_out": 8330,
-    "gpu_seconds": 284.2
+    "model_calls": 213,
+    "policy_calls": 184,
+    "tokens_in": 106091,
+    "tokens_out": 7672,
+    "gpu_seconds": 265.1
   }
 }

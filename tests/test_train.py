@@ -4,9 +4,10 @@ import json
 
 import pytest
 
+from clarifysql.eval.metrics import selection_key, slot_match
 from clarifysql.train.qlora import lr_factor
 from clarifysql.train.sft_data import IGNORE, SFT_DIR
-from clarifysql.train.state_eval import score_states, selection_key, slot_match
+from clarifysql.train.state_eval import score_states, state_key
 
 
 @pytest.fixture(scope="module")
@@ -41,6 +42,8 @@ def test_slot_match_needs_the_same_kind_and_a_term_about_the_same_thing():
     assert not slot_match([{"name": "threshold", "term": "top city"}], ref)        # wrong kind of detail
     assert not slot_match([{"name": "ranking", "term": "best airport"}], ref)      # about something else
     assert not slot_match([], ref) and not slot_match(None, ref)
+    odd = [{"name": "ranking", "term": "and ranks highest"}]  # no content word left: the same words still match
+    assert slot_match([{"name": "ranking", "term": "And ranks highest"}], odd)
     two = ref + [{"name": "threshold", "term": "many airports"}]
     assert not slot_match([{"name": "ranking", "term": "city ranks highest"}], two)  # one of two missing
 
@@ -68,11 +71,19 @@ def test_state_scores_by_hand():
     assert score_states(states, answers, with_slots=False)["slot_accuracy"] is None
 
 
-def test_selection_prefers_decisions_and_lets_slots_break_near_ties():
-    a = {"decision_macro_f1": 0.801, "slot_accuracy": 0.5, "valid_rate": 1.0}
-    b = {"decision_macro_f1": 0.799, "slot_accuracy": 0.7, "valid_rate": 1.0}
-    c = {"decision_macro_f1": 0.75, "slot_accuracy": 0.9, "valid_rate": 1.0}
+def test_selection_prefers_episode_decisions_and_lets_slots_break_near_ties():
+    a = {"decision_macro_f1": 0.801, "slot_accuracy": 0.5}
+    b = {"decision_macro_f1": 0.799, "slot_accuracy": 0.7}
+    c = {"decision_macro_f1": 0.75, "slot_accuracy": 0.9}
     assert max([a, b, c], key=selection_key) is b
+    assert max([{"decision_macro_f1": 0.7, "slot_accuracy": None}, c], key=selection_key) is c  # A2: no slots
+
+
+def test_the_state_diagnostic_does_not_reward_skipping_inspections():
+    # the checkpoint 5 pilot: epoch 1 skipped most inspections but scored higher on state decisions
+    epoch1 = {"action_accuracy": 0.76, "decision_macro_f1": 0.94, "slot_accuracy": 0.65}
+    epoch2 = {"action_accuracy": 0.85, "decision_macro_f1": 0.86, "slot_accuracy": 0.59}
+    assert max([epoch1, epoch2], key=state_key) is epoch2
 
 
 def test_learning_rate_warms_up_then_decays_to_zero():

@@ -78,6 +78,7 @@ def test_reference_policy_scores_perfectly():
     s = summarize([score_trace(trace(r), r.ep) for r in runs])
     assert s["execution_accuracy"] == 1.0 and s["decision_macro_f1"] == 1.0 and s["correct_abstention_rate"] == 1.0
     assert s["unnecessary_question_rate_clear"] == 0.0 and s["limit_rate"] == 0.0
+    assert s["slot_accuracy"] == 1.0  # the reference clarify actions name every hidden detail
 
 
 @needs_data

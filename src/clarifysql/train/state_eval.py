@@ -7,8 +7,10 @@ For every validation state the policy writes its next action, which is compared 
   slot_accuracy       on the states whose reference is clarify: the policy clarifies and, for every missing detail,
                       names one of the same kind (threshold / ranking) with a term about the same thing
   tool_accuracy       on the states whose reference is inspect: the policy inspects with the same tool
-The proposal (Section 9): "A lower training loss alone is not success; we judge by validation decisions and slot
-accuracy." The whole agent is run on the validation episodes only for the chosen checkpoints.
+These are cheap (about 2 minutes on a T4) and show how training progresses, epoch by epoch. They are diagnostics:
+the adapter itself is chosen by whole validation episodes (eval/metrics.py, selection_key), because a state-level
+decision score does not see a skipped inspection. The checkpoint 5 pilot scored 0.94 on decisions in its first
+epoch while it skipped 20 of the 31 glossary searches and table looks of the reference.
 """
 
 from __future__ import annotations
@@ -17,16 +19,7 @@ import json
 from collections import Counter
 
 from clarifysql.agent.actions import parse_action
-from clarifysql.episodes.checks import term_words
-from clarifysql.eval.metrics import DECISIONS, macro_f1
-
-
-def slot_match(predicted: list, reference: list[dict]) -> bool:
-    """Every reference slot has a predicted slot of the same kind whose term is about the same thing."""
-    def same(p, r) -> bool:
-        return (isinstance(p, dict) and p.get("name") == r["name"]
-                and bool(term_words(str(p.get("term", ""))) & term_words(r["term"])))
-    return bool(predicted) and all(any(same(p, r) for p in predicted) for r in reference)
+from clarifysql.eval.metrics import DECISIONS, macro_f1, slot_match
 
 
 def _rate(num: int, den: int) -> float | None:
@@ -55,6 +48,6 @@ def score_states(states: list[dict], answers: list[str], with_slots: bool = True
     }
 
 
-def selection_key(scores: dict) -> tuple:
-    """Fixed before training: decision macro-F1 first; slot accuracy decides between near-ties (same 0.01)."""
-    return round(scores["decision_macro_f1"], 2), scores.get("slot_accuracy") or 0.0, scores["valid_rate"] or 0.0
+def state_key(scores: dict) -> tuple:
+    """Ranks epochs by their validation-state scores (a diagnostic): actions first, then decisions, then slots."""
+    return (scores["action_accuracy"] or 0.0, round(scores["decision_macro_f1"], 2), scores.get("slot_accuracy") or 0.0)

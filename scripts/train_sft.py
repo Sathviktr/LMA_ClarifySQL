@@ -51,8 +51,9 @@ def main() -> None:
                           "tokens_per_second": e["tokens_per_second"], "peak_gb": e["peak_allocated_gb"],
                           "valid_rate": v.get("valid_rate"), "decision_macro_f1": v.get("decision_macro_f1"),
                           "slot_accuracy": v.get("slot_accuracy"), "action_accuracy": v.get("action_accuracy")}))
-    if "best_epoch" in log:
-        print(f"best epoch by the validation scores: {log['best_epoch']}")
+    if "best_epoch_by_states" in log:
+        print(f"best epoch by the validation states: {log['best_epoch_by_states']} (a diagnostic: whole validation "
+              "episodes choose the adapter)")
     print(f"log: {log_path}")
 
 

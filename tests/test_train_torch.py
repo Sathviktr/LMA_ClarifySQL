@@ -72,7 +72,7 @@ def test_training_learns_saves_every_epoch_and_the_saved_adapter_reloads(tok, tm
     assert all(torch.equal(base_after[k], base_before[old]) for k, old in frozen.items())  # base never changes
     first, last = log["epochs"][0], log["epochs"][-1]
     assert last["train_loss"] < first["train_loss"]                  # it learns the 8 targets
-    assert all(e["validation"]["states"] == 4 for e in log["epochs"]) and log["best_epoch"] in (1, 2, 3)
+    assert all(e["validation"]["states"] == 4 for e in log["epochs"]) and log["best_epoch_by_states"] in (1, 2, 3)
     assert json.loads(log_path.read_text())["epochs"][-1]["epoch"] == 3
     assert (tmp_path / "results" / "tiny_epoch-3_answers.jsonl").exists()
     for k in (1, 2, 3):

@@ -1,0 +1,333 @@
+{
+  "config": {
+    "name": "pilot",
+    "data": "train",
+    "val_data": "validation",
+    "seed": 1,
+    "epochs": 2,
+    "lr": 0.0002,
+    "grad_accum": 8,
+    "max_len": 1024,
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "warmup_ratio": 0.06,
+    "max_grad_norm": 1.0,
+    "limit": 100,
+    "eval_generate": true,
+    "eval_limit": null,
+    "eval_batch_size": 16
+  },
+  "env": {
+    "python": "3.13.15",
+    "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "accelerate": "1.14.0",
+    "bitsandbytes": "0.50.2",
+    "cuda": "12.8",
+    "gpus": [
+      {
+        "name": "Tesla T4",
+        "memory_gb": 15.64,
+        "compute_capability": "7.5",
+        "native_bf16": false
+      },
+      {
+        "name": "Tesla T4",
+        "memory_gb": 15.64,
+        "compute_capability": "7.5",
+        "native_bf16": false
+      }
+    ]
+  },
+  "train_states": 100,
+  "over_limit": [],
+  "train_tokens_per_epoch": 45084,
+  "val_states": 101,
+  "trainable_params": 33030144,
+  "optimizer_steps": 26,
+  "warmup_steps": 2,
+  "steps": [
+    {
+      "step": 1,
+      "epoch": 1,
+      "loss": 2.0774,
+      "lr": 0.0002,
+      "grad_norm": 7.849
+    },
+    {
+      "step": 2,
+      "epoch": 1,
+      "loss": 1.4578,
+      "lr": 0.0002,
+      "grad_norm": 6.864
+    },
+    {
+      "step": 3,
+      "epoch": 1,
+      "loss": 0.9199,
+      "lr": 0.00019914,
+      "grad_norm": 3.171
+    },
+    {
+      "step": 4,
+      "epoch": 1,
+      "loss": 0.3836,
+      "lr": 0.00019659,
+      "grad_norm": 1.284
+    },
+    {
+      "step": 5,
+      "epoch": 1,
+      "loss": 0.338,
+      "lr": 0.00019239,
+      "grad_norm": 2.406
+    },
+    {
+      "step": 6,
+      "epoch": 1,
+      "loss": 0.2674,
+      "lr": 0.0001866,
+      "grad_norm": 0.929
+    },
+    {
+      "step": 7,
+      "epoch": 1,
+      "loss": 0.3718,
+      "lr": 0.00017934,
+      "grad_norm": 1.235
+    },
+    {
+      "step": 8,
+      "epoch": 1,
+      "loss": 0.362,
+      "lr": 0.00017071,
+      "grad_norm": 0.703
+    },
+    {
+      "step": 9,
+      "epoch": 1,
+      "loss": 0.1512,
+      "lr": 0.00016088,
+      "grad_norm": 0.551
+    },
+    {
+      "step": 10,
+      "epoch": 1,
+      "loss": 0.2798,
+      "lr": 0.00015,
+      "grad_norm": 0.564
+    },
+    {
+      "step": 11,
+      "epoch": 1,
+      "loss": 0.1528,
+      "lr": 0.00013827,
+      "grad_norm": 0.715
+    },
+    {
+      "step": 12,
+      "epoch": 1,
+      "loss": 0.0756,
+      "lr": 0.00012588,
+      "grad_norm": 0.368
+    },
+    {
+      "step": 13,
+      "epoch": 1,
+      "loss": 0.1744,
+      "lr": 0.00011305,
+      "grad_norm": 0.749
+    },
+    {
+      "step": 14,
+      "epoch": 2,
+      "loss": 0.077,
+      "lr": 0.0001,
+      "grad_norm": 0.335
+    },
+    {
+      "step": 15,
+      "epoch": 2,
+      "loss": 0.0564,
+      "lr": 8.695e-05,
+      "grad_norm": 0.281
+    },
+    {
+      "step": 16,
+      "epoch": 2,
+      "loss": 0.1427,
+      "lr": 7.412e-05,
+      "grad_norm": 0.778
+    },
+    {
+      "step": 17,
+      "epoch": 2,
+      "loss": 0.1965,
+      "lr": 6.173e-05,
+      "grad_norm": 0.571
+    },
+    {
+      "step": 18,
+      "epoch": 2,
+      "loss": 0.1383,
+      "lr": 5e-05,
+      "grad_norm": 0.599
+    },
+    {
+      "step": 19,
+      "epoch": 2,
+      "loss": 0.1035,
+      "lr": 3.912e-05,
+      "grad_norm": 0.539
+    },
+    {
+      "step": 20,
+      "epoch": 2,
+      "loss": 0.2,
+      "lr": 2.929e-05,
+      "grad_norm": 0.551
+    },
+    {
+      "step": 21,
+      "epoch": 2,
+      "loss": 0.2497,
+      "lr": 2.066e-05,
+      "grad_norm": 0.874
+    },
+    {
+      "step": 22,
+      "epoch": 2,
+      "loss": 0.1024,
+      "lr": 1.34e-05,
+      "grad_norm": 0.468
+    },
+    {
+      "step": 23,
+      "epoch": 2,
+      "loss": 0.0053,
+      "lr": 7.61e-06,
+      "grad_norm": 0.195
+    },
+    {
+      "step": 24,
+      "epoch": 2,
+      "loss": 0.0695,
+      "lr": 3.41e-06,
+      "grad_norm": 0.602
+    },
+    {
+      "step": 25,
+      "epoch": 2,
+      "loss": 0.158,
+      "lr": 8.6e-07,
+      "grad_norm": 0.56
+    },
+    {
+      "step": 26,
+      "epoch": 2,
+      "loss": 0.1983,
+      "lr": 0.0,
+      "grad_norm": 1.151
+    }
+  ],
+  "epochs": [
+    {
+      "epoch": 1,
+      "seconds": 161.4,
+      "tokens_per_second": 279.4,
+      "peak_allocated_gb": 6.287,
+      "train_loss": 0.554,
+      "val_loss": 0.38,
+      "validation": {
+        "states": 101,
+        "valid_rate": 1.0,
+        "action_accuracy": 0.7624,
+        "decision_macro_f1": 0.9407,
+        "decision_per_class": {
+          "clarify": {
+            "precision": 1.0,
+            "recall": 0.765,
+            "f1": 0.867,
+            "support": 17
+          },
+          "execute": {
+            "precision": 0.913,
+            "recall": 1.0,
+            "f1": 0.955,
+            "support": 42
+          },
+          "abstain": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 11
+          }
+        },
+        "slot_accuracy": 0.6471,
+        "tool_accuracy": 0.2903,
+        "confusion": {
+          "inspect->execute": 12,
+          "clarify->clarify": 13,
+          "execute->execute": 42,
+          "inspect->inspect": 11,
+          "clarify->execute": 4,
+          "inspect->abstain": 8,
+          "abstain->abstain": 11
+        }
+      },
+      "eval_seconds": 120.0
+    },
+    {
+      "epoch": 2,
+      "seconds": 171.7,
+      "tokens_per_second": 262.6,
+      "peak_allocated_gb": 6.254,
+      "train_loss": 0.1279,
+      "val_loss": 0.3434,
+      "validation": {
+        "states": 101,
+        "valid_rate": 1.0,
+        "action_accuracy": 0.8515,
+        "decision_macro_f1": 0.8623,
+        "decision_per_class": {
+          "clarify": {
+            "precision": 1.0,
+            "recall": 0.765,
+            "f1": 0.867,
+            "support": 17
+          },
+          "execute": {
+            "precision": 0.9,
+            "recall": 0.857,
+            "f1": 0.878,
+            "support": 42
+          },
+          "abstain": {
+            "precision": 1.0,
+            "recall": 0.727,
+            "f1": 0.842,
+            "support": 11
+          }
+        },
+        "slot_accuracy": 0.5882,
+        "tool_accuracy": 0.7097,
+        "confusion": {
+          "inspect->inspect": 29,
+          "clarify->clarify": 13,
+          "execute->execute": 36,
+          "inspect->execute": 2,
+          "clarify->execute": 4,
+          "execute->inspect": 6,
+          "abstain->inspect": 3,
+          "abstain->abstain": 8
+        }
+      },
+      "eval_seconds": 119.5
+    }
+  ],
+  "best_epoch": 1
+}

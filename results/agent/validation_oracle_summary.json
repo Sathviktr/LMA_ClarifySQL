@@ -5,63 +5,64 @@
   "backend": "hf",
   "wall_seconds": 67.8,
   "name": "oracle",
-  "episodes": 57,
+  "episodes": 53,
   "by_kind": {
-    "ambiguous": 14,
+    "ambiguous": 13,
     "two_slot": 2,
     "definition": 5,
-    "clear": 24,
-    "unanswerable": 12
+    "clear": 22,
+    "unanswerable": 11
   },
-  "execution_accuracy": 0.8222,
+  "execution_accuracy": 0.8095,
   "execution_accuracy_by_kind": {
-    "ambiguous": 0.9286,
+    "ambiguous": 0.9231,
     "two_slot": 0.5,
     "definition": 1.0,
-    "clear": 0.75
+    "clear": 0.7273
   },
-  "decision_macro_f1": 0.2247,
+  "decision_macro_f1": 0.225,
   "decision_per_class": {
     "clarify": {
       "precision": 0.0,
       "recall": 0.0,
       "f1": 0.0,
-      "support": 16
+      "support": 15
     },
     "execute": {
       "precision": 0.509,
       "recall": 1.0,
-      "f1": 0.674,
-      "support": 29
+      "f1": 0.675,
+      "support": 27
     },
     "abstain": {
       "precision": 0.0,
       "recall": 0.0,
       "f1": 0.0,
-      "support": 12
+      "support": 11
     }
   },
-  "decision_accuracy": 0.5088,
+  "decision_accuracy": 0.5094,
   "unnecessary_question_rate_clear": 0.0,
   "unnecessary_question_rate_definition": 0.0,
   "correct_abstention_rate": 0.0,
   "wrong_abstention_rate_answerable": 0.0,
   "avg_clarification_turns": 0.0,
   "avg_clarification_turns_vague": 0.0,
+  "slot_accuracy": null,
   "invalid_output_rate": null,
   "limit_rate": 0.0,
   "invalid_episode_rate": 0.0,
   "blocked_attempts": 0,
   "reasons": {
-    "match": 37,
+    "match": 34,
     "different_result": 8,
-    "executed": 12
+    "executed": 11
   },
   "cost": {
-    "model_calls": 57,
+    "model_calls": 53,
     "policy_calls": 0,
-    "tokens_in": 23823,
-    "tokens_out": 2466,
-    "gpu_seconds": 67.7
+    "tokens_in": 21500,
+    "tokens_out": 2270,
+    "gpu_seconds": 62.9
   }
 }

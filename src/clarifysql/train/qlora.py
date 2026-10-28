@@ -4,7 +4,8 @@ Settings for a free T4 GPU: the base model stored in 4-bit NF4 with FP16 compute
 adapter of rank 16 on the attention and MLP projections (about 33M trainable parameters), micro-batch 1 with
 gradient accumulation, gradient checkpointing, and FP16 mixed precision with loss scaling. The loss covers the
 target tokens only (sft_data.py). After every epoch the adapter is saved and judged on the validation states
-(state_eval.py); the epoch to keep is chosen by those scores, never by the training loss.
+(state_eval.py), a cheap view of the progress. The epoch to keep is chosen later by whole validation episodes
+(eval/metrics.py, selection_key), never by the training loss.
 
 torch / transformers / peft are imported inside functions, so this module imports without them.
 """
@@ -23,7 +24,7 @@ from clarifysql.agent.controller import POLICY_MAX_TOKENS
 from clarifysql.llm.hf import _sync, _torch, reset_peak
 from clarifysql.pilot import LORA_TARGETS, env_report, gpu_memory
 from clarifysql.train.sft_data import encode_all, load_states
-from clarifysql.train.state_eval import score_states, selection_key
+from clarifysql.train.state_eval import score_states, state_key
 
 
 @dataclass
@@ -189,7 +190,7 @@ def train(cfg: TrainConfig, model, tok, out_dir: Path, log_path: Path | None = N
             log_path.write_text(json.dumps(log, indent=2) + "\n", encoding="utf-8")
     judged = [e for e in log["epochs"] if "validation" in e]
     if judged:
-        log["best_epoch"] = max(judged, key=lambda e: selection_key(e["validation"]))["epoch"]
+        log["best_epoch_by_states"] = max(judged, key=lambda e: state_key(e["validation"]))["epoch"]
     if log_path is not None:
         log_path.write_text(json.dumps(log, indent=2) + "\n", encoding="utf-8")
     return log

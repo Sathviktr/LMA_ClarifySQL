@@ -5,64 +5,65 @@
   "backend": "hf",
   "wall_seconds": 72.3,
   "name": "b1",
-  "episodes": 57,
+  "episodes": 53,
   "by_kind": {
-    "ambiguous": 14,
+    "ambiguous": 13,
     "two_slot": 2,
     "definition": 5,
-    "clear": 24,
-    "unanswerable": 12
+    "clear": 22,
+    "unanswerable": 11
   },
-  "execution_accuracy": 0.5333,
+  "execution_accuracy": 0.5,
   "execution_accuracy_by_kind": {
-    "ambiguous": 0.4286,
+    "ambiguous": 0.3846,
     "two_slot": 0.0,
     "definition": 0.0,
-    "clear": 0.75
+    "clear": 0.7273
   },
-  "decision_macro_f1": 0.2247,
+  "decision_macro_f1": 0.225,
   "decision_per_class": {
     "clarify": {
       "precision": 0.0,
       "recall": 0.0,
       "f1": 0.0,
-      "support": 16
+      "support": 15
     },
     "execute": {
       "precision": 0.509,
       "recall": 1.0,
-      "f1": 0.674,
-      "support": 29
+      "f1": 0.675,
+      "support": 27
     },
     "abstain": {
       "precision": 0.0,
       "recall": 0.0,
       "f1": 0.0,
-      "support": 12
+      "support": 11
     }
   },
-  "decision_accuracy": 0.5088,
+  "decision_accuracy": 0.5094,
   "unnecessary_question_rate_clear": 0.0,
   "unnecessary_question_rate_definition": 0.0,
   "correct_abstention_rate": 0.0,
   "wrong_abstention_rate_answerable": 0.0,
   "avg_clarification_turns": 0.0,
   "avg_clarification_turns_vague": 0.0,
+  "slot_accuracy": null,
   "invalid_output_rate": null,
   "limit_rate": 0.0,
   "invalid_episode_rate": 0.0,
   "blocked_attempts": 0,
   "reasons": {
-    "match": 24,
+    "match": 21,
     "pred_sql_error": 2,
     "different_result": 19,
-    "executed": 12
+    "executed": 11
   },
   "cost": {
-    "model_calls": 57,
+    "model_calls": 53,
     "policy_calls": 0,
-    "tokens_in": 25654,
-    "tokens_out": 2632,
-    "gpu_seconds": 72.1
+    "tokens_in": 23335,
+    "tokens_out": 2433,
+    "gpu_seconds": 66.4
   }
 }
