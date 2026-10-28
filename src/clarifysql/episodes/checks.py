@@ -17,6 +17,20 @@ from clarifysql.episodes.schema import Episode
 from clarifysql.tools.search_definitions import Definition, search, tokenize
 
 _MEASURE_STOP = {"number", "amount", "count", "total", "average", "of", "the", "most", "times"}
+# words that only say how vague a glossary term is: two terms sharing only these are about different things
+_GENERIC = set(tokenize("many few high low large big small long short tall heavy older younger recently ago "
+                        "ranks highest lowest within certain range"))
+
+
+def term_words(term: str) -> set[str]:
+    """The content words of a glossary term, made singular ("many weeks" and "many week" share "week")."""
+    return set(tokenize(term)) - _GENERIC
+
+
+def clashes(entry_term: str, own_terms: set[str]) -> bool:
+    """A distractor must not be about the same thing as one of the episode's own terms."""
+    own = {w for t in own_terms for w in term_words(t)}
+    return entry_term not in own_terms and bool(term_words(entry_term) & own)
 
 
 def _numbers(text: str) -> set[str]:
@@ -62,6 +76,8 @@ def check_episode(ep: Episode) -> list[str]:
                 problems.append("the defining glossary entry is not retrieved first")
         elif any(g.term in terms for g in glossary):
             problems.append("an ambiguous slot is defined in the glossary")
+        if any(clashes(g.term, terms) for g in glossary):
+            problems.append("a glossary distractor is about the same thing as the episode's own term")
         visible = (ep.request + " " + " ".join(g.text for g in glossary)).lower()
         if ep.kind != "definition" and any(s["hidden"] and s["hidden"].lower() in visible for s in ep.slots):
             problems.append("the hidden detail is visible to the policy")

@@ -83,20 +83,17 @@ used kb range: used kb between 10 and 15
 launch year range: launch year between 2002 and 2004",What are the opening hours of each phone company's store?,,
 validation-c09e5351,music_4,"artist(Artist_ID, Artist, Age, Famous_Title, Famous_Release_date)
 volume(Volume_ID, Volume_Issue, Issue_Date, Weeks_on_Top, Song, Artist_ID)
-music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)","many week: more than 1 week
-music festival ranks highest: ranked by number of records",Show the famous titles of the artists who have both volumes that stayed on top for many weeks and volumes that stayed on top for only a few weeks.,,
+music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)",music festival ranks highest: ranked by number of records,Show the famous titles of the artists who have both volumes that stayed on top for many weeks and volumes that stayed on top for only a few weeks.,,
 validation-cfe7df41,music_4,"artist(Artist_ID, Artist, Age, Famous_Title, Famous_Release_date)
 volume(Volume_ID, Volume_Issue, Issue_Date, Weeks_on_Top, Song, Artist_ID)
-music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)","many week: more than 1 week
-music festival ranks highest: ranked by number of records",Please show the date of ceremony for the volumes that stayed on top for many weeks.,,
+music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)",music festival ranks highest: ranked by number of records,Please show the date of ceremony for the volumes that stayed on top for many weeks.,,
 validation-58bb87b2,city_record,"city(City_ID, City, Hanzi, Hanyu_Pinyin, Regional_Population, GDP)
 match(Match_ID, Date, Venue, Score, Result, Competition)
 temperature(City_ID, Jan, Feb, Mar, Apr, Jun, Jul, Aug, Sep, Oct, Nov, Dec)
 hosting_city(Year, Match_ID, Host_City)",,Which city comes out on top in February?,,
 validation-28a00bf8,music_4,"artist(Artist_ID, Artist, Age, Famous_Title, Famous_Release_date)
 volume(Volume_ID, Volume_Issue, Issue_Date, Weeks_on_Top, Song, Artist_ID)
-music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)","many weeks: more than 2 weeks
-music festival ranks highest: ranked by number of records",What are the songs in volumes that stayed on top for many weeks?,,
+music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)",music festival ranks highest: ranked by number of records,What are the songs in volumes that stayed on top for many weeks?,,
 validation-f179118b,club_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Club(ClubID, ClubName, ClubDesc, ClubLocation)
 Member_of_club(StuID, ClubID, Position)","older student: age older than 18

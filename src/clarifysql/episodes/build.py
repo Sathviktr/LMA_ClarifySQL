@@ -17,6 +17,7 @@ from clarifysql.data.normalize import normalize_sql
 from clarifysql.data.splits import load_splits
 from clarifysql.db.catalog import schema_info
 from clarifysql.episodes.ambiguate import Slot, candidate_measures, ranking_draft, threshold_draft
+from clarifysql.episodes.checks import clashes
 from clarifysql.episodes.mining import dedupe, is_ranking, is_threshold
 from clarifysql.episodes.schema import Episode
 
@@ -271,11 +272,10 @@ def build_split(split: str, seed: int = SEED) -> tuple[list[Episode], dict]:
 
     def glossary_for(db: str, own_terms: set[str], own_hidden: list[str], own_source: str,
                      include: list[dict]) -> list[dict]:
-        own_words = {w for t in own_terms for w in t.split()} - _GENERIC
         own_numbers = {n for h in own_hidden for n in re.findall(r"-?\d+(?:\.\d+)?", h or "")}
         seen, others = set(own_terms), []
         for g in entries_by_db[db]:
-            if g["source_id"] == own_source or g["term"] in seen or set(g["term"].split()) & own_words:
+            if g["source_id"] == own_source or g["term"] in seen or clashes(g["term"], own_terms):
                 continue
             if any(h and h.lower() in g["definition"].lower() for h in own_hidden):
                 continue
@@ -332,10 +332,6 @@ def build_split(split: str, seed: int = SEED) -> tuple[list[Episode], dict]:
                            "with_rule_draft": sum(c["request"] is not None for c in cands),
                            "two_slot": len(two), "clear_pool": len(clear_pool)}}
     return episodes, stats
-
-
-_GENERIC = {"many", "few", "high", "low", "large", "big", "small", "long", "short", "tall", "heavy", "older", "younger",
-            "recently", "long", "ago", "ranks", "highest", "lowest", "within", "certain", "range"}
 
 
 def _count(episodes):

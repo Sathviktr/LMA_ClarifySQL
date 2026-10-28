@@ -64,6 +64,16 @@ def test_singular_and_plural():
     assert plural("city") == "cities" and plural("singer") == "singers"
 
 
+def test_a_distractor_about_the_same_thing_clashes_even_in_another_number():
+    from clarifysql.episodes.checks import clashes
+
+    assert clashes("many week", {"many weeks"})            # the bug: "week" vs "weeks"
+    assert clashes("older student", {"many students"})     # same thing, other vague word
+    assert not clashes("many weeks", {"many weeks"})       # the episode's own entry
+    assert not clashes("many airports", {"older member"})  # different things
+    assert not clashes("high price", {"high age"})         # sharing only a vague word is fine
+
+
 def test_episode_roundtrip_keeps_first_decision():
     ep = Episode("x", "train", "db", "ambiguous", "Show older singers.")
     d = ep.to_dict()

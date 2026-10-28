@@ -117,7 +117,6 @@ Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_b
 Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","dog ranks lowest: ranked by number of records
 owner ranks highest: ranked by number of records
-high sum(cost of treatment: sum(cost of treatment more than 1000
 many treatments: more than 2 treatments","Which professionals live in the state of Indiana or have done many treatments? List his or her id, last name and cell phone.",,
 test-db257212,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
@@ -305,8 +304,7 @@ countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
-cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","early cars data: year before 1980
-model ranks highest: ranked by horsepower
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","model ranks highest: ranked by horsepower
 many models: at least 2 models
 few cylinders: less than 4 cylinders",Which makers designed many car models? List full name and the id.,,
 test-ed40aaf8,car_1,"continents(ContId, Continent)
@@ -316,7 +314,6 @@ model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","few cylinders: less than 4 cylinders
 model ranks highest: ranked by horsepower
-car ranks highest: ranked by accelerate
 many models: at least 2 models",Which model is the most efficient?,,
 test-0931b5d6,dog_kennels,"Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
@@ -377,7 +374,6 @@ car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","many models: at least 2 models
-early cars data: year before 1980
 high weight: weight no less than 3000
 many cylinders: more than 4 cylinders",What are the id and names of the countries which have many car makers or produce the 'fiat' model?,,
 test-f13f8e0a,orchestra,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
@@ -519,10 +515,8 @@ countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
-cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","early cars data: year before 1980
-many cylinders: more than 4 cylinders
-high horsepower: horsepower more than 150
-cars data ranks highest: ranked by horsepower",Which car makers produce many models and many cars? List the id and the maker.,,
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","many cylinders: more than 4 cylinders
+high horsepower: horsepower more than 150",Which car makers produce many models and many cars? List the id and the maker.,,
 test-eb93fb96,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","year ranks highest: ranked by number of matches
@@ -581,8 +575,6 @@ car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","few cylinders: less than 4 cylinders
-many car: at least 3 car
-car ranks lowest: ranked by horsepower
 many models: at least 2 models",What is the maximum miles per gallon of the cars with 8 cylinders or produced long ago?,,
 test-9e282b9d,car_1,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
@@ -737,8 +729,7 @@ model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","few cylinders: less than 4 cylinders
 many cylinders: more than 4 cylinders
-high weight: weight more than 3500
-cars data ranks highest: ranked by horsepower",How many countries have many car makers?,,
+high weight: weight more than 3500",How many countries have many car makers?,,
 test-b71c8ac8,employee_hire_evaluation,"employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
@@ -948,11 +939,8 @@ countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
-cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","car ranks lowest: ranked by horsepower
-recent cars data: year after 1980
-high weight: weight more than 3500
-car ranks highest: ranked by accelerate
-many car: at least 3 car",Which distinct car models were produced recently?,,
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","recent cars data: year after 1980
+high weight: weight more than 3500",Which distinct car models were produced recently?,,
 test-7c93ff42,cre_Doc_Template_Mgt,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
 Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
 Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
@@ -1010,8 +998,7 @@ Owners(owner_id, first_name, last_name, street, city, state, zip_code, email_add
 Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_birth, gender, weight, date_arrived, date_adopted, date_departed)
 Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","owner ranks highest: ranked by number of records
-dog ranks lowest: ranked by number of records
-many treatments: more than 2 treatments",Which dogs have not cost their owner a lot for treatment? List the dog names.,,
+dog ranks lowest: ranked by number of records",Which dogs have not cost their owner a lot for treatment? List the dog names.,,
 test-8dd2bc60,singer,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)",,Show the citizenships shared by singers born long ago and singers born recently.,,
 test-150e6fad,wta_1,"players(player_id, first_name, last_name, hand, birth_date, country_code)
