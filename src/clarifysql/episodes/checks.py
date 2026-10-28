@@ -33,6 +33,22 @@ def clashes(entry_term: str, own_terms: set[str]) -> bool:
     return entry_term not in own_terms and bool(term_words(entry_term) & own)
 
 
+def vagueness(term: str) -> str:
+    """The kind of vague phrase a glossary term names: "rank" ("city ranks highest"), "range" ("year range"),
+    otherwise its vague word ("many airports" -> "many")."""
+    if re.search(r"\branks (?:highest|lowest)$", term):
+        return "rank"
+    return "range" if term.endswith(" range") else term.split()[0]
+
+
+def reads_as_definition(entry_term: str, own_terms: set[str], request: str) -> bool:
+    """A distractor of the same kind as the episode's own vague phrase, about something the request names, reads
+    like the meaning of that phrase: "many car models" next to "many models: at least 2 models"."""
+    words = term_words(entry_term)
+    return (entry_term not in own_terms and bool(words) and words <= set(tokenize(request))
+            and vagueness(entry_term) in {vagueness(t) for t in own_terms})
+
+
 def _numbers(text: str) -> set[str]:
     return {n.rstrip("0").rstrip(".") if "." in n else n for n in re.findall(r"-?\d+(?:\.\d+)?", text)}
 
@@ -78,6 +94,8 @@ def check_episode(ep: Episode) -> list[str]:
             problems.append("an ambiguous slot is defined in the glossary")
         if any(clashes(g.term, terms) for g in glossary):
             problems.append("a glossary distractor is about the same thing as the episode's own term")
+        if ep.kind != "definition" and any(reads_as_definition(g.term, terms, ep.request) for g in glossary):
+            problems.append("a glossary distractor reads like the meaning of the request's vague phrase")
         visible = (ep.request + " " + " ".join(g.text for g in glossary)).lower()
         if ep.kind != "definition" and any(s["hidden"] and s["hidden"].lower() in visible for s in ep.slots):
             problems.append("the hidden detail is visible to the policy")

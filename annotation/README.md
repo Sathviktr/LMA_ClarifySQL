@@ -16,12 +16,12 @@ python -I scripts/annotation_status.py
 | Task | Who | Rows | Time | Status |
 |---|---|---|---|---|
 | 1. Edit the validation and test requests | one editor | 36 + 120 | ~2 h | **done** (SR) |
-| 2. Blind labels | two people, A and B, ideally not the editor | 57 + 196 each | ~2 h each | to do |
-| 3. Resolve the label disagreements | A and B together | only the rows they disagree on | ~30 min | after task 2 |
+| 2. Blind labels | two people, A and B, ideally not the editor | 57 + 196 each | ~2 h each | **done** (κ 0.971 / 0.926) |
+| 3. Resolve the label disagreements | A and B together | only the rows they disagree on | ~30 min | **done** (8 test dropped) |
 | 4. Clean the CoSQL slice | one person | 60 | ~1 h | to do |
 | 5. Audit the training data | one person | 144 | ~1 h | to do |
 
-Tasks 2, 4 and 5 can run at the same time.
+Tasks 4 and 5 can run at the same time.
 
 ## How to fill a sheet
 
@@ -49,7 +49,10 @@ applied the edits and re-ran the automatic checks, and every episode passes. The
 4. Definition episodes keep the glossary term as the vague phrase, so that looking it up finds the definition.
 5. Unanswerable episodes must be natural, and the database must really not store what is asked.
 
-## 2. Blind labels: `<split>_label_A.csv` and `<split>_label_B.csv`
+## 2. Blind labels: `<split>_label_A.csv` and `<split>_label_B.csv` (done)
+
+Both annotators labelled every row. Cohen's kappa between A and B is 0.971 on validation (56 of 57 rows agree) and
+0.926 on test (187 of 196); `results/episodes/<split>_agreement.json` has the details.
 
 Annotator A fills `validation_label_A.csv` and `test_label_A.csv`. Annotator B fills the two `_label_B.csv` files.
 
@@ -70,7 +73,10 @@ should do **first**:
 
 Spend about 20–30 seconds per row. If you are unsure, pick your best guess and write why in `comment`.
 
-## 3. Resolve the disagreements: `<split>_disagreements.csv`
+## 3. Resolve the disagreements: `<split>_disagreements.csv` (done)
+
+All 15 rows are resolved. The validation row kept its intended decision. 8 of the 14 test rows did not, so those
+episodes were dropped, leaving 57 validation and 188 test episodes.
 
 When both annotators have finished, run `python -I scripts/kappa.py validation` (and `test`). It reports Cohen's
 kappa and writes `<split>_disagreements.csv`. That sheet lists every row where A and B disagree, or where both

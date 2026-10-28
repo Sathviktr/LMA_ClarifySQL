@@ -74,6 +74,27 @@ def test_a_distractor_about_the_same_thing_clashes_even_in_another_number():
     assert not clashes("high price", {"high age"})         # sharing only a vague word is fine
 
 
+def test_a_distractor_that_reads_as_the_meaning_of_the_vague_phrase_is_caught():
+    from clarifysql.episodes.checks import reads_as_definition
+
+    request = "Which makers designed many car models?"
+    assert reads_as_definition("many models", {"many car"}, request)               # test-ambiguous-149
+    assert not reads_as_definition("model ranks highest", {"many car"}, request)   # another kind of vagueness
+    assert not reads_as_definition("many cylinders", {"many car"}, request)        # not named in the request
+    assert reads_as_definition("stadium ranks lowest", {"capacity ranks highest"}, "Show the busiest stadium.")
+
+
+def test_aggregates_read_as_words_and_the_ordered_column_is_a_meaning(tiny_db):
+    from clarifysql.db.catalog import schema_info
+    from clarifysql.episodes.build import column_phrase
+
+    assert column_phrase("sum(cost_of_treatment)") == "total cost of treatment"
+    assert column_phrase("avg(T1.LifeExpectancy)") == "average life expectancy"
+    schema = schema_info(str(tiny_db))  # country is stored as text, like car_1's horsepower
+    assert "singer.country" in candidate_measures("SELECT name FROM singer ORDER BY country DESC LIMIT 1", schema)
+    assert "singer.country" not in candidate_measures("SELECT name FROM singer ORDER BY age DESC LIMIT 1", schema)
+
+
 def test_episode_roundtrip_keeps_first_decision():
     ep = Episode("x", "train", "db", "ambiguous", "Show older singers.")
     d = ep.to_dict()

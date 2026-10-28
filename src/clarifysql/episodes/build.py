@@ -17,7 +17,7 @@ from clarifysql.data.normalize import normalize_sql
 from clarifysql.data.splits import load_splits
 from clarifysql.db.catalog import schema_info
 from clarifysql.episodes.ambiguate import Slot, candidate_measures, ranking_draft, threshold_draft
-from clarifysql.episodes.checks import clashes
+from clarifysql.episodes.checks import clashes, reads_as_definition
 from clarifysql.episodes.mining import dedupe, is_ranking, is_threshold
 from clarifysql.episodes.schema import Episode
 
@@ -102,9 +102,15 @@ def slot_table(target: str, sql: str, schema) -> str | None:
     return tables[0] if tables else None
 
 
+_AGGREGATES = {"sum": "total", "avg": "average", "max": "maximum", "min": "minimum"}
+
+
 def column_phrase(target: str) -> str:
     if re.search(r"count\s*\(", target, re.I):
         return "number"
+    m = re.match(r"\s*(sum|avg|max|min)\s*\((.+)\)\s*$", target, re.I)
+    if m:  # "sum(cost_of_treatment)" -> "total cost of treatment", not "sum(cost of treatment"
+        return f"{_AGGREGATES[m.group(1).lower()]} {column_phrase(m.group(2))}"
     return humanize(target.split(".")[-1].strip("() "))
 
 
@@ -271,12 +277,14 @@ def build_split(split: str, seed: int = SEED) -> tuple[list[Episode], dict]:
                                            "hidden": sl.hidden})
 
     def glossary_for(db: str, own_terms: set[str], own_hidden: list[str], own_source: str,
-                     include: list[dict]) -> list[dict]:
+                     include: list[dict], request: str = "") -> list[dict]:
         own_numbers = {n for h in own_hidden for n in re.findall(r"-?\d+(?:\.\d+)?", h or "")}
         seen, others = set(own_terms), []
         for g in entries_by_db[db]:
             if g["source_id"] == own_source or g["term"] in seen or clashes(g["term"], own_terms):
                 continue
+            if request and reads_as_definition(g["term"], own_terms, request):
+                continue  # it would look like the meaning of the request's own vague phrase
             if any(h and h.lower() in g["definition"].lower() for h in own_hidden):
                 continue
             if own_numbers & set(re.findall(r"-?\d+(?:\.\d+)?", g["definition"])):
@@ -299,7 +307,8 @@ def build_split(split: str, seed: int = SEED) -> tuple[list[Episode], dict]:
             d.update(describe_slot(d, request, entity, e.question))
             slots.append(d)
         include = ([{k: slots[0][k] for k in ("term", "definition", "aliases")}] if kind == "definition" else [])
-        glossary = glossary_for(e.db_id, {d["term"] for d in slots}, [d["hidden"] for d in slots], sid, include)
+        glossary = glossary_for(e.db_id, {d["term"] for d in slots}, [d["hidden"] for d in slots], sid, include,
+                                request if kind != "definition" else "")
         ref = [{"action": "inspect", "tool": "search_definitions", "args": {"query": slots[0]["term"]}}]
         if kind != "definition":
             ref += [{"action": "clarify", "question": d["question"],

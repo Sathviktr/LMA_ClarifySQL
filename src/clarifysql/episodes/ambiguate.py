@@ -188,17 +188,19 @@ def _measure_words(hidden: str) -> str:
 
 
 def candidate_measures(sql: str, schema) -> list[str]:
-    """Numeric, non-identifier columns of the tables in the query, plus 'number of rows' for counts.
+    """Numeric, non-identifier columns of the tables in the query, plus 'number of records' for counts.
 
-    These are the competing meanings of "ranks highest": by which of them?
+    These are the competing meanings of "ranks highest": by which of them? The column the query orders by is
+    always one of them, even when it is stored as text (car_1 keeps horsepower and mpg as text).
     """
     used = {t.name for t in schema.tables.values() if re.search(rf"\b{re.escape(t.name)}\b", sql, re.I)}
+    ordered = " ".join(re.findall(r"order\s+by\s+([^;]*)", sql, re.I)).lower()
     out = []
     for name in used:
         for c in schema.tables[name].columns:
             low = c.name.lower()
-            if any(k in c.type for k in NUMERIC_TYPES) and not (low == "id" or low.endswith("_id") or low.endswith("id")
-                                                                 or low.endswith("_code")):
+            measure = any(k in c.type for k in NUMERIC_TYPES) or re.search(rf"\b{re.escape(low)}\b", ordered)
+            if measure and not (low == "id" or low.endswith("_id") or low.endswith("id") or low.endswith("_code")):
                 out.append(f"{name}.{c.name}")
     if re.search(r"count\s*\(", sql, re.I):
         out.append("number of records")
