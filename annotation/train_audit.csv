@@ -173,12 +173,12 @@ train-ambiguous-1900,ambiguous,our rules,school_finance,"School(School_id, Schoo
 budget(School_id, Year, Budgeted, total_budget_percent_budgeted, Invested, total_budget_percent_invested, Budget_invested_percent)
 endowment(endowment_id, School_id, donator_name, amount)",How many budgets are above 3000 in year 2001 or before?,How many budgets are high in year 2001 or before?,threshold: above 3000 (user means: > 3000),,"1. search_definitions(high budgeted)
 2. ask ""What budgeted counts as ""high""?"" -> user: ""I mean above 3000.""
-3. execute ""How many budgets are above 3000 in year 2001 or before?""",keep,SR,
+3. execute ""How many budgets are above 3000 in year 2001 or before?""",drop,SR,broken ask: 'What budgeted counts as high?'
 train-ambiguous-1926,ambiguous,our rules,protein_institute,"building(building_id, Name, Street_address, Years_as_tallest, Height_feet, Floors)
 Institution(Institution_id, Institution, Location, Founded, Type, Enrollment, Team, Primary_Conference, building_id)
 protein(common_name, protein_name, divergence_from_human_lineage, accession_number, sequence_length, sequence_identity_to_human_protein, Institution_id)","How many proteins are associated with an institution founded after 1880 or an institution with type ""Private""?","How many proteins are associated with an institution founded recently or an institution with type ""Private""?",threshold: after 1880 (user means: > 1880),,"1. search_definitions(recent institution)
 2. ask ""Which founded do you mean by ""recently""?"" -> user: ""I mean after 1880.""
-3. execute ""How many proteins are associated with an institution founded after 1880 or an institution with type ""Private""?""",keep,SR,
+3. execute ""How many proteins are associated with an institution founded after 1880 or an institution with type ""Private""?""",drop,SR,broken ask: 'Which founded do you mean by recently?'
 train-ambiguous-1942,ambiguous,our rules,cinema,"film(Film_ID, Rank_in_series, Number_in_season, Title, Directed_by, Original_air_date, Production_code)
 cinema(Cinema_ID, Name, Openning_year, Capacity, Location)
 schedule(Cinema_ID, Film_ID, Date, Show_times_per_day, Price)",What is the location with the most cinemas opened in year 2010 or later?,What is the location that ranks highest in year 2010 or later?,ranking: with the most cinemas opened (user means: cinemas opened),,"1. search_definitions(location ranks highest)
@@ -369,7 +369,7 @@ school_details(School_ID, Nickname, Colors, League, Class, Division)
 school_performance(School_Id, School_Year, Class_A, Class_AA)
 player(Player_ID, Player, Team, Age, Position, School_ID)",Show the denomination shared by schools founded before 1890 and schools founded after 1900,Show the denomination shared by schools founded long ago and schools founded after 1900,threshold: before 1890 (user means: < 1890),,"1. search_definitions(early school)
 2. ask ""Which founded do you mean by ""long ago""?"" -> user: ""I mean before 1890.""
-3. execute ""Show the denomination shared by schools founded before 1890 and schools founded after 1900""",keep,SR,
+3. execute ""Show the denomination shared by schools founded before 1890 and schools founded after 1900""",drop,SR,broken ask: 'Which founded do you mean by long ago?'
 train-ambiguous-4924,ambiguous,our rules,store_product,"product(product_id, product, dimensions, dpi, pages_per_minute_color, max_page_size, interface)
 store(Store_ID, Store_Name, Type, Area_size, Number_of_product_category, Ranking)
 district(District_ID, District_name, Headquartered_City, City_Population, City_Area)

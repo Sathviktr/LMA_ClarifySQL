@@ -1,49 +1,49 @@
 {
   "max_tokens": 1024,
   "train": {
-    "states": 611,
+    "states": 602,
     "dropped_over_limit": 6,
-    "episodes": 310,
+    "episodes": 307,
     "target_actions": {
-      "inspect": 178,
-      "clarify": 126,
-      "execute": 265,
+      "inspect": 175,
+      "clarify": 123,
+      "execute": 262,
       "abstain": 42
     },
     "states_by_kind": {
-      "ambiguous": 318,
+      "ambiguous": 309,
       "two_slot": 40,
       "definition": 40,
       "clear": 129,
       "unanswerable": 84
     },
     "tokens": {
-      "median": 450,
-      "p90": 578,
+      "median": 449.5,
+      "p90": 581,
       "max": 1515,
       "over_limit": 6
     }
   },
   "train_noslot": {
-    "states": 611,
+    "states": 602,
     "dropped_over_limit": 6,
-    "episodes": 310,
+    "episodes": 307,
     "target_actions": {
-      "inspect": 178,
-      "clarify": 126,
-      "execute": 265,
+      "inspect": 175,
+      "clarify": 123,
+      "execute": 262,
       "abstain": 42
     },
     "states_by_kind": {
-      "ambiguous": 318,
+      "ambiguous": 309,
       "two_slot": 40,
       "definition": 40,
       "clear": 129,
       "unanswerable": 84
     },
     "tokens": {
-      "median": 405,
-      "p90": 534,
+      "median": 404.0,
+      "p90": 535,
       "max": 1392,
       "over_limit": 6
     }

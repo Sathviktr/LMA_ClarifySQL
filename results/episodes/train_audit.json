@@ -1,6 +1,6 @@
 {
   "audited": 144,
-  "dropped": 30,
+  "dropped": 33,
   "by_stratum": {
     "ambiguous/model paraphrase": {
       "audited": 10,
@@ -9,8 +9,8 @@
     },
     "ambiguous/our rules": {
       "audited": 71,
-      "dropped": 10,
-      "kept_rate": 0.859
+      "dropped": 13,
+      "kept_rate": 0.817
     },
     "clear/Spider question": {
       "audited": 10,

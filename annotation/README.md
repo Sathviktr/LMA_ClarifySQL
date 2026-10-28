@@ -19,7 +19,7 @@ python -I scripts/annotation_status.py
 | 2. Blind labels | two people, A and B, ideally not the editor | 57 + 196 each | ~2 h each | **done** (κ 0.971 / 0.926) |
 | 3. Resolve the label disagreements | A and B together | only the rows they disagree on | ~30 min | **done** (8 test dropped) |
 | 4. Clean the CoSQL slice | one person | 60 | ~1 h | **done** (59 kept) |
-| 5. Audit the training data | one person | 144 | ~1 h | **done** (30 dropped) |
+| 5. Audit the training data | one person | 144 | ~1 h | **done** (33 dropped) |
 
 All hand work for Phase 4 is done.
 
@@ -103,7 +103,7 @@ in **`annotator`**. The proposal keeps 40–60 cleaned turns and scores only the
 
 ## 5. Audit the training data: `train_audit.csv` (done)
 
-All 144 rows are audited and 30 were dropped, leaving 310 training episodes. The keep rate per stratum is in
+All 144 rows are audited and 33 were dropped, leaving 307 training episodes. The keep rate per stratum is in
 `results/episodes/train_audit.json`.
 
 The training requests were made by our rules, by a template or by the base model's paraphrasing. The sheet
