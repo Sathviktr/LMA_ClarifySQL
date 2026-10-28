@@ -3,26 +3,26 @@ validation-0658f22f,music_4,"artist(Artist_ID, Artist, Age, Famous_Title, Famous
 volume(Volume_ID, Volume_Issue, Issue_Date, Weeks_on_Top, Song, Artist_ID)
 music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)","many weeks: more than 2 weeks
 music festival ranks highest: ranked by number of records
-many week: more than 1 week","Please show the results of music festivals and the number of music festivals that have had each, ordered by this count.",,
+many week: more than 1 week","Please show the results of music festivals and the number of music festivals that have had each, ordered by this count.",execute,
 validation-2106ec37,city_record,"city(City_ID, City, Hanzi, Hanyu_Pinyin, Regional_Population, GDP)
 match(Match_ID, Date, Venue, Score, Result, Competition)
 temperature(City_ID, Jan, Feb, Mar, Apr, Jun, Jul, Aug, Sep, Oct, Nov, Dec)
 hosting_city(Year, Match_ID, Host_City)","city ranks highest: ranked by population
 city ranks highest: ranked by temperature
 city ranks lowest: ranked by GDP
-city ranks highest: ranked by number of records",What is the website of each city?,,
+city ranks highest: ranked by number of records",What is the website of each city?,abstain,
 validation-e005f10f,club_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Club(ClubID, ClubName, ClubDesc, ClubLocation)
 Member_of_club(StuID, ClubID, Position)","club ranks highest: ranked by members majoring
 older student: age older than 18
 younger student: age younger than 18
-club ranks highest: ranked by female students",What is the most common favorite color among club members?,,
+club ranks highest: ranked by female students",What is the most common favorite color among club members?,abstain,
 validation-2f7fcc0d,scientist_1,"Scientists(SSN, Name)
 Projects(Code, Name, Hours)
-AssignedTo(Scientist, Project)",project ranks highest: ranked by number of scientists,Find the number of scientists involved for the projects that require a high number of hours.,,
+AssignedTo(Scientist, Project)",project ranks highest: ranked by number of scientists,Find the number of scientists involved for the projects that require a high number of hours.,clarify,
 validation-78e8dfd3,election_representative,"election(Election_ID, Representative_ID, Date, Votes, Vote_Percent, Seats, Place)
 representative(Representative_ID, Name, State, Party, Lifespan)","representative ranks lowest: ranked by number of votes
-many votes: more than 10000 votes",How many distinct parties are there for representatives?,,
+many votes: more than 10000 votes",How many distinct parties are there for representatives?,execute,
 validation-05d52824,sakila_1,"actor(actor_id, first_name, last_name, last_update)
 address(address_id, address, address2, district, city_id, postal_code, phone, last_update)
 category(category_id, name, last_update)
@@ -41,14 +41,14 @@ staff(staff_id, first_name, last_name, address_id, picture, email, store_id, act
 store(store_id, manager_staff_id, address_id, last_update)","film ranks highest: ranked by rental rate
 payment ranks lowest: ranked by number of records
 large amount: amount larger than 10
-many films: more than 30 films","Find all the long films, or those rated PG, except the ones with a high replacement cost. List the titles.",,
+many films: more than 30 films","Find all the long films, or those rated PG, except the ones with a high replacement cost. List the titles.",clarify,'long' and 'high replacement cost' not defined
 validation-35589773,election_representative,"election(Election_ID, Representative_ID, Date, Votes, Vote_Percent, Seats, Place)
-representative(Representative_ID, Name, State, Party, Lifespan)",many votes: more than 10000 votes,What is the party of the representative with the weakest election result?,,
+representative(Representative_ID, Name, State, Party, Lifespan)",many votes: more than 10000 votes,What is the party of the representative with the weakest election result?,clarify,"weakest by votes, vote percent or seats?"
 validation-acf75a8b,race_track,"race(Race_ID, Name, Class, Date, Track_ID)
 track(Track_ID, Name, Location, Seating, Year_Opened)","track ranks highest: ranked by number of races
 few seats: less than 70000 seats
 track ranks highest: ranked by year opened
-few opened: no more than 4000 opened",Who is the insurance provider of each track?,,
+few opened: no more than 4000 opened",Who is the insurance provider of each track?,abstain,
 validation-9a23262f,sakila_1,"actor(actor_id, first_name, last_name, last_update)
 address(address_id, address, address2, district, city_id, postal_code, phone, last_update)
 category(category_id, name, last_update)
@@ -68,59 +68,59 @@ store(store_id, manager_staff_id, address_id, last_update)","low number: number 
 long length: length longer than 100 minutes
 large amount: amount larger than 10
 many films: more than 30 films
-payment ranks lowest: ranked by number of records",Which actors or actresses have played a role in many films? List their first name and last name.,,
+payment ranks lowest: ranked by number of records",Which actors or actresses have played a role in many films? List their first name and last name.,execute,
 validation-9c567a52,election_representative,"election(Election_ID, Representative_ID, Date, Votes, Vote_Percent, Seats, Place)
 representative(Representative_ID, Name, State, Party, Lifespan)","representative ranks lowest: ranked by number of votes
-many votes: more than 10000 votes",What are the names and parties of representatives?,,
+many votes: more than 10000 votes",What are the names and parties of representatives?,execute,
 validation-eeba367d,election_representative,"election(Election_ID, Representative_ID, Date, Votes, Vote_Percent, Seats, Place)
 representative(Representative_ID, Name, State, Party, Lifespan)","many votes: more than 10000 votes
-representative ranks lowest: ranked by number of votes",What is the social media account of each representative?,,
+representative ranks lowest: ranked by number of votes",What is the social media account of each representative?,abstain,
 validation-b9b39961,phone_1,"chip_model(Model_name, Launch_year, RAM_MiB, ROM_MiB, Slots, WiFi, Bluetooth)
 screen_mode(Graphics_mode, Char_cells, Pixels, Hardware_colours, used_kb, map, Type)
 phone(Company_name, Hardware_Model_name, Accreditation_type, Accreditation_level, Date, chip_model, screen_mode)","many phones: more than 3 phones
 and ranks highest: ranked by RAM size
 used kb range: used kb between 10 and 15
-launch year range: launch year between 2002 and 2004",What are the opening hours of each phone company's store?,,
+launch year range: launch year between 2002 and 2004",What are the opening hours of each phone company's store?,abstain,
 validation-c09e5351,music_4,"artist(Artist_ID, Artist, Age, Famous_Title, Famous_Release_date)
 volume(Volume_ID, Volume_Issue, Issue_Date, Weeks_on_Top, Song, Artist_ID)
-music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)",music festival ranks highest: ranked by number of records,Show the famous titles of the artists who have both volumes that stayed on top for many weeks and volumes that stayed on top for only a few weeks.,,
+music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)",music festival ranks highest: ranked by number of records,Show the famous titles of the artists who have both volumes that stayed on top for many weeks and volumes that stayed on top for only a few weeks.,clarify,'many weeks' and 'few weeks' not defined
 validation-cfe7df41,music_4,"artist(Artist_ID, Artist, Age, Famous_Title, Famous_Release_date)
 volume(Volume_ID, Volume_Issue, Issue_Date, Weeks_on_Top, Song, Artist_ID)
-music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)",music festival ranks highest: ranked by number of records,Please show the date of ceremony for the volumes that stayed on top for many weeks.,,
+music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)",music festival ranks highest: ranked by number of records,Please show the date of ceremony for the volumes that stayed on top for many weeks.,clarify,
 validation-58bb87b2,city_record,"city(City_ID, City, Hanzi, Hanyu_Pinyin, Regional_Population, GDP)
 match(Match_ID, Date, Venue, Score, Result, Competition)
 temperature(City_ID, Jan, Feb, Mar, Apr, Jun, Jul, Aug, Sep, Oct, Nov, Dec)
-hosting_city(Year, Match_ID, Host_City)",,Which city comes out on top in February?,,
+hosting_city(Year, Match_ID, Host_City)",,Which city comes out on top in February?,clarify,"on top by highest or lowest temperature, or matches?"
 validation-28a00bf8,music_4,"artist(Artist_ID, Artist, Age, Famous_Title, Famous_Release_date)
 volume(Volume_ID, Volume_Issue, Issue_Date, Weeks_on_Top, Song, Artist_ID)
-music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)",music festival ranks highest: ranked by number of records,What are the songs in volumes that stayed on top for many weeks?,,
+music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)",music festival ranks highest: ranked by number of records,What are the songs in volumes that stayed on top for many weeks?,clarify,
 validation-f179118b,club_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Club(ClubID, ClubName, ClubDesc, ClubLocation)
 Member_of_club(StuID, ClubID, Position)","older student: age older than 18
 younger student: age younger than 18
-club ranks highest: ranked by members majoring","Where is the club ""Hopkins Student Enterprises"" located?",,
+club ranks highest: ranked by members majoring","Where is the club ""Hopkins Student Enterprises"" located?",execute,
 validation-a54c04ec,customer_complaints,"Staff(staff_id, gender, first_name, last_name, email_address, phone_number)
 Customers(customer_id, customer_type_code, address_line_1, address_line_2, town_city, state, email_address, phone_number)
 Products(product_id, parent_product_id, product_category_code, date_product_first_available, date_product_discontinued, product_name, product_description, product_price)
 Complaints(complaint_id, product_id, customer_id, complaint_outcome_code, complaint_status_code, complaint_type_code, date_complaint_raised, date_complaint_closed, staff_id)","many records: more than 3 records
-customer ranks lowest: ranked by number of records","Which city has the least number of customers whose type code is ""Good Credit Rating""?",,
+customer ranks lowest: ranked by number of records","Which city has the least number of customers whose type code is ""Good Credit Rating""?",execute,
 validation-4c4cb9ef,race_track,"race(Race_ID, Name, Class, Date, Track_ID)
 track(Track_ID, Name, Location, Seating, Year_Opened)","few opened: no more than 4000 opened
 track ranks highest: ranked by year opened
-few seats: less than 70000 seats",Show the name of track and the number of races in each track.,,
+few seats: less than 70000 seats",Show the name of track and the number of races in each track.,execute,
 validation-5c76fb65,scientist_1,"Scientists(SSN, Name)
 Projects(Code, Name, Hours)
 AssignedTo(Scientist, Project)","hours range: hours between 100 and 300 hours
-project ranks highest: ranked by number of scientists",Find the name of projects whose hours of work are within a certain range.,,
+project ranks highest: ranked by number of scientists",Find the name of projects whose hours of work are within a certain range.,execute,
 validation-04a2632f,phone_1,"chip_model(Model_name, Launch_year, RAM_MiB, ROM_MiB, Slots, WiFi, Bluetooth)
 screen_mode(Graphics_mode, Char_cells, Pixels, Hardware_colours, used_kb, map, Type)
 phone(Company_name, Hardware_Model_name, Accreditation_type, Accreditation_level, Date, chip_model, screen_mode)","launch year range: launch year between 2002 and 2004
 used kb range: used kb between 10 and 15
 many phones: more than 3 phones
-model ranks lowest: ranked by amount of RAM",Find the average ram mib size of the chip models that are never used by any phone.,,
+model ranks lowest: ranked by amount of RAM",Find the average ram mib size of the chip models that are never used by any phone.,execute,
 validation-dbb32d4c,election_representative,"election(Election_ID, Representative_ID, Date, Votes, Vote_Percent, Seats, Place)
 representative(Representative_ID, Name, State, Party, Lifespan)","representative ranks lowest: ranked by number of votes
-many votes: more than 10000 votes",What are the names of representatives in descending order of votes?,,
+many votes: more than 10000 votes",What are the names of representatives in descending order of votes?,execute,
 validation-0d39e054,sakila_1,"actor(actor_id, first_name, last_name, last_update)
 address(address_id, address, address2, district, city_id, postal_code, phone, last_update)
 category(category_id, name, last_update)
@@ -139,30 +139,30 @@ staff(staff_id, first_name, last_name, address_id, picture, email, store_id, act
 store(store_id, manager_staff_id, address_id, last_update)","film ranks highest: ranked by rental rate
 long length: length longer than 100 minutes
 many films: more than 30 films
-large amount: amount larger than 10",Which staff member handled the least in payments? List the full name and the id.,,
+large amount: amount larger than 10",Which staff member handled the least in payments? List the full name and the id.,clarify,least by number of payments or total amount?
 validation-a29d9c17,race_track,"race(Race_ID, Name, Class, Date, Track_ID)
 track(Track_ID, Name, Location, Seating, Year_Opened)","few seats: less than 70000 seats
 few opened: no more than 4000 opened
-track ranks highest: ranked by number of races",Show the name of the track that ranks highest.,,
+track ranks highest: ranked by number of races",Show the name of the track that ranks highest.,execute,glossary 'track ranks highest' = by number of races
 validation-ad088b2e,club_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Club(ClubID, ClubName, ClubDesc, ClubLocation)
 Member_of_club(StuID, ClubID, Position)","club ranks highest: ranked by members majoring
-younger student: age younger than 18","How many younger students are members of the club ""Bootup Baltimore""?",,
+younger student: age younger than 18","How many younger students are members of the club ""Bootup Baltimore""?",execute,
 validation-b7ff1aa3,customer_complaints,"Staff(staff_id, gender, first_name, last_name, email_address, phone_number)
 Customers(customer_id, customer_type_code, address_line_1, address_line_2, town_city, state, email_address, phone_number)
 Products(product_id, parent_product_id, product_category_code, date_product_first_available, date_product_discontinued, product_name, product_description, product_price)
-Complaints(complaint_id, product_id, customer_id, complaint_outcome_code, complaint_status_code, complaint_type_code, date_complaint_raised, date_complaint_closed, staff_id)",customer ranks lowest: ranked by number of records,Which complaint status has many records on file?,,
+Complaints(complaint_id, product_id, customer_id, complaint_outcome_code, complaint_status_code, complaint_type_code, date_complaint_raised, date_complaint_closed, staff_id)",customer ranks lowest: ranked by number of records,Which complaint status has many records on file?,clarify,
 validation-2dfe0363,phone_1,"chip_model(Model_name, Launch_year, RAM_MiB, ROM_MiB, Slots, WiFi, Bluetooth)
 screen_mode(Graphics_mode, Char_cells, Pixels, Hardware_colours, used_kb, map, Type)
 phone(Company_name, Hardware_Model_name, Accreditation_type, Accreditation_level, Date, chip_model, screen_mode)","model ranks lowest: ranked by amount of RAM
 and ranks highest: ranked by RAM size
 used kb range: used kb between 10 and 15
-many phones: more than 3 phones",What is the official motto of each phone company?,,
+many phones: more than 3 phones",What is the official motto of each phone company?,abstain,
 validation-2af61f1d,club_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Club(ClubID, ClubName, ClubDesc, ClubLocation)
 Member_of_club(StuID, ClubID, Position)","younger student: age younger than 18
 club ranks highest: ranked by members majoring
-older student: age older than 18",What are the names of all clubs?,,
+older student: age older than 18",What are the names of all clubs?,execute,
 validation-a6257d7c,music_2,"Songs(SongId, Title)
 Albums(AId, Title, Year, Label, Type)
 Band(Id, Firstname, Lastname)
@@ -172,19 +172,19 @@ Tracklists(AlbumId, Position, SongId)
 Vocals(SongId, Bandmate, Type)","label ranks highest: ranked by albums
 vocal ranks highest: ranked by number of records
 song ranks highest: ranked by number of records
-band ranks highest: ranked by number of records","Hom many musicians performed in the song ""Flash""?",,
+band ranks highest: ranked by number of records","Hom many musicians performed in the song ""Flash""?",execute,
 validation-a3914ec0,city_record,"city(City_ID, City, Hanzi, Hanyu_Pinyin, Regional_Population, GDP)
 match(Match_ID, Date, Venue, Score, Result, Competition)
 temperature(City_ID, Jan, Feb, Mar, Apr, Jun, Jul, Aug, Sep, Oct, Nov, Dec)
 hosting_city(Year, Match_ID, Host_City)","city ranks lowest: ranked by GDP
 city ranks highest: ranked by regional population
-recent hosting city: year after 2010",Which city has hosted the most events?,,
+recent hosting city: year after 2010",Which city has hosted the most events?,execute,
 validation-8c82a7db,phone_1,"chip_model(Model_name, Launch_year, RAM_MiB, ROM_MiB, Slots, WiFi, Bluetooth)
 screen_mode(Graphics_mode, Char_cells, Pixels, Hardware_colours, used_kb, map, Type)
 phone(Company_name, Hardware_Model_name, Accreditation_type, Accreditation_level, Date, chip_model, screen_mode)","many phones: more than 3 phones
 model ranks lowest: ranked by amount of RAM
 launch year range: launch year between 2002 and 2004
-used kb range: used kb between 10 and 15",Find the names of the chip models that are not used by any phone with full accreditation type.,,
+used kb range: used kb between 10 and 15",Find the names of the chip models that are not used by any phone with full accreditation type.,execute,
 validation-16ab919f,music_2,"Songs(SongId, Title)
 Albums(AId, Title, Year, Label, Type)
 Band(Id, Firstname, Lastname)
@@ -194,41 +194,41 @@ Tracklists(AlbumId, Position, SongId)
 Vocals(SongId, Bandmate, Type)","song ranks highest: ranked by number of records
 label ranks highest: ranked by albums
 band ranks highest: ranked by number of records
-vocal ranks highest: ranked by number of records","Find all the stage positions of the musicians with first name ""Solveig""",,
+vocal ranks highest: ranked by number of records","Find all the stage positions of the musicians with first name ""Solveig""",execute,
 validation-32119035,race_track,"race(Race_ID, Name, Class, Date, Track_ID)
 track(Track_ID, Name, Location, Seating, Year_Opened)","few opened: no more than 4000 opened
 track ranks highest: ranked by number of races
 few seats: less than 70000 seats
-track ranks highest: ranked by year opened",What is the insurance provider of each race?,,
+track ranks highest: ranked by year opened",What is the insurance provider of each race?,abstain,
 validation-4e6447fe,city_record,"city(City_ID, City, Hanzi, Hanyu_Pinyin, Regional_Population, GDP)
 match(Match_ID, Date, Venue, Score, Result, Competition)
 temperature(City_ID, Jan, Feb, Mar, Apr, Jun, Jul, Aug, Sep, Oct, Nov, Dec)
 hosting_city(Year, Match_ID, Host_City)","city ranks highest: ranked by number of records
 recent hosting city: year after 2010
-city ranks lowest: ranked by GDP",what is the GDP of the city with the largest population.,,
+city ranks lowest: ranked by GDP",what is the GDP of the city with the largest population.,execute,
 validation-27268db6,race_track,"race(Race_ID, Name, Class, Date, Track_ID)
 track(Track_ID, Name, Location, Seating, Year_Opened)","track ranks highest: ranked by year opened
 few opened: no more than 4000 opened
-few seats: less than 70000 seats","What is the minimum, maximum, and average seating for all tracks.",,
+few seats: less than 70000 seats","What is the minimum, maximum, and average seating for all tracks.",execute,
 validation-a38abea7,race_track,"race(Race_ID, Name, Class, Date, Track_ID)
 track(Track_ID, Name, Location, Seating, Year_Opened)","track ranks highest: ranked by year opened
 few opened: no more than 4000 opened
-few seats: less than 70000 seats",What are the names for tracks without a race in class 'GT'.,,
+few seats: less than 70000 seats",What are the names for tracks without a race in class 'GT'.,execute,
 validation-3eaf37cb,phone_1,"chip_model(Model_name, Launch_year, RAM_MiB, ROM_MiB, Slots, WiFi, Bluetooth)
 screen_mode(Graphics_mode, Char_cells, Pixels, Hardware_colours, used_kb, map, Type)
 phone(Company_name, Hardware_Model_name, Accreditation_type, Accreditation_level, Date, chip_model, screen_mode)","and ranks highest: ranked by RAM size
 launch year range: launch year between 2002 and 2004
 used kb range: used kb between 10 and 15
-model ranks lowest: ranked by amount of RAM",Find the accreditation level that many phones use.,,
+model ranks lowest: ranked by amount of RAM",Find the accreditation level that many phones use.,clarify,
 validation-dd2c9dc1,music_4,"artist(Artist_ID, Artist, Age, Famous_Title, Famous_Release_date)
 volume(Volume_ID, Volume_Issue, Issue_Date, Weeks_on_Top, Song, Artist_ID)
 music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)","many weeks: more than 2 weeks
-many week: more than 1 week",What is the top result at the music festivals?,,
+many week: more than 1 week",What is the top result at the music festivals?,clarify,top = most common result or best result?
 validation-2164b1a7,customer_complaints,"Staff(staff_id, gender, first_name, last_name, email_address, phone_number)
 Customers(customer_id, customer_type_code, address_line_1, address_line_2, town_city, state, email_address, phone_number)
 Products(product_id, parent_product_id, product_category_code, date_product_first_available, date_product_discontinued, product_name, product_description, product_price)
 Complaints(complaint_id, product_id, customer_id, complaint_outcome_code, complaint_status_code, complaint_type_code, date_complaint_raised, date_complaint_closed, staff_id)","customer ranks lowest: ranked by number of records
-many records: more than 3 records",List all complaints together with their environmental rating.,,
+many records: more than 3 records",List all complaints together with their environmental rating.,abstain,
 validation-5838eee9,sakila_1,"actor(actor_id, first_name, last_name, last_update)
 address(address_id, address, address2, district, city_id, postal_code, phone, last_update)
 category(category_id, name, last_update)
@@ -247,28 +247,28 @@ staff(staff_id, first_name, last_name, address_id, picture, email, store_id, act
 store(store_id, manager_staff_id, address_id, last_update)","payment ranks lowest: ranked by number of records
 large amount: amount larger than 10
 many cities: at least 3 cities
-film ranks highest: ranked by rental rate","Which customer, who has made at least one payment, has spent the least money? List his or her first name, last name, and the id.",,
+film ranks highest: ranked by rental rate","Which customer, who has made at least one payment, has spent the least money? List his or her first name, last name, and the id.",execute,
 validation-dd6d3cae,city_record,"city(City_ID, City, Hanzi, Hanyu_Pinyin, Regional_Population, GDP)
 match(Match_ID, Date, Venue, Score, Result, Competition)
 temperature(City_ID, Jan, Feb, Mar, Apr, Jun, Jul, Aug, Sep, Oct, Nov, Dec)
 hosting_city(Year, Match_ID, Host_City)","city ranks lowest: ranked by GDP
 recent hosting city: year after 2010
-city ranks highest: ranked by number of records",Which three cities have the largest regional population?,,
+city ranks highest: ranked by number of records",Which three cities have the largest regional population?,execute,
 validation-db06e314,music_4,"artist(Artist_ID, Artist, Age, Famous_Title, Famous_Release_date)
 volume(Volume_ID, Volume_Issue, Issue_Date, Weeks_on_Top, Song, Artist_ID)
 music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)","many weeks: more than 2 weeks
 music festival ranks highest: ranked by number of records
 many weeks: more than 2 weeks
-many weeks: more than 2 weeks",Which artist has the highest credit score?,,
+many weeks: more than 2 weeks",Which artist has the highest credit score?,abstain,
 validation-ba520d99,music_4,"artist(Artist_ID, Artist, Age, Famous_Title, Famous_Release_date)
 volume(Volume_ID, Volume_Issue, Issue_Date, Weeks_on_Top, Song, Artist_ID)
 music_festival(ID, Music_Festival, Date_of_ceremony, Category, Volume, Result)","many week: more than 1 week
 music festival ranks highest: ranked by number of records
-many weeks: more than 2 weeks",Find the famous titles of artists that do not have any volume.,,
+many weeks: more than 2 weeks",Find the famous titles of artists that do not have any volume.,execute,
 validation-bf21197a,scientist_1,"Scientists(SSN, Name)
 Projects(Code, Name, Hours)
 AssignedTo(Scientist, Project)","high hours: hours more than 300 hours
-hours range: hours between 100 and 300 hours",Find the name and hours of the biggest project.,,
+hours range: hours between 100 and 300 hours",Find the name and hours of the biggest project.,clarify,biggest by hours or number of scientists?
 validation-ca78b3b3,music_2,"Songs(SongId, Title)
 Albums(AId, Title, Year, Label, Type)
 Band(Id, Firstname, Lastname)
@@ -278,7 +278,7 @@ Tracklists(AlbumId, Position, SongId)
 Vocals(SongId, Bandmate, Type)","song ranks highest: ranked by number of records
 band ranks highest: ranked by number of records
 song ranks highest: ranked by number of records
-vocal ranks highest: ranked by number of records",List all tracklists together with their insurance provider.,,
+vocal ranks highest: ranked by number of records",List all tracklists together with their insurance provider.,abstain,
 validation-253d90ae,sakila_1,"actor(actor_id, first_name, last_name, last_update)
 address(address_id, address, address2, district, city_id, postal_code, phone, last_update)
 category(category_id, name, last_update)
@@ -297,28 +297,28 @@ staff(staff_id, first_name, last_name, address_id, picture, email, store_id, act
 store(store_id, manager_staff_id, address_id, last_update)","long length: length longer than 100 minutes
 many films: more than 30 films
 many cities: at least 3 cities
-large amount: amount larger than 10",Which store has most the customers?,,
+large amount: amount larger than 10",Which store has most the customers?,execute,
 validation-7efef6e5,club_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Club(ClubID, ClubName, ClubDesc, ClubLocation)
 Member_of_club(StuID, ClubID, Position)","older student: age older than 18
 club ranks highest: ranked by members majoring
-younger student: age younger than 18","Find the names of the clubs that have at least a member from the city with city code ""HOU"".",,
+younger student: age younger than 18","Find the names of the clubs that have at least a member from the city with city code ""HOU"".",execute,
 validation-4d2337a2,scientist_1,"Scientists(SSN, Name)
 Projects(Code, Name, Hours)
 AssignedTo(Scientist, Project)","project ranks highest: ranked by number of scientists
 hours range: hours between 100 and 300 hours
-high hours: hours more than 300 hours",List the name of all projects that are operated longer than the average working hours of all projects.,,
+high hours: hours more than 300 hours",List the name of all projects that are operated longer than the average working hours of all projects.,execute,
 validation-e672a523,phone_1,"chip_model(Model_name, Launch_year, RAM_MiB, ROM_MiB, Slots, WiFi, Bluetooth)
 screen_mode(Graphics_mode, Char_cells, Pixels, Hardware_colours, used_kb, map, Type)
 phone(Company_name, Hardware_Model_name, Accreditation_type, Accreditation_level, Date, chip_model, screen_mode)","launch year range: launch year between 2002 and 2004
 many phones: more than 3 phones
 model ranks lowest: ranked by amount of RAM
-used kb range: used kb between 10 and 15",List the name of the phone model launched in year 2002 with the most memory.,,
+used kb range: used kb between 10 and 15",List the name of the phone model launched in year 2002 with the most memory.,clarify,memory = RAM or ROM?
 validation-9732baef,scientist_1,"Scientists(SSN, Name)
 Projects(Code, Name, Hours)
 AssignedTo(Scientist, Project)","hours range: hours between 100 and 300 hours
 high hours: hours more than 300 hours
-project ranks highest: ranked by number of scientists",Show the average environmental rating of the projects.,,
+project ranks highest: ranked by number of scientists",Show the average environmental rating of the projects.,abstain,
 validation-2a8f323b,music_2,"Songs(SongId, Title)
 Albums(AId, Title, Year, Label, Type)
 Band(Id, Firstname, Lastname)
@@ -327,7 +327,7 @@ Performance(SongId, Bandmate, StagePosition)
 Tracklists(AlbumId, Position, SongId)
 Vocals(SongId, Bandmate, Type)","band ranks highest: ranked by number of records
 vocal ranks highest: ranked by number of records
-label ranks highest: ranked by albums",Find the first name of the most active band mate.,,
+label ranks highest: ranked by albums",Find the first name of the most active band mate.,clarify,"active by performances, instruments or vocals?"
 validation-eaa77e3a,sakila_1,"actor(actor_id, first_name, last_name, last_update)
 address(address_id, address, address2, district, city_id, postal_code, phone, last_update)
 category(category_id, name, last_update)
@@ -346,24 +346,24 @@ staff(staff_id, first_name, last_name, address_id, picture, email, store_id, act
 store(store_id, manager_staff_id, address_id, last_update)","many cities: at least 3 cities
 film ranks highest: ranked by number of actors or actresses
 film ranks highest: ranked by copies
-payment ranks lowest: ranked by number of records",What is the religion of each customer?,,
+payment ranks lowest: ranked by number of records",What is the religion of each customer?,abstain,
 validation-22342b5a,scientist_1,"Scientists(SSN, Name)
 Projects(Code, Name, Hours)
 AssignedTo(Scientist, Project)","project ranks highest: ranked by number of scientists
 hours range: hours between 100 and 300 hours
-high hours: hours more than 300 hours",Find the number of distinct projects.,,
+high hours: hours more than 300 hours",Find the number of distinct projects.,execute,
 validation-61accf54,club_1,"Student(StuID, LName, Fname, Age, Sex, Major, Advisor, city_code)
 Club(ClubID, ClubName, ClubDesc, ClubLocation)
 Member_of_club(StuID, ClubID, Position)","younger student: age younger than 18
-older student: age older than 18","Which club is the top one for students majoring in ""600""?",,
+older student: age older than 18","Which club is the top one for students majoring in ""600""?",execute,unsure: read 'top one' as most members majoring in 600
 validation-23e4a9d3,customer_complaints,"Staff(staff_id, gender, first_name, last_name, email_address, phone_number)
 Customers(customer_id, customer_type_code, address_line_1, address_line_2, town_city, state, email_address, phone_number)
 Products(product_id, parent_product_id, product_category_code, date_product_first_available, date_product_discontinued, product_name, product_description, product_price)
 Complaints(complaint_id, product_id, customer_id, complaint_outcome_code, complaint_status_code, complaint_type_code, date_complaint_raised, date_complaint_closed, staff_id)","many records: more than 3 records
-customer ranks lowest: ranked by number of records",How many customers are there in the customer type with the most customers?,,
+customer ranks lowest: ranked by number of records",How many customers are there in the customer type with the most customers?,execute,
 validation-20c3e72a,election_representative,"election(Election_ID, Representative_ID, Date, Votes, Vote_Percent, Seats, Place)
-representative(Representative_ID, Name, State, Party, Lifespan)",representative ranks lowest: ranked by number of votes,What are the names of representatives who got many votes in an election?,,
+representative(Representative_ID, Name, State, Party, Lifespan)",representative ranks lowest: ranked by number of votes,What are the names of representatives who got many votes in an election?,clarify,
 validation-898905e5,city_record,"city(City_ID, City, Hanzi, Hanyu_Pinyin, Regional_Population, GDP)
 match(Match_ID, Date, Venue, Score, Result, Competition)
 temperature(City_ID, Jan, Feb, Mar, Apr, Jun, Jul, Aug, Sep, Oct, Nov, Dec)
-hosting_city(Year, Match_ID, Host_City)",recent hosting city: year after 2010,Which cities have recently been a hosting city?,,
+hosting_city(Year, Match_ID, Host_City)",recent hosting city: year after 2010,Which cities have recently been a hosting city?,execute,

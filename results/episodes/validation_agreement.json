@@ -1,0 +1,25 @@
+{
+  "labelled_by_both": 57,
+  "unlabelled_or_invalid": 0,
+  "kappa_A_B": 0.971,
+  "agreement_A_B": 0.982,
+  "kappa_A_intended": 0.971,
+  "kappa_B_intended": 1.0,
+  "confusion_A_B": {
+    "abstain": {
+      "abstain": 12,
+      "clarify": 0,
+      "execute": 0
+    },
+    "clarify": {
+      "abstain": 0,
+      "clarify": 15,
+      "execute": 0
+    },
+    "execute": {
+      "abstain": 0,
+      "clarify": 1,
+      "execute": 29
+    }
+  }
+}

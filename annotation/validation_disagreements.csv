@@ -1,0 +1,3 @@
+﻿shown_id,episode_id,A,B,intended,request,glossary,user_meant,comment_A,comment_B,resolved_decision
+validation-61accf54,validation-ambiguous-4276,execute,clarify,clarify,"Which club is the top one for students majoring in ""600""?","younger student: age younger than 18
+older student: age older than 18",Rank them by members majoring.,unsure: read 'top one' as most members majoring in 600,Specify how to rank clubs for students majoring in 600.,
