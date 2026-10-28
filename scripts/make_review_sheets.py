@@ -4,6 +4,7 @@ Usage:
     python -I scripts/make_review_sheets.py edit     # 1. write / edit validation and test requests
     python -I scripts/make_review_sheets.py label    # 2. blind labels by annotators A and B (after step 1)
     python -I scripts/make_review_sheets.py cosql    # the CoSQL dev slice to clean by hand
+    python -I scripts/make_review_sheets.py audit    # the human audit of the training episodes
 See annotation/README.md for the instructions.
 """
 
@@ -15,15 +16,23 @@ import hashlib
 import random
 from pathlib import Path
 
-from clarifysql.config import REPO_ROOT
 from clarifysql.data import cosql, spider
 from clarifysql.data.splits import load_splits
 from clarifysql.db.catalog import compact_catalog
 from clarifysql.episodes.checks import check_episode
-from clarifysql.episodes.schema import load_episodes
+from clarifysql.episodes.review import ANNOTATION
+from clarifysql.episodes.schema import FIRST_DECISION, load_episodes
 
-ANNOTATION = REPO_ROOT / "annotation"
 COSQL_MAP = {"AMBIGUOUS": "clarify", "CANNOT_ANSWER": "abstain", "INFORM_SQL": "execute"}
+# training audit: every episode our rules or templates wrote is checked; the others are sampled
+AUDIT_ALL = ("rule", "template")
+AUDIT_SAMPLE = {("clear", "original"): 10, ("ambiguous", "model_paraphrase"): 10,
+                ("unanswerable", "model_paraphrase"): 8, ("two_slot", "model_paraphrase"): 3}
+SHEETS = {"edit": ["validation_edit.csv", "test_edit.csv"],
+          "label": [f"{s}_label_{w}.csv" for s in ("validation", "test") for w in ("A", "B")],
+          "cosql": ["cosql_dev_slice.csv"], "audit": ["train_audit.csv"]}
+MADE_BY = {"original": "Spider question", "rule": "our rules", "template": "our template",
+           "model_paraphrase": "model paraphrase", "human": "team"}
 
 
 def write_csv(path: Path, header: list[str], rows: list[list]) -> Path:
@@ -81,6 +90,52 @@ def label_sheets() -> None:
             print(write_csv(ANNOTATION / f"{split}_label_{who}.csv", header, rows), f"({len(rows)} rows)")
 
 
+def audit_selection(episodes, seed: str = "audit-train") -> list:
+    """A stratified audit (kind x how the request was made): all rule/template episodes, a sample of the rest."""
+    rng = random.Random(seed)
+    strata: dict[tuple, list] = {}
+    for ep in episodes:
+        strata.setdefault((ep.kind, ep.draft.get("method", "")), []).append(ep)
+    picked = []
+    for (kind, method), eps in sorted(strata.items()):
+        if method in AUDIT_ALL and kind != "clear":
+            picked += eps
+        else:
+            picked += rng.sample(eps, min(AUDIT_SAMPLE.get((kind, method), 5), len(eps)))
+    order = list(FIRST_DECISION)  # clear, ambiguous, two_slot, definition, unanswerable
+    return sorted(picked, key=lambda ep: (order.index(ep.kind), ep.id))
+
+
+def path_text(ep) -> str:
+    """The reference path in words, with the simulated user's answers."""
+    answers = {s["term"]: s["answer"] for s in ep.slots}
+    steps = []
+    for a in ep.reference:
+        if a["action"] == "inspect":
+            steps.append(f'{a["tool"]}({", ".join(str(v) for v in a["args"].values())})')
+        elif a["action"] == "clarify":
+            term = a["slots"][0]["term"] if a.get("slots") else ""
+            steps.append(f'ask "{a["question"]}" -> user: "{answers.get(term, "")}"')
+        elif a["action"] == "execute":
+            steps.append(f'execute "{a["request"]}"')
+        else:
+            steps.append(f'abstain: "{a["missing"]}"')
+    return "\n".join(f"{i}. {step}" for i, step in enumerate(steps, 1))
+
+
+def audit_sheet() -> None:
+    header = ["episode_id", "kind", "made_by", "db_id", "tables", "original_question", "request", "hidden_detail",
+              "definition_in_glossary", "reference_path", "verdict (keep / drop)", "auditor", "notes"]
+    picked = audit_selection(load_episodes("train"))
+    rows = []
+    for ep in picked:
+        definition = "\n".join(f"{s['term']}: {s['definition']}" for s in ep.slots) if ep.kind == "definition" else ""
+        rows.append([ep.id, ep.kind, MADE_BY.get(ep.draft.get("method"), ep.draft.get("method")), ep.db_id,
+                     compact_catalog(spider.db_path(ep.db_id)), ep.source_question or "", ep.request,
+                     hidden_detail(ep), definition, path_text(ep), "", "", ""])
+    print(write_csv(ANNOTATION / "train_audit.csv", header, rows), f"({len(rows)} rows)")
+
+
 def cosql_sheet(n_ambiguous: int = 25, n_cannot: int = 10, n_clear: int = 25, seed: int = 2026) -> None:
     test_dbs = set(load_splits()["test"])
     found = {"AMBIGUOUS": [], "CANNOT_ANSWER": [], "INFORM_SQL": []}
@@ -114,9 +169,13 @@ def cosql_sheet(n_ambiguous: int = 25, n_cannot: int = 10, n_clear: int = 25, se
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("sheet", choices=["edit", "label", "cosql"])
+    ap.add_argument("sheet", choices=["edit", "label", "cosql", "audit"])
+    ap.add_argument("--force", action="store_true", help="overwrite sheets that already exist")
     args = ap.parse_args()
-    {"edit": edit_sheets, "label": label_sheets, "cosql": cosql_sheet}[args.sheet]()
+    existing = [p.name for p in (ANNOTATION / f for f in SHEETS[args.sheet]) if p.exists()]
+    if existing and not args.force:  # they may hold the team's work
+        raise SystemExit(f"already there: {', '.join(existing)}. Nothing written; use --force to overwrite.")
+    {"edit": edit_sheets, "label": label_sheets, "cosql": cosql_sheet, "audit": audit_sheet}[args.sheet]()
 
 
 if __name__ == "__main__":

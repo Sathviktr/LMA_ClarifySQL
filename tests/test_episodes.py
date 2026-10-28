@@ -75,17 +75,11 @@ built = pytest.mark.skipif(not (EPISODE_DIR / "train.jsonl").exists(), reason="e
 
 @built
 def test_built_splits_have_the_planned_sizes():
-    import csv
-
-    from clarifysql.config import REPO_ROOT
+    from clarifysql.episodes.review import dropped
 
     sizes = {"train": 340, "validation": 60, "test": 200}
     for split, n in sizes.items():
-        sheet = REPO_ROOT / "annotation" / f"{split}_edit.csv"
-        if sheet.exists():  # episodes the team marked DROP are removed by scripts/apply_reviews.py
-            with open(sheet, encoding="utf-8-sig", newline="") as f:
-                n -= sum(r["final_request"].strip().upper() == "DROP" and bool(r["editor"].strip())
-                         for r in csv.DictReader(f))
+        n -= len(dropped(split))  # episodes the team's review removes (scripts/apply_reviews.py)
         rows = [json.loads(line) for line in (EPISODE_DIR / f"{split}.jsonl").read_text(encoding="utf-8").splitlines()]
         assert len(rows) == n
         assert len({r["id"] for r in rows}) == n
