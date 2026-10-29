@@ -1,0 +1,62 @@
+{
+  "rule": "highest decision macro-F1 on the validation episodes (rounded to 0.01); slot accuracy decides between near-ties",
+  "chosen": "sft_lr2e-4_s1_e3",
+  "lr": "2e-4",
+  "epoch": 3,
+  "candidates": {
+    "sft_lr2e-4_s1_e1": {
+      "execution_accuracy": 0.7381,
+      "decision_macro_f1": 0.9437,
+      "slot_accuracy": 0.6667,
+      "unnecessary_question_rate_clear": 0.0,
+      "correct_abstention_rate": 1.0,
+      "wrong_abstention_rate_answerable": 0.0238,
+      "invalid_output_rate": 0.0
+    },
+    "sft_lr2e-4_s1_e2": {
+      "execution_accuracy": 0.7619,
+      "decision_macro_f1": 0.9453,
+      "slot_accuracy": 0.6667,
+      "unnecessary_question_rate_clear": 0.0,
+      "correct_abstention_rate": 1.0,
+      "wrong_abstention_rate_answerable": 0.0,
+      "invalid_output_rate": 0.0
+    },
+    "sft_lr2e-4_s1_e3": {
+      "execution_accuracy": 0.7857,
+      "decision_macro_f1": 0.9827,
+      "slot_accuracy": 0.7333,
+      "unnecessary_question_rate_clear": 0.0,
+      "correct_abstention_rate": 1.0,
+      "wrong_abstention_rate_answerable": 0.0,
+      "invalid_output_rate": 0.0
+    },
+    "sft_lr1e-4_s1_e1": {
+      "execution_accuracy": 0.7619,
+      "decision_macro_f1": 0.925,
+      "slot_accuracy": 0.6,
+      "unnecessary_question_rate_clear": 0.0455,
+      "correct_abstention_rate": 1.0,
+      "wrong_abstention_rate_answerable": 0.0238,
+      "invalid_output_rate": 0.0
+    },
+    "sft_lr1e-4_s1_e2": {
+      "execution_accuracy": 0.7619,
+      "decision_macro_f1": 0.983,
+      "slot_accuracy": 0.7333,
+      "unnecessary_question_rate_clear": 0.0,
+      "correct_abstention_rate": 1.0,
+      "wrong_abstention_rate_answerable": 0.0238,
+      "invalid_output_rate": 0.0
+    },
+    "sft_lr1e-4_s1_e3": {
+      "execution_accuracy": 0.7857,
+      "decision_macro_f1": 0.983,
+      "slot_accuracy": 0.6667,
+      "unnecessary_question_rate_clear": 0.0,
+      "correct_abstention_rate": 1.0,
+      "wrong_abstention_rate_answerable": 0.0238,
+      "invalid_output_rate": 0.0
+    }
+  }
+}

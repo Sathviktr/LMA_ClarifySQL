@@ -1,0 +1,68 @@
+{
+  "system": "sft",
+  "split": "validation",
+  "adapter": "/kaggle/working/outputs/adapters/sft_lr2e-4_s1/epoch-3",
+  "backend": "hf",
+  "wall_seconds": 146.5,
+  "name": "sft_lr2e-4_s1_e3",
+  "episodes": 53,
+  "by_kind": {
+    "ambiguous": 13,
+    "two_slot": 2,
+    "definition": 5,
+    "clear": 22,
+    "unanswerable": 11
+  },
+  "execution_accuracy": 0.7857,
+  "execution_accuracy_by_kind": {
+    "ambiguous": 0.8462,
+    "two_slot": 0.5,
+    "definition": 1.0,
+    "clear": 0.7273
+  },
+  "decision_macro_f1": 0.9827,
+  "decision_per_class": {
+    "clarify": {
+      "precision": 1.0,
+      "recall": 0.933,
+      "f1": 0.966,
+      "support": 15
+    },
+    "execute": {
+      "precision": 0.964,
+      "recall": 1.0,
+      "f1": 0.982,
+      "support": 27
+    },
+    "abstain": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 11
+    }
+  },
+  "decision_accuracy": 0.9811,
+  "unnecessary_question_rate_clear": 0.0,
+  "unnecessary_question_rate_definition": 0.0,
+  "correct_abstention_rate": 1.0,
+  "wrong_abstention_rate_answerable": 0.0,
+  "avg_clarification_turns": 0.283,
+  "avg_clarification_turns_vague": 1.0,
+  "slot_accuracy": 0.7333,
+  "invalid_output_rate": 0.0,
+  "limit_rate": 0.0,
+  "invalid_episode_rate": 0.0,
+  "blocked_attempts": 0,
+  "reasons": {
+    "match": 33,
+    "different_result": 9,
+    "abstained, named": 11
+  },
+  "cost": {
+    "model_calls": 140,
+    "policy_calls": 98,
+    "tokens_in": 58639,
+    "tokens_out": 4255,
+    "gpu_seconds": 144.5
+  }
+}
