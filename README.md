@@ -26,7 +26,7 @@ and limits. Everything runs on free Kaggle/Colab T4 GPUs, without any paid API.
 | 4 | Agent controller, simulated user, baselines B1–B3 | complete; validation results saved |
 | 5 | QLoRA fine-tuning (two seeds + no-slot ablation) | complete; learning rate `2e-4`, epoch 3 selected |
 | 6 | Final inference, CoSQL, scoring, bootstrap and review sheets | checkpoint 7 complete and verified; human judgments pending |
-| 7 | Fictional university demo and final delivery | session engine tested; trained-model/UI demonstration and final report pending |
+| 7 | Fictional university demo and final delivery | session engine and seven-case check tested; checkpoint 8 GPU output, browser interaction and final report pending |
 
 ### Checkpoint 7 results (7 November 2026)
 
@@ -59,6 +59,22 @@ imbalanced slice. Generalization is mixed. See [measured findings](results/final
 Next: complete the [independent human reviews](annotation/evaluation/README.md) and run the live demo in notebook 08.
 The final report is pending these steps. The mid-submission report remains a historical validation report.
 
+### Next GPU run: checkpoint 8
+
+Import the updated [notebook 08](notebooks/08_demo.ipynb) into Kaggle, enable Internet and a T4 GPU, and
+attach the same saved phase6 output (run `363373340`). Keep `RUN_INTERACTIVE = False` and save a run.
+The notebook loads `sft_s1` once, checks seven fixed examples and creates
+`/kaggle/working/checkpoint8_results.zip`. Return that ZIP; checkpoint 7 and training do not need repeating.
+
+The checks cover a clear request, a glossary definition, two ranking choices, two age cutoffs and missing
+email data. Questions, predefined replies, SQL, result rows and failed checks are saved after each case.
+Mocks are stored separately and are never real model results. These seven examples are a scripted demo
+check, not another benchmark or a live-user study. Strict result comparison flags extra result columns;
+an unrecognized clarification can also stop the reply script, so inspect failed traces before assigning blame.
+
+Gradio construction is recorded in `interface.json`; browser interaction remains a separate check.
+To try your own replies later, set `RUN_INTERACTIVE = True` and run the last cell interactively.
+
 ### Reproduce checkpoint 7
 
 Use [notebook 07](notebooks/07_final_evaluation.ipynb). It runs the required final comparisons without retraining.
@@ -72,6 +88,8 @@ with Save & Run All. Return `checkpoint7_results.zip` for analysis and the indep
 For an optional source-ZIP fallback, run `python scripts/prepare_checkpoint7.py`, upload the resulting
 `outputs/clarifysql_checkpoint7_source.zip` as a private Kaggle Dataset, and set `SOURCE = 'archive'`
 in the notebook. To reproduce a GitHub run later, set `REVISION` to its printed commit.
+The recorded checkpoint-7 code is `428e74397d379c4202a62262885e99ed65e7c62e`; pin that revision when
+resuming its original traces. Later demo code changes the source fingerprint and cannot be mixed into that run.
 
 Each condition saves 16-episode batches with data/code/adapter fingerprints. A matching rerun resumes saved
 episodes. Mock outputs are kept separately and rejected by the final analysis. Final results are in
@@ -145,7 +163,8 @@ Start with `notebooks/01_pilot.ipynb`. On Kaggle: *Settings → Accelerator → 
 ### Fictional university demo
 
 [Notebook 08](notebooks/08_demo.ipynb) also loads the code from GitHub and uses the selected `sft_s1` adapter.
-One GPU is sufficient. The demo takes real replies, shows model text in plain text boxes, and runs queries
+One GPU is sufficient. Its default saved run exports the seven scripted checks; the optional interface
+takes real replies, shows model text in plain text boxes, and runs queries
 only against made-up university records. Its interface blocks sample-value inspection; benchmark tools remain
 unchanged. Sharing requires credentials entered at launch. The live model/UI check remains pending.
 
@@ -153,6 +172,7 @@ For a GPU environment outside Kaggle:
 
 ```powershell
 python -m pip install -r requirements-demo.txt
+python scripts/run_demo_checks.py --adapter <path-to-sft_s1>
 python scripts/demo_app.py --adapter <path-to-sft_s1>
 ```
 
