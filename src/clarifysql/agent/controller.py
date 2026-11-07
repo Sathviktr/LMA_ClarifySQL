@@ -30,7 +30,7 @@ from clarifysql.db.safe_exec import execute
 from clarifysql.episodes.schema import Episode
 from clarifysql.episodes.states import memory_line
 from clarifysql.llm.prompts import extract_sql, repair_messages, sql_writer_messages
-from clarifysql.tools import ToolContext, run_tool
+from clarifysql.tools import ToolContext, ToolResult, run_tool
 from clarifysql.tools.search_definitions import Definition
 
 POLICY_MAX_TOKENS = 192
@@ -65,6 +65,8 @@ class Run:
     seconds: float = 0.0
     blocked_attempts: int = 0
     events: list[dict] = field(default_factory=list)
+    simulator_cost: dict = field(default_factory=lambda: {"model_calls": 0, "tokens_in": 0,
+                                                         "tokens_out": 0, "seconds": 0.0})
 
 
 def user_values(memory_answers: list[str]) -> set[str]:
@@ -75,7 +77,7 @@ def user_values(memory_answers: list[str]) -> set[str]:
 class Controller:
     def __init__(self, policy_backend, writer_backend, user, *, with_slots: bool = True, policy_adapter: bool = True,
                  policy_system: str | None = None, budgets: Budgets = DEFAULT_BUDGETS, full_context: bool = False,
-                 batch_size: int = 16):
+                 batch_size: int = 16, db_path_of=None, allowed_tools: frozenset[str] | None = None):
         self.policy_backend = policy_backend
         self.writer_backend = writer_backend
         self.user = user
@@ -85,19 +87,21 @@ class Controller:
         self.budgets = budgets
         self.full_context = full_context
         self.batch_size = batch_size
+        self.db_path_of = db_path_of or spider.db_path
+        self.allowed_tools = allowed_tools
         self._catalog: dict[str, str] = {}
         self._schema: dict[str, str] = {}
 
     # ---------------------------------------------------------------------------------------- helpers
     def catalog(self, db_id: str) -> str:
         if db_id not in self._catalog:
-            path = spider.db_path(db_id)
+            path = self.db_path_of(db_id)
             self._catalog[db_id] = create_table_text(path) if self.full_context else compact_catalog(path)
         return self._catalog[db_id]
 
     def schema(self, db_id: str) -> str:
         if db_id not in self._schema:
-            self._schema[db_id] = create_table_text(spider.db_path(db_id))
+            self._schema[db_id] = create_table_text(self.db_path_of(db_id))
         return self._schema[db_id]
 
     def policy_prompt(self, r: Run) -> list[dict]:
@@ -156,9 +160,12 @@ class Controller:
                 self._finish(r, "limit")
                 return
             glossary = [Definition(g["term"], g["definition"], tuple(g.get("aliases", []))) for g in r.ep.glossary]
-            res = run_tool(ToolContext(spider.db_path(r.ep.db_id), glossary), action["tool"], action["args"])
+            if self.allowed_tools is not None and action["tool"] not in self.allowed_tools:
+                res = ToolResult(False, "This tool is unavailable in this session.", action["tool"], action["args"])
+            else:
+                res = run_tool(ToolContext(self.db_path_of(r.ep.db_id), glossary), action["tool"], action["args"])
             r.inspections += 1
-            r.steps.append({"action": action, "result": res.text})
+            r.steps.append({"action": action, "result": res.text, "tool_ok": res.ok})
         elif kind == "clarify":
             if r.questions >= self.budgets.max_questions:
                 self._finish(r, "limit")
@@ -183,6 +190,8 @@ class Controller:
                   "slots": r.ep.slots if r.ep.kind != "definition" else []} for r in need]
         replies = self.user.answer_batch(items, batch_size=self.batch_size)
         for r, rep in zip(need, replies):
+            for key in r.simulator_cost:
+                r.simulator_cost[key] += getattr(rep, key, 0)
             r.answered.update(rep.slot_indices)
             r.steps[-1]["result"] = rep.text
             r.memory.append(memory_line(r.question, rep.text))
@@ -212,7 +221,7 @@ class Controller:
             r.tokens_out += g.new_tokens
             r.seconds += g.seconds
             r.sql = extract_sql(g.text)
-            res = execute(spider.db_path(r.ep.db_id), r.sql)
+            res = execute(self.db_path_of(r.ep.db_id), r.sql)
             r.sql_status, r.sql_error = res.status, res.error
             if res.status == "blocked":
                 r.blocked_attempts += 1
@@ -256,10 +265,11 @@ def trace(r: Run) -> dict:
         "decision": r.decision or "none", "gold_decision": r.ep.first_decision, "outcome": r.outcome,
         "steps": [{"action": format_action(s["action"], with_slots=True) if s["action"]["action"] != "clarify"
                    else s["action"].get("question"), "kind": s["action"]["action"], "result": s["result"]}
-                  for s in r.steps],
+                   | {"tool_ok": s.get("tool_ok")} for s in r.steps],
         "rewritten_request": r.request or None, "sql": r.sql, "sql_status": r.sql_status, "sql_error": r.sql_error,
         "abstain_text": r.abstain_text, "calls": r.calls, "inspections": r.inspections, "questions": r.questions,
         "repairs": r.repairs, "invalid_outputs": r.invalid_outputs, "format_retries": r.format_retries,
         "blocked_attempts": r.blocked_attempts, "tokens_in": r.tokens_in, "tokens_out": r.tokens_out,
-        "seconds": round(r.seconds, 3), "events": r.events,
+        "seconds": round(r.seconds, 3), "events": r.events, "simulator_cost": r.simulator_cost,
+        "answered_slots": sorted(r.answered),
     }

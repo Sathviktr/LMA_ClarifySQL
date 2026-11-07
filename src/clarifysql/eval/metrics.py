@@ -14,16 +14,36 @@ rate, budget overruns, blocked (unsafe) attempts and cost.
 from __future__ import annotations
 
 import re
+import json
 from collections import Counter
+from functools import lru_cache
 
 from clarifysql.agent.actions import parse_action
 from clarifysql.data import spider
 from clarifysql.episodes.checks import term_words
 from clarifysql.episodes.schema import Episode
 from clarifysql.eval.exec_match import exec_match
+from clarifysql.config import REPO_ROOT
 
 ANSWERABLE = ("clear", "ambiguous", "two_slot", "definition")
 DECISIONS = ("clarify", "execute", "abstain")
+
+
+@lru_cache(maxsize=1)
+def _slot_corrections() -> dict:
+    path = REPO_ROOT / "data" / "episodes" / "slot_terms.json"
+    return json.loads(path.read_text(encoding="utf-8"))["corrections"] if path.exists() else {}
+
+
+def reference_slots(ep: Episode) -> list[dict]:
+    fixes = _slot_corrections().get(ep.id, {})
+    out = []
+    for i, slot in enumerate(ep.slots):
+        fix = fixes.get(str(i))
+        if fix and fix["old"] != slot["term"]:
+            raise ValueError(f"{ep.id}: scoring correction no longer matches the original slot")
+        out.append({"name": slot["kind"], "term": fix["term"] if fix else slot["term"]})
+    return out
 
 
 def _words(text: str) -> set[str]:
@@ -71,7 +91,7 @@ def score_trace(t: dict, ep: Episode) -> dict:
     slots = named_slots(t)
     t = {**t, "slots_listed": bool(slots)}
     if ep.kind in ("ambiguous", "two_slot"):
-        t["slots_right"] = slot_match(slots, [{"name": s["kind"], "term": s["term"]} for s in ep.slots])
+        t["slots_right"] = slot_match(slots, reference_slots(ep))
     if ep.kind == "unanswerable":
         ok = t["outcome"] == "abstained" and names_missing(t["abstain_text"], ep)
         reason = "abstained, named" if ok else ("abstained, not named" if t["outcome"] == "abstained" else t["outcome"])
@@ -115,6 +135,8 @@ def summarize(scored: list[dict]) -> dict:
     vague = [t for t in scored if t["kind"] in ("ambiguous", "two_slot")]
     f1, per = macro_f1([t["gold_decision"] for t in scored], [t["decision"] for t in scored])
     policy_calls = sum(sum(e["role"] == "policy" for e in t["events"]) for t in scored)
+    sim = {k: sum(t.get("simulator_cost", {}).get(k, 0) for t in scored)
+           for k in ("model_calls", "tokens_in", "tokens_out", "seconds")}
     return {
         "episodes": len(scored), "by_kind": dict(by_kind),
         "execution_accuracy": _rate(sum(t["correct"] for t in answerable), len(answerable)),
@@ -135,6 +157,11 @@ def summarize(scored: list[dict]) -> dict:
         "limit_rate": _rate(sum(t["outcome"] == "limit" for t in scored), len(scored)),
         "invalid_episode_rate": _rate(sum(t["outcome"] == "invalid" for t in scored), len(scored)),
         "blocked_attempts": sum(t["blocked_attempts"] for t in scored),
+        "simulator_cost": sim,
+        "total_model_calls": sum(t["calls"] for t in scored) + sim["model_calls"],
+        "total_tokens_in": sum(t["tokens_in"] for t in scored) + sim["tokens_in"],
+        "total_tokens_out": sum(t["tokens_out"] for t in scored) + sim["tokens_out"],
+        "total_generation_seconds": sum(t["seconds"] for t in scored) + sim["seconds"],
         "reasons": dict(Counter(t["reason"] for t in scored)),
         "cost": {"model_calls": sum(t["calls"] for t in scored), "policy_calls": policy_calls,
                  "tokens_in": sum(t["tokens_in"] for t in scored), "tokens_out": sum(t["tokens_out"] for t in scored),

@@ -29,6 +29,10 @@ class Reply:
     slot_indices: list[int]  # which hidden slots were answered (empty: nothing answered)
     choice: str | None       # the letters the model chose, e.g. "A,B" (None when no model call was needed)
     raw: str = ""
+    model_calls: int = 0
+    tokens_in: int = 0
+    tokens_out: int = 0
+    seconds: float = 0.0
 
 
 def describe_option(slot: dict) -> str:
@@ -86,8 +90,11 @@ class SimulatedUser:
             for i, g in zip(need_model, gens):
                 idx = parse_choices(g.text, len(items[i]["slots"]))
                 letters = ",".join(re.findall(r"\b([A-H])\b", g.text.strip().upper())) or None
-                replies[i] = Reply(reply_text(items[i]["slots"], idx), idx, letters, g.text)
+                replies[i] = Reply(reply_text(items[i]["slots"], idx), idx, letters, g.text,
+                                   1, g.prompt_tokens, g.new_tokens, g.seconds)
         for it, r in zip(items, replies):
             self.log.append({"episode": it["episode"], "question": it["question"], "choice": r.choice,
-                             "slot_indices": r.slot_indices, "reply": r.text})
+                             "slot_indices": r.slot_indices, "reply": r.text, "raw": r.raw,
+                             "model_calls": r.model_calls, "tokens_in": r.tokens_in,
+                             "tokens_out": r.tokens_out, "seconds": r.seconds})
         return replies  # type: ignore[return-value]

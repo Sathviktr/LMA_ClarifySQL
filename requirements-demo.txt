@@ -1,0 +1,3 @@
+# Optional interactive demo; evaluation does not require Gradio.
+gradio>=5,<7
+pandas>=2

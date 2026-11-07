@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "purpose": "Scoring-only wording corrections, frozen before final inference. Requests, hidden intents, simulator inputs and training targets are unchanged.",
+  "corrections": {
+    "test-ambiguous-770": {"0": {"old": "early country", "term": "countries independent long ago"}},
+    "test-ambiguous-459": {"0": {"old": "ranking ranks highest", "term": "top player"}},
+    "test-ambiguous-702": {"0": {"old": "recent country", "term": "countries independent recently"}},
+    "test-ambiguous-810": {"0": {"old": "big surfacearea", "term": "big area"}},
+    "test-ambiguous-756": {"0": {"old": "country ranks highest", "term": "most widespread language"}},
+    "test-ambiguous-669": {"0": {"old": "high height", "term": "tall poker players"}},
+    "test-ambiguous-712": {"0": {"old": "countrylanguage ranks highest", "term": "main language"}},
+    "test-two_slot-153": {"1": {"old": "low ?", "term": "medium-weight cars maximum weight"}}
+  }
+}

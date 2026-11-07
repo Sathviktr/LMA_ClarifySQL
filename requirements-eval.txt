@@ -1,0 +1,7 @@
+# Versions recorded in results/train/sft_lr2e-4_s1.json (checkpoint 6).
+# Keep evaluation compatible with the completed training environment.
+-r requirements-gpu.txt
+transformers==5.16.1
+peft==0.20.0
+accelerate==1.14.0
+bitsandbytes==0.50.2
