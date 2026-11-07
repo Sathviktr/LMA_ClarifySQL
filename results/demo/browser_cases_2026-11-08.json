@@ -1,0 +1,134 @@
+{
+  "received_on": "2026-11-08",
+  "evidence_type": "user_supplied_browser_printouts",
+  "sources": [
+    {
+      "file_name": "tc1.pdf",
+      "pages": 2,
+      "bytes": 91182,
+      "sha256": "6ca497fb5a7d75e83feb9832cb96237ccb2d85abb15a5a24152e462d340c21c0",
+      "printed_timestamp": "11/8/26, 12:46 AM",
+      "preserved_copy": "outputs/browser_evidence/tc1_2026-11-08.pdf"
+    },
+    {
+      "file_name": "tc2.pdf",
+      "pages": 2,
+      "bytes": 84662,
+      "sha256": "012b1894b9a5f3d0ef4024af88cd46ed047017bc2866e95c1818074f5c61f4c8",
+      "printed_timestamp": "11/8/26, 12:47 AM",
+      "preserved_copy": "outputs/browser_evidence/tc2_2026-11-08.pdf"
+    }
+  ],
+  "observed_cases": [
+    {
+      "case_id": "department_lookup",
+      "source_file": "tc1.pdf",
+      "request": "List the names of all departments",
+      "status": "Query completed.",
+      "sql": "SELECT name FROM departments",
+      "columns": [
+        "name"
+      ],
+      "rows": [
+        [
+          "Computing"
+        ],
+        [
+          "Mathematics"
+        ],
+        [
+          "Physics"
+        ]
+      ],
+      "page_observations": [
+        {
+          "page": 1,
+          "shown": "Request, completed status, SQL, Computing and Mathematics; clarification reply/history are blank."
+        },
+        {
+          "page": 2,
+          "shown": "Physics continues the result table."
+        }
+      ],
+      "expected_browser_outcome_documented": true
+    },
+    {
+      "case_id": "missing_student_email",
+      "source_file": "tc2.pdf",
+      "request": "List students’ email addresses",
+      "assistant": "The database has no information about the email addresses of students.",
+      "sql_panel": "blank",
+      "result_widget": "Empty grid with default column headers 1 and 2; no email records shown.",
+      "page_observations": [
+        {
+          "page": 1,
+          "shown": "Request, missing-information explanation, blank SQL/reply/history and empty results widget."
+        },
+        {
+          "page": 2,
+          "shown": "Example buttons and footer; no further response or results."
+        }
+      ],
+      "expected_browser_outcome_documented": true
+    }
+  ],
+  "local_fixture_verification": {
+    "database_source": "university.sqlite from the original checkpoint8 received.zip",
+    "database_sha256_before": "9ce335510755aae2ac9557596071a5ae8cbd8a33626bdd3c0bbeb959c5808a17",
+    "department_query": {
+      "sql": "SELECT name FROM departments",
+      "status": "ok",
+      "columns": [
+        "name"
+      ],
+      "rows": [
+        [
+          "Computing"
+        ],
+        [
+          "Mathematics"
+        ],
+        [
+          "Physics"
+        ]
+      ],
+      "matches_displayed_result": true
+    },
+    "student_schema_query": {
+      "sql": "SELECT * FROM students LIMIT 0",
+      "status": "ok",
+      "columns": [
+        "id",
+        "name",
+        "department_id",
+        "age"
+      ],
+      "email_column_present": false
+    },
+    "database_sha256_after": "9ce335510755aae2ac9557596071a5ae8cbd8a33626bdd3c0bbeb959c5808a17",
+    "database_bytes_unchanged": true,
+    "scope": "CPU checks use the saved fixture, not an independently captured browser-session database."
+  },
+  "combined_browser_status": {
+    "basic_three_paths_documented": true,
+    "paths": [
+      "clear_department_lookup",
+      "clarification_reply_and_result",
+      "missing_information_explanation"
+    ],
+    "earlier_clarification_record": "results/demo/browser_evidence_2026-11-08.json",
+    "authentication_sequence_captured": false,
+    "runtime_model_and_database_hashes_captured": false,
+    "backend_event_trace_captured": false,
+    "visible_application_errors_in_new_printouts": false,
+    "interpretation": "The two supplied printouts document the requested clear and missing-data browser checks. Together with the earlier clarification capture, they complete the basic three-case browser smoke check. These are observed interface states, not new benchmark measurements or a broader safety evaluation."
+  },
+  "limitations": [
+    "Static printouts do not reveal all backend actions or establish the login sequence.",
+    "The earlier reply age still leaves maximum versus average age unspecified.",
+    "The known unresolved-age and placement-query failures are not fixed by these captures.",
+    "Independent question-usefulness and simulator reviews remain pending."
+  ],
+  "original_checkpoint8_score_changed": false,
+  "final_benchmark_scores_changed": false
+}

@@ -26,7 +26,7 @@ and limits. Everything runs on free Kaggle/Colab T4 GPUs, without any paid API.
 | 4 | Agent controller, simulated user, baselines B1–B3 | complete; validation results saved |
 | 5 | QLoRA fine-tuning (two seeds + no-slot ablation) | complete; learning rate `2e-4`, epoch 3 selected |
 | 6 | Final inference, CoSQL, scoring, bootstrap and review sheets | checkpoint 7 complete and verified; human judgments pending |
-| 7 | Fictional university demo and final delivery | original scripted 5/7 preserved; one browser clarification exchange documented; question and SQL limitations remain |
+| 7 | Fictional university demo and final delivery | original scripted 5/7 preserved; three basic browser cases documented; question and SQL limitations remain |
 
 ### Checkpoint 7 results (7 November 2026)
 
@@ -57,8 +57,8 @@ imbalanced slice. Generalization is mixed. See [measured findings](results/final
 [paired intervals](results/final/analysis/paired_bootstrap.json) and [verification scope](results/final/analysis/verification.json).
 
 The [final-report draft](reports/ClarifySQL_Final_Report.pdf) includes the measured test and demo results.
-The [independent human reviews](annotation/evaluation/README.md) and instructor access to weights remain
-pending. One browser interaction is documented; broader browser coverage is still limited.
+The [independent human reviews](annotation/evaluation/README.md), instructor access to weights and final
+artifact review remain pending. Three basic browser cases are documented, completing the requested smokecheck.
 The mid-submission report remains a historical validation report.
 
 ### Checkpoint 8 results (7 November 2026)
@@ -78,20 +78,27 @@ See [demo findings](results/demo/checkpoint8/analysis/findings.md),
 [placement variants](results/demo/checkpoint8/analysis/placement_variants.json).
 The [original received ZIP](results/demo/checkpoint8/received.zip) is preserved, including its fictional database.
 Run `python scripts/analyze_demo.py` to reproduce this analysis without a GPU. The archive covers scripted
-checks; the separate browser evidence below documents a later interaction. No training or checkpoint-7
+checks; the separate browser evidence below documents three later cases. No training or checkpoint-7
 rerun is needed for this analysis.
 
-### Browser observation (8 November 2026)
+### Browser observations (8 November 2026)
 
-A user-supplied two-page browser printout documents one completed exchange: "Which is the best
-department?", the question "Ranked by what: age or id?", the reply "age", displayed SQL and Physics
-in the result table. The query selects the department containing the oldest student. Replaying that
-SQL on the saved fictional database also returns Physics (maximum student age 25).
+Three user-supplied browser printouts document the requested basic cases:
 
-See the [evidence record](results/demo/browser_evidence_2026-11-08.json). This confirms a displayed
-request/reply/result path. The login sequence, runtime checkpoint and other examples are not captured.
-The reply "age" leaves maximum versus average age unspecified, so the capture does not establish
-that the intended aggregation was resolved. The original 5/7 and known failures remain unchanged.
+- **Clear lookup:** `tc1.pdf`, page 1, shows "List the names of all departments", "Query completed.",
+  `SELECT name FROM departments`, and Computing and Mathematics. Page 2 continues with Physics.
+- **Clarification exchange:** `Gradio.pdf` shows "Which is the best department?", "Ranked by what: age or id?",
+  the reply "age", displayed SQL and Physics. The query selects the department containing the oldest student.
+  Replaying that SQL on the saved fictional database also returns Physics (maximum student age 25).
+- **Missing information:** `tc2.pdf`, page 1, shows "List students’ email addresses" and the explanation
+  "The database has no information about the email addresses of students." SQL is blank and the result grid
+  has no records; `1` and `2` are placeholder headers. Page 2 adds no further result.
+
+See the [earlier clarification record](results/demo/browser_evidence_2026-11-08.json) and
+[lookup/email record](results/demo/browser_cases_2026-11-08.json). These static captures complete the basic
+browser smokecheck. They do not capture the login sequence, runtime database/adapter hashes or hidden execution
+trace. The reply "age" leaves maximum versus average age unspecified, so that exchange does not establish
+that the intended aggregation was resolved. The original scripted 5/7 and known failures remain unchanged.
 
 A [clean-checkout CPU check](results/reproducibility_checkpoint8.json) at `34500af` reproduces both
 verification scripts and passes 40 selected tests using the existing venv and external benchmark data.
@@ -110,7 +117,7 @@ Mocks are stored separately and are never real model results. These seven exampl
 check, not another benchmark or a live-user study. Strict result comparison flags extra result columns;
 an unrecognized clarification can also stop the reply script, so inspect failed traces before assigning blame.
 
-Gradio construction is recorded in `interface.json`; browser interaction remains a separate check.
+Gradio construction is recorded in `interface.json`; the browser observations above are separate evidence.
 To try your own replies later, set `RUN_INTERACTIVE = True` and run the last cell interactively.
 The launch cell asks you to choose and confirm demo credentials, closes the previous app, and creates
 a fresh interface with the loaded model. Use those credentials at the newest printed share link.
@@ -209,8 +216,9 @@ One GPU is sufficient. Its default saved run exports the seven scripted checks; 
 takes real replies, shows model text in plain text boxes, and runs queries
 only against made-up university records. Its interface blocks sample-value inspection; benchmark tools remain
 unchanged. Sharing requires credentials entered at launch. The scripted GPU run and interface construction
-are complete. A supplied browser capture documents one completed clarification exchange; broader
-browser coverage remains limited. Known failures are recorded above.
+are complete. Supplied browser captures document three basic cases: a clear lookup, a clarification exchange
+and a missing-email explanation. This completes the requested basic smokecheck; its limits and known failures
+are recorded above.
 
 For a GPU environment outside Kaggle:
 

@@ -37,9 +37,10 @@ Sathvik Reddy (2025201020)\par
 \end{center}
 
 \textbf{Status of this draft.} The final test experiments, required ablations, CoSQL analysis and
-scripted GPU demo are complete, and one browser clarification exchange is documented. Independent
-question-usefulness and simulator reviews and external adapter-access checks remain pending.
-Browser evidence covers one interaction. This report includes those limits;
+scripted GPU demo are complete, and three basic browser cases are documented: a clear lookup, a
+clarification exchange and a missing-email explanation. The requested basic browser smokecheck is complete.
+Independent question-usefulness and simulator reviews, instructor access to weights and final artifact
+review remain pending. This report includes the evidence limits;
 the earlier mid-submission report is kept unchanged.
 
 \section{What we studied}
@@ -310,7 +311,7 @@ Student emails & Correctly names the missing email information and abstains. \\
 The placement query divides \file{COUNT(p.student_id)} by \file{COUNT(s.id)}. Every student has a
 placement row, including students with \file{placed=0}. All departments therefore receive predicted
 rate 1, and Computing happens to be returned after the tie. The intended rate uses the indicator, such
-as \file{1.0 * SUM(p.placed) / COUNT(*)}.
+as \texttt{1.0 * SUM(p.placed) / COUNT(*)}.
 
 After inspecting that query, we created two additional fictional-data variants. In one, only the two
 Mathematics students are placed; in the other, only the two Physics students are placed. The original
@@ -328,18 +329,30 @@ Gradio construction succeeds with version 6.30.0. The archive does not demonstra
 sharing or an actual user conversation. The scripted model run uses 21 calls and about 56.4 seconds
 of generation time; model loading takes about 48.8 seconds separately.
 
-\subsection{One documented browser exchange}
-A two-page browser printout supplied on 8 November shows the request ``Which is the best department?'',
+\subsection{Three documented basic browser cases}
+Three browser printouts supplied on 8 November cover the requested basic smokecheck.
+
+\textbf{Clear lookup.} Page 1 of \file{tc1.pdf} shows ``List the names of all departments'', the status
+``Query completed.'', \texttt{SELECT name FROM departments}, and Computing and Mathematics in the result
+table. Physics continues on page 2, completing the three expected departments. The clarification fields
+are blank.
+
+\textbf{Clarification exchange.} The earlier two-page \file{Gradio.pdf} shows the request ``Which is the best department?'',
 the question ``Ranked by what: age or id?'', the reply ``age'', a completed-query status and Physics in
 the result table. The shown SQL joins departments to students and orders by \file{MAX(s.age)}.
 It therefore selects the department containing the oldest student. A CPU replay on the saved fictional
 database also returns Physics, whose oldest student is 25.
 
-The capture documents a displayed request/reply/result path. It does not show the login sequence or
-record the browser session's checkpoint and database hashes. Also, ``age'' leaves maximum versus average
-age unspecified; both happen to select Physics on this fixture. The capture supports interface use,
-not a new benchmark score or a claim that every ambiguity was resolved. Its observations and file hash
-are recorded separately from the scripted run.
+\textbf{Missing information.} Page 1 of \file{tc2.pdf} shows ``List students' email addresses'' and the
+explanation ``The database has no information about the email addresses of students.'' SQL is blank,
+and the result grid has no records; its headers 1 and 2 are placeholders. Page 2 adds no further result.
+
+These static captures document the three displayed paths and complete the basic browser smokecheck.
+They do not show the login sequence, runtime database/adapter hashes or hidden execution trace. Also,
+``age'' leaves maximum versus average age unspecified; both happen to select Physics on this fixture.
+The captures support interface use, not a new benchmark score or a claim that every ambiguity was resolved.
+Their observations and file hashes are recorded separately from the scripted run. The original 5/7 and
+the known threshold, question-grounding and placement failures remain unchanged.
 
 \section{Limitations and work still open}
 \begin{itemize}
@@ -356,13 +369,13 @@ source of uncertainty. The CoSQL slice is small and dominated by execute labels.
 \item \textbf{Automatic checks have gaps.} Lexical slot and missing-information checks do not measure
 semantic correctness. A numeric value in SQL may be used with the wrong column or comparison. The demo
 shows both a guessed cutoff and SQL that succeeds by coincidence on seed data.
-\item \textbf{Browser coverage is limited.} One request/reply/result path is documented, while the login
-sequence, other examples and error paths were not captured. Software fixtures test repair and blocked writes,
+\item \textbf{Browser evidence is static.} Three basic cases are documented, while the login sequence,
+runtime hashes, hidden execution trace and error paths were not captured. Software fixtures test repair and blocked writes,
 but they should not be described as a completed model-driven safety study.
 \end{itemize}
 
-The remaining submission work is to complete the independent reviews, extend browser coverage,
-confirm instructor access to the saved weights and finalize the artifact package. Improving question
+The remaining submission work is to complete the independent reviews, confirm instructor access to the
+saved weights and finish the final artifact review. Improving question
 grounding, checking unresolved intent before execution and testing SQL on more variants are useful
 follow-ups. Any new intervention should be reported as a new version rather than silently changing the
 already measured benchmark conditions.
@@ -381,7 +394,8 @@ Final test and CoSQL & \file{results/final/}, source commit \file{428e743} \\
 Paired intervals & \file{results/final/analysis/paired_bootstrap.json} \\
 Original demo archive & \file{results/demo/checkpoint8/received.zip}, source \file{0d75a73} \\
 Demo verification and variants & \file{results/demo/checkpoint8/analysis/} \\
-Browser observation & \file{results/demo/browser_evidence_2026-11-08.json} \\
+Browser clarification evidence & \file{results/demo/browser_evidence_2026-11-08.json} \\
+Browser lookup/email evidence & \file{results/demo/browser_cases_2026-11-08.json} \\
 Training and selected recipe & \file{results/train/} and saved phase6 output \\
 GPU workflows & Notebooks 01--08 and their readable builder scripts \\
 \bottomrule
