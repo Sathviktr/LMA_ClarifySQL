@@ -98,6 +98,10 @@ an unrecognized clarification can also stop the reply script, so inspect failed 
 
 Gradio construction is recorded in `interface.json`; browser interaction remains a separate check.
 To try your own replies later, set `RUN_INTERACTIVE = True` and run the last cell interactively.
+The launch cell asks you to choose and confirm demo credentials, closes the previous app, and creates
+a fresh interface with the loaded model. Use those credentials at the newest printed share link.
+If a launch is already running, rerun only that cell to reset it; model loading and the experiments do
+not need repeating while `model` and `db` remain available in the interactive session.
 
 ### Reproduce checkpoint 7
 

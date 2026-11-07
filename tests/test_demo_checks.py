@@ -124,3 +124,67 @@ def test_notebook_packages_failures_even_when_interface_construction_fails(tmp_p
         assert interface["browser_interaction_checked"] is False
         assert "checks/traces.jsonl" in archive.namelist()
         assert not any(b"synthetic-test-password" in archive.read(name) for name in archive.namelist())
+
+
+def interactive_cell():
+    import nbformat
+    from clarifysql.config import REPO_ROOT
+    notebook = nbformat.read(REPO_ROOT / "notebooks/08_demo.ipynb", as_version=4)
+    return next(c.source for c in notebook.cells if c.cell_type == "code" and "if RUN_INTERACTIVE:" in c.source)
+
+
+def test_interactive_relaunch_replaces_the_old_app_and_confirms_the_new_credentials(tmp_path, monkeypatch, capsys):
+    from clarifysql.demo import app as app_module
+    events = []
+    class DemoApp:
+        def __init__(self, name):
+            self.name = name
+        def close(self):
+            events.append(("closed", self.name))
+        def launch(self, **kwargs):
+            events.append(("launched", self.name, kwargs))
+    previous, fresh = DemoApp("previous"), DemoApp("fresh")
+    model, database = object(), tmp_path / "demo.sqlite"
+    def create(backend, db):
+        assert backend is model and db == database
+        events.append(("created", "fresh"))
+        return fresh
+    monkeypatch.setattr(app_module, "create_app", create)
+    monkeypatch.setattr("builtins.input", lambda prompt: " demo-student ")
+    passwords = iter(["temporary-test-password", "temporary-test-password"])
+    monkeypatch.setattr("getpass.getpass", lambda prompt: next(passwords))
+    monkeypatch.setenv("CLARIFYSQL_DEMO_USER", "old-test-user")
+    monkeypatch.setenv("CLARIFYSQL_DEMO_PASSWORD", "old-test-password")
+    scope = {"RUN_INTERACTIVE": True, "model": model, "db": database, "app": previous}
+    exec(compile(interactive_cell(), "08_demo:interactive-relaunch", "exec"), scope)
+    assert scope["app"] is fresh
+    assert events == [("closed", "previous"), ("created", "fresh"),
+                      ("launched", "fresh", {"share": True, "auth": ("demo-student", "temporary-test-password"), "inbrowser": False})]
+    assert "temporary-test-password" not in capsys.readouterr().out
+
+
+@pytest.mark.parametrize("username,password,confirmation", [
+    ("demo-student", "first-test-value", "different-test-value"),
+    ("   ", "test-value", "test-value"),
+    ("demo-student", "", ""),
+])
+def test_invalid_credentials_do_not_replace_the_running_app(monkeypatch, username, password, confirmation):
+    from clarifysql.demo import app as app_module
+    def forbidden(*args, **kwargs):
+        raise AssertionError("Invalid credentials must be rejected before changing the server")
+    previous = types.SimpleNamespace(close=forbidden)
+    monkeypatch.setattr(app_module, "create_app", forbidden)
+    monkeypatch.setattr("builtins.input", lambda prompt: username)
+    passwords = iter([password, confirmation])
+    monkeypatch.setattr("getpass.getpass", lambda prompt: next(passwords))
+    with pytest.raises(ValueError):
+        exec(compile(interactive_cell(), "08_demo:invalid-credentials", "exec"),
+             {"RUN_INTERACTIVE": True, "model": object(), "db": "unused", "app": previous})
+
+
+def test_interactive_relaunch_requires_a_loaded_model_before_requesting_credentials(monkeypatch):
+    def forbidden(*args):
+        raise AssertionError("Model setup should be checked before any credential prompt")
+    monkeypatch.setattr("builtins.input", forbidden)
+    with pytest.raises(AssertionError, match="model-loading cell"):
+        exec(compile(interactive_cell(), "08_demo:model-required", "exec"), {"RUN_INTERACTIVE": True})

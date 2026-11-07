@@ -96,15 +96,30 @@ CELLS = [
     ## 4. Optional: try your own replies in the web interface
     For the first saved run this cell skips interaction, so the ZIP can be downloaded normally.
     To try the interface later, set `RUN_INTERACTIVE = True` and run this cell interactively.
-    Enter a username and a password when prompted, then open the temporary authenticated share link.
+    Choose a demo username and password, then confirm the password. These are the credentials for
+    the demo login page. The cell closes the previous app and creates a fresh one with the already
+    loaded model. Open the newly printed share link in a separate browser tab.
     These credentials are not saved in the result ZIP. Stop the notebook when finished.
     """),
     code("""
     if RUN_INTERACTIVE:
-        assert app is not None, 'Interface construction failed; see interface.json in the result ZIP.'
+        assert 'model' in globals() and 'db' in globals(), 'Run the model-loading cell in this interactive session first.'
+        import os
         from getpass import getpass
-        os.environ['CLARIFYSQL_DEMO_USER'] = input('Demo username: ').strip()
-        os.environ['CLARIFYSQL_DEMO_PASSWORD'] = getpass('Demo password: ')
+        from clarifysql.demo.app import create_app, launch
+        demo_user = input('Choose demo username: ').strip()
+        demo_password = getpass('Choose demo password: ')
+        confirmation = getpass('Confirm demo password: ')
+        if not demo_user or not demo_password:
+            raise ValueError('Choose a nonempty demo username and password.')
+        if demo_password != confirmation:
+            raise ValueError('The passwords did not match. Run this cell again.')
+        previous_app = globals().get('app')
+        if previous_app is not None:
+            previous_app.close()
+        app = create_app(model, db)
+        os.environ['CLARIFYSQL_DEMO_USER'] = demo_user
+        os.environ['CLARIFYSQL_DEMO_PASSWORD'] = demo_password
         launch(app, share=True)
     else:
         print('Automatic run complete. Return checkpoint8_results.zip; no interactive input is needed.')
