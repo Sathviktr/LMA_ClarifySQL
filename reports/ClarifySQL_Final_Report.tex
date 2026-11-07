@@ -39,7 +39,7 @@ Sathvik Reddy (2025201020)\par
 \textbf{Project status.} The final test experiments, required ablations, CoSQL analysis, question-usefulness
 and simulator reviews, and scripted GPU demo are complete. Three basic browser cases are documented: a clear lookup, a
 clarification exchange and a missing-email explanation. The requested basic browser smokecheck is complete.
-Instructor access to weights and final artifact review remain pending. This report includes the evidence limits;
+The repository and saved results have been checked; instructor access to weights remains unverified. This report includes the evidence limits;
 the earlier mid-submission report is kept unchanged.
 
 \section{What we studied}
@@ -124,6 +124,11 @@ The test set covers 20 databases and contains 79 clear, 47 single-slot ambiguous
 The separate reviewed CoSQL slice has 59 turns: 45 execute, 13 clarify and 1 abstain. Earlier dialogue
 is included in the CoSQL input; only the first non-inspect decision is scored.
 
+The final episode test uses Spider's public development databases. All 20 were also used in an earlier
+1,034-question frozen-writer diagnostic, before the final agent comparison. The episode training,
+validation and test databases remain disjoint. Public benchmark content may also overlap with the
+base model's pretraining; we cannot rule this out. These limits matter when interpreting generalization.
+
 We train the policy with QLoRA~\cite{qlora}: the base model is frozen in 4-bit NF4 storage, and low-rank
 adapter weights are trained. The saved recipe uses rank 16, alpha 32, dropout 0.05, a micro-batch of one
 state and gradient accumulation of 16. The main run has 33,030,144 trainable parameters, a maximum
@@ -158,6 +163,7 @@ Oracle & Fully specified source request given to the fixed writer without repair
 The oracle is a reference run, not a mathematical upper bound. Its writer can still make mistakes, and
 other conditions have repair opportunities. B1, B2 and the oracle always use an execute decision, so
 their decision F1 is identical under the fixed test labels.
+A3 supplies the full schema and glossary while leaving inspection tools available; it does not remove tools.
 
 We report execution accuracy on the 148 answerable cases and decision macro-F1 over all 188 episodes.
 Decision F1 treats clarify, execute and abstain equally by averaging their class F1 values. We also use
@@ -412,7 +418,8 @@ only 47 available for A3. The observed errors show that simulated replies remain
 one review does not establish accuracy across all simulator decisions.
 \item \textbf{The data and statistics are limited.} The benchmark includes constructed vague requests,
 only eight two-slot test episodes and two training seeds. The database bootstrap does not cover every
-source of uncertainty. The CoSQL slice is small and dominated by execute labels.
+source of uncertainty. The public test databases had earlier writer diagnostics, and pretraining overlap
+cannot be ruled out. The CoSQL slice is small and dominated by execute labels.
 \item \textbf{Automatic checks have gaps.} Lexical slot and missing-information checks do not measure
 semantic correctness. A numeric value in SQL may be used with the wrong column or comparison. The demo
 shows both a guessed cutoff and SQL that succeeds by coincidence on seed data.
@@ -421,8 +428,8 @@ runtime hashes, hidden execution trace and error paths were not captured. Softwa
 but they should not be described as a completed model-driven safety study.
 \end{itemize}
 
-The remaining submission work is to confirm instructor access to the saved weights and finish the final
-artifact review. Improving question
+The remaining delivery work is to confirm instructor access to the saved weights and submit the final
+artifacts. Improving question
 grounding, checking unresolved intent before execution and testing SQL on more variants are useful
 follow-ups. Any new intervention should be reported as a new version rather than silently changing the
 already measured benchmark conditions.
@@ -441,6 +448,7 @@ Final test and CoSQL & \file{results/final/}, source commit \file{428e743} \\
 Paired intervals & \file{results/final/analysis/paired_bootstrap.json} \\
 Human-review scores & \file{results/final/analysis/human_audits.json} \\
 Review validation and provenance & \file{results/final/analysis/review_validation.json} \\
+Repository completion audit & \file{reports/PROJECT_COMPLETION_CHECK.md} \\
 Original demo archive & \file{results/demo/checkpoint8/received.zip}, source \file{0d75a73} \\
 Demo verification and variants & \file{results/demo/checkpoint8/analysis/} \\
 Browser clarification evidence & \file{results/demo/browser_evidence_2026-11-08.json} \\
@@ -467,11 +475,17 @@ revision to resume an original run; later source changes must not be mixed into 
 demo ZIP is preserved byte-for-byte and includes the tiny fictional database. Source verification reads
 Git blobs so Windows newline conversion does not create a false mismatch.
 
-A targeted local check passes 45 tests covering the demo, credential-relaunch workflow, received-output
-analysis, notebook consistency and final-evaluation code. These are software tests, not additional model results. An earlier
-combined Windows CPU run has a native PyTorch failure in the tiny training fixture; that fixture passes
-separately, and the actual GPU training runs completed. We do not claim that every test passed together
-in one Windows process.
+The measured runs record a consistent base-model revision, but the current loader does not pass an
+explicit revision and the resume fingerprint omits that revision. Source, data and adapter hashes
+therefore do not by themselves enforce the same base-model bytes in a future run. Exact reruns need
+the recorded base weights as well as the recorded source and adapters.
+
+The latest local audit passes 210 CPU tests in one process and the tiny training-loop test in a separate
+process, with one CPU thread and MKLDNN disabled for that training test. These software checks cover
+data, tools, safety, controller behavior, inference, training, notebooks and evaluation. An earlier combined
+Windows run had a native PyTorch failure in the training fixture, so we keep the two-process distinction.
+All ten benchmark conditions and the original seven demo outcomes were also reproduced from saved artifacts;
+this audit did not repeat GPU inference or the official database-variant queries.
 
 \section{What we conclude}
 Within this fixed experiment, training improves execution and decision F1 compared with prompting.

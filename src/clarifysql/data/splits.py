@@ -3,7 +3,9 @@
 * train:      the 140 core Spider training databases minus 10 held out   -> fine-tuning data
 * validation: 10 held-out training databases                              -> choosing prompts/checkpoints
 * test:       the 20 Spider dev databases                                  -> the final comparison
-A database belongs to exactly one split, so nothing about a test database is seen before testing.
+A database belongs to exactly one episode split, keeping policy training and validation databases
+separate from the final comparison. The public test databases were also used in an earlier frozen-writer
+diagnostic, so database-disjoint episode splits do not imply previously unseen benchmark content.
 
 The validation databases are drawn at random (fixed seed) from training databases that offer enough
 material: at least MIN_QUESTIONS questions and MIN_CANDIDATES ambiguity candidates (threshold or ranking),

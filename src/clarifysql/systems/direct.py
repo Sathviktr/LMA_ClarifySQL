@@ -2,7 +2,7 @@
 
 * B1      the request + the schema -> one SQL query; no repair        (proposal, Section 11)
 * B2      B1 plus up to 2 repairs when SQLite returns an error
-* oracle  the original, fully specified question -> the same SQL writer: an upper bound, not a real system
+* oracle  the original, fully specified question -> the same SQL writer: a reference with supplied intent
 All of them use the same prompt (llm/prompts.py) and greedy decoding, and run SQL only through the safe executor.
 """
 

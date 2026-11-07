@@ -1,0 +1,127 @@
+{
+  "checked_on": "2026-11-08",
+  "source_commit_before_document_audit": "87ecb2679541f2e7c8a60ecbf4b468ff25db1d9a",
+  "runtime": {
+    "python": "3.13.7",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "torch": "2.14.1+cpu",
+      "transformers": "5.20.2",
+      "peft": "0.21.2",
+      "pytest": "9.1.1",
+      "reportlab": "5.0.1",
+      "pypdfium2": "5.14.0"
+    }
+  },
+  "inventory": {
+    "tracked_source_python_files": 58,
+    "tracked_scripts": 30,
+    "test_modules": 26
+  },
+  "checks": {
+    "core_cpu_tests": {
+      "passed": 210,
+      "exit_code": 0,
+      "scope": "all tests except tests/test_train_torch.py",
+      "seconds": 26.51,
+      "environment": {
+        "CLARIFYSQL_DATA": "external benchmark data",
+        "HF_HUB_OFFLINE": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      }
+    },
+    "isolated_training_test": {
+      "passed": 1,
+      "exit_code": 0,
+      "seconds": 14.13,
+      "threads": 1,
+      "mkldnn_enabled": false
+    },
+    "single_process_full_suite_claimed": false,
+    "benchmark_verification": {
+      "conditions": 10,
+      "test_records": 1504,
+      "cosql_records": 118,
+      "status": "passed",
+      "official_variant_queries_repeated": false
+    },
+    "demo_verification": {
+      "original_cases": 7,
+      "original_passed": 5,
+      "placement_variants_matching_saved_query": [
+        false,
+        false
+      ],
+      "status": "passed"
+    },
+    "dataset_annotation_status": {
+      "validation_edit": 36,
+      "validation_labels_per_rater": 57,
+      "test_edit": 120,
+      "test_labels_per_rater": 196,
+      "training_audit_rows": 144,
+      "cosql_rows_reviewed": 60,
+      "cosql_rows_retained": 59,
+      "all_required_cells_complete": true
+    },
+    "human_reviews": {
+      "question_items_per_reviewer": 120,
+      "simulator_decisions": 247,
+      "scores": "results/final/analysis/human_audits.json",
+      "validation": "results/final/analysis/review_validation.json"
+    },
+    "learning_pdfs": {
+      "files": 8,
+      "total_pages": 193,
+      "complete_guide": {
+        "file": "learning/pdfs/ClarifySQL_Complete_Project_Guide.pdf",
+        "pages": 27,
+        "chapters": 12
+      },
+      "all_bookmark_destinations_valid": true,
+      "valid_bookmarks": 227,
+      "empty_pages": 0,
+      "missing_text_marker_pages": 0,
+      "text_boxes_outside_pages": 0,
+      "phase_pdfs_rebuilt": 7,
+      "layout_scope": "All-page text/bounds and bookmark checks, plus representative visual inspection of guide and corrected phase pages.",
+      "publication": "Personal learning files remain local and gitignored."
+    },
+    "documentation_attribution_scan": {
+      "readme_and_report_sources_checked": [
+        "README.md",
+        "annotation/README.md",
+        "annotation/evaluation/README.md",
+        "learning/README.md",
+        "outputs/teammate_handoff/README.md",
+        "outputs/checkpoint7_draft_review/README.md",
+        "reports/ClarifySQL_Final_Report.tex",
+        "reports/ClarifySQL_Mid_Submission.tex",
+        "reports/PROJECT_COMPLETION_CHECK.md"
+      ],
+      "unwanted_assistance_credit_blocks": 0,
+      "report_pdf_credit_terms": 0,
+      "technical_model_descriptions_preserved": true,
+      "historical_draft_provenance_preserved": true
+    }
+  },
+  "audit_limits": [
+    "No new GPU inference or retraining was run.",
+    "The base revision is logged consistently, but the loader and resume fingerprint do not enforce a revision pin for future runs.",
+    "All 20 public final-test databases were used in an earlier 1,034-question writer diagnostic; episode training/validation/test databases are disjoint.",
+    "The original broader model-driven demo plan is only partly demonstrated; the current report scopes fixtures and recorded failures explicitly.",
+    "Instructor access to external adapters is unverified."
+  ],
+  "initial_test_setup_issue": "An initial attempt could not create nested pytest temporary folders because the parent directory was missing. After creating the parent, the two fresh runs above passed.",
+  "model_scores_changed": false,
+  "changes": [
+    "Corrected report caveats for prior public benchmark diagnostics and possible pretraining overlap.",
+    "Clarified A3 retains tools and logged base-model identity is not enforced for future reload/resume.",
+    "Corrected two source docstrings without changing runtime behavior.",
+    "Corrected phase explanations for tokenizer/model dimensions, simulator selection, memory, oracle interpretation, mock limits and small-sample uncertainty.",
+    "Marked older progress statuses as historical and linked current evidence.",
+    "Rebuilt all seven phase PDFs and added the complete 27-page project guide.",
+    "Removed assistance-style wording from the archived local draft README while preserving draft provenance and current review status."
+  ]
+}

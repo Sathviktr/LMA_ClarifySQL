@@ -61,9 +61,18 @@ imbalanced slice. Generalization is mixed. See [measured findings](results/final
 [paired intervals](results/final/analysis/paired_bootstrap.json) and [verification scope](results/final/analysis/verification.json).
 
 The [final report](reports/ClarifySQL_Final_Report.pdf) includes the measured test, human-review and demo results.
-Instructor access to weights and final artifact review remain pending. Three basic browser cases are documented,
+The repository and saved results have been checked; instructor access to weights remains unverified. Three basic browser cases are documented,
 completing the requested smokecheck.
 The mid-submission report remains a historical validation report.
+
+The [project completion check](reports/PROJECT_COMPLETION_CHECK.md) maps report claims to repository
+evidence and lists the remaining delivery checks and broader demo limits.
+
+The final episode test uses public Spider development databases, all 20 of which had an earlier
+frozen-writer diagnostic. Episode training/validation/test databases remain disjoint, but prior benchmark
+use and possible pretraining overlap limit claims about unseen data. A3 adds full schema/glossary while
+keeping inspection tools available. The saved base-model revision is recorded; the current loader and
+resume fingerprint do not enforce it for future reruns.
 
 ### Human review (8 November 2026)
 
