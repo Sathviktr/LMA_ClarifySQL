@@ -28,6 +28,9 @@ and limits. Everything runs on free Kaggle/Colab T4 GPUs, without any paid API.
 | 6 | Final inference, CoSQL, scoring, bootstrap and review sheets | checkpoint 7 complete and verified; human judgments pending |
 | 7 | Fictional university demo and final delivery | original scripted 5/7 preserved; three basic browser cases documented; question and SQL limitations remain |
 
+**Teammates:** the [review instructions and Git workflow](annotation/evaluation/README.md) list the seven
+review CSVs, exact rating tasks and separate branches for committing completed reviews.
+
 ### Checkpoint 7 results (7 November 2026)
 
 All eight test conditions cover the same 188 episodes (148 answerable, 40 unanswerable), plus two CoSQL

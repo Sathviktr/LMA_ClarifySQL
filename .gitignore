@@ -2,6 +2,9 @@
 learning/
 reports/ClarifySQL_Mid_Submission.tex
 
+# Keep the anonymous-review system key on the coordinator's machine
+annotation/evaluation/question_key.csv
+
 # Python
 __pycache__/
 *.py[cod]

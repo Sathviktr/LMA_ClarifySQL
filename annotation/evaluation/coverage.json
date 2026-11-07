@@ -1,0 +1,27 @@
+{
+  "b3": {
+    "available": 56,
+    "sampled": 50,
+    "target": 50
+  },
+  "sft_s1": {
+    "available": 56,
+    "sampled": 50,
+    "target": 50
+  },
+  "sft_s2": {
+    "available": 58,
+    "sampled": 50,
+    "target": 50
+  },
+  "a2": {
+    "available": 57,
+    "sampled": 50,
+    "target": 50
+  },
+  "a3": {
+    "available": 47,
+    "sampled": 47,
+    "target": 50
+  }
+}
