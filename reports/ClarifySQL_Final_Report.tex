@@ -378,6 +378,12 @@ downloaded benchmark directory:
 python scripts/verify_final.py
 python scripts/analyze_demo.py
 \end{verbatim}
+Both verification commands and the 40 selected tests also pass from a new local clone of commit
+\file{34500af}, using the existing venv and external benchmark data. This is a clean-code check, not
+a fresh dependency installation or another GPU run. Test-suite means are recomputed from saved flags;
+the official variant queries are not repeated in that CPU check. The exact scope and commands are saved
+in \file{results/reproducibility_checkpoint8.json}.
+
 Frozen-run manifests check code, data and weight fingerprints before resuming. Pin the recorded source
 revision to resume an original run; later source changes must not be mixed into those traces. The original
 demo ZIP is preserved byte-for-byte and includes the tiny fictional database. Source verification reads

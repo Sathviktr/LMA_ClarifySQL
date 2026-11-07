@@ -1,0 +1,48 @@
+{
+  "source_commit": "34500afb78b35122cc467dbd210539a1205fcb21",
+  "checkout": "new local clone without hardlinks",
+  "source_root_checked": true,
+  "runtime": "existing project venv; external benchmark data through CLARIFYSQL_DATA",
+  "fresh_dependencies_installed": false,
+  "gpu_inference_repeated": false,
+  "checks": [
+    {
+      "exit_code": 0,
+      "output": "Verified cosql_b3 59\nVerified cosql_sft_s1 59\nVerified test_a2 188\nVerified test_a3 188\nVerified test_b1 188\nVerified test_b2 188\nVerified test_b3 188\nVerified test_oracle 188\nVerified test_sft_s1 188\nVerified test_sft_s2 188",
+      "python_arguments": [
+        "scripts/verify_final.py"
+      ]
+    },
+    {
+      "exit_code": 0,
+      "output": "Verified 7 cases: original 5/7 preserved.\nPlacement variant matches: [False, False]",
+      "python_arguments": [
+        "scripts/analyze_demo.py"
+      ]
+    },
+    {
+      "exit_code": 0,
+      "output": "........................................                                 [100%]",
+      "python_arguments": [
+        "-m",
+        "pytest",
+        "tests/test_demo_analysis.py",
+        "tests/test_demo_checks.py",
+        "tests/test_demo.py",
+        "tests/test_notebooks.py",
+        "tests/test_final_eval.py",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp",
+        "outputs/test_repro",
+        "-q",
+        "--tb=short"
+      ]
+    }
+  ],
+  "tracked_files_changed_by_reproduction": false,
+  "scope": "CPU verification of saved benchmark/demo results and 40 selected software tests. Does not establish browser behavior or independent human ratings.",
+  "argument_paths": "Paths are relative to the clean checkout; the actual temporary-directory argument resolved to its outputs/test_repro.",
+  "selected_tests_passed": 40,
+  "test_suite_scope": "Means recomputed from saved flags; official database-variant queries were not repeated in this CPU check."
+}

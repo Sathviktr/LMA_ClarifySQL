@@ -79,6 +79,10 @@ The [original received ZIP](results/demo/checkpoint8/received.zip) is preserved,
 Run `python scripts/analyze_demo.py` to reproduce this analysis without a GPU. Browser clicks and real
 conversation have not yet been demonstrated. No training or checkpoint-7 rerun is needed for this analysis.
 
+A [clean-checkout CPU check](results/reproducibility_checkpoint8.json) at `34500af` reproduces both
+verification scripts and passes 40 selected tests using the existing venv and external benchmark data.
+Test-suite means are recomputed from saved flags in that check; the official variant queries are not repeated.
+
 ### Reproduce checkpoint 8
 
 Import the updated [notebook 08](notebooks/08_demo.ipynb) into Kaggle, enable Internet and a T4 GPU, and
