@@ -26,7 +26,7 @@ and limits. Everything runs on free Kaggle/Colab T4 GPUs, without any paid API.
 | 4 | Agent controller, simulated user, baselines B1–B3 | complete; validation results saved |
 | 5 | QLoRA fine-tuning (two seeds + no-slot ablation) | complete; learning rate `2e-4`, epoch 3 selected |
 | 6 | Final inference, CoSQL, scoring, bootstrap and review sheets | checkpoint 7 complete and verified; human judgments pending |
-| 7 | Fictional university demo and final delivery | checkpoint 8 received and verified: original 5/7; extra SQL check finds a false positive; browser interaction pending |
+| 7 | Fictional university demo and final delivery | original scripted 5/7 preserved; one browser clarification exchange documented; question and SQL limitations remain |
 
 ### Checkpoint 7 results (7 November 2026)
 
@@ -57,7 +57,8 @@ imbalanced slice. Generalization is mixed. See [measured findings](results/final
 [paired intervals](results/final/analysis/paired_bootstrap.json) and [verification scope](results/final/analysis/verification.json).
 
 The [final-report draft](reports/ClarifySQL_Final_Report.pdf) includes the measured test and demo results.
-The [independent human reviews](annotation/evaluation/README.md) and browser interaction remain pending.
+The [independent human reviews](annotation/evaluation/README.md) and instructor access to weights remain
+pending. One browser interaction is documented; broader browser coverage is still limited.
 The mid-submission report remains a historical validation report.
 
 ### Checkpoint 8 results (7 November 2026)
@@ -76,8 +77,21 @@ See [demo findings](results/demo/checkpoint8/analysis/findings.md),
 [verification](results/demo/checkpoint8/analysis/verification.json) and
 [placement variants](results/demo/checkpoint8/analysis/placement_variants.json).
 The [original received ZIP](results/demo/checkpoint8/received.zip) is preserved, including its fictional database.
-Run `python scripts/analyze_demo.py` to reproduce this analysis without a GPU. Browser clicks and real
-conversation have not yet been demonstrated. No training or checkpoint-7 rerun is needed for this analysis.
+Run `python scripts/analyze_demo.py` to reproduce this analysis without a GPU. The archive covers scripted
+checks; the separate browser evidence below documents a later interaction. No training or checkpoint-7
+rerun is needed for this analysis.
+
+### Browser observation (8 November 2026)
+
+A user-supplied two-page browser printout documents one completed exchange: "Which is the best
+department?", the question "Ranked by what: age or id?", the reply "age", displayed SQL and Physics
+in the result table. The query selects the department containing the oldest student. Replaying that
+SQL on the saved fictional database also returns Physics (maximum student age 25).
+
+See the [evidence record](results/demo/browser_evidence_2026-11-08.json). This confirms a displayed
+request/reply/result path. The login sequence, runtime checkpoint and other examples are not captured.
+The reply "age" leaves maximum versus average age unspecified, so the capture does not establish
+that the intended aggregation was resolved. The original 5/7 and known failures remain unchanged.
 
 A [clean-checkout CPU check](results/reproducibility_checkpoint8.json) at `34500af` reproduces both
 verification scripts and passes 40 selected tests using the existing venv and external benchmark data.
@@ -195,7 +209,8 @@ One GPU is sufficient. Its default saved run exports the seven scripted checks; 
 takes real replies, shows model text in plain text boxes, and runs queries
 only against made-up university records. Its interface blocks sample-value inspection; benchmark tools remain
 unchanged. Sharing requires credentials entered at launch. The scripted GPU run and interface construction
-are complete; actual browser interaction remains pending. Known failures are recorded above.
+are complete. A supplied browser capture documents one completed clarification exchange; broader
+browser coverage remains limited. Known failures are recorded above.
 
 For a GPU environment outside Kaggle:
 

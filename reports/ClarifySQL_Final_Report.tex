@@ -18,7 +18,7 @@
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcommand{\repo}{https://github.com/Sathviktr/LMA_ClarifySQL}
 \newcommand{\file}[1]{\nolinkurl{#1}}
-\newcommand{\reportdate}{7 November 2026}
+\newcommand{\reportdate}{8 November 2026}
 
 \begin{document}
 \begin{center}
@@ -37,8 +37,9 @@ Sathvik Reddy (2025201020)\par
 \end{center}
 
 \textbf{Status of this draft.} The final test experiments, required ablations, CoSQL analysis and
-scripted GPU demo are complete. Independent question-usefulness and simulator reviews, a real browser
-demonstration and external adapter-access checks remain pending. This report includes those limits;
+scripted GPU demo are complete, and one browser clarification exchange is documented. Independent
+question-usefulness and simulator reviews and external adapter-access checks remain pending.
+Browser evidence covers one interaction. This report includes those limits;
 the earlier mid-submission report is kept unchanged.
 
 \section{What we studied}
@@ -327,6 +328,19 @@ Gradio construction succeeds with version 6.30.0. The archive does not demonstra
 sharing or an actual user conversation. The scripted model run uses 21 calls and about 56.4 seconds
 of generation time; model loading takes about 48.8 seconds separately.
 
+\subsection{One documented browser exchange}
+A two-page browser printout supplied on 8 November shows the request ``Which is the best department?'',
+the question ``Ranked by what: age or id?'', the reply ``age'', a completed-query status and Physics in
+the result table. The shown SQL joins departments to students and orders by \file{MAX(s.age)}.
+It therefore selects the department containing the oldest student. A CPU replay on the saved fictional
+database also returns Physics, whose oldest student is 25.
+
+The capture documents a displayed request/reply/result path. It does not show the login sequence or
+record the browser session's checkpoint and database hashes. Also, ``age'' leaves maximum versus average
+age unspecified; both happen to select Physics on this fixture. The capture supports interface use,
+not a new benchmark score or a claim that every ambiguity was resolved. Its observations and file hash
+are recorded separately from the scripted run.
+
 \section{Limitations and work still open}
 \begin{itemize}
 \item \textbf{Human question evaluation is incomplete.} The planned sheets cover the same 40 ambiguous
@@ -342,12 +356,12 @@ source of uncertainty. The CoSQL slice is small and dominated by execute labels.
 \item \textbf{Automatic checks have gaps.} Lexical slot and missing-information checks do not measure
 semantic correctness. A numeric value in SQL may be used with the wrong column or comparison. The demo
 shows both a guessed cutoff and SQL that succeeds by coincidence on seed data.
-\item \textbf{The demo still needs a browser check.} Component construction and scripted model behavior
-are complete; real browser interaction remains separate. Software fixtures test repair and blocked writes,
+\item \textbf{Browser coverage is limited.} One request/reply/result path is documented, while the login
+sequence, other examples and error paths were not captured. Software fixtures test repair and blocked writes,
 but they should not be described as a completed model-driven safety study.
 \end{itemize}
 
-The remaining submission work is to complete the independent reviews, check the interactive interface,
+The remaining submission work is to complete the independent reviews, extend browser coverage,
 confirm instructor access to the saved weights and finalize the artifact package. Improving question
 grounding, checking unresolved intent before execution and testing SQL on more variants are useful
 follow-ups. Any new intervention should be reported as a new version rather than silently changing the
@@ -367,6 +381,7 @@ Final test and CoSQL & \file{results/final/}, source commit \file{428e743} \\
 Paired intervals & \file{results/final/analysis/paired_bootstrap.json} \\
 Original demo archive & \file{results/demo/checkpoint8/received.zip}, source \file{0d75a73} \\
 Demo verification and variants & \file{results/demo/checkpoint8/analysis/} \\
+Browser observation & \file{results/demo/browser_evidence_2026-11-08.json} \\
 Training and selected recipe & \file{results/train/} and saved phase6 output \\
 GPU workflows & Notebooks 01--08 and their readable builder scripts \\
 \bottomrule
@@ -389,8 +404,8 @@ revision to resume an original run; later source changes must not be mixed into 
 demo ZIP is preserved byte-for-byte and includes the tiny fictional database. Source verification reads
 Git blobs so Windows newline conversion does not create a false mismatch.
 
-The latest targeted local check passes 40 tests covering the demo, received-output analysis, notebook
-consistency and final-evaluation code. These are software tests, not additional model results. An earlier
+A targeted local check passes 45 tests covering the demo, credential-relaunch workflow, received-output
+analysis, notebook consistency and final-evaluation code. These are software tests, not additional model results. An earlier
 combined Windows CPU run has a native PyTorch failure in the tiny training fixture; that fixture passes
 separately, and the actual GPU training runs completed. We do not claim that every test passed together
 in one Windows process.

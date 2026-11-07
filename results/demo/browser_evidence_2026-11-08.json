@@ -1,0 +1,75 @@
+{
+  "received_on": "2026-11-08",
+  "evidence_type": "user_supplied_browser_printout",
+  "source": {
+    "file_name": "Gradio.pdf",
+    "pages": 2,
+    "sha256": "529e528ae6a27f65aa7281be9d31ddf0fc84c7ba4e01dae556ee91cf58b20bd2",
+    "printed_timestamp": "11/8/26, 12:12 AM",
+    "preserved_copy": "outputs/browser_evidence/Gradio_2026-11-08.pdf"
+  },
+  "browser_path_documented": true,
+  "authentication_sequence_captured": false,
+  "observed": {
+    "request": "Which is the best department?",
+    "question": "Ranked by what: age or id?",
+    "reply": "age",
+    "status": "Query completed.",
+    "sql": "SELECT d.name\nFROM departments d\nJOIN students s ON d.id = s.department_id\nGROUP BY d.id, d.name\nORDER BY MAX(s.age) DESC\nLIMIT 1",
+    "columns": [
+      "name"
+    ],
+    "rows": [
+      [
+        "Physics"
+      ]
+    ]
+  },
+  "local_sql_replay": {
+    "database_source": "university.sqlite from the original checkpoint8 received.zip",
+    "database_sha256": "9ce335510755aae2ac9557596071a5ae8cbd8a33626bdd3c0bbeb959c5808a17",
+    "status": "ok",
+    "columns": [
+      "name"
+    ],
+    "rows": [
+      [
+        "Physics"
+      ]
+    ],
+    "matches_displayed_result": true,
+    "age_summary_columns": [
+      "name",
+      "maximum_student_age",
+      "average_student_age"
+    ],
+    "age_summary_rows": [
+      [
+        "Physics",
+        25,
+        23.5
+      ],
+      [
+        "Mathematics",
+        24,
+        22.0
+      ],
+      [
+        "Computing",
+        23,
+        22.0
+      ]
+    ]
+  },
+  "interpretation": "The shown query selects the department containing the oldest student. On the saved fixture, Physics contains Fara aged 25. The reply age does not specify MAX, AVG or another aggregation.",
+  "scope": "One completed interaction is visible in a user-supplied static PDF. The SQL was replayed on the saved fixture, not on an independently captured browser-session database. This does not verify the login handshake, model/checkpoint identity or other examples.",
+  "not_demonstrated": [
+    "authentication sequence and settings",
+    "browser-session database and adapter hashes",
+    "other example executions or error paths",
+    "resolution of maximum-versus-average age intent",
+    "fixes for the earlier threshold and placement failures",
+    "independent human question ratings"
+  ],
+  "original_checkpoint8_score_changed": false
+}
