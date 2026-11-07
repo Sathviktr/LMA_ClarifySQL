@@ -1,0 +1,74 @@
+{
+  "b3": {
+    "name": "b3",
+    "system": "b3",
+    "split": "cosql",
+    "backend": "hf",
+    "complete": true,
+    "expected": 59,
+    "turns": 59,
+    "decision_macro_f1": 0.374,
+    "decision_per_class": {
+      "clarify": {
+        "precision": 0.333,
+        "recall": 0.615,
+        "f1": 0.432,
+        "support": 13
+      },
+      "execute": {
+        "precision": 0.85,
+        "recall": 0.378,
+        "f1": 0.523,
+        "support": 45
+      },
+      "abstain": {
+        "precision": 0.091,
+        "recall": 1.0,
+        "f1": 0.167,
+        "support": 1
+      }
+    },
+    "decision_accuracy": 0.4406779661016949,
+    "note": "Only one reviewed abstention; abstention estimates are not reliable on this slice.",
+    "calls": 175,
+    "tokens_in": 147027,
+    "tokens_out": 4825,
+    "seconds": 262.60007330499957
+  },
+  "sft_s1": {
+    "name": "sft_s1",
+    "system": "sft",
+    "split": "cosql",
+    "backend": "hf",
+    "complete": true,
+    "expected": 59,
+    "turns": 59,
+    "decision_macro_f1": 0.456,
+    "decision_per_class": {
+      "clarify": {
+        "precision": 0.333,
+        "recall": 0.231,
+        "f1": 0.273,
+        "support": 13
+      },
+      "execute": {
+        "precision": 0.818,
+        "recall": 0.8,
+        "f1": 0.809,
+        "support": 45
+      },
+      "abstain": {
+        "precision": 0.167,
+        "recall": 1.0,
+        "f1": 0.286,
+        "support": 1
+      }
+    },
+    "decision_accuracy": 0.6779661016949152,
+    "note": "Only one reviewed abstention; abstention estimates are not reliable on this slice.",
+    "calls": 72,
+    "tokens_in": 32352,
+    "tokens_out": 1724,
+    "seconds": 67.7009680139995
+  }
+}

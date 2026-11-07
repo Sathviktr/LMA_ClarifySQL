@@ -1,0 +1,51 @@
+{
+  "conditions": [
+    {
+      "condition": "test_b1",
+      "wall_seconds": 282.9
+    },
+    {
+      "condition": "test_b2",
+      "wall_seconds": 337.7
+    },
+    {
+      "condition": "test_oracle",
+      "wall_seconds": 274.2
+    },
+    {
+      "condition": "test_b3",
+      "wall_seconds": 1219.3
+    },
+    {
+      "condition": "cosql_b3",
+      "wall_seconds": 279.1
+    },
+    {
+      "condition": "test_sft_s1",
+      "wall_seconds": 570.2
+    },
+    {
+      "condition": "test_sft_s2",
+      "wall_seconds": 582.9
+    },
+    {
+      "condition": "test_a2",
+      "wall_seconds": 504.5
+    },
+    {
+      "condition": "test_a3",
+      "wall_seconds": 689.4
+    },
+    {
+      "condition": "cosql_sft_s1",
+      "wall_seconds": 86.9
+    }
+  ],
+  "wall_seconds": 2433.8454661369324,
+  "source": {
+    "mode": "github",
+    "commit": "428e74397d379c4202a62262885e99ed65e7c62e",
+    "branch": "main"
+  },
+  "adapter_source": "sathviktr/phase6 run 363373340"
+}

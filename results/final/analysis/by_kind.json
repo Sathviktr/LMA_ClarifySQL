@@ -1,0 +1,2592 @@
+{
+  "b1": {
+    "ambiguous": {
+      "episodes": 47,
+      "by_kind": {
+        "ambiguous": 47
+      },
+      "execution_accuracy": 0.2553,
+      "execution_accuracy_by_kind": {
+        "ambiguous": 0.2553
+      },
+      "decision_macro_f1": 0.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 47
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": 0.0,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 47,
+      "total_tokens_in": 17027,
+      "total_tokens_out": 2238,
+      "total_generation_seconds": 62.473328982625056,
+      "reasons": {
+        "match": 12,
+        "different_result": 30,
+        "pred_sql_error": 5
+      },
+      "cost": {
+        "model_calls": 47,
+        "policy_calls": 0,
+        "tokens_in": 17027,
+        "tokens_out": 2238,
+        "gpu_seconds": 62.5
+      }
+    },
+    "clear": {
+      "episodes": 79,
+      "by_kind": {
+        "clear": 79
+      },
+      "execution_accuracy": 0.8481,
+      "execution_accuracy_by_kind": {
+        "clear": 0.8481
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 79
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": 0.0,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 79,
+      "total_tokens_in": 27603,
+      "total_tokens_out": 2845,
+      "total_generation_seconds": 96.12524124693766,
+      "reasons": {
+        "match": 67,
+        "different_result": 8,
+        "pred_sql_error": 4
+      },
+      "cost": {
+        "model_calls": 79,
+        "policy_calls": 0,
+        "tokens_in": 27603,
+        "tokens_out": 2845,
+        "gpu_seconds": 96.1
+      }
+    },
+    "definition": {
+      "episodes": 14,
+      "by_kind": {
+        "definition": 14
+      },
+      "execution_accuracy": 0.2143,
+      "execution_accuracy_by_kind": {
+        "definition": 0.2143
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 14
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": 0.0,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 14,
+      "total_tokens_in": 4555,
+      "total_tokens_out": 624,
+      "total_generation_seconds": 19.037279819312523,
+      "reasons": {
+        "different_result": 9,
+        "match": 3,
+        "pred_sql_error": 2
+      },
+      "cost": {
+        "model_calls": 14,
+        "policy_calls": 0,
+        "tokens_in": 4555,
+        "tokens_out": 624,
+        "gpu_seconds": 19.0
+      }
+    },
+    "two_slot": {
+      "episodes": 8,
+      "by_kind": {
+        "two_slot": 8
+      },
+      "execution_accuracy": 0.25,
+      "execution_accuracy_by_kind": {
+        "two_slot": 0.25
+      },
+      "decision_macro_f1": 0.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 8
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": 0.0,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 8,
+      "total_tokens_in": 2331,
+      "total_tokens_out": 573,
+      "total_generation_seconds": 12.088144513375013,
+      "reasons": {
+        "different_result": 6,
+        "match": 2
+      },
+      "cost": {
+        "model_calls": 8,
+        "policy_calls": 0,
+        "tokens_in": 2331,
+        "tokens_out": 573,
+        "gpu_seconds": 12.1
+      }
+    },
+    "unanswerable": {
+      "episodes": 40,
+      "by_kind": {
+        "unanswerable": 40
+      },
+      "execution_accuracy": null,
+      "execution_accuracy_by_kind": {},
+      "decision_macro_f1": 0.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        }
+      },
+      "decision_accuracy": 0.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": 0.0,
+      "wrong_abstention_rate_answerable": null,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 40,
+      "total_tokens_in": 15553,
+      "total_tokens_out": 1230,
+      "total_generation_seconds": 57.15712181075003,
+      "reasons": {
+        "executed": 40
+      },
+      "cost": {
+        "model_calls": 40,
+        "policy_calls": 0,
+        "tokens_in": 15553,
+        "tokens_out": 1230,
+        "gpu_seconds": 57.2
+      }
+    }
+  },
+  "b2": {
+    "ambiguous": {
+      "episodes": 47,
+      "by_kind": {
+        "ambiguous": 47
+      },
+      "execution_accuracy": 0.3191,
+      "execution_accuracy_by_kind": {
+        "ambiguous": 0.3191
+      },
+      "decision_macro_f1": 0.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 47
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": 0.0,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 53,
+      "total_tokens_in": 19261,
+      "total_tokens_out": 2727,
+      "total_generation_seconds": 90.00790033575001,
+      "reasons": {
+        "match": 15,
+        "different_result": 31,
+        "pred_sql_error": 1
+      },
+      "cost": {
+        "model_calls": 53,
+        "policy_calls": 0,
+        "tokens_in": 19261,
+        "tokens_out": 2727,
+        "gpu_seconds": 90.0
+      }
+    },
+    "clear": {
+      "episodes": 79,
+      "by_kind": {
+        "clear": 79
+      },
+      "execution_accuracy": 0.8608,
+      "execution_accuracy_by_kind": {
+        "clear": 0.8608
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 79
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": 0.0,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 83,
+      "total_tokens_in": 29675,
+      "total_tokens_out": 3068,
+      "total_generation_seconds": 105.18033275212501,
+      "reasons": {
+        "match": 68,
+        "different_result": 11
+      },
+      "cost": {
+        "model_calls": 83,
+        "policy_calls": 0,
+        "tokens_in": 29675,
+        "tokens_out": 3068,
+        "gpu_seconds": 105.2
+      }
+    },
+    "definition": {
+      "episodes": 14,
+      "by_kind": {
+        "definition": 14
+      },
+      "execution_accuracy": 0.2857,
+      "execution_accuracy_by_kind": {
+        "definition": 0.2857
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 14
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": 0.0,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 18,
+      "total_tokens_in": 6115,
+      "total_tokens_out": 883,
+      "total_generation_seconds": 35.43232308149994,
+      "reasons": {
+        "different_result": 9,
+        "match": 4,
+        "pred_sql_error": 1
+      },
+      "cost": {
+        "model_calls": 18,
+        "policy_calls": 0,
+        "tokens_in": 6115,
+        "tokens_out": 883,
+        "gpu_seconds": 35.4
+      }
+    },
+    "two_slot": {
+      "episodes": 8,
+      "by_kind": {
+        "two_slot": 8
+      },
+      "execution_accuracy": 0.25,
+      "execution_accuracy_by_kind": {
+        "two_slot": 0.25
+      },
+      "decision_macro_f1": 0.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 8
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": 0.0,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 8,
+      "total_tokens_in": 2331,
+      "total_tokens_out": 573,
+      "total_generation_seconds": 12.042090734875003,
+      "reasons": {
+        "different_result": 6,
+        "match": 2
+      },
+      "cost": {
+        "model_calls": 8,
+        "policy_calls": 0,
+        "tokens_in": 2331,
+        "tokens_out": 573,
+        "gpu_seconds": 12.0
+      }
+    },
+    "unanswerable": {
+      "episodes": 40,
+      "by_kind": {
+        "unanswerable": 40
+      },
+      "execution_accuracy": null,
+      "execution_accuracy_by_kind": {},
+      "decision_macro_f1": 0.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        }
+      },
+      "decision_accuracy": 0.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": 0.0,
+      "wrong_abstention_rate_answerable": null,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 47,
+      "total_tokens_in": 19170,
+      "total_tokens_out": 1540,
+      "total_generation_seconds": 73.8437993117499,
+      "reasons": {
+        "executed": 40
+      },
+      "cost": {
+        "model_calls": 47,
+        "policy_calls": 0,
+        "tokens_in": 19170,
+        "tokens_out": 1540,
+        "gpu_seconds": 73.8
+      }
+    }
+  },
+  "oracle": {
+    "ambiguous": {
+      "episodes": 47,
+      "by_kind": {
+        "ambiguous": 47
+      },
+      "execution_accuracy": 0.7234,
+      "execution_accuracy_by_kind": {
+        "ambiguous": 0.7234
+      },
+      "decision_macro_f1": 0.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 47
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": 0.0,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 47,
+      "total_tokens_in": 17224,
+      "total_tokens_out": 2214,
+      "total_generation_seconds": 69.3982236055626,
+      "reasons": {
+        "match": 34,
+        "different_result": 11,
+        "pred_sql_error": 2
+      },
+      "cost": {
+        "model_calls": 47,
+        "policy_calls": 0,
+        "tokens_in": 17224,
+        "tokens_out": 2214,
+        "gpu_seconds": 69.4
+      }
+    },
+    "clear": {
+      "episodes": 79,
+      "by_kind": {
+        "clear": 79
+      },
+      "execution_accuracy": 0.8481,
+      "execution_accuracy_by_kind": {
+        "clear": 0.8481
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 79
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": 0.0,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 79,
+      "total_tokens_in": 27603,
+      "total_tokens_out": 2845,
+      "total_generation_seconds": 97.74430753512485,
+      "reasons": {
+        "match": 67,
+        "different_result": 8,
+        "pred_sql_error": 4
+      },
+      "cost": {
+        "model_calls": 79,
+        "policy_calls": 0,
+        "tokens_in": 27603,
+        "tokens_out": 2845,
+        "gpu_seconds": 97.7
+      }
+    },
+    "definition": {
+      "episodes": 14,
+      "by_kind": {
+        "definition": 14
+      },
+      "execution_accuracy": 0.7143,
+      "execution_accuracy_by_kind": {
+        "definition": 0.7143
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 14
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": 0.0,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 14,
+      "total_tokens_in": 4590,
+      "total_tokens_out": 612,
+      "total_generation_seconds": 19.182314954937468,
+      "reasons": {
+        "different_result": 4,
+        "match": 10
+      },
+      "cost": {
+        "model_calls": 14,
+        "policy_calls": 0,
+        "tokens_in": 4590,
+        "tokens_out": 612,
+        "gpu_seconds": 19.2
+      }
+    },
+    "two_slot": {
+      "episodes": 8,
+      "by_kind": {
+        "two_slot": 8
+      },
+      "execution_accuracy": 0.625,
+      "execution_accuracy_by_kind": {
+        "two_slot": 0.625
+      },
+      "decision_macro_f1": 0.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 8
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": 0.0,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 8,
+      "total_tokens_in": 2405,
+      "total_tokens_out": 465,
+      "total_generation_seconds": 12.305892514124999,
+      "reasons": {
+        "different_result": 3,
+        "match": 5
+      },
+      "cost": {
+        "model_calls": 8,
+        "policy_calls": 0,
+        "tokens_in": 2405,
+        "tokens_out": 465,
+        "gpu_seconds": 12.3
+      }
+    },
+    "unanswerable": {
+      "episodes": 40,
+      "by_kind": {
+        "unanswerable": 40
+      },
+      "execution_accuracy": null,
+      "execution_accuracy_by_kind": {},
+      "decision_macro_f1": 0.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 40
+        }
+      },
+      "decision_accuracy": 0.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": 0.0,
+      "wrong_abstention_rate_answerable": null,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": null,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0
+      },
+      "total_model_calls": 40,
+      "total_tokens_in": 15553,
+      "total_tokens_out": 1230,
+      "total_generation_seconds": 57.2468163502503,
+      "reasons": {
+        "executed": 40
+      },
+      "cost": {
+        "model_calls": 40,
+        "policy_calls": 0,
+        "tokens_in": 15553,
+        "tokens_out": 1230,
+        "gpu_seconds": 57.2
+      }
+    }
+  },
+  "b3": {
+    "ambiguous": {
+      "episodes": 47,
+      "by_kind": {
+        "ambiguous": 47
+      },
+      "execution_accuracy": 0.6596,
+      "execution_accuracy_by_kind": {
+        "ambiguous": 0.6596
+      },
+      "decision_macro_f1": 0.944,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 1.0,
+          "recall": 0.894,
+          "f1": 0.944,
+          "support": 47
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.8936,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0851,
+      "avg_clarification_turns": 1.0,
+      "avg_clarification_turns_vague": 1.0,
+      "slot_accuracy": 0.234,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0213,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 47,
+        "tokens_in": 7545,
+        "tokens_out": 94,
+        "seconds": 5.452229730000681
+      },
+      "total_model_calls": 301,
+      "total_tokens_in": 193189,
+      "total_tokens_out": 9206,
+      "total_generation_seconds": 409.5582297300007,
+      "reasons": {
+        "different_result": 10,
+        "match": 31,
+        "pred_sql_error": 1,
+        "abstained": 4,
+        "limit": 1
+      },
+      "cost": {
+        "model_calls": 254,
+        "policy_calls": 209,
+        "tokens_in": 185644,
+        "tokens_out": 9112,
+        "gpu_seconds": 404.1
+      }
+    },
+    "clear": {
+      "episodes": 79,
+      "by_kind": {
+        "clear": 79
+      },
+      "execution_accuracy": 0.7089,
+      "execution_accuracy_by_kind": {
+        "clear": 0.7089
+      },
+      "decision_macro_f1": 0.83,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 0.709,
+          "f1": 0.83,
+          "support": 79
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.7089,
+      "unnecessary_question_rate_clear": 0.2658,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.1519,
+      "avg_clarification_turns": 0.3797,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0127,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 371,
+      "total_tokens_in": 270527,
+      "total_tokens_out": 10113,
+      "total_generation_seconds": 480.535,
+      "reasons": {
+        "match": 56,
+        "different_result": 10,
+        "limit": 1,
+        "abstained": 12
+      },
+      "cost": {
+        "model_calls": 371,
+        "policy_calls": 303,
+        "tokens_in": 270527,
+        "tokens_out": 10113,
+        "gpu_seconds": 480.5
+      }
+    },
+    "definition": {
+      "episodes": 14,
+      "by_kind": {
+        "definition": 14
+      },
+      "execution_accuracy": 0.2143,
+      "execution_accuracy_by_kind": {
+        "definition": 0.2143
+      },
+      "decision_macro_f1": 0.353,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 0.214,
+          "f1": 0.353,
+          "support": 14
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.2143,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": 0.7857,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.5714,
+      "avg_clarification_turns": 0.9286,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 63,
+      "total_tokens_in": 46835,
+      "total_tokens_out": 2277,
+      "total_generation_seconds": 110.113,
+      "reasons": {
+        "abstained": 8,
+        "different_result": 3,
+        "match": 3
+      },
+      "cost": {
+        "model_calls": 63,
+        "policy_calls": 57,
+        "tokens_in": 46835,
+        "tokens_out": 2277,
+        "gpu_seconds": 110.1
+      }
+    },
+    "two_slot": {
+      "episodes": 8,
+      "by_kind": {
+        "two_slot": 8
+      },
+      "execution_accuracy": 0.5,
+      "execution_accuracy_by_kind": {
+        "two_slot": 0.5
+      },
+      "decision_macro_f1": 0.857,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.857,
+          "support": 8
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.75,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.375,
+      "avg_clarification_turns": 1.125,
+      "avg_clarification_turns_vague": 1.125,
+      "slot_accuracy": 0.25,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 9,
+        "tokens_in": 1717,
+        "tokens_out": 18,
+        "seconds": 1.2589619689999836
+      },
+      "total_model_calls": 54,
+      "total_tokens_in": 35633,
+      "total_tokens_out": 2015,
+      "total_generation_seconds": 96.39396196899999,
+      "reasons": {
+        "abstained": 3,
+        "different_result": 1,
+        "match": 4
+      },
+      "cost": {
+        "model_calls": 45,
+        "policy_calls": 40,
+        "tokens_in": 33916,
+        "tokens_out": 1997,
+        "gpu_seconds": 95.1
+      }
+    },
+    "unanswerable": {
+      "episodes": 40,
+      "by_kind": {
+        "unanswerable": 40
+      },
+      "execution_accuracy": null,
+      "execution_accuracy_by_kind": {},
+      "decision_macro_f1": 0.961,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 1.0,
+          "recall": 0.925,
+          "f1": 0.961,
+          "support": 40
+        }
+      },
+      "decision_accuracy": 0.925,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": 0.875,
+      "wrong_abstention_rate_answerable": null,
+      "avg_clarification_turns": 0.05,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 73,
+      "total_tokens_in": 58854,
+      "total_tokens_out": 1842,
+      "total_generation_seconds": 101.647,
+      "reasons": {
+        "abstained, named": 35,
+        "executed": 1,
+        "abstained, not named": 4
+      },
+      "cost": {
+        "model_calls": 73,
+        "policy_calls": 72,
+        "tokens_in": 58854,
+        "tokens_out": 1842,
+        "gpu_seconds": 101.6
+      }
+    }
+  },
+  "sft_s1": {
+    "ambiguous": {
+      "episodes": 47,
+      "by_kind": {
+        "ambiguous": 47
+      },
+      "execution_accuracy": 0.7447,
+      "execution_accuracy_by_kind": {
+        "ambiguous": 0.7447
+      },
+      "decision_macro_f1": 0.956,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 1.0,
+          "recall": 0.915,
+          "f1": 0.956,
+          "support": 47
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.9149,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.9149,
+      "avg_clarification_turns_vague": 0.9149,
+      "slot_accuracy": 0.7872,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 43,
+        "tokens_in": 6461,
+        "tokens_out": 86,
+        "seconds": 4.016870613812483
+      },
+      "total_model_calls": 225,
+      "total_tokens_in": 81356,
+      "total_tokens_out": 6393,
+      "total_generation_seconds": 177.65387061381247,
+      "reasons": {
+        "match": 35,
+        "different_result": 12
+      },
+      "cost": {
+        "model_calls": 182,
+        "policy_calls": 134,
+        "tokens_in": 74895,
+        "tokens_out": 6307,
+        "gpu_seconds": 173.6
+      }
+    },
+    "clear": {
+      "episodes": 79,
+      "by_kind": {
+        "clear": 79
+      },
+      "execution_accuracy": 0.8481,
+      "execution_accuracy_by_kind": {
+        "clear": 0.8481
+      },
+      "decision_macro_f1": 0.987,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 0.975,
+          "f1": 0.987,
+          "support": 79
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.9747,
+      "unnecessary_question_rate_clear": 0.0253,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0127,
+      "avg_clarification_turns": 0.0253,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 165,
+      "total_tokens_in": 62089,
+      "total_tokens_out": 4989,
+      "total_generation_seconds": 170.29,
+      "reasons": {
+        "match": 67,
+        "different_result": 11,
+        "abstained": 1
+      },
+      "cost": {
+        "model_calls": 165,
+        "policy_calls": 83,
+        "tokens_in": 62089,
+        "tokens_out": 4989,
+        "gpu_seconds": 170.3
+      }
+    },
+    "definition": {
+      "episodes": 14,
+      "by_kind": {
+        "definition": 14
+      },
+      "execution_accuracy": 0.5714,
+      "execution_accuracy_by_kind": {
+        "definition": 0.5714
+      },
+      "decision_macro_f1": 0.923,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 0.857,
+          "f1": 0.923,
+          "support": 14
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.8571,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": 0.1429,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0714,
+      "avg_clarification_turns": 0.1429,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 45,
+      "total_tokens_in": 17423,
+      "total_tokens_out": 1342,
+      "total_generation_seconds": 49.729,
+      "reasons": {
+        "different_result": 4,
+        "match": 8,
+        "pred_sql_error": 1,
+        "abstained": 1
+      },
+      "cost": {
+        "model_calls": 45,
+        "policy_calls": 30,
+        "tokens_in": 17423,
+        "tokens_out": 1342,
+        "gpu_seconds": 49.7
+      }
+    },
+    "two_slot": {
+      "episodes": 8,
+      "by_kind": {
+        "two_slot": 8
+      },
+      "execution_accuracy": 0.5,
+      "execution_accuracy_by_kind": {
+        "two_slot": 0.5
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 8
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.375,
+      "avg_clarification_turns": 1.625,
+      "avg_clarification_turns_vague": 1.625,
+      "slot_accuracy": 0.625,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 13,
+        "tokens_in": 2305,
+        "tokens_out": 26,
+        "seconds": 1.6979015901875023
+      },
+      "total_model_calls": 47,
+      "total_tokens_in": 16265,
+      "total_tokens_out": 1266,
+      "total_generation_seconds": 39.17290159018751,
+      "reasons": {
+        "abstained": 3,
+        "different_result": 1,
+        "match": 4
+      },
+      "cost": {
+        "model_calls": 34,
+        "policy_calls": 29,
+        "tokens_in": 13960,
+        "tokens_out": 1240,
+        "gpu_seconds": 37.5
+      }
+    },
+    "unanswerable": {
+      "episodes": 40,
+      "by_kind": {
+        "unanswerable": 40
+      },
+      "execution_accuracy": null,
+      "execution_accuracy_by_kind": {},
+      "decision_macro_f1": 0.824,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 1.0,
+          "recall": 0.7,
+          "f1": 0.824,
+          "support": 40
+        }
+      },
+      "decision_accuracy": 0.7,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": 0.725,
+      "wrong_abstention_rate_answerable": null,
+      "avg_clarification_turns": 0.1,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 88,
+      "total_tokens_in": 39268,
+      "total_tokens_out": 2220,
+      "total_generation_seconds": 91.653,
+      "reasons": {
+        "abstained, named": 29,
+        "executed": 8,
+        "abstained, not named": 3
+      },
+      "cost": {
+        "model_calls": 88,
+        "policy_calls": 76,
+        "tokens_in": 39268,
+        "tokens_out": 2220,
+        "gpu_seconds": 91.7
+      }
+    }
+  },
+  "sft_s2": {
+    "ambiguous": {
+      "episodes": 47,
+      "by_kind": {
+        "ambiguous": 47
+      },
+      "execution_accuracy": 0.7234,
+      "execution_accuracy_by_kind": {
+        "ambiguous": 0.7234
+      },
+      "decision_macro_f1": 0.967,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 1.0,
+          "recall": 0.936,
+          "f1": 0.967,
+          "support": 47
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.9362,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0213,
+      "avg_clarification_turns": 0.9574,
+      "avg_clarification_turns_vague": 0.9574,
+      "slot_accuracy": 0.7021,
+      "invalid_output_rate": 0.0145,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0213,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 45,
+        "tokens_in": 6777,
+        "tokens_out": 90,
+        "seconds": 4.502120325124935
+      },
+      "total_model_calls": 229,
+      "total_tokens_in": 82473,
+      "total_tokens_out": 6879,
+      "total_generation_seconds": 238.28912032512494,
+      "reasons": {
+        "match": 34,
+        "different_result": 11,
+        "invalid": 1,
+        "abstained": 1
+      },
+      "cost": {
+        "model_calls": 184,
+        "policy_calls": 138,
+        "tokens_in": 75696,
+        "tokens_out": 6789,
+        "gpu_seconds": 233.8
+      }
+    },
+    "clear": {
+      "episodes": 79,
+      "by_kind": {
+        "clear": 79
+      },
+      "execution_accuracy": 0.8608,
+      "execution_accuracy_by_kind": {
+        "clear": 0.8608
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 79
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": 0.0,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 162,
+      "total_tokens_in": 60557,
+      "total_tokens_out": 4892,
+      "total_generation_seconds": 160.593,
+      "reasons": {
+        "match": 68,
+        "different_result": 11
+      },
+      "cost": {
+        "model_calls": 162,
+        "policy_calls": 79,
+        "tokens_in": 60557,
+        "tokens_out": 4892,
+        "gpu_seconds": 160.6
+      }
+    },
+    "definition": {
+      "episodes": 14,
+      "by_kind": {
+        "definition": 14
+      },
+      "execution_accuracy": 0.5,
+      "execution_accuracy_by_kind": {
+        "definition": 0.5
+      },
+      "decision_macro_f1": 0.923,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 0.857,
+          "f1": 0.923,
+          "support": 14
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.8571,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": 0.1429,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.1429,
+      "avg_clarification_turns": 0.1429,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 44,
+      "total_tokens_in": 17230,
+      "total_tokens_out": 1322,
+      "total_generation_seconds": 49.927,
+      "reasons": {
+        "different_result": 4,
+        "match": 7,
+        "abstained": 2,
+        "pred_sql_error": 1
+      },
+      "cost": {
+        "model_calls": 44,
+        "policy_calls": 30,
+        "tokens_in": 17230,
+        "tokens_out": 1322,
+        "gpu_seconds": 49.9
+      }
+    },
+    "two_slot": {
+      "episodes": 8,
+      "by_kind": {
+        "two_slot": 8
+      },
+      "execution_accuracy": 0.375,
+      "execution_accuracy_by_kind": {
+        "two_slot": 0.375
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 8
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.375,
+      "avg_clarification_turns": 1.625,
+      "avg_clarification_turns_vague": 1.625,
+      "slot_accuracy": 0.75,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 13,
+        "tokens_in": 2303,
+        "tokens_out": 26,
+        "seconds": 1.6264211958750536
+      },
+      "total_model_calls": 47,
+      "total_tokens_in": 16253,
+      "total_tokens_out": 1251,
+      "total_generation_seconds": 40.30642119587505,
+      "reasons": {
+        "abstained": 3,
+        "different_result": 2,
+        "match": 3
+      },
+      "cost": {
+        "model_calls": 34,
+        "policy_calls": 29,
+        "tokens_in": 13950,
+        "tokens_out": 1225,
+        "gpu_seconds": 38.7
+      }
+    },
+    "unanswerable": {
+      "episodes": 40,
+      "by_kind": {
+        "unanswerable": 40
+      },
+      "execution_accuracy": null,
+      "execution_accuracy_by_kind": {},
+      "decision_macro_f1": 0.889,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.889,
+          "support": 40
+        }
+      },
+      "decision_accuracy": 0.8,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": 0.725,
+      "wrong_abstention_rate_answerable": null,
+      "avg_clarification_turns": 0.025,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 70,
+      "total_tokens_in": 30835,
+      "total_tokens_out": 1775,
+      "total_generation_seconds": 69.127,
+      "reasons": {
+        "abstained, named": 29,
+        "executed": 7,
+        "abstained, not named": 4
+      },
+      "cost": {
+        "model_calls": 70,
+        "policy_calls": 59,
+        "tokens_in": 30835,
+        "tokens_out": 1775,
+        "gpu_seconds": 69.1
+      }
+    }
+  },
+  "a2": {
+    "ambiguous": {
+      "episodes": 47,
+      "by_kind": {
+        "ambiguous": 47
+      },
+      "execution_accuracy": 0.766,
+      "execution_accuracy_by_kind": {
+        "ambiguous": 0.766
+      },
+      "decision_macro_f1": 0.967,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 1.0,
+          "recall": 0.936,
+          "f1": 0.967,
+          "support": 47
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.9362,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.9362,
+      "avg_clarification_turns_vague": 0.9362,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 44,
+        "tokens_in": 6617,
+        "tokens_out": 88,
+        "seconds": 4.178070078812397
+      },
+      "total_model_calls": 227,
+      "total_tokens_in": 77606,
+      "total_tokens_out": 5347,
+      "total_generation_seconds": 161.2890700788124,
+      "reasons": {
+        "match": 36,
+        "different_result": 11
+      },
+      "cost": {
+        "model_calls": 183,
+        "policy_calls": 135,
+        "tokens_in": 70989,
+        "tokens_out": 5259,
+        "gpu_seconds": 157.1
+      }
+    },
+    "clear": {
+      "episodes": 79,
+      "by_kind": {
+        "clear": 79
+      },
+      "execution_accuracy": 0.8608,
+      "execution_accuracy_by_kind": {
+        "clear": 0.8608
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 79
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": 0.0,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 162,
+      "total_tokens_in": 57950,
+      "total_tokens_out": 4892,
+      "total_generation_seconds": 154.808,
+      "reasons": {
+        "match": 68,
+        "different_result": 11
+      },
+      "cost": {
+        "model_calls": 162,
+        "policy_calls": 79,
+        "tokens_in": 57950,
+        "tokens_out": 4892,
+        "gpu_seconds": 154.8
+      }
+    },
+    "definition": {
+      "episodes": 14,
+      "by_kind": {
+        "definition": 14
+      },
+      "execution_accuracy": 0.5714,
+      "execution_accuracy_by_kind": {
+        "definition": 0.5714
+      },
+      "decision_macro_f1": 0.923,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 0.857,
+          "f1": 0.923,
+          "support": 14
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.8571,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": 0.1429,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.1429,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 46,
+      "total_tokens_in": 16697,
+      "total_tokens_out": 1320,
+      "total_generation_seconds": 45.055,
+      "reasons": {
+        "different_result": 5,
+        "match": 8,
+        "pred_sql_error": 1
+      },
+      "cost": {
+        "model_calls": 46,
+        "policy_calls": 30,
+        "tokens_in": 16697,
+        "tokens_out": 1320,
+        "gpu_seconds": 45.1
+      }
+    },
+    "two_slot": {
+      "episodes": 8,
+      "by_kind": {
+        "two_slot": 8
+      },
+      "execution_accuracy": 0.375,
+      "execution_accuracy_by_kind": {
+        "two_slot": 0.375
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 8
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.125,
+      "avg_clarification_turns": 1.625,
+      "avg_clarification_turns_vague": 1.625,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 13,
+        "tokens_in": 2301,
+        "tokens_out": 26,
+        "seconds": 1.704660498187451
+      },
+      "total_model_calls": 49,
+      "total_tokens_in": 15778,
+      "total_tokens_out": 1085,
+      "total_generation_seconds": 35.724660498187454,
+      "reasons": {
+        "abstained": 1,
+        "different_result": 4,
+        "match": 3
+      },
+      "cost": {
+        "model_calls": 36,
+        "policy_calls": 29,
+        "tokens_in": 13477,
+        "tokens_out": 1059,
+        "gpu_seconds": 34.0
+      }
+    },
+    "unanswerable": {
+      "episodes": 40,
+      "by_kind": {
+        "unanswerable": 40
+      },
+      "execution_accuracy": null,
+      "execution_accuracy_by_kind": {},
+      "decision_macro_f1": 0.824,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 1.0,
+          "recall": 0.7,
+          "f1": 0.824,
+          "support": 40
+        }
+      },
+      "decision_accuracy": 0.7,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": 0.7,
+      "wrong_abstention_rate_answerable": null,
+      "avg_clarification_turns": 0.1,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 89,
+      "total_tokens_in": 37578,
+      "total_tokens_out": 2141,
+      "total_generation_seconds": 82.596,
+      "reasons": {
+        "abstained, named": 28,
+        "executed": 9,
+        "abstained, not named": 3
+      },
+      "cost": {
+        "model_calls": 89,
+        "policy_calls": 76,
+        "tokens_in": 37578,
+        "tokens_out": 2141,
+        "gpu_seconds": 82.6
+      }
+    }
+  },
+  "a3": {
+    "ambiguous": {
+      "episodes": 47,
+      "by_kind": {
+        "ambiguous": 47
+      },
+      "execution_accuracy": 0.6383,
+      "execution_accuracy_by_kind": {
+        "ambiguous": 0.6383
+      },
+      "decision_macro_f1": 0.825,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 1.0,
+          "recall": 0.702,
+          "f1": 0.825,
+          "support": 47
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 0.7021,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0426,
+      "avg_clarification_turns": 0.7234,
+      "avg_clarification_turns_vague": 0.7234,
+      "slot_accuracy": 0.5745,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 34,
+        "tokens_in": 5138,
+        "tokens_out": 68,
+        "seconds": 3.4858150191816177
+      },
+      "total_model_calls": 200,
+      "total_tokens_in": 103462,
+      "total_tokens_out": 5722,
+      "total_generation_seconds": 234.89081501918162,
+      "reasons": {
+        "different_result": 15,
+        "match": 30,
+        "abstained": 2
+      },
+      "cost": {
+        "model_calls": 166,
+        "policy_calls": 119,
+        "tokens_in": 98324,
+        "tokens_out": 5654,
+        "gpu_seconds": 231.4
+      }
+    },
+    "clear": {
+      "episodes": 79,
+      "by_kind": {
+        "clear": 79
+      },
+      "execution_accuracy": 0.8608,
+      "execution_accuracy_by_kind": {
+        "clear": 0.8608
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 79
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": 0.0,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 162,
+      "total_tokens_in": 78323,
+      "total_tokens_out": 4892,
+      "total_generation_seconds": 207.52,
+      "reasons": {
+        "match": 68,
+        "different_result": 11
+      },
+      "cost": {
+        "model_calls": 162,
+        "policy_calls": 79,
+        "tokens_in": 78323,
+        "tokens_out": 4892,
+        "gpu_seconds": 207.5
+      }
+    },
+    "definition": {
+      "episodes": 14,
+      "by_kind": {
+        "definition": 14
+      },
+      "execution_accuracy": 0.4286,
+      "execution_accuracy_by_kind": {
+        "definition": 0.4286
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 14
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": 0.0,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.0,
+      "avg_clarification_turns": 0.0,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 38,
+      "total_tokens_in": 18335,
+      "total_tokens_out": 1223,
+      "total_generation_seconds": 49.76,
+      "reasons": {
+        "different_result": 7,
+        "match": 6,
+        "pred_sql_error": 1
+      },
+      "cost": {
+        "model_calls": 38,
+        "policy_calls": 22,
+        "tokens_in": 18335,
+        "tokens_out": 1223,
+        "gpu_seconds": 49.8
+      }
+    },
+    "two_slot": {
+      "episodes": 8,
+      "by_kind": {
+        "two_slot": 8
+      },
+      "execution_accuracy": 0.5,
+      "execution_accuracy_by_kind": {
+        "two_slot": 0.5
+      },
+      "decision_macro_f1": 1.0,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 8
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "decision_accuracy": 1.0,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": null,
+      "wrong_abstention_rate_answerable": 0.375,
+      "avg_clarification_turns": 1.625,
+      "avg_clarification_turns_vague": 1.625,
+      "slot_accuracy": 0.625,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 13,
+        "tokens_in": 2303,
+        "tokens_out": 26,
+        "seconds": 1.6948678598174327
+      },
+      "total_model_calls": 47,
+      "total_tokens_in": 21275,
+      "total_tokens_out": 1194,
+      "total_generation_seconds": 48.50086785981744,
+      "reasons": {
+        "abstained": 3,
+        "different_result": 1,
+        "match": 4
+      },
+      "cost": {
+        "model_calls": 34,
+        "policy_calls": 29,
+        "tokens_in": 18972,
+        "tokens_out": 1168,
+        "gpu_seconds": 46.8
+      }
+    },
+    "unanswerable": {
+      "episodes": 40,
+      "by_kind": {
+        "unanswerable": 40
+      },
+      "execution_accuracy": null,
+      "execution_accuracy_by_kind": {},
+      "decision_macro_f1": 0.841,
+      "decision_per_class": {
+        "clarify": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "execute": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "abstain": {
+          "precision": 1.0,
+          "recall": 0.725,
+          "f1": 0.841,
+          "support": 40
+        }
+      },
+      "decision_accuracy": 0.725,
+      "unnecessary_question_rate_clear": null,
+      "unnecessary_question_rate_definition": null,
+      "correct_abstention_rate": 0.7,
+      "wrong_abstention_rate_answerable": null,
+      "avg_clarification_turns": 0.05,
+      "avg_clarification_turns_vague": null,
+      "slot_accuracy": null,
+      "invalid_output_rate": 0.0,
+      "limit_rate": 0.0,
+      "invalid_episode_rate": 0.0,
+      "blocked_attempts": 0,
+      "simulator_cost": {
+        "model_calls": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "seconds": 0.0
+      },
+      "total_model_calls": 78,
+      "total_tokens_in": 52089,
+      "total_tokens_out": 2002,
+      "total_generation_seconds": 124.181,
+      "reasons": {
+        "abstained, named": 28,
+        "executed": 9,
+        "abstained, not named": 3
+      },
+      "cost": {
+        "model_calls": 78,
+        "policy_calls": 65,
+        "tokens_in": 52089,
+        "tokens_out": 2002,
+        "gpu_seconds": 124.2
+      }
+    }
+  }
+}

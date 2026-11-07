@@ -25,10 +25,41 @@ and limits. Everything runs on free Kaggle/Colab T4 GPUs, without any paid API.
 | 3 | Reviewed episodes and SFT states | complete: 307 train / 53 validation / 188 test episodes |
 | 4 | Agent controller, simulated user, baselines B1–B3 | complete; validation results saved |
 | 5 | QLoRA fine-tuning (two seeds + no-slot ablation) | complete; learning rate `2e-4`, epoch 3 selected |
-| 6 | Final inference, CoSQL, scoring, bootstrap and review sheets | local implementation ready; checkpoint 7 GPU results and human judgments pending |
+| 6 | Final inference, CoSQL, scoring, bootstrap and review sheets | checkpoint 7 complete and verified; human judgments pending |
 | 7 | Fictional university demo and final delivery | session engine tested; trained-model/UI demonstration and final report pending |
 
-### Next action: checkpoint 7
+### Checkpoint 7 results (7 November 2026)
+
+All eight test conditions cover the same 188 episodes (148 answerable, 40 unanswerable), plus two CoSQL
+conditions on 59 reviewed turns. The received run used commit `428e743`; its inputs, source hashes,
+database bytes and execution/decision summaries have been checked locally.
+
+| System | Execution accuracy | Test-suite accuracy | Decision macro-F1 | Correct abstention |
+|---|---:|---:|---:|---:|
+| B1 | 56.76% | 46.62% | 0.2207 | 0.0% |
+| B2 | 60.14% | 47.30% | 0.2207 | 0.0% |
+| B3 | 63.51% | 54.05% | 0.7850 | 87.5% |
+| SFT seed 1 | 77.03% | 67.57% | 0.8790 | 72.5% |
+| SFT seed 2 | 75.68% | 65.54% | 0.9257 | 72.5% |
+| A2: no slots | 77.70% | 68.24% | 0.8923 | 70.0% |
+| A3: full context | 72.97% | 62.16% | 0.8533 | 70.0% |
+| Oracle | 78.38% | 68.92% | 0.2207 | 0.0% |
+
+The two-seed mean execution gain over B3 is **12.84 percentage points**, with a 95% paired database-bootstrap
+interval of **[5.55, 19.08]**. Decision macro-F1 improves by **0.11735**, interval **[0.06545, 0.17945]**.
+These intervals use 5,000 paired draws over 20 databases. Both primary comparisons improve, while correct
+abstention declines. A2 is only one execution ahead of seed 1 and its difference interval includes zero;
+an execution benefit from explicit slots is not established. Human question ratings remain pending.
+
+On CoSQL, accuracy rises from 26/59 to 40/59 and macro-F1 from 0.374 to 0.456, but clarify recall falls
+from 8/13 to 3/13. An always-execute baseline gets 45/59 accuracy but only 0.2883 macro-F1 on this
+imbalanced slice. Generalization is mixed. See [measured findings](results/final/analysis/findings.md),
+[paired intervals](results/final/analysis/paired_bootstrap.json) and [verification scope](results/final/analysis/verification.json).
+
+Next: complete the [independent human reviews](annotation/evaluation/README.md) and run the live demo in notebook 08.
+The final report is pending these steps. The mid-submission report remains a historical validation report.
+
+### Reproduce checkpoint 7
 
 Use [notebook 07](notebooks/07_final_evaluation.ipynb). It runs the required final comparisons without retraining.
 Its setup cell clones or updates this GitHub repository and prints the exact commit used. Push the new
@@ -43,8 +74,8 @@ For an optional source-ZIP fallback, run `python scripts/prepare_checkpoint7.py`
 in the notebook. To reproduce a GitHub run later, set `REVISION` to its printed commit.
 
 Each condition saves 16-episode batches with data/code/adapter fingerprints. A matching rerun resumes saved
-episodes. Mock outputs are kept separately and rejected by the final analysis. Final inference results are
-not yet present in this repository; existing `results/agent/validation_*` files are development results.
+episodes. Mock outputs are kept separately and rejected by the final analysis. Final results are in
+`results/final/`; `results/agent/validation_*` files remain the earlier development results.
 The evaluation notebook pins Transformers/PEFT/Accelerate/bitsandbytes to the versions recorded in the
 completed checkpoint-6 training run; it logs the actual runtime and loaded model revision for each condition.
 
@@ -57,6 +88,11 @@ python scripts/make_eval_audits.py --root results/final
 # Two independent raters and a simulator reviewer fill the blank sheets before scoring:
 python scripts/score_eval_audits.py
 ```
+
+The received checkpoint already includes test-suite scoring, bootstrap tables and blank review sheets.
+Do not regenerate the sheets after people start filling them. `scripts/verify_final.py` checks the received
+results against the recorded Git revision and local database files. `scripts/summarize_checkpoint7.py`
+rebuilds the descriptive findings and standalone figures from those saved results.
 
 The eight corrected test slot phrases in `data/episodes/slot_terms.json` affect scoring only. Training data,
 requests and simulator inputs are preserved. Both seeds and their mean receive paired database-bootstrap

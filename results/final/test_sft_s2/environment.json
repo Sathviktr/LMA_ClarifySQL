@@ -1,0 +1,21 @@
+{
+  "python": "3.13.16",
+  "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+  "torch": "2.11.0+cu130",
+  "cuda_available": true,
+  "transformers": "5.16.1",
+  "peft": "0.20.0",
+  "accelerate": "1.14.0",
+  "bitsandbytes": "0.50.2",
+  "cuda": "13.0",
+  "gpus": [
+    {
+      "name": "Tesla T4",
+      "memory_gb": 15.64,
+      "compute_capability": "7.5",
+      "native_bf16": false
+    }
+  ],
+  "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "load_seconds": 5.975540273999968
+}

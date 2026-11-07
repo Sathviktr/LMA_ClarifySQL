@@ -1,0 +1,68 @@
+{
+  "source_commit": "428e74397d379c4202a62262885e99ed65e7c62e",
+  "base_model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "conditions": {
+    "cosql_b3": {
+      "records": 59,
+      "input_hashes": "verified",
+      "database_hashes": "verified",
+      "summary": "reproduced"
+    },
+    "cosql_sft_s1": {
+      "records": 59,
+      "input_hashes": "verified",
+      "database_hashes": "verified",
+      "summary": "reproduced"
+    },
+    "test_a2": {
+      "records": 188,
+      "input_hashes": "verified",
+      "database_hashes": "verified",
+      "summary": "reproduced"
+    },
+    "test_a3": {
+      "records": 188,
+      "input_hashes": "verified",
+      "database_hashes": "verified",
+      "summary": "reproduced"
+    },
+    "test_b1": {
+      "records": 188,
+      "input_hashes": "verified",
+      "database_hashes": "verified",
+      "summary": "reproduced"
+    },
+    "test_b2": {
+      "records": 188,
+      "input_hashes": "verified",
+      "database_hashes": "verified",
+      "summary": "reproduced"
+    },
+    "test_b3": {
+      "records": 188,
+      "input_hashes": "verified",
+      "database_hashes": "verified",
+      "summary": "reproduced"
+    },
+    "test_oracle": {
+      "records": 188,
+      "input_hashes": "verified",
+      "database_hashes": "verified",
+      "summary": "reproduced"
+    },
+    "test_sft_s1": {
+      "records": 188,
+      "input_hashes": "verified",
+      "database_hashes": "verified",
+      "summary": "reproduced"
+    },
+    "test_sft_s2": {
+      "records": 188,
+      "input_hashes": "verified",
+      "database_hashes": "verified",
+      "summary": "reproduced"
+    }
+  },
+  "scope": "Code/data hashes and SQLite execution/summary metrics reproduced locally. Test-suite means recomputed from saved flags; official variant queries were not repeated.",
+  "human_reviews": "pending"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "sft_s1",
+  "system": "sft",
+  "split": "cosql",
+  "backend": "hf",
+  "complete": true,
+  "expected": 59,
+  "turns": 59,
+  "decision_macro_f1": 0.456,
+  "decision_per_class": {
+    "clarify": {
+      "precision": 0.333,
+      "recall": 0.231,
+      "f1": 0.273,
+      "support": 13
+    },
+    "execute": {
+      "precision": 0.818,
+      "recall": 0.8,
+      "f1": 0.809,
+      "support": 45
+    },
+    "abstain": {
+      "precision": 0.167,
+      "recall": 1.0,
+      "f1": 0.286,
+      "support": 1
+    }
+  },
+  "decision_accuracy": 0.6779661016949152,
+  "note": "Only one reviewed abstention; abstention estimates are not reliable on this slice.",
+  "calls": 72,
+  "tokens_in": 32352,
+  "tokens_out": 1724,
+  "seconds": 67.7009680139995
+}

@@ -1,0 +1,2674 @@
+{
+  "b3": {
+    "counts": {
+      "executable_SQL_wrong_result": 24,
+      "SQL_sql_error": 1,
+      "wrong_abstention_on_answerable": 27,
+      "limit": 2,
+      "missing_information_executed": 1,
+      "missing_information_abstained, not named": 4
+    },
+    "cases": [
+      {
+        "episode": "test-ambiguous-906",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the name of the most active high schooler?",
+        "decision": "clarify",
+        "sql": "SELECT h.name \nFROM Highschooler h\nJOIN Likes l ON h.ID = l.liked_id\nGROUP BY h.ID, h.name\nORDER BY COUNT(l.liked_id) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-413",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the average age of the visitors whose membership level is not high?",
+        "decision": "clarify",
+        "sql": "SELECT AVG(v.Age)\nFROM visitor v\nWHERE v.Level_of_membership > 4",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-477",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the codes of countries that have many players.",
+        "decision": "execute",
+        "sql": "SELECT country_code, COUNT(*) AS player_count\nFROM players\nGROUP BY country_code\nORDER BY player_count DESC",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-167",
+        "kind": "ambiguous",
+        "category": "SQL_sql_error",
+        "request": "Among the cars with more than the lowest horsepower, which ones do not have many cylinders? List the car make id and make name.",
+        "decision": "clarify",
+        "sql": "SELECT \n    c.MakeId, \n    c.Make \nFROM \n    cars_data cd \nJOIN \n    car_names c ON cd.Id = c.MakeId \nWHERE \n    cd.Horsepower > '3' \n    AND c.Cylinders IS NULL OR c.Cylinders < 5",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-161",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many countries have many car makers?",
+        "decision": "clarify",
+        "sql": "SELECT COUNT(*) \nFROM (\n    SELECT c.CountryName \n    FROM countries c\n    JOIN car_makers cm ON c.CountryName = cm.Country\n    GROUP BY c.CountryName\n    HAVING COUNT(cm.Id) > 2\n)",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-798",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the average life expectancy and total population for each continent where the average life expectancy is short?",
+        "decision": "clarify",
+        "sql": "SELECT \n    c.Continent,\n    AVG(c.LifeExpectancy) AS average_life_expectancy,\n    SUM(c.Population) AS total_population\nFROM \n    country c\nWHERE \n    c.LifeExpectancy IS NOT NULL\nGROUP BY \n    c.Continent\nHAVING \n    AVG(c.LifeExpectancy) < 72",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-311",
+        "kind": "ambiguous",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What are the id and type code of the main template?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request 'main template' is ambiguous and not defined in the database. No criteria (e.g., latest version, specific type) have been provided by the user to determine which template is considered the 'main' one.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-810",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the total population and average area of countries in the continent of North America whose area is big?",
+        "decision": "clarify",
+        "sql": "SELECT \n    SUM(c.Population) AS total_population, \n    AVG(c.SurfaceArea) AS average_area\nFROM \n    country c\nWHERE \n    c.Continent = 'North America' \n    AND c.SurfaceArea > 3000",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-420",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id, name and membership level of the top visitor?",
+        "decision": "clarify",
+        "sql": "SELECT v.ID, v.Name, v.Level_of_membership\nFROM visitor v\nJOIN visit vi ON v.ID = vi.visitor_ID\nORDER BY vi.Total_spent DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-129",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which countries in europe have many car manufacturers?",
+        "decision": "clarify",
+        "sql": "SELECT c.CountryName\nFROM countries c\nJOIN continents cont ON c.Continent = cont.ContId\nJOIN car_makers cm ON c.CountryName = cm.Country\nWHERE cont.Continent = 'Europe'\nGROUP BY c.CountryName\nHAVING COUNT(cm.Id) >= 3",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-283",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the name of the biggest shop?",
+        "decision": "execute",
+        "sql": "SELECT s.Name \nFROM shop s \nORDER BY s.Number_products DESC \nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-756",
+        "kind": "ambiguous",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Which language is the most widespread in Asia?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database does not provide population counts per language or total speaker numbers, so it cannot determine the most widespread language in Asia based on either percentage or total speakers.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-177",
+        "kind": "ambiguous",
+        "category": "limit",
+        "request": "What are the id and names of the countries which have many car makers or produce the 'fiat' model?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-669",
+        "kind": "ambiguous",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What is the average earnings of tall poker players?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database does not define what 'tall' means in terms of height, so the average earnings of 'tall' poker players cannot be determined.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-924",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which dogs have not cost their owner a lot for treatment? List the dog names.",
+        "decision": "clarify",
+        "sql": "SELECT d.name\nFROM Dogs d\nJOIN Treatments t ON d.dog_id = t.dog_id\nGROUP BY d.dog_id, d.name\nHAVING SUM(t.cost_of_treatment) < 1000",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-712",
+        "kind": "ambiguous",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What is the main language of Aruba?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request is ambiguous and the user has not clarified whether they mean the most spoken language or the official language of Aruba. The database does not provide a definitive way to determine the 'main language' without this clarification.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-two_slot-175",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Which car makers produce many models and many cars? List the id and the maker.",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The request asks for car makers that produce 'many models and many cars', but the database does not store a count or measure of how many models or cars each maker produces. Without aggregation or a count metric, it is impossible to determine which makers produce many models and many cars.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-two_slot-856",
+        "kind": "two_slot",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the record companies shared by orchestras founded long ago and orchestras founded recently.",
+        "decision": "clarify",
+        "sql": "SELECT DISTINCT Record_Company \nFROM orchestra \nWHERE Year_of_Founded < 2003 \nUNION \nSELECT DISTINCT Record_Company \nFROM orchestra \nWHERE Year_of_Founded >= 2003",
+        "abstain_text": null,
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-two_slot-1028",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Show the citizenships shared by singers born long ago and singers born recently.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request is ambiguous regarding what 'long ago' and 'recently' means in terms of birth years, and no clear threshold or definition has been provided by the user.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-two_slot-153",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "In which years were medium-weight cars produced?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database does not define what 'medium-weight' means, and there is no threshold or range specified for weight to identify medium-weight cars.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-1033",
+        "kind": "definition",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What are the names of properties that are either houses or apartments with many rooms?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The term 'many rooms' is vague and not clearly defined in the database. Without a specific threshold or definition for 'many rooms', the request cannot be accurately fulfilled.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-908",
+        "kind": "definition",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Show the names of high schoolers who have many likes.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request 'Show the names of high schoolers who have many likes' is ambiguous because 'many' is not defined. The database does not specify a threshold or criteria for what constitutes 'many' likes.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-500",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the id and name of the ship that ranks highest for casualties?",
+        "decision": "execute",
+        "sql": "SELECT s.id, s.name\nFROM ship s\nJOIN death d ON s.id = d.caused_by_ship_id\nORDER BY (d.killed + d.injured) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-412",
+        "kind": "definition",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Find the names of the visitors whose membership level is high, and order the results by the level from high to low.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request refers to 'high' membership level, but the database does not define or store what constitutes a 'high' level of membership. Without a clear threshold or definition, the request cannot be fulfilled.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-243",
+        "kind": "definition",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Find all airlines that have few flights.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request 'Find all airlines that have few flights' is ambiguous because 'few' is not defined in terms of a specific number or comparison. The database does not store a threshold or ranking to determine what constitutes 'few' flights.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-667",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "Of all the people, what is the money rank of the one who ranks highest?",
+        "decision": "clarify",
+        "sql": "SELECT MAX(p.Money_Rank) \nFROM poker_player p \nJOIN people pe ON p.People_ID = pe.People_ID",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-14",
+        "kind": "definition",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Show location and name for all stadiums with a capacity within a certain range.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request specifies a 'certain range' of capacity but does not define the range. Without a specific threshold or interval, the query cannot be executed.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-922",
+        "kind": "definition",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Which professionals live in the state of Indiana or have done many treatments? List his or her id, last name and cell phone.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request is ambiguous due to the undefined term 'many treatments'. The database does not specify a threshold or definition for this phrase, and no clear criteria exist to determine how many treatments constitute 'many'. Without a defined threshold, the query cannot be executed accurately.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-103",
+        "kind": "definition",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Which distinct car models were produced recently?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The term 'recently' is vague and not defined; the database does not specify a year threshold or range to determine what constitutes a recent car model.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-163",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many cars have many cylinders?",
+        "decision": "clarify",
+        "sql": "SELECT COUNT(*) \nFROM \"cars_data\" \nWHERE \"Cylinders\" > 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-231",
+        "kind": "definition",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Find the abbreviation and country of the airline that ranks lowest?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request 'Find the abbreviation and country of the airline that ranks lowest' is ambiguous because 'ranks lowest' is not clearly defined by a metric (e.g., number of flights, distance flown). The database does not store metrics like total distance flown or flight counts per airline in a way that allows ranking. Without a clear definition of the ranking criterion, the request cannot be fulfilled.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-554",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the mobile phone number of the student named Timmothy Ward ?",
+        "decision": "clarify",
+        "sql": "SELECT s.cell_mobile_number \nFROM Students s \nWHERE s.first_name = 'Timmothy' AND s.last_name = 'Ward'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-504",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "List the name and date the battle that has lost the ship named 'Lettice' and the ship named 'HMS Atalanta'",
+        "decision": "execute",
+        "sql": "SELECT b.name, b.date \nFROM battle b\nJOIN ship s ON b.id = s.lost_in_battle\nWHERE s.name = 'Lettice' OR s.name = 'HMS Atalanta'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-1031",
+        "kind": "clear",
+        "category": "limit",
+        "request": "What is the feature type name of feature AirCon?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-758",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Which languages are spoken by only one country in republic governments?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database does not store a clear definition or criterion for 'republic governments', and the user has not provided sufficient detail to interpret the term. As a result, the request cannot be fulfilled with the current information.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-427",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Find the number of visitors who did not visit any museum opened after 2010.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request is ambiguous and cannot be resolved without clarification on what 'opened after 2010' means in terms of Open_Year. The database does not store a clear definition or threshold for 'after 2010' in the Open_Year column, and the user has not provided sufficient detail to interpret the condition.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-944",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What are the first name and last name of the professionals who have done treatment with cost below average?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request involves defining 'below average' cost, which is ambiguous and not specified by the user. Without a clear threshold (mean or median), the query cannot be executed as intended.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-465",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.",
+        "decision": "execute",
+        "sql": "SELECT p.first_name, p.last_name\nFROM matches m\nJOIN players p ON m.winner_id = p.player_id\nJOIN rankings r ON p.player_id = r.player_id\nWHERE m.tourney_name = 'Australian Open'\nORDER BY r.ranking_points DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-900",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show name of all students who have some friends and also are liked by someone else.",
+        "decision": "execute",
+        "sql": "SELECT DISTINCT h.name\nFROM Highschooler h\nWHERE h.ID IN (\n    SELECT f.student_id\n    FROM Friend f\n)\nAND h.ID IN (\n    SELECT l.student_id\n    FROM Likes l\n)",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-766",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What is the total number of people living in the nations that do not use English?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database does not specify whether a country 'does not use English' means English is not an official language or not spoken at all; the request is ambiguous and cannot be resolved with current information.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-683",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "List the names of people that are not poker players.",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database does not store information about which people are not poker players; it only lists poker players via the People_ID field. To identify non-poker players, we would need a flag or a separate record indicating non-participation, which is not present.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-303",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What is the document id, template id and description for document named \"Robbin CV\"?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database does not contain a document with the name 'Robbin CV'.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-687",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many states are there?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(DISTINCT `state`) FROM `AREA_CODE_STATE`",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-535",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Who is enrolled in a Bachelor degree program? List the first name, middle name, last name.",
+        "decision": "execute",
+        "sql": "SELECT \n    s.first_name, \n    s.middle_name, \n    s.last_name\nFROM \n    Students s\nJOIN \n    Student_Enrolment se ON s.student_id = se.student_id\nJOIN \n    Degree_Programs dp ON se.degree_program_id = dp.degree_program_id\nWHERE \n    dp.degree_summary_name LIKE 'Bachelor%'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-39",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "what is the name and nation of the singer who have a song having 'Hey' in its name?",
+        "decision": "clarify",
+        "sql": "SELECT s.Name, s.Country \nFROM singer s \nWHERE 'Hey' LIKE '%' || s.Song_Name || '%'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-740",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What is name of the country that speaks the largest number of languages?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The request 'name of the country that speaks the largest number of languages' is ambiguous and cannot be resolved without clarification on whether it refers to the number of distinct languages or total language entries. The database does not store a direct count of languages per country in a way that allows for this determination without further definition.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-359",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "How many paragraphs for the document with name 'Summer Show'?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database does not contain a document with the name 'Summer Show', and no record matches this name in the Documents table.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-6",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the name and the release year of the song by the youngest singer.",
+        "decision": "execute",
+        "sql": "SELECT s.Name, s.Song_release_year \nFROM singer s\nORDER BY s.Age ASC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-439",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the highest rank of losers in all matches.",
+        "decision": "execute",
+        "sql": "SELECT MAX(loser_rank) AS highest_rank\nFROM matches",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-185",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "List the airport code and name in the city of Anthony.",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database does not contain information about a city named 'Anthony' or its corresponding airport codes and names.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-157",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "For model volvo, how many cylinders does the car with the least accelerate have?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database does not specify whether 'volvo' refers to a car model or a car maker, and no record in the tables matches 'volvo' as a model or maker name.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-884",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the names of high school students and their corresponding number of friends.",
+        "decision": "execute",
+        "sql": "SELECT h.name, COUNT(f.friend_id) AS number_of_friends\nFROM Highschooler h\nLEFT JOIN Friend f ON h.ID = f.student_id\nGROUP BY h.ID, h.name",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-774",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What are the African countries that have a  population less than any country in Asia?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database does not store information about Asian countries' populations to compare against African countries' populations, so the request cannot be fulfilled with the current data.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-418",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "find the names of museums which have more staff than the minimum staff number of all museums opened after 2010.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database does not store the minimum number of staff among museums opened after 2010, and the user has not provided a clear definition or value for it.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-21",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Show the name of the performance with the type Auditions 1.",
+        "decision": "execute",
+        "sql": "SELECT p.Type\nFROM performance p\nWHERE p.Type = 'Auditions 1'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-24",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "How many properties were built prior to 2000?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database does not contain a column indicating the year a property was built.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-33",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "What is the average horsepower of the countries?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database does not contain any information about horsepower for countries.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-34",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "Find the loudest student.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database does not contain any data related to student loudness or sound levels.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-40",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "How much did it rain on the birthday of Roman Bragin?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about rainfall or birthdays of poker players.",
+        "answered_slots": []
+      }
+    ],
+    "note": "Observable failure types, not causal attribution of blame to a model role."
+  },
+  "sft_s1": {
+    "counts": {
+      "executable_SQL_wrong_result": 28,
+      "wrong_abstention_on_answerable": 5,
+      "SQL_sql_error": 1,
+      "missing_information_executed": 8,
+      "missing_information_abstained, not named": 3
+    },
+    "cases": [
+      {
+        "episode": "test-ambiguous-24",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the name and capacity of the busiest stadium from 2014 onward.",
+        "decision": "execute",
+        "sql": "SELECT s.Name, s.Capacity\nFROM stadium s\nJOIN concert c ON s.Stadium_ID = c.Stadium_ID\nWHERE c.Year >= '2014'\nORDER BY s.Highest DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-413",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the average age of the visitors whose membership level is not high?",
+        "decision": "execute",
+        "sql": "SELECT AVG(v.Age)\nFROM visitor v\nWHERE v.Level_of_membership != 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-459",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the first name and country code of the top player.",
+        "decision": "clarify",
+        "sql": "SELECT p.first_name, p.country_code\nFROM players p\nJOIN rankings r ON p.player_id = r.player_id\nGROUP BY p.player_id\nORDER BY SUM(r.tours) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-161",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many countries have many car makers?",
+        "decision": "clarify",
+        "sql": "SELECT COUNT(*) \nFROM (\n    SELECT c.CountryName \n    FROM countries c\n    JOIN car_makers cm ON c.CountryName = cm.Country\n    GROUP BY c.CountryName\n    HAVING COUNT(cm.Id) > 2\n)",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-225",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the code of the busiest airport?",
+        "decision": "clarify",
+        "sql": "SELECT SourceAirport \nFROM flights \nGROUP BY SourceAirport \nORDER BY COUNT(*) DESC \nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-798",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the average life expectancy and total population for each continent where the average life expectancy is short?",
+        "decision": "clarify",
+        "sql": "SELECT \n    c.Continent,\n    AVG(c.LifeExpectancy) AS average_life_expectancy,\n    SUM(c.Population) AS total_population\nFROM \n    country c\nWHERE \n    c.LifeExpectancy < 72\nGROUP BY \n    c.Continent\nHAVING \n    AVG(c.LifeExpectancy) < 72",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-311",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id and type code of the main template?",
+        "decision": "clarify",
+        "sql": "WITH TemplateRecordCount AS (\n    SELECT \n        t.Template_ID,\n        t.Template_Type_Code,\n        COUNT(p.Paragraph_ID) AS paragraph_count\n    FROM Templates t\n    LEFT JOIN Paragraphs p ON t.Template_ID = p.Document_ID\n    GROUP BY t.Template_ID, t.Template_Type_Code\n)\nSELECT \n    Template_ID AS id,\n    Template_Type_Code AS type_code\nFROM TemplateRecordCount\nORDER BY paragraph_count DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-810",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the total population and average area of countries in the continent of North America whose area is big?",
+        "decision": "clarify",
+        "sql": "SELECT \n    SUM(c.Population) AS total_population, \n    AVG(c.SurfaceArea) AS average_area\nFROM \n    country c\nWHERE \n    c.Continent = 'North America' \n    AND c.SurfaceArea > 3000",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-420",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id, name and membership level of the top visitor?",
+        "decision": "clarify",
+        "sql": "SELECT v.ID, v.Name, v.Level_of_membership\nFROM visitor v\nJOIN visit vi ON v.ID = vi.visitor_ID\nORDER BY vi.Total_spent DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-129",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which countries in europe have many car manufacturers?",
+        "decision": "clarify",
+        "sql": "SELECT c.CountryName\nFROM countries c\nJOIN car_makers cm ON c.CountryName = cm.Country\nWHERE c.Continent = (SELECT ContId FROM continents WHERE Continent = 'Europe')\nGROUP BY c.CountryName\nHAVING COUNT(cm.Id) >= 3",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-177",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id and names of the countries which have many car makers or produce the 'fiat' model?",
+        "decision": "clarify",
+        "sql": "SELECT \n    c.CountryId, \n    c.CountryName \nFROM \n    countries c\nJOIN \n    car_makers cm ON c.CountryName = cm.Country\nGROUP BY \n    c.CountryId, c.CountryName\nHAVING \n    COUNT(cm.Id) > 3\nUNION\nSELECT \n    c.CountryId, \n    c.CountryName \nFROM \n    countries c\nJOIN \n    model_list ml ON c.CountryName = (SELECT Country FROM car_makers WHERE Id = ml.Maker)\nJOIN \n    car_names cn ON ml.Model = cn.Model\nWHERE \n    cn.Make = 'fiat'",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-924",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which dogs have not cost their owner a lot for treatment? List the dog names.",
+        "decision": "clarify",
+        "sql": "SELECT DISTINCT d.name\nFROM Dogs d\nLEFT JOIN Treatments t ON d.dog_id = t.dog_id\nGROUP BY d.dog_id, d.name\nHAVING SUM(t.cost_of_treatment) <= 1000",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-two_slot-175",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Which car makers produce many models and many cars? List the id and the maker.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about how many cars count as \"many\".",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-two_slot-856",
+        "kind": "two_slot",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the record companies shared by orchestras founded long ago and orchestras founded recently.",
+        "decision": "clarify",
+        "sql": "SELECT DISTINCT o.Record_Company\nFROM orchestra o\nWHERE o.Year_of_Founded < 2003",
+        "abstain_text": null,
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-two_slot-426",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What is the name of the visitor who visited both a museum opened long ago and a museum opened recently?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the open year of museums opened after 2011.",
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-two_slot-1028",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Show the citizenships shared by singers born long ago and singers born recently.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the birth year of singers.",
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-definition-1033",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the names of properties that are either houses or apartments with many rooms?",
+        "decision": "execute",
+        "sql": "SELECT DISTINCT p.property_name\nFROM Properties p\nWHERE p.property_type_code IN (\n    SELECT property_type_code \n    FROM Ref_Property_Types \n    WHERE property_type_description IN ('House', 'Apartment')\n)\nAND p.room_count > 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-500",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the id and name of the ship that ranks highest for casualties?",
+        "decision": "execute",
+        "sql": "SELECT s.id, s.name\nFROM ship s\nJOIN death d ON s.id = d.caused_by_ship_id\nORDER BY (d.killed + d.injured) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-922",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which professionals live in the state of Indiana or have done many treatments? List his or her id, last name and cell phone.",
+        "decision": "execute",
+        "sql": "SELECT \n    p.professional_id,\n    p.last_name,\n    p.cell_number\nFROM \n    Professionals p\nWHERE \n    p.state = 'IN'\n    OR (\n        SELECT COUNT(*)\n        FROM Treatments t\n        WHERE t.professional_id = p.professional_id\n        GROUP BY t.professional_id\n        HAVING COUNT(*) > 2\n    )",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-103",
+        "kind": "definition",
+        "category": "SQL_sql_error",
+        "request": "Which distinct car models were produced recently?",
+        "decision": "execute",
+        "sql": "SELECT DISTINCT ml.Model\nFROM model_list ml\nJOIN cars_data cd ON ml.Model = cd.Make\nWHERE cd.Year > 1980",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-698",
+        "kind": "definition",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What is the area code that ranks highest?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the ranks of area codes.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-231",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the abbreviation and country of the airline that ranks lowest?",
+        "decision": "execute",
+        "sql": "SELECT a.Abbreviation, a.Country\nFROM airlines a\nJOIN flights f ON a.uid = f.Airline\nGROUP BY a.uid, a.Abbreviation, a.Country\nORDER BY COUNT(f.FlightNo) ASC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-554",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the mobile phone number of the student named Timmothy Ward ?",
+        "decision": "execute",
+        "sql": "SELECT s.cell_mobile_number \nFROM Students s \nWHERE s.first_name = 'Timmothy' AND s.last_name = 'Ward'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-504",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "List the name and date the battle that has lost the ship named 'Lettice' and the ship named 'HMS Atalanta'",
+        "decision": "execute",
+        "sql": "SELECT b.name, b.date\nFROM battle b\nJOIN ship s ON b.id = s.lost_in_battle\nWHERE s.name = 'Lettice' OR s.name = 'HMS Atalanta'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-605",
+        "kind": "clear",
+        "category": "wrong_abstention_on_answerable",
+        "request": "List the language used least number of TV Channel. List language and number of TV Channel.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the language used least number of TV Channel.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-944",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the first name and last name of the professionals who have done treatment with cost below average?",
+        "decision": "execute",
+        "sql": "WITH AverageCost AS (\n    SELECT AVG(cost_of_treatment) AS avg_cost\n    FROM Treatments\n)\nSELECT p.first_name, p.last_name\nFROM Professionals p\nJOIN Treatments t ON p.professional_id = t.professional_id\nCROSS JOIN AverageCost ac\nWHERE t.cost_of_treatment < ac.avg_cost",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-465",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.",
+        "decision": "execute",
+        "sql": "SELECT p.first_name, p.last_name\nFROM matches m\nJOIN players p ON m.winner_id = p.player_id\nJOIN rankings r ON p.player_id = r.player_id\nWHERE m.tourney_name = 'Australian Open'\nORDER BY r.ranking_points DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-683",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "List the names of people that are not poker players.",
+        "decision": "execute",
+        "sql": "SELECT p.Name\nFROM people p\nWHERE p.People_ID NOT IN (SELECT Poker_Player_ID FROM poker_player)",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-687",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many states are there?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(DISTINCT state) AS state_count FROM `AREA_CODE_STATE`",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-39",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "what is the name and nation of the singer who have a song having 'Hey' in its name?",
+        "decision": "execute",
+        "sql": "SELECT s.Name, s.Country \nFROM singer s\nWHERE 'Hey' IN (s.Song_Name)",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-6",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the name and the release year of the song by the youngest singer.",
+        "decision": "execute",
+        "sql": "SELECT s.Name, s.Song_release_year \nFROM singer s\nORDER BY s.Age ASC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-439",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the highest rank of losers in all matches.",
+        "decision": "execute",
+        "sql": "SELECT MAX(r.ranking) AS highest_rank\nFROM matches m\nJOIN players l ON m.loser_id = l.player_id\nJOIN rankings r ON l.player_id = r.player_id\nWHERE r.ranking IS NOT NULL",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-884",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the names of high school students and their corresponding number of friends.",
+        "decision": "execute",
+        "sql": "SELECT h.name, COUNT(f.friend_id) AS number_of_friends\nFROM Highschooler h\nLEFT JOIN Friend f ON h.ID = f.student_id\nGROUP BY h.ID, h.name",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-774",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the African countries that have a  population less than any country in Asia?",
+        "decision": "execute",
+        "sql": "SELECT c.Name\nFROM country c\nWHERE c.Continent = 'Africa'\n  AND c.Population < (\n    SELECT MIN(c2.Population)\n    FROM country c2\n    WHERE c2.Continent = 'Asia'\n  )",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-13",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Count the number of female poker players taller than 180cm.",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM poker_player \nJOIN people ON poker_player.\"People_ID\" = people.\"People_ID\" \nWHERE people.\"Nationality\" = 'Female' AND people.\"Height\" > 180",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-15",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Count the dogs that have their own email addresses.",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM Dogs d\nJOIN Owners o ON d.owner_id = o.owner_id\nWHERE o.email_address IS NOT NULL",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-18",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Find the surface area of the city of Tilburg.",
+        "decision": "execute",
+        "sql": "SELECT c.SurfaceArea\nFROM city ci\nJOIN country c ON ci.CountryCode = c.Code\nWHERE ci.Name = 'Tilburg'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-21",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Show the name of the performance with the type Auditions 1.",
+        "decision": "execute",
+        "sql": "SELECT p.Type\nFROM performance p\nWHERE p.Type = 'Auditions 1'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-22",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "What are the cartoons with more than 3 million viewers?",
+        "decision": "execute",
+        "sql": "SELECT c.Title\nFROM \"Cartoon\" c\nWHERE c.\"Original_air_date\" IS NOT NULL\n  AND c.\"Viewers_m\" IS NOT NULL\n  AND CAST(REPLACE(c.\"Viewers_m\", 'M', '') AS REAL) > 3000000",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-23",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "How many contestants are from the state of CA?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(DISTINCT v.contestant_number) \nFROM VOTES v \nJOIN AREA_CODE_STATE a ON v.state = a.state \nWHERE a.state = 'CA'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-24",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "How many properties were built prior to 2000?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM Properties \nWHERE date_on_market < '2000-01-01'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-25",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Show the first name of the youngest professional.",
+        "decision": "execute",
+        "sql": "SELECT p.first_name\nFROM Professionals p\nORDER BY (julianday(p.date_of_birth)) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-33",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "What is the average horsepower of the countries?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about the horsepower of countries.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-34",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "Find the loudest student.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the loudest student.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-40",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "How much did it rain on the birthday of Roman Bragin?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about the weather on the birthday of Roman Bragin.",
+        "answered_slots": []
+      }
+    ],
+    "note": "Observable failure types, not causal attribution of blame to a model role."
+  },
+  "sft_s2": {
+    "counts": {
+      "executable_SQL_wrong_result": 28,
+      "invalid": 1,
+      "wrong_abstention_on_answerable": 6,
+      "SQL_sql_error": 1,
+      "missing_information_executed": 7,
+      "missing_information_abstained, not named": 4
+    },
+    "cases": [
+      {
+        "episode": "test-ambiguous-790",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the population, name and leader of the biggest country?",
+        "decision": "execute",
+        "sql": "SELECT \n    c.Name AS Name, \n    c.Population AS Population, \n    c.HeadOfState AS Leader \nFROM \n    country c \nORDER BY \n    c.Population DESC \nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-413",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the average age of the visitors whose membership level is not high?",
+        "decision": "clarify",
+        "sql": "SELECT AVG(v.Age)\nFROM visitor v\nWHERE v.Level_of_membership > 4",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-459",
+        "kind": "ambiguous",
+        "category": "invalid",
+        "request": "Find the first name and country code of the top player.",
+        "decision": "none",
+        "sql": null,
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-161",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many countries have many car makers?",
+        "decision": "clarify",
+        "sql": "SELECT COUNT(*) \nFROM (\n    SELECT c.CountryName \n    FROM countries c\n    JOIN car_makers cm ON c.CountryName = cm.Country\n    GROUP BY c.CountryName\n    HAVING COUNT(cm.Id) > 2\n)",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-225",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the code of the busiest airport?",
+        "decision": "clarify",
+        "sql": "SELECT SourceAirport \nFROM flights \nGROUP BY SourceAirport \nORDER BY COUNT(*) DESC \nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-798",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the average life expectancy and total population for each continent where the average life expectancy is short?",
+        "decision": "clarify",
+        "sql": "SELECT \n    c.Continent,\n    AVG(c.LifeExpectancy) AS average_life_expectancy,\n    SUM(c.Population) AS total_population\nFROM \n    country c\nWHERE \n    c.LifeExpectancy < 72\nGROUP BY \n    c.Continent\nHAVING \n    AVG(c.LifeExpectancy) < 72",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-311",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id and type code of the main template?",
+        "decision": "clarify",
+        "sql": "WITH TemplateRecordCount AS (\n    SELECT \n        t.Template_ID,\n        t.Template_Type_Code,\n        COUNT(p.Paragraph_ID) AS paragraph_count\n    FROM Templates t\n    LEFT JOIN Paragraphs p ON t.Template_ID = p.Document_ID\n    GROUP BY t.Template_ID, t.Template_Type_Code\n)\nSELECT \n    Template_ID AS id,\n    Template_Type_Code AS type_code\nFROM TemplateRecordCount\nORDER BY paragraph_count DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-810",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the total population and average area of countries in the continent of North America whose area is big?",
+        "decision": "clarify",
+        "sql": "SELECT \n    SUM(c.Population) AS total_population, \n    AVG(c.SurfaceArea) AS average_area\nFROM \n    country c\nWHERE \n    c.Continent = 'North America' \n    AND c.SurfaceArea > 3000",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-420",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id, name and membership level of the top visitor?",
+        "decision": "clarify",
+        "sql": "SELECT v.ID, v.Name, v.Level_of_membership\nFROM visitor v\nJOIN visit vi ON v.ID = vi.visitor_ID\nORDER BY vi.Total_spent DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-129",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which countries in europe have many car manufacturers?",
+        "decision": "clarify",
+        "sql": "SELECT c.CountryName\nFROM countries c\nJOIN car_makers cm ON c.CountryName = cm.Country\nWHERE c.Continent = (SELECT ContId FROM continents WHERE Continent = 'Europe')\nGROUP BY c.CountryName\nHAVING COUNT(cm.Id) >= 3",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-177",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id and names of the countries which have many car makers or produce the 'fiat' model?",
+        "decision": "clarify",
+        "sql": "SELECT \n    c.CountryId, \n    c.CountryName \nFROM \n    countries c\nJOIN \n    car_makers cm ON c.CountryName = cm.Country\nGROUP BY \n    c.CountryId, c.CountryName\nHAVING \n    COUNT(cm.Id) > 3\nUNION\nSELECT \n    c.CountryId, \n    c.CountryName \nFROM \n    countries c\nJOIN \n    model_list ml ON c.CountryName = (SELECT Country FROM car_makers WHERE Id = ml.Maker)\nJOIN \n    car_names cn ON ml.Model = cn.Model\nWHERE \n    cn.Make = 'fiat'",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-924",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which dogs have not cost their owner a lot for treatment? List the dog names.",
+        "decision": "clarify",
+        "sql": "SELECT DISTINCT d.name\nFROM Dogs d\nJOIN Treatments t ON d.dog_id = t.dog_id\nWHERE t.cost_of_treatment > 1000",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-712",
+        "kind": "ambiguous",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What is the main language of Aruba?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the ranks of languages in Aruba.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-two_slot-175",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Which car makers produce many models and many cars? List the id and the maker.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about how many cars count as \"many\".",
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-two_slot-856",
+        "kind": "two_slot",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the record companies shared by orchestras founded long ago and orchestras founded recently.",
+        "decision": "clarify",
+        "sql": "SELECT DISTINCT o.Record_Company\nFROM orchestra o\nWHERE o.Year_of_Founded < 2003",
+        "abstain_text": null,
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-two_slot-426",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What is the name of the visitor who visited both a museum opened long ago and a museum opened recently?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the open year of museums after 2011.",
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-two_slot-25",
+        "kind": "two_slot",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the name and capacity of the busiest stadium in recent years?",
+        "decision": "clarify",
+        "sql": "SELECT s.Name, s.Capacity\nFROM stadium s\nJOIN concert c ON s.Stadium_ID = c.Stadium_ID\nWHERE c.Year LIKE '2020%' OR c.Year LIKE '2021%' OR c.Year LIKE '2022%' OR c.Year LIKE '2023%' OR c.Year LIKE '2024%'\nGROUP BY s.Stadium_ID\nORDER BY COUNT(c.concert_ID) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-two_slot-1028",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Show the citizenships shared by singers born long ago and singers born recently.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the birth year of singers born after 1955.",
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-definition-1033",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the names of properties that are either houses or apartments with many rooms?",
+        "decision": "execute",
+        "sql": "SELECT DISTINCT p.property_name\nFROM Properties p\nWHERE p.property_type_code IN (\n    SELECT property_type_code \n    FROM Ref_Property_Types \n    WHERE property_type_description IN ('House', 'Apartment')\n)\nAND p.room_count > 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-500",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the id and name of the ship that ranks highest for casualties?",
+        "decision": "execute",
+        "sql": "SELECT s.id, s.name\nFROM ship s\nJOIN death d ON s.id = d.caused_by_ship_id\nORDER BY (d.killed + d.injured) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-667",
+        "kind": "definition",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Of all the people, what is the money rank of the one who ranks highest?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the money rank of the person who ranks highest.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-922",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which professionals live in the state of Indiana or have done many treatments? List his or her id, last name and cell phone.",
+        "decision": "execute",
+        "sql": "SELECT \n    p.professional_id,\n    p.last_name,\n    p.cell_number\nFROM \n    Professionals p\nWHERE \n    p.state = 'IN'\n    OR (\n        SELECT COUNT(*)\n        FROM Treatments t\n        WHERE t.professional_id = p.professional_id\n        GROUP BY t.professional_id\n        HAVING COUNT(*) > 2\n    )",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-103",
+        "kind": "definition",
+        "category": "SQL_sql_error",
+        "request": "Which distinct car models were produced recently?",
+        "decision": "execute",
+        "sql": "SELECT DISTINCT ml.Model\nFROM model_list ml\nJOIN cars_data cd ON ml.Model = cd.Make\nWHERE cd.Year > 1980",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-698",
+        "kind": "definition",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What is the area code that ranks highest?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the ranks of area codes.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-231",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the abbreviation and country of the airline that ranks lowest?",
+        "decision": "execute",
+        "sql": "SELECT a.Abbreviation, a.Country\nFROM airlines a\nJOIN flights f ON a.uid = f.Airline\nGROUP BY a.uid, a.Abbreviation, a.Country\nORDER BY COUNT(f.FlightNo) ASC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-554",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the mobile phone number of the student named Timmothy Ward ?",
+        "decision": "execute",
+        "sql": "SELECT s.cell_mobile_number \nFROM Students s \nWHERE s.first_name = 'Timmothy' AND s.last_name = 'Ward'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-504",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "List the name and date the battle that has lost the ship named 'Lettice' and the ship named 'HMS Atalanta'",
+        "decision": "execute",
+        "sql": "SELECT b.name, b.date\nFROM battle b\nJOIN ship s ON b.id = s.lost_in_battle\nWHERE s.name = 'Lettice' OR s.name = 'HMS Atalanta'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-944",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the first name and last name of the professionals who have done treatment with cost below average?",
+        "decision": "execute",
+        "sql": "WITH AverageCost AS (\n    SELECT AVG(cost_of_treatment) AS avg_cost\n    FROM Treatments\n)\nSELECT p.first_name, p.last_name\nFROM Professionals p\nJOIN Treatments t ON p.professional_id = t.professional_id\nCROSS JOIN AverageCost ac\nWHERE t.cost_of_treatment < ac.avg_cost",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-465",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.",
+        "decision": "execute",
+        "sql": "SELECT p.first_name, p.last_name\nFROM matches m\nJOIN players p ON m.winner_id = p.player_id\nJOIN rankings r ON p.player_id = r.player_id\nWHERE m.tourney_name = 'Australian Open'\nORDER BY r.ranking_points DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-683",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "List the names of people that are not poker players.",
+        "decision": "execute",
+        "sql": "SELECT p.Name\nFROM people p\nWHERE p.People_ID NOT IN (SELECT Poker_Player_ID FROM poker_player)",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-687",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many states are there?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(DISTINCT state) AS state_count FROM `AREA_CODE_STATE`",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-39",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "what is the name and nation of the singer who have a song having 'Hey' in its name?",
+        "decision": "execute",
+        "sql": "SELECT s.Name, s.Country \nFROM singer s\nWHERE 'Hey' IN (s.Song_Name)",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-6",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the name and the release year of the song by the youngest singer.",
+        "decision": "execute",
+        "sql": "SELECT s.Name, s.Song_release_year \nFROM singer s\nORDER BY s.Age ASC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-439",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the highest rank of losers in all matches.",
+        "decision": "execute",
+        "sql": "SELECT MAX(r.ranking) AS highest_rank\nFROM matches m\nJOIN players l ON m.loser_id = l.player_id\nJOIN rankings r ON l.player_id = r.player_id\nWHERE r.ranking IS NOT NULL",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-884",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the names of high school students and their corresponding number of friends.",
+        "decision": "execute",
+        "sql": "SELECT h.name, COUNT(f.friend_id) AS number_of_friends\nFROM Highschooler h\nLEFT JOIN Friend f ON h.ID = f.student_id\nGROUP BY h.ID, h.name",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-774",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the African countries that have a  population less than any country in Asia?",
+        "decision": "execute",
+        "sql": "SELECT c.Name\nFROM country c\nWHERE c.Continent = 'Africa'\n  AND c.Population < (\n    SELECT MIN(c2.Population)\n    FROM country c2\n    WHERE c2.Continent = 'Asia'\n  )",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-13",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Count the number of female poker players taller than 180cm.",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM poker_player \nJOIN people ON poker_player.\"People_ID\" = people.\"People_ID\" \nWHERE people.\"Nationality\" = 'Female' AND people.\"Height\" > 180",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-15",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Count the dogs that have their own email addresses.",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM Dogs d\nJOIN Owners o ON d.owner_id = o.owner_id\nWHERE o.email_address IS NOT NULL",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-18",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Find the surface area of the city of Tilburg.",
+        "decision": "execute",
+        "sql": "SELECT c.SurfaceArea\nFROM city ci\nJOIN country c ON ci.CountryCode = c.Code\nWHERE ci.Name = 'Tilburg'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-21",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Show the name of the performance with the type Auditions 1.",
+        "decision": "execute",
+        "sql": "SELECT p.Type\nFROM performance p\nWHERE p.Type = 'Auditions 1'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-22",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "What are the cartoons with more than 3 million viewers?",
+        "decision": "execute",
+        "sql": "SELECT c.Title\nFROM \"Cartoon\" c\nWHERE c.\"Original_air_date\" IS NOT NULL\n  AND c.\"Viewers_m\" IS NOT NULL\n  AND CAST(REPLACE(c.\"Viewers_m\", 'M', '') AS REAL) > 3000000",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-23",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "How many contestants are from the state of CA?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(DISTINCT v.contestant_number) \nFROM VOTES v \nJOIN AREA_CODE_STATE a ON v.state = a.state \nWHERE a.state = 'CA'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-24",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "How many properties were built prior to 2000?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about the year properties were built.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-25",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Show the first name of the youngest professional.",
+        "decision": "execute",
+        "sql": "SELECT p.first_name\nFROM Professionals p\nORDER BY (julianday(p.date_of_birth)) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-33",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "What is the average horsepower of the countries?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about the horsepower of countries.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-34",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "Find the loudest student.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the loudest student.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-40",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "How much did it rain on the birthday of Roman Bragin?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about the amount of rain on dates.",
+        "answered_slots": []
+      }
+    ],
+    "note": "Observable failure types, not causal attribution of blame to a model role."
+  },
+  "a2": {
+    "counts": {
+      "executable_SQL_wrong_result": 31,
+      "wrong_abstention_on_answerable": 1,
+      "SQL_sql_error": 1,
+      "missing_information_executed": 9,
+      "missing_information_abstained, not named": 3
+    },
+    "cases": [
+      {
+        "episode": "test-ambiguous-413",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the average age of the visitors whose membership level is not high?",
+        "decision": "execute",
+        "sql": "SELECT AVG(v.Age)\nFROM visitor v\nWHERE v.Level_of_membership != 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-459",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the first name and country code of the top player.",
+        "decision": "clarify",
+        "sql": "SELECT p.first_name, p.country_code\nFROM players p\nJOIN rankings r ON p.player_id = r.player_id\nGROUP BY p.player_id\nORDER BY SUM(r.tours) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-161",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many countries have many car makers?",
+        "decision": "clarify",
+        "sql": "SELECT COUNT(*) \nFROM (\n    SELECT c.CountryName \n    FROM countries c\n    JOIN car_makers cm ON c.CountryName = cm.Country\n    GROUP BY c.CountryName\n    HAVING COUNT(cm.Id) > 2\n)",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-225",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the code of the busiest airport?",
+        "decision": "clarify",
+        "sql": "SELECT SourceAirport \nFROM flights \nGROUP BY SourceAirport \nORDER BY COUNT(*) DESC \nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-798",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the average life expectancy and total population for each continent where the average life expectancy is short?",
+        "decision": "clarify",
+        "sql": "SELECT \n    c.Continent,\n    AVG(c.LifeExpectancy) AS average_life_expectancy,\n    SUM(c.Population) AS total_population\nFROM \n    country c\nWHERE \n    c.LifeExpectancy < 72\nGROUP BY \n    c.Continent\nHAVING \n    AVG(c.LifeExpectancy) < 72",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-311",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id and type code of the main template?",
+        "decision": "clarify",
+        "sql": "WITH TemplateRecordCount AS (\n    SELECT \n        t.Template_ID,\n        t.Template_Type_Code,\n        COUNT(p.Paragraph_ID) AS paragraph_count\n    FROM Templates t\n    LEFT JOIN Documents d ON t.Template_ID = d.Template_ID\n    LEFT JOIN Paragraphs p ON d.Document_ID = p.Document_ID\n    GROUP BY t.Template_ID, t.Template_Type_Code\n)\nSELECT \n    Template_ID AS id,\n    Template_Type_Code AS type_code\nFROM TemplateRecordCount\nORDER BY paragraph_count DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-810",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the total population and average area of countries in the continent of North America whose area is big?",
+        "decision": "clarify",
+        "sql": "SELECT \n    SUM(c.Population) AS total_population, \n    AVG(c.SurfaceArea) AS average_area\nFROM \n    country c\nWHERE \n    c.Continent = 'North America' \n    AND c.SurfaceArea > 3000",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-420",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id, name and membership level of the top visitor?",
+        "decision": "clarify",
+        "sql": "SELECT v.ID, v.Name, v.Level_of_membership\nFROM visitor v\nJOIN visit vi ON v.ID = vi.visitor_ID\nORDER BY vi.Total_spent DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-129",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which countries in europe have many car manufacturers?",
+        "decision": "clarify",
+        "sql": "SELECT c.CountryName\nFROM countries c\nJOIN car_makers cm ON c.CountryName = cm.Country\nWHERE c.Continent = (SELECT ContId FROM continents WHERE Continent = 'Europe')\nGROUP BY c.CountryName\nHAVING COUNT(cm.Id) >= 3",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-177",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id and names of the countries which have many car makers or produce the 'fiat' model?",
+        "decision": "clarify",
+        "sql": "SELECT \n    c.CountryId, \n    c.CountryName \nFROM \n    countries c\nJOIN \n    car_makers cm ON c.CountryName = cm.Country\nGROUP BY \n    c.CountryId, c.CountryName\nHAVING \n    COUNT(cm.Id) > 3\nUNION\nSELECT \n    c.CountryId, \n    c.CountryName \nFROM \n    countries c\nJOIN \n    model_list ml ON c.CountryName = (SELECT Country FROM car_makers WHERE Id = ml.Maker)\nJOIN \n    car_names cn ON ml.Model = cn.Model\nWHERE \n    cn.Make = 'fiat'",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-924",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which dogs have not cost their owner a lot for treatment? List the dog names.",
+        "decision": "clarify",
+        "sql": "SELECT DISTINCT d.name\nFROM Dogs d\nLEFT JOIN Treatments t ON d.dog_id = t.dog_id\nGROUP BY d.dog_id, d.name\nHAVING SUM(t.cost_of_treatment) <= 1000",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-two_slot-175",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Which car makers produce many models and many cars? List the id and the maker.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about how many cars count as \"many\".",
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-two_slot-856",
+        "kind": "two_slot",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the record companies shared by orchestras founded long ago and orchestras founded recently.",
+        "decision": "clarify",
+        "sql": "SELECT DISTINCT o.Record_Company\nFROM orchestra o\nWHERE o.Year_of_Founded < 2003",
+        "abstain_text": null,
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-two_slot-426",
+        "kind": "two_slot",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the name of the visitor who visited both a museum opened long ago and a museum opened recently?",
+        "decision": "clarify",
+        "sql": "SELECT v.Name\nFROM visitor v\nJOIN visit mv ON v.ID = mv.visitor_ID\nJOIN museum m ON mv.Museum_ID = m.Museum_ID\nWHERE m.Open_Year > '2011'\nGROUP BY v.ID, v.Name\nHAVING COUNT(DISTINCT m.Museum_ID) >= 2",
+        "abstain_text": null,
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-two_slot-25",
+        "kind": "two_slot",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the name and capacity of the busiest stadium in recent years?",
+        "decision": "clarify",
+        "sql": "SELECT s.Name, s.Capacity\nFROM stadium s\nJOIN concert c ON s.Stadium_ID = c.Stadium_ID\nWHERE c.Year LIKE '2020%' OR c.Year LIKE '2021%' OR c.Year LIKE '2022%' OR c.Year LIKE '2023%' OR c.Year LIKE '2024%'\nGROUP BY s.Stadium_ID\nORDER BY COUNT(c.concert_ID) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-two_slot-1028",
+        "kind": "two_slot",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the citizenships shared by singers born long ago and singers born recently.",
+        "decision": "clarify",
+        "sql": "SELECT DISTINCT s1.Citizenship\nFROM singer s1\nJOIN singer s2 ON s1.Citizenship = s2.Citizenship\nWHERE s1.Birth_Year > 1955 AND s2.Birth_Year > 1955",
+        "abstain_text": null,
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-definition-1033",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the names of properties that are either houses or apartments with many rooms?",
+        "decision": "execute",
+        "sql": "SELECT DISTINCT p.property_name\nFROM Properties p\nWHERE p.property_type_code IN (\n    SELECT property_type_code \n    FROM Ref_Property_Types \n    WHERE property_type_description IN ('House', 'Apartment')\n)\nAND p.room_count > 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-500",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the id and name of the ship that ranks highest for casualties?",
+        "decision": "execute",
+        "sql": "SELECT s.id, s.name\nFROM ship s\nJOIN death d ON s.id = d.caused_by_ship_id\nGROUP BY s.id, s.name\nORDER BY COUNT(d.id) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-667",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "Of all the people, what is the money rank of the one who ranks highest?",
+        "decision": "clarify",
+        "sql": "SELECT MAX(Money_Rank) \nFROM poker_player",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-922",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which professionals live in the state of Indiana or have done many treatments? List his or her id, last name and cell phone.",
+        "decision": "execute",
+        "sql": "SELECT \n    p.professional_id,\n    p.last_name,\n    p.cell_number\nFROM \n    Professionals p\nWHERE \n    p.state = 'IN'\n    OR (\n        SELECT COUNT(*)\n        FROM Treatments t\n        WHERE t.professional_id = p.professional_id\n        GROUP BY t.professional_id\n        HAVING COUNT(*) > 2\n    )",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-103",
+        "kind": "definition",
+        "category": "SQL_sql_error",
+        "request": "Which distinct car models were produced recently?",
+        "decision": "execute",
+        "sql": "SELECT DISTINCT ml.Model\nFROM model_list ml\nJOIN cars_data cd ON ml.Model = cd.Make\nWHERE cd.Year > 1980",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-231",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the abbreviation and country of the airline that ranks lowest?",
+        "decision": "execute",
+        "sql": "SELECT a.Abbreviation, a.Country\nFROM airlines a\nJOIN flights f ON a.uid = f.Airline\nGROUP BY a.uid, a.Abbreviation, a.Country\nORDER BY COUNT(f.FlightNo) ASC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-554",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the mobile phone number of the student named Timmothy Ward ?",
+        "decision": "execute",
+        "sql": "SELECT s.cell_mobile_number \nFROM Students s \nWHERE s.first_name = 'Timmothy' AND s.last_name = 'Ward'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-504",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "List the name and date the battle that has lost the ship named 'Lettice' and the ship named 'HMS Atalanta'",
+        "decision": "execute",
+        "sql": "SELECT b.name, b.date\nFROM battle b\nJOIN ship s ON b.id = s.lost_in_battle\nWHERE s.name = 'Lettice' OR s.name = 'HMS Atalanta'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-944",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the first name and last name of the professionals who have done treatment with cost below average?",
+        "decision": "execute",
+        "sql": "WITH AverageCost AS (\n    SELECT AVG(cost_of_treatment) AS avg_cost\n    FROM Treatments\n)\nSELECT p.first_name, p.last_name\nFROM Professionals p\nJOIN Treatments t ON p.professional_id = t.professional_id\nCROSS JOIN AverageCost ac\nWHERE t.cost_of_treatment < ac.avg_cost",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-465",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.",
+        "decision": "execute",
+        "sql": "SELECT p.first_name, p.last_name\nFROM matches m\nJOIN players p ON m.winner_id = p.player_id\nJOIN rankings r ON p.player_id = r.player_id\nWHERE m.tourney_name = 'Australian Open'\nORDER BY r.ranking_points DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-683",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "List the names of people that are not poker players.",
+        "decision": "execute",
+        "sql": "SELECT p.Name\nFROM people p\nWHERE p.People_ID NOT IN (SELECT Poker_Player_ID FROM poker_player)",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-687",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many states are there?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(DISTINCT state) AS state_count FROM `AREA_CODE_STATE`",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-39",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "what is the name and nation of the singer who have a song having 'Hey' in its name?",
+        "decision": "execute",
+        "sql": "SELECT s.Name, s.Country \nFROM singer s\nWHERE 'Hey' IN (s.Song_Name)",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-6",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the name and the release year of the song by the youngest singer.",
+        "decision": "execute",
+        "sql": "SELECT s.Name, s.Song_release_year \nFROM singer s\nORDER BY s.Age ASC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-439",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the highest rank of losers in all matches.",
+        "decision": "execute",
+        "sql": "SELECT MAX(r.ranking) AS highest_rank\nFROM matches m\nJOIN players l ON m.loser_id = l.player_id\nJOIN rankings r ON l.player_id = r.player_id\nWHERE r.ranking IS NOT NULL",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-884",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the names of high school students and their corresponding number of friends.",
+        "decision": "execute",
+        "sql": "SELECT h.name, COUNT(f.friend_id) AS number_of_friends\nFROM Highschooler h\nLEFT JOIN Friend f ON h.ID = f.student_id\nGROUP BY h.ID, h.name",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-774",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the African countries that have a  population less than any country in Asia?",
+        "decision": "execute",
+        "sql": "SELECT c.Name\nFROM country c\nWHERE c.Continent = 'Africa'\n  AND c.Population < (\n    SELECT MIN(c2.Population)\n    FROM country c2\n    WHERE c2.Continent = 'Asia'\n  )",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-9",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Which courses have the fewest number of credits?",
+        "decision": "execute",
+        "sql": "SELECT c.course_name\nFROM Courses c\nWHERE c.course_description = (SELECT MIN(LENGTH(course_description)) FROM Courses)",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-13",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Count the number of female poker players taller than 180cm.",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM poker_player \nJOIN people ON poker_player.\"People_ID\" = people.\"People_ID\" \nWHERE people.\"Nationality\" = 'Female' AND people.\"Height\" > 180",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-15",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Count the dogs that have their own email addresses.",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM Dogs d\nJOIN Owners o ON d.owner_id = o.owner_id\nWHERE o.email_address IS NOT NULL",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-18",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Find the surface area of the city of Tilburg.",
+        "decision": "execute",
+        "sql": "SELECT c.SurfaceArea\nFROM city ci\nJOIN country c ON ci.CountryCode = c.Code\nWHERE ci.Name = 'Tilburg'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-21",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Show the name of the performance with the type Auditions 1.",
+        "decision": "execute",
+        "sql": "SELECT p.Type\nFROM performance p\nWHERE p.Type = 'Auditions 1'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-22",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "What are the cartoons with more than 3 million viewers?",
+        "decision": "execute",
+        "sql": "SELECT c.Title\nFROM \"Cartoon\" c\nWHERE c.\"Original_air_date\" IS NOT NULL\n  AND c.\"Viewers_m\" IS NOT NULL\n  AND CAST(REPLACE(c.\"Viewers_m\", 'M', '') AS REAL) > 3000000",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-23",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "How many contestants are from the state of CA?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(DISTINCT v.contestant_number) \nFROM VOTES v \nJOIN AREA_CODE_STATE a ON v.state = a.state \nWHERE a.state = 'CA'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-24",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "How many properties were built prior to 2000?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM Properties \nWHERE date_on_market < '2000-01-01'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-25",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Show the first name of the youngest professional.",
+        "decision": "clarify",
+        "sql": "SELECT p.first_name\nFROM Professionals p\nORDER BY (julianday(p.date_of_birth)) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-33",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "What is the average horsepower of the countries?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about the horsepower of countries.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-34",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "Find the loudest student.",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about the loudest student.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-40",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "How much did it rain on the birthday of Roman Bragin?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about the weather on dates.",
+        "answered_slots": []
+      }
+    ],
+    "note": "Observable failure types, not causal attribution of blame to a model role."
+  },
+  "a3": {
+    "counts": {
+      "executable_SQL_wrong_result": 34,
+      "wrong_abstention_on_answerable": 5,
+      "SQL_sql_error": 1,
+      "missing_information_executed": 9,
+      "missing_information_abstained, not named": 3
+    },
+    "cases": [
+      {
+        "episode": "test-ambiguous-906",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the name of the most active high schooler?",
+        "decision": "execute",
+        "sql": "SELECT name \nFROM Highschooler \nORDER BY grade DESC \nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-24",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the name and capacity of the busiest stadium from 2014 onward.",
+        "decision": "execute",
+        "sql": "SELECT s.Name, s.Capacity\nFROM stadium s\nJOIN concert c ON s.Stadium_ID = c.Stadium_ID\nWHERE c.Year >= '2014'\nORDER BY s.Highest DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-413",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the average age of the visitors whose membership level is not high?",
+        "decision": "clarify",
+        "sql": "SELECT AVG(v.Age)\nFROM visitor v\nWHERE v.Level_of_membership > 4",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-770",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the total number of unique official languages spoken in the countries that became independent long ago?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(DISTINCT cl.Language) \nFROM countrylanguage cl\nJOIN country c ON cl.CountryCode = c.Code\nWHERE c.IndepYear IS NOT NULL \n  AND c.IndepYear < 1900 \n  AND cl.IsOfficial = 'T'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-459",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the first name and country code of the top player.",
+        "decision": "clarify",
+        "sql": "SELECT p.first_name, p.country_code\nFROM players p\nJOIN rankings r ON p.player_id = r.player_id\nGROUP BY p.player_id\nORDER BY SUM(r.tours) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-888",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the names of high schoolers who have many friends.",
+        "decision": "execute",
+        "sql": "SELECT h.name\nFROM Highschooler h\nJOIN Friend f ON h.ID = f.student_id\nGROUP BY h.ID\nHAVING COUNT(f.friend_id) > 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-161",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many countries have many car makers?",
+        "decision": "clarify",
+        "sql": "SELECT COUNT(*) \nFROM (\n    SELECT c.CountryName \n    FROM countries c\n    JOIN car_makers cm ON c.CountryName = cm.Country\n    GROUP BY c.CountryName\n    HAVING COUNT(cm.Id) > 2\n)",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-225",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the code of the busiest airport?",
+        "decision": "clarify",
+        "sql": "SELECT SourceAirport \nFROM flights \nGROUP BY SourceAirport \nORDER BY COUNT(*) DESC \nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-798",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the average life expectancy and total population for each continent where the average life expectancy is short?",
+        "decision": "clarify",
+        "sql": "SELECT \n    c.Continent,\n    AVG(c.LifeExpectancy) AS average_life_expectancy,\n    SUM(c.Population) AS total_population\nFROM \n    country c\nWHERE \n    c.LifeExpectancy < 72\nGROUP BY \n    c.Continent\nHAVING \n    AVG(c.LifeExpectancy) < 72",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-311",
+        "kind": "ambiguous",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What are the id and type code of the main template?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about the main template.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-810",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the total population and average area of countries in the continent of North America whose area is big?",
+        "decision": "clarify",
+        "sql": "SELECT \n    SUM(c.Population) AS total_population, \n    AVG(c.SurfaceArea) AS average_area\nFROM \n    country c\nWHERE \n    c.Continent = 'North America' \n    AND c.SurfaceArea > 3000",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-420",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id, name and membership level of the top visitor?",
+        "decision": "clarify",
+        "sql": "SELECT v.ID, v.Name, v.Level_of_membership\nFROM visitor v\nJOIN visit vi ON v.ID = vi.visitor_ID\nORDER BY vi.Total_spent DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-129",
+        "kind": "ambiguous",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Which countries in europe have many car manufacturers?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the ordered attribute of car makers.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-756",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which language is the most widespread in Asia?",
+        "decision": "clarify",
+        "sql": "SELECT cl.Language\nFROM countrylanguage cl\nJOIN country c ON cl.CountryCode = c.Code\nWHERE c.Continent = 'Asia'\nORDER BY cl.Percentage DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-177",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the id and names of the countries which have many car makers or produce the 'fiat' model?",
+        "decision": "execute",
+        "sql": "SELECT \n    c.CountryId, \n    c.CountryName \nFROM \n    countries c\nJOIN \n    car_makers cm ON c.CountryName = cm.Country\nWHERE \n    cm.Maker LIKE '%fiat%'\nUNION\nSELECT \n    c.CountryId, \n    c.CountryName \nFROM \n    countries c\nJOIN \n    model_list ml ON c.CountryName = (SELECT Country FROM car_makers WHERE Maker = ml.Maker)\nWHERE \n    ml.Model LIKE '%fiat%'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-ambiguous-924",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which dogs have not cost their owner a lot for treatment? List the dog names.",
+        "decision": "clarify",
+        "sql": "SELECT DISTINCT d.name\nFROM Dogs d\nLEFT JOIN Treatments t ON d.dog_id = t.dog_id\nGROUP BY d.dog_id, d.name\nHAVING SUM(t.cost_of_treatment) <= 1000",
+        "abstain_text": null,
+        "answered_slots": [
+          0
+        ]
+      },
+      {
+        "episode": "test-ambiguous-241",
+        "kind": "ambiguous",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find all airlines that have many flights.",
+        "decision": "execute",
+        "sql": "SELECT a.Airline\nFROM airlines a\nJOIN flights f ON a.uid = f.Airline\nGROUP BY a.Airline\nORDER BY COUNT(f.FlightNo) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-two_slot-175",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Which car makers produce many models and many cars? List the id and the maker.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about how many cars count as \"many\".",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-two_slot-856",
+        "kind": "two_slot",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the record companies shared by orchestras founded long ago and orchestras founded recently.",
+        "decision": "clarify",
+        "sql": "SELECT DISTINCT o.Record_Company\nFROM orchestra o\nWHERE o.Year_of_Founded < 2003",
+        "abstain_text": null,
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-two_slot-426",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "What is the name of the visitor who visited both a museum opened long ago and a museum opened recently?",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the open year of museums.",
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-two_slot-1028",
+        "kind": "two_slot",
+        "category": "wrong_abstention_on_answerable",
+        "request": "Show the citizenships shared by singers born long ago and singers born recently.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the birth year of singers.",
+        "answered_slots": [
+          1
+        ]
+      },
+      {
+        "episode": "test-definition-1033",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the names of properties that are either houses or apartments with many rooms?",
+        "decision": "execute",
+        "sql": "SELECT DISTINCT p.property_name\nFROM Properties p\nJOIN Ref_Property_Types rpt ON p.property_type_code = rpt.property_type_code\nWHERE rpt.property_type_description IN ('House', 'Apartment')\n  AND p.room_count > 5",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-500",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the id and name of the ship that ranks highest for casualties?",
+        "decision": "execute",
+        "sql": "SELECT s.id, s.name\nFROM ship s\nJOIN death d ON s.id = d.caused_by_ship_id\nGROUP BY s.id, s.name\nORDER BY COUNT(d.id) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-412",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the names of the visitors whose membership level is high, and order the results by the level from high to low.",
+        "decision": "execute",
+        "sql": "SELECT v.Name\nFROM visitor v\nWHERE v.Level_of_membership > 0\nORDER BY v.Level_of_membership DESC",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-922",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "Which professionals live in the state of Indiana or have done many treatments? List his or her id, last name and cell phone.",
+        "decision": "execute",
+        "sql": "SELECT \n    p.professional_id,\n    p.last_name,\n    p.cell_number\nFROM \n    Professionals p\nWHERE \n    p.state = 'IN'\n    OR p.professional_id IN (\n        SELECT \n            t.professional_id\n        FROM \n            Treatments t\n        GROUP BY \n            t.professional_id\n        HAVING \n            COUNT(t.treatment_id) > 1\n    )",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-103",
+        "kind": "definition",
+        "category": "SQL_sql_error",
+        "request": "Which distinct car models were produced recently?",
+        "decision": "execute",
+        "sql": "SELECT DISTINCT ml.Model\nFROM model_list ml\nJOIN cars_data cd ON ml.Model = cd.Make\nWHERE cd.Year >= (SELECT MAX(Year) - 5 FROM cars_data)",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-698",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the area code that ranks highest?",
+        "decision": "execute",
+        "sql": "SELECT \n    acs.state,\n    COUNT(v.vote_id) AS vote_count\nFROM \n    VOTES v\nJOIN \n    AREA_CODE_STATE acs ON v.state = acs.state\nGROUP BY \n    acs.state\nORDER BY \n    vote_count DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-163",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many cars have many cylinders?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM \"cars_data\" \nWHERE \"Cylinders\" > 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-definition-231",
+        "kind": "definition",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the abbreviation and country of the airline that ranks lowest?",
+        "decision": "execute",
+        "sql": "SELECT a.Abbreviation, a.Country\nFROM airlines a\nJOIN flights f ON a.uid = f.Airline\nGROUP BY a.uid, a.Abbreviation, a.Country\nORDER BY COUNT(f.FlightNo) ASC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-554",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What is the mobile phone number of the student named Timmothy Ward ?",
+        "decision": "execute",
+        "sql": "SELECT s.cell_mobile_number \nFROM Students s \nWHERE s.first_name = 'Timmothy' AND s.last_name = 'Ward'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-504",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "List the name and date the battle that has lost the ship named 'Lettice' and the ship named 'HMS Atalanta'",
+        "decision": "execute",
+        "sql": "SELECT b.name, b.date\nFROM battle b\nJOIN ship s ON b.id = s.lost_in_battle\nWHERE s.name = 'Lettice' OR s.name = 'HMS Atalanta'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-944",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the first name and last name of the professionals who have done treatment with cost below average?",
+        "decision": "execute",
+        "sql": "WITH AverageCost AS (\n    SELECT AVG(cost_of_treatment) AS avg_cost\n    FROM Treatments\n)\nSELECT p.first_name, p.last_name\nFROM Professionals p\nJOIN Treatments t ON p.professional_id = t.professional_id\nCROSS JOIN AverageCost ac\nWHERE t.cost_of_treatment < ac.avg_cost",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-465",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.",
+        "decision": "execute",
+        "sql": "SELECT p.first_name, p.last_name\nFROM matches m\nJOIN players p ON m.winner_id = p.player_id\nJOIN rankings r ON p.player_id = r.player_id\nWHERE m.tourney_name = 'Australian Open'\nORDER BY r.ranking_points DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-683",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "List the names of people that are not poker players.",
+        "decision": "execute",
+        "sql": "SELECT p.Name\nFROM people p\nWHERE p.People_ID NOT IN (SELECT Poker_Player_ID FROM poker_player)",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-687",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "How many states are there?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(DISTINCT state) AS state_count FROM `AREA_CODE_STATE`",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-39",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "what is the name and nation of the singer who have a song having 'Hey' in its name?",
+        "decision": "execute",
+        "sql": "SELECT s.Name, s.Country \nFROM singer s\nWHERE 'Hey' IN (s.Song_Name)",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-6",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the name and the release year of the song by the youngest singer.",
+        "decision": "execute",
+        "sql": "SELECT s.Name, s.Song_release_year \nFROM singer s\nORDER BY s.Age ASC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-439",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Find the highest rank of losers in all matches.",
+        "decision": "execute",
+        "sql": "SELECT MAX(r.ranking) AS highest_rank\nFROM matches m\nJOIN players l ON m.loser_id = l.player_id\nJOIN rankings r ON l.player_id = r.player_id\nWHERE r.ranking IS NOT NULL",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-884",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "Show the names of high school students and their corresponding number of friends.",
+        "decision": "execute",
+        "sql": "SELECT h.name, COUNT(f.friend_id) AS number_of_friends\nFROM Highschooler h\nLEFT JOIN Friend f ON h.ID = f.student_id\nGROUP BY h.ID, h.name",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-clear-774",
+        "kind": "clear",
+        "category": "executable_SQL_wrong_result",
+        "request": "What are the African countries that have a  population less than any country in Asia?",
+        "decision": "execute",
+        "sql": "SELECT c.Name\nFROM country c\nWHERE c.Continent = 'Africa'\n  AND c.Population < (\n    SELECT MIN(c2.Population)\n    FROM country c2\n    WHERE c2.Continent = 'Asia'\n  )",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-3",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Find the contact of the poker player Teodor Salparov.",
+        "decision": "execute",
+        "sql": "SELECT p.Name \nFROM poker_player pp \nJOIN people p ON pp.People_ID = p.People_ID \nWHERE p.Name = 'Teodor Salparov'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-13",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Count the number of female poker players taller than 180cm.",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM poker_player \nJOIN people ON poker_player.\"People_ID\" = people.\"People_ID\" \nWHERE people.\"Nationality\" = 'Female' AND people.\"Height\" > 180",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-15",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Count the dogs that have their own email addresses.",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM Dogs d\nJOIN Owners o ON d.owner_id = o.owner_id\nWHERE o.email_address IS NOT NULL",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-18",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Find the surface area of the city of Tilburg.",
+        "decision": "execute",
+        "sql": "SELECT c.SurfaceArea\nFROM city ci\nJOIN country c ON ci.CountryCode = c.Code\nWHERE ci.Name = 'Tilburg'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-21",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Show the name of the performance with the type Auditions 1.",
+        "decision": "execute",
+        "sql": "SELECT p.Type\nFROM performance p\nWHERE p.Type = 'Auditions 1'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-22",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "What are the cartoons with more than 3 million viewers?",
+        "decision": "execute",
+        "sql": "SELECT c.Title\nFROM \"Cartoon\" c\nWHERE c.\"Original_air_date\" IS NOT NULL\n  AND c.\"Viewers_m\" IS NOT NULL\n  AND CAST(REPLACE(c.\"Viewers_m\", 'M', '') AS REAL) > 3000000",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-23",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "How many contestants are from the state of CA?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(DISTINCT v.contestant_number) \nFROM VOTES v \nJOIN AREA_CODE_STATE a ON v.state = a.state \nWHERE a.state = 'CA'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-24",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "How many properties were built prior to 2000?",
+        "decision": "execute",
+        "sql": "SELECT COUNT(*) \nFROM Properties \nWHERE date_on_market < '2000-01-01'",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-25",
+        "kind": "unanswerable",
+        "category": "missing_information_executed",
+        "request": "Show the first name of the youngest professional.",
+        "decision": "execute",
+        "sql": "SELECT p.first_name\nFROM Professionals p\nORDER BY (julianday(p.date_of_birth)) DESC\nLIMIT 1",
+        "abstain_text": null,
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-33",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "What is the average horsepower of the countries?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about the horsepower of countries.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-34",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "Find the loudest student.",
+        "decision": "clarify",
+        "sql": null,
+        "abstain_text": "The database has no information about the loudest student.",
+        "answered_slots": []
+      },
+      {
+        "episode": "test-unanswerable-40",
+        "kind": "unanswerable",
+        "category": "missing_information_abstained, not named",
+        "request": "How much did it rain on the birthday of Roman Bragin?",
+        "decision": "abstain",
+        "sql": null,
+        "abstain_text": "The database has no information about the amount of rain on dates.",
+        "answered_slots": []
+      }
+    ],
+    "note": "Observable failure types, not causal attribution of blame to a model role."
+  }
+}

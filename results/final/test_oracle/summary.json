@@ -1,0 +1,87 @@
+{
+  "name": "oracle",
+  "system": "oracle",
+  "split": "test",
+  "backend": "hf",
+  "complete": true,
+  "expected": 188,
+  "episodes": 188,
+  "by_kind": {
+    "ambiguous": 47,
+    "two_slot": 8,
+    "definition": 14,
+    "clear": 79,
+    "unanswerable": 40
+  },
+  "execution_accuracy": 0.7838,
+  "execution_accuracy_by_kind": {
+    "ambiguous": 0.7234,
+    "two_slot": 0.625,
+    "definition": 0.7143,
+    "clear": 0.8481
+  },
+  "decision_macro_f1": 0.2207,
+  "decision_per_class": {
+    "clarify": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 55
+    },
+    "execute": {
+      "precision": 0.495,
+      "recall": 1.0,
+      "f1": 0.662,
+      "support": 93
+    },
+    "abstain": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 40
+    }
+  },
+  "decision_accuracy": 0.4947,
+  "unnecessary_question_rate_clear": 0.0,
+  "unnecessary_question_rate_definition": 0.0,
+  "correct_abstention_rate": 0.0,
+  "wrong_abstention_rate_answerable": 0.0,
+  "avg_clarification_turns": 0.0,
+  "avg_clarification_turns_vague": 0.0,
+  "slot_accuracy": null,
+  "invalid_output_rate": null,
+  "limit_rate": 0.0,
+  "invalid_episode_rate": 0.0,
+  "blocked_attempts": 0,
+  "simulator_cost": {
+    "model_calls": 0,
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "seconds": 0
+  },
+  "total_model_calls": 188,
+  "total_tokens_in": 67375,
+  "total_tokens_out": 7366,
+  "total_generation_seconds": 255.87755496000023,
+  "reasons": {
+    "match": 116,
+    "different_result": 26,
+    "pred_sql_error": 6,
+    "executed": 40
+  },
+  "cost": {
+    "model_calls": 188,
+    "policy_calls": 0,
+    "tokens_in": 67375,
+    "tokens_out": 7366,
+    "gpu_seconds": 255.9
+  },
+  "capabilities": {
+    "inspections": 0,
+    "valid_tool_rate": null,
+    "premature_execution_rate_vague": 1.0,
+    "repairs": 0,
+    "note": "Premature execution proxy: executes before the simulated user supplied every hidden detail."
+  },
+  "testsuite_accuracy": 0.6891891891891891
+}

@@ -25,7 +25,7 @@ def main():
     simulator_names = ("b3", "sft_s1", "sft_s2", "a2", "a3")
     episodes = {ep.id: ep for ep in load_episodes("test")}
     a.out.mkdir(parents=True, exist_ok=True)
-    if any(a.out.iterdir()):
+    if any(p.name != "README.md" or not p.is_file() for p in a.out.iterdir()):
         raise ValueError("Output folder is not empty; refusing to overwrite or partially replace reviews")
     traces = {}
     for name in simulator_names:

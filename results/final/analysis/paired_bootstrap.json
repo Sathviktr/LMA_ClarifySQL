@@ -1,0 +1,188 @@
+{
+  "execution_accuracy": {
+    "sft_s1": {
+      "metric": "execution_accuracy",
+      "unit": "database",
+      "databases": 20,
+      "episodes": 188,
+      "repeats": 5000,
+      "seed": 2026,
+      "baseline": 0.6351351351351351,
+      "system_seeds": [
+        0.7702702702702703
+      ],
+      "system_mean": 0.7702702702702703,
+      "difference": 0.1351351351351352,
+      "ci95": [
+        0.0547945205479452,
+        0.2062550403225806
+      ]
+    },
+    "sft_s2": {
+      "metric": "execution_accuracy",
+      "unit": "database",
+      "databases": 20,
+      "episodes": 188,
+      "repeats": 5000,
+      "seed": 2026,
+      "baseline": 0.6351351351351351,
+      "system_seeds": [
+        0.7567567567567568
+      ],
+      "system_mean": 0.7567567567567568,
+      "difference": 0.12162162162162171,
+      "ci95": [
+        0.0546875,
+        0.17901464897733552
+      ]
+    },
+    "two_seed_mean": {
+      "metric": "execution_accuracy",
+      "unit": "database",
+      "databases": 20,
+      "episodes": 188,
+      "repeats": 5000,
+      "seed": 2026,
+      "baseline": 0.6351351351351351,
+      "system_seeds": [
+        0.7702702702702703,
+        0.7567567567567568
+      ],
+      "system_mean": 0.7635135135135136,
+      "difference": 0.1283783783783785,
+      "ci95": [
+        0.0555446194225721,
+        0.190756964515093
+      ]
+    },
+    "exploratory_a2_minus_sft_s1": {
+      "metric": "execution_accuracy",
+      "unit": "database",
+      "databases": 20,
+      "episodes": 188,
+      "repeats": 5000,
+      "seed": 2026,
+      "baseline": 0.7702702702702703,
+      "system_seeds": [
+        0.777027027027027
+      ],
+      "system_mean": 0.777027027027027,
+      "difference": 0.006756756756756688,
+      "ci95": [
+        -0.014184397163120477,
+        0.03200000000000003
+      ]
+    },
+    "exploratory_a3_minus_sft_s1": {
+      "metric": "execution_accuracy",
+      "unit": "database",
+      "databases": 20,
+      "episodes": 188,
+      "repeats": 5000,
+      "seed": 2026,
+      "baseline": 0.7702702702702703,
+      "system_seeds": [
+        0.7297297297297297
+      ],
+      "system_mean": 0.7297297297297297,
+      "difference": -0.04054054054054057,
+      "ci95": [
+        -0.07647139183542276,
+        0.0
+      ]
+    }
+  },
+  "decision_macro_f1": {
+    "sft_s1": {
+      "metric": "decision_macro_f1",
+      "unit": "database",
+      "databases": 20,
+      "episodes": 188,
+      "repeats": 5000,
+      "seed": 2026,
+      "baseline": 0.785,
+      "system_seeds": [
+        0.879
+      ],
+      "system_mean": 0.879,
+      "difference": 0.09399999999999997,
+      "ci95": [
+        0.03500000000000003,
+        0.1623
+      ]
+    },
+    "sft_s2": {
+      "metric": "decision_macro_f1",
+      "unit": "database",
+      "databases": 20,
+      "episodes": 188,
+      "repeats": 5000,
+      "seed": 2026,
+      "baseline": 0.785,
+      "system_seeds": [
+        0.9257
+      ],
+      "system_mean": 0.9257,
+      "difference": 0.14069999999999994,
+      "ci95": [
+        0.08799249999999997,
+        0.20499999999999996
+      ]
+    },
+    "two_seed_mean": {
+      "metric": "decision_macro_f1",
+      "unit": "database",
+      "databases": 20,
+      "episodes": 188,
+      "repeats": 5000,
+      "seed": 2026,
+      "baseline": 0.785,
+      "system_seeds": [
+        0.879,
+        0.9257
+      ],
+      "system_mean": 0.90235,
+      "difference": 0.11734999999999995,
+      "ci95": [
+        0.0654475,
+        0.17945124999999998
+      ]
+    },
+    "exploratory_a2_minus_sft_s1": {
+      "metric": "decision_macro_f1",
+      "unit": "database",
+      "databases": 20,
+      "episodes": 188,
+      "repeats": 5000,
+      "seed": 2026,
+      "baseline": 0.879,
+      "system_seeds": [
+        0.8923
+      ],
+      "system_mean": 0.8923,
+      "difference": 0.013299999999999979,
+      "ci95": [
+        -0.010000000000000009,
+        0.04470000000000007
+      ]
+    },
+    "exploratory_a3_minus_sft_s1": {
+      "metric": "decision_macro_f1",
+      "unit": "database",
+      "databases": 20,
+      "episodes": 188,
+      "repeats": 5000,
+      "seed": 2026,
+      "baseline": 0.879,
+      "system_seeds": [
+        0.8533
+      ],
+      "system_mean": 0.8533,
+      "difference": -0.025700000000000056,
+      "ci95": [
+        -0.080715,
+        0.02429999999999999
+      ]
+    }
+  }
+}

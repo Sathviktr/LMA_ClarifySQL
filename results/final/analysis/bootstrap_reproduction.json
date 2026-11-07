@@ -1,0 +1,18 @@
+{
+  "execution_accuracy": {
+    "difference": 0.1283783783783785,
+    "ci95": [
+      0.0555446194225721,
+      0.190756964515093
+    ],
+    "status": "reproduced"
+  },
+  "decision_macro_f1": {
+    "difference": 0.11734999999999995,
+    "ci95": [
+      0.0654475,
+      0.17945124999999998
+    ],
+    "status": "reproduced"
+  }
+}

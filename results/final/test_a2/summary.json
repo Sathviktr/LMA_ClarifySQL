@@ -1,0 +1,90 @@
+{
+  "name": "a2",
+  "system": "a2",
+  "split": "test",
+  "backend": "hf",
+  "complete": true,
+  "expected": 188,
+  "episodes": 188,
+  "by_kind": {
+    "ambiguous": 47,
+    "two_slot": 8,
+    "definition": 14,
+    "clear": 79,
+    "unanswerable": 40
+  },
+  "execution_accuracy": 0.777,
+  "execution_accuracy_by_kind": {
+    "ambiguous": 0.766,
+    "two_slot": 0.375,
+    "definition": 0.5714,
+    "clear": 0.8608
+  },
+  "decision_macro_f1": 0.8923,
+  "decision_per_class": {
+    "clarify": {
+      "precision": 0.897,
+      "recall": 0.945,
+      "f1": 0.92,
+      "support": 55
+    },
+    "execute": {
+      "precision": 0.892,
+      "recall": 0.978,
+      "f1": 0.933,
+      "support": 93
+    },
+    "abstain": {
+      "precision": 1.0,
+      "recall": 0.7,
+      "f1": 0.824,
+      "support": 40
+    }
+  },
+  "decision_accuracy": 0.9096,
+  "unnecessary_question_rate_clear": 0.0,
+  "unnecessary_question_rate_definition": 0.1429,
+  "correct_abstention_rate": 0.7,
+  "wrong_abstention_rate_answerable": 0.0068,
+  "avg_clarification_turns": 0.3351,
+  "avg_clarification_turns_vague": 1.0364,
+  "slot_accuracy": null,
+  "invalid_output_rate": 0.0,
+  "limit_rate": 0.0,
+  "invalid_episode_rate": 0.0,
+  "blocked_attempts": 0,
+  "simulator_cost": {
+    "model_calls": 57,
+    "tokens_in": 8918,
+    "tokens_out": 114,
+    "seconds": 5.8827305769998475
+  },
+  "total_model_calls": 573,
+  "total_tokens_in": 205609,
+  "total_tokens_out": 14785,
+  "total_generation_seconds": 479.4727305769999,
+  "reasons": {
+    "match": 115,
+    "different_result": 31,
+    "abstained": 1,
+    "pred_sql_error": 1,
+    "abstained, named": 28,
+    "executed": 9,
+    "abstained, not named": 3
+  },
+  "cost": {
+    "model_calls": 516,
+    "policy_calls": 349,
+    "tokens_in": 196691,
+    "tokens_out": 14671,
+    "gpu_seconds": 473.6
+  },
+  "capabilities": {
+    "inspections": 98,
+    "valid_tool_rate": 1.0,
+    "premature_execution_rate_vague": 0.18181818181818182,
+    "repairs": 11,
+    "note": "Premature execution proxy: executes before the simulated user supplied every hidden detail."
+  },
+  "testsuite_accuracy": 0.6824324324324325
+}
