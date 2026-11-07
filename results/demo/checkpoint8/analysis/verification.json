@@ -1,0 +1,22 @@
+{
+  "archive_sha256": "82d5bc865c6c9096a0374d250dde5affd9886df013a2fafc69aeae78c753de81",
+  "source_commit": "0d75a73fcad56855749210bce915ad74dd50f8b0",
+  "source_hashes": "verified against recorded Git revision",
+  "database_sha256": "9ce335510755aae2ac9557596071a5ae8cbd8a33626bdd3c0bbeb959c5808a17",
+  "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "adapter": "matches checkpoint-7 seed 1",
+  "original_cases_reproduced": 7,
+  "original_passed": 5,
+  "original_failed": [
+    "demo-two-slot",
+    "demo-two-slot-age20"
+  ],
+  "model_calls": 21,
+  "generation_seconds": 56.409,
+  "interface": {
+    "constructed": true,
+    "browser_interaction_checked": false,
+    "error": null
+  },
+  "scope": "Frozen original checks and result rows reproduced on CPU. Interface construction is reported from the archive, not rerun locally. No model inference or browser interaction was performed here."
+}

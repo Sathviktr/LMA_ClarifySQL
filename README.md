@@ -26,7 +26,7 @@ and limits. Everything runs on free Kaggle/Colab T4 GPUs, without any paid API.
 | 4 | Agent controller, simulated user, baselines B1–B3 | complete; validation results saved |
 | 5 | QLoRA fine-tuning (two seeds + no-slot ablation) | complete; learning rate `2e-4`, epoch 3 selected |
 | 6 | Final inference, CoSQL, scoring, bootstrap and review sheets | checkpoint 7 complete and verified; human judgments pending |
-| 7 | Fictional university demo and final delivery | session engine and seven-case check tested; checkpoint 8 GPU output, browser interaction and final report pending |
+| 7 | Fictional university demo and final delivery | checkpoint 8 received and verified: original 5/7; extra SQL check finds a false positive; browser interaction pending |
 
 ### Checkpoint 7 results (7 November 2026)
 
@@ -56,10 +56,30 @@ from 8/13 to 3/13. An always-execute baseline gets 45/59 accuracy but only 0.288
 imbalanced slice. Generalization is mixed. See [measured findings](results/final/analysis/findings.md),
 [paired intervals](results/final/analysis/paired_bootstrap.json) and [verification scope](results/final/analysis/verification.json).
 
-Next: complete the [independent human reviews](annotation/evaluation/README.md) and run the live demo in notebook 08.
-The final report is pending these steps. The mid-submission report remains a historical validation report.
+The [final-report draft](reports/ClarifySQL_Final_Report.pdf) includes the measured test and demo results.
+The [independent human reviews](annotation/evaluation/README.md) and browser interaction remain pending.
+The mid-submission report remains a historical validation report.
 
-### Next GPU run: checkpoint 8
+### Checkpoint 8 results (7 November 2026)
+
+All seven real-adapter demo records reproduce on CPU. The original saved checks pass **5/7** and Gradio
+construction succeeds. Both age-and-marks cases execute without asking for the age cutoff; the writer
+guesses age above 18. Both ranking questions offer poorly grounded age/ID choices, although the fixed
+reply supplies a more useful criterion.
+
+The placement case passes the original seed-data comparison, but its SQL counts placement rows rather
+than the `placed` indicator. Every student has a placement row, including `placed=0`, so all predicted rates
+are 1. Two additional CPU variants make Mathematics and Physics the true winners; the saved query still
+returns Computing. These post-hoc checks expose a false positive without replacing the original 5/7.
+
+See [demo findings](results/demo/checkpoint8/analysis/findings.md),
+[verification](results/demo/checkpoint8/analysis/verification.json) and
+[placement variants](results/demo/checkpoint8/analysis/placement_variants.json).
+The [original received ZIP](results/demo/checkpoint8/received.zip) is preserved, including its fictional database.
+Run `python scripts/analyze_demo.py` to reproduce this analysis without a GPU. Browser clicks and real
+conversation have not yet been demonstrated. No training or checkpoint-7 rerun is needed for this analysis.
+
+### Reproduce checkpoint 8
 
 Import the updated [notebook 08](notebooks/08_demo.ipynb) into Kaggle, enable Internet and a T4 GPU, and
 attach the same saved phase6 output (run `363373340`). Keep `RUN_INTERACTIVE = False` and save a run.
@@ -166,7 +186,8 @@ Start with `notebooks/01_pilot.ipynb`. On Kaggle: *Settings → Accelerator → 
 One GPU is sufficient. Its default saved run exports the seven scripted checks; the optional interface
 takes real replies, shows model text in plain text boxes, and runs queries
 only against made-up university records. Its interface blocks sample-value inspection; benchmark tools remain
-unchanged. Sharing requires credentials entered at launch. The live model/UI check remains pending.
+unchanged. Sharing requires credentials entered at launch. The scripted GPU run and interface construction
+are complete; actual browser interaction remains pending. Known failures are recorded above.
 
 For a GPU environment outside Kaggle:
 

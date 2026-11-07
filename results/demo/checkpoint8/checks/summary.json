@@ -1,0 +1,109 @@
+{
+  "protocol": "checkpoint8-demo-v1",
+  "backend": "hf",
+  "complete": true,
+  "cases": 7,
+  "passed": 5,
+  "failed": [
+    "demo-two-slot",
+    "demo-two-slot-age20"
+  ],
+  "reply_source": "predefined_demo_script",
+  "interactive_ui_tested": false,
+  "scope": "Seven fixed fictional-data checks. This is a scripted demo check, not a benchmark estimate or a live-user study.",
+  "strict_result_comparison": "Result rows must match the reference; extra columns count as a mismatch.",
+  "cases_detail": [
+    {
+      "episode": "demo-clear",
+      "passed": true,
+      "checks": {
+        "finished": true,
+        "expected_first_decision": true,
+        "no_runtime_error": true,
+        "database_unchanged": true,
+        "result_matches_reference": true,
+        "no_unnecessary_question": true
+      },
+      "runtime_error": null
+    },
+    {
+      "episode": "demo-definition",
+      "passed": true,
+      "checks": {
+        "finished": true,
+        "expected_first_decision": true,
+        "no_runtime_error": true,
+        "database_unchanged": true,
+        "result_matches_reference": true,
+        "no_unnecessary_question": true,
+        "definition_retrieved": true
+      },
+      "runtime_error": null
+    },
+    {
+      "episode": "demo-ambiguous",
+      "passed": true,
+      "checks": {
+        "finished": true,
+        "expected_first_decision": true,
+        "no_runtime_error": true,
+        "database_unchanged": true,
+        "result_matches_reference": true,
+        "reply_recorded": true
+      },
+      "runtime_error": null
+    },
+    {
+      "episode": "demo-ranking-placements",
+      "passed": true,
+      "checks": {
+        "finished": true,
+        "expected_first_decision": true,
+        "no_runtime_error": true,
+        "database_unchanged": true,
+        "result_matches_reference": true,
+        "reply_recorded": true
+      },
+      "runtime_error": null
+    },
+    {
+      "episode": "demo-two-slot",
+      "passed": false,
+      "checks": {
+        "finished": true,
+        "expected_first_decision": false,
+        "no_runtime_error": true,
+        "database_unchanged": true,
+        "result_matches_reference": false,
+        "reply_recorded": false
+      },
+      "runtime_error": null
+    },
+    {
+      "episode": "demo-two-slot-age20",
+      "passed": false,
+      "checks": {
+        "finished": true,
+        "expected_first_decision": false,
+        "no_runtime_error": true,
+        "database_unchanged": true,
+        "result_matches_reference": false,
+        "reply_recorded": false
+      },
+      "runtime_error": null
+    },
+    {
+      "episode": "demo-unanswerable",
+      "passed": true,
+      "checks": {
+        "finished": true,
+        "expected_first_decision": true,
+        "no_runtime_error": true,
+        "database_unchanged": true,
+        "named_missing_email": true,
+        "no_unnecessary_question": true
+      },
+      "runtime_error": null
+    }
+  ]
+}

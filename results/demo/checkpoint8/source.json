@@ -1,0 +1,76 @@
+{
+  "source": {
+    "mode": "github",
+    "commit": "0d75a73fcad56855749210bce915ad74dd50f8b0",
+    "branch": "main"
+  },
+  "choice": {
+    "rule": "highest decision macro-F1 on the validation episodes (rounded to 0.01); slot accuracy decides between near-ties",
+    "chosen": "sft_lr2e-4_s1_e3",
+    "lr": "2e-4",
+    "epoch": 3,
+    "candidates": {
+      "sft_lr2e-4_s1_e1": {
+        "execution_accuracy": 0.7381,
+        "decision_macro_f1": 0.9437,
+        "slot_accuracy": 0.6667,
+        "unnecessary_question_rate_clear": 0.0,
+        "correct_abstention_rate": 1.0,
+        "wrong_abstention_rate_answerable": 0.0238,
+        "invalid_output_rate": 0.0
+      },
+      "sft_lr2e-4_s1_e2": {
+        "execution_accuracy": 0.7619,
+        "decision_macro_f1": 0.9453,
+        "slot_accuracy": 0.6667,
+        "unnecessary_question_rate_clear": 0.0,
+        "correct_abstention_rate": 1.0,
+        "wrong_abstention_rate_answerable": 0.0,
+        "invalid_output_rate": 0.0
+      },
+      "sft_lr2e-4_s1_e3": {
+        "execution_accuracy": 0.7857,
+        "decision_macro_f1": 0.9827,
+        "slot_accuracy": 0.7333,
+        "unnecessary_question_rate_clear": 0.0,
+        "correct_abstention_rate": 1.0,
+        "wrong_abstention_rate_answerable": 0.0,
+        "invalid_output_rate": 0.0
+      },
+      "sft_lr1e-4_s1_e1": {
+        "execution_accuracy": 0.7619,
+        "decision_macro_f1": 0.925,
+        "slot_accuracy": 0.6,
+        "unnecessary_question_rate_clear": 0.0455,
+        "correct_abstention_rate": 1.0,
+        "wrong_abstention_rate_answerable": 0.0238,
+        "invalid_output_rate": 0.0
+      },
+      "sft_lr1e-4_s1_e2": {
+        "execution_accuracy": 0.7619,
+        "decision_macro_f1": 0.983,
+        "slot_accuracy": 0.7333,
+        "unnecessary_question_rate_clear": 0.0,
+        "correct_abstention_rate": 1.0,
+        "wrong_abstention_rate_answerable": 0.0238,
+        "invalid_output_rate": 0.0
+      },
+      "sft_lr1e-4_s1_e3": {
+        "execution_accuracy": 0.7857,
+        "decision_macro_f1": 0.983,
+        "slot_accuracy": 0.6667,
+        "unnecessary_question_rate_clear": 0.0,
+        "correct_abstention_rate": 1.0,
+        "wrong_abstention_rate_answerable": 0.0238,
+        "invalid_output_rate": 0.0
+      }
+    },
+    "final_adapters": {
+      "sft_s1": "sft_lr2e-4_s1/epoch-3",
+      "sft_s2": "sft_lr2e-4_s2/epoch-3",
+      "a2_s1": "a2_lr2e-4_s1/epoch-3"
+    }
+  },
+  "adapter_source": "sathviktr/phase6 run 363373340",
+  "interactive_requested": false
+}

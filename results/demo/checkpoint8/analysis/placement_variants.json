@@ -1,0 +1,50 @@
+{
+  "case": "demo-ranking-placements",
+  "original_result_match": true,
+  "predicted_sql": "SELECT d.name\nFROM departments d\nJOIN students s ON d.id = s.department_id\nJOIN placements p ON s.id = p.student_id\nGROUP BY d.id, d.name\nORDER BY (COUNT(p.student_id) * 1.0 / COUNT(s.id)) DESC\nLIMIT 1",
+  "reference_sql": "SELECT d.name FROM departments d JOIN students s ON s.department_id=d.id JOIN placements p ON p.student_id=s.id GROUP BY d.id ORDER BY 1.0*SUM(p.placed)/COUNT(*) DESC LIMIT 1",
+  "variants": [
+    {
+      "variant": "mathematics_best",
+      "placed_student_ids": [
+        3,
+        4
+      ],
+      "matches": false,
+      "prediction_status": "ok",
+      "predicted_rows": [
+        [
+          "Computing"
+        ]
+      ],
+      "reference_status": "ok",
+      "expected_rows": [
+        [
+          "Mathematics"
+        ]
+      ]
+    },
+    {
+      "variant": "physics_best",
+      "placed_student_ids": [
+        5,
+        6
+      ],
+      "matches": false,
+      "prediction_status": "ok",
+      "predicted_rows": [
+        [
+          "Computing"
+        ]
+      ],
+      "reference_status": "ok",
+      "expected_rows": [
+        [
+          "Physics"
+        ]
+      ]
+    }
+  ],
+  "all_variants_match": false,
+  "scope": "Additional CPU checks introduced after inspecting the prediction; they do not replace the original 5/7 result or estimate general performance."
+}

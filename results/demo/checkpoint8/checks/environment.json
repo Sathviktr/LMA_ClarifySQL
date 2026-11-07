@@ -1,0 +1,17 @@
+{
+  "python": "3.13.16",
+  "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+  "libraries": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "gradio": "6.30.0"
+  },
+  "source_commit": "0d75a73fcad56855749210bce915ad74dd50f8b0",
+  "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "gpus": [
+    "Tesla T4",
+    "Tesla T4"
+  ],
+  "load_seconds": 48.82480132500001
+}
