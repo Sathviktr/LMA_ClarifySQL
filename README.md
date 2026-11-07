@@ -25,11 +25,12 @@ and limits. Everything runs on free Kaggle/Colab T4 GPUs, without any paid API.
 | 3 | Reviewed episodes and SFT states | complete: 307 train / 53 validation / 188 test episodes |
 | 4 | Agent controller, simulated user, baselines B1–B3 | complete; validation results saved |
 | 5 | QLoRA fine-tuning (two seeds + no-slot ablation) | complete; learning rate `2e-4`, epoch 3 selected |
-| 6 | Final inference, CoSQL, scoring, bootstrap and review sheets | checkpoint 7 complete and verified; human judgments pending |
+| 6 | Final inference, CoSQL, scoring, bootstrap and human review | complete; automatic and human-review summaries recorded |
 | 7 | Fictional university demo and final delivery | original scripted 5/7 preserved; three basic browser cases documented; question and SQL limitations remain |
 
-**Teammates:** the [review instructions and Git workflow](annotation/evaluation/README.md) list the seven
-review CSVs, exact rating tasks and separate branches for committing completed reviews.
+The seven completed [review sheets and instructions](annotation/evaluation/README.md) are summarized in
+[human-review scores](results/final/analysis/human_audits.json) and
+[review validation](results/final/analysis/review_validation.json).
 
 ### Checkpoint 7 results (7 November 2026)
 
@@ -52,17 +53,48 @@ The two-seed mean execution gain over B3 is **12.84 percentage points**, with a 
 interval of **[5.55, 19.08]**. Decision macro-F1 improves by **0.11735**, interval **[0.06545, 0.17945]**.
 These intervals use 5,000 paired draws over 20 databases. Both primary comparisons improve, while correct
 abstention declines. A2 is only one execution ahead of seed 1 and its difference interval includes zero;
-an execution benefit from explicit slots is not established. Human question ratings remain pending.
+an execution benefit from explicit slots is not established. The human review below adds descriptive question ratings.
 
 On CoSQL, accuracy rises from 26/59 to 40/59 and macro-F1 from 0.374 to 0.456, but clarify recall falls
 from 8/13 to 3/13. An always-execute baseline gets 45/59 accuracy but only 0.2883 macro-F1 on this
 imbalanced slice. Generalization is mixed. See [measured findings](results/final/analysis/findings.md),
 [paired intervals](results/final/analysis/paired_bootstrap.json) and [verification scope](results/final/analysis/verification.json).
 
-The [final-report draft](reports/ClarifySQL_Final_Report.pdf) includes the measured test and demo results.
-The [independent human reviews](annotation/evaluation/README.md), instructor access to weights and final
-artifact review remain pending. Three basic browser cases are documented, completing the requested smokecheck.
+The [final report](reports/ClarifySQL_Final_Report.pdf) includes the measured test, human-review and demo results.
+Instructor access to weights and final artifact review remain pending. Three basic browser cases are documented,
+completing the requested smokecheck.
 The mid-submission report remains a historical validation report.
+
+### Human review (8 November 2026)
+
+Subhash and Manish each rated 120 items: the same 40 ambiguous episodes for B3, seed 1 and A2.
+Each system therefore has **80 pooled ratings of 40 unique episodes**. The percentages of yes judgments are:
+
+| System | Targets uncertainty | Schema supported | No repetition | Resolves intent | All four |
+|---|---:|---:|---:|---:|---:|
+| B3 | 87.5% | 87.5% | 82.5% | 70% | 70% |
+| SFT seed 1 | 92.5% | 92.5% | 90% | 80% | 80% |
+| A2: no slots | 95% | 95% | 95% | 85% | 85% |
+
+The coordinator confirmed independent completion. The two sheets have identical **480/480 criterion values**
+and all **26 nonblank notes**, giving recorded perfect agreement and Cohen's kappa **1.0 for every criterion**.
+Agreement statistics describe the submitted ratings; they do not establish independence.
+
+One simulator reviewer checked all **247 decisions**:
+
+| System | Judged correct | Accuracy |
+|---|---:|---:|
+| B3 | 39/50 | 78% |
+| SFT seed 1 | 44/50 | 88% |
+| SFT seed 2 | 43/50 | 86% |
+| A2 | 42/50 | 84% |
+| A3 | 39/47 | 82.98% |
+
+These are small descriptive reviews, with one simulator reviewer and no significance test of usefulness.
+Notes for Q006 and Q019 explain resolution failures through incorrect simulator replies, so those judgments
+can mix question quality with reply failures. The ratings are preserved. A2's higher point ratings do not
+establish an advantage from adding or omitting explicit slots. See the
+[scores](results/final/analysis/human_audits.json) and [validation and provenance record](results/final/analysis/review_validation.json).
 
 ### Checkpoint 8 results (7 November 2026)
 
@@ -149,24 +181,28 @@ episodes. Mock outputs are kept separately and rejected by the final analysis. F
 The evaluation notebook pins Transformers/PEFT/Accelerate/bitsandbytes to the versions recorded in the
 completed checkpoint-6 training run; it logs the actual runtime and loaded model revision for each condition.
 
-After the real outputs exist:
+For a new experiment, after the real outputs exist:
 
 ```powershell
 python scripts/score_final_testsuite.py --root results/final
 python scripts/analyze_final.py --root results/final
-python scripts/make_eval_audits.py --root results/final
-# Two independent raters and a simulator reviewer fill the blank sheets before scoring:
+```
+
+The completed review summary can be recomputed in the coordinator's checkout, which retains the private key:
+
+```powershell
 python scripts/score_eval_audits.py
 ```
 
-The received checkpoint already includes test-suite scoring, bootstrap tables and blank review sheets.
-Do not regenerate the sheets after people start filling them. `scripts/verify_final.py` checks the received
+The current checkpoint includes test-suite scoring, bootstrap tables and completed review sheets.
+Do not regenerate these sheets. Recomputing their human summary requires the coordinator's local, uncommitted
+system key. `scripts/verify_final.py` checks the received
 results against the recorded Git revision and local database files. `scripts/summarize_checkpoint7.py`
 rebuilds the descriptive findings and standalone figures from those saved results.
 
 The eight corrected test slot phrases in `data/episodes/slot_terms.json` affect scoring only. Training data,
 requests and simulator inputs are preserved. Both seeds and their mean receive paired database-bootstrap
-intervals. The automatic slot score remains a lexical proxy and needs the independent question review.
+intervals. The automatic slot score remains a lexical proxy; the separate human review above has its own limits.
 
 ## Repository layout
 

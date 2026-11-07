@@ -1,0 +1,141 @@
+{
+  "checked_on": "2026-11-08",
+  "blank_template_commit": "39bc6ab94fb4c04f49bbb519f73f6682f59f56b0",
+  "reviewer_confirmation": {
+    "source": "coordinator confirmation",
+    "independent_question_ratings_reported": true,
+    "confirmation_text": "yes,only the annotator sign is same",
+    "reviewer_names_supplied": "subhash,manish",
+    "question_reviewers": {
+      "A": "Subhash",
+      "B": "Manish"
+    },
+    "metadata_correction": "Both supplied sheets were signed SR. Only their annotator fields were changed to the coordinator-supplied reviewer names. All ratings and notes were preserved.",
+    "simulator_annotator_as_supplied": "SR"
+  },
+  "files": {
+    "question_usefulness_A.csv": {
+      "records": 120,
+      "source_cells_and_order": "unchanged",
+      "headers": "unchanged",
+      "judgments_complete_and_binary": true,
+      "annotators": [
+        "Subhash"
+      ],
+      "received_sha256": "164bc10672eaa0eded5fa9fbb651d5f46c43c7e68b9c71760af59d6022d292b4",
+      "final_sha256": "0c806e7514b18f51e41b21fe873d6c4f6987ec65a89466d8d57c4f637abae5a1",
+      "no_question_rows_all_zero": 10,
+      "canonical_rows_sha256": "191e1ab5ea5693143441302c0349bc0aaa80a11ec1be774bd61ef9fbf9342c36"
+    },
+    "question_usefulness_B.csv": {
+      "records": 120,
+      "source_cells_and_order": "unchanged",
+      "headers": "unchanged",
+      "judgments_complete_and_binary": true,
+      "annotators": [
+        "Manish"
+      ],
+      "received_sha256": "164bc10672eaa0eded5fa9fbb651d5f46c43c7e68b9c71760af59d6022d292b4",
+      "final_sha256": "2f5af6fccd1d23255e881a345a5d8ad02d18d31a5d1c1088c2f63bef9fa9fd85",
+      "no_question_rows_all_zero": 10,
+      "canonical_rows_sha256": "d11db104d293b7a684f96b9bbed4ed2878c33f1556e8e64d1f64cb6b1edb6acd"
+    },
+    "simulator_b3.csv": {
+      "records": 50,
+      "source_cells_and_order": "unchanged",
+      "headers": "unchanged",
+      "judgments_complete_and_binary": true,
+      "annotators": [
+        "SR"
+      ],
+      "received_sha256": "58e0ffffae9a8007053a85f37592fd8639413d2eb0745768f4f8a3431f08d8c1",
+      "final_sha256": "58e0ffffae9a8007053a85f37592fd8639413d2eb0745768f4f8a3431f08d8c1",
+      "slot_indices_valid": true,
+      "selection_and_reply_consistency": true,
+      "recorded_correct": 39,
+      "canonical_rows_sha256": "5eeba8195299ad8bbe087b395aa7326dccb1addab68013a02789c3cc0b9ecfc7"
+    },
+    "simulator_sft_s1.csv": {
+      "records": 50,
+      "source_cells_and_order": "unchanged",
+      "headers": "unchanged",
+      "judgments_complete_and_binary": true,
+      "annotators": [
+        "SR"
+      ],
+      "received_sha256": "0e01a9c22f9da369583c889e6a2e9b8403046e1b7a22ad09dd19826056b807ff",
+      "final_sha256": "0e01a9c22f9da369583c889e6a2e9b8403046e1b7a22ad09dd19826056b807ff",
+      "slot_indices_valid": true,
+      "selection_and_reply_consistency": true,
+      "recorded_correct": 44,
+      "canonical_rows_sha256": "0c09baeee67bb06267fe94f37cb5caa19ab04bd83d650c4f6bb869717163bddc"
+    },
+    "simulator_sft_s2.csv": {
+      "records": 50,
+      "source_cells_and_order": "unchanged",
+      "headers": "unchanged",
+      "judgments_complete_and_binary": true,
+      "annotators": [
+        "SR"
+      ],
+      "received_sha256": "947eac9267c022755881031250e1e26f84450169d00913a22eebda2c938a82f6",
+      "final_sha256": "947eac9267c022755881031250e1e26f84450169d00913a22eebda2c938a82f6",
+      "slot_indices_valid": true,
+      "selection_and_reply_consistency": true,
+      "recorded_correct": 43,
+      "canonical_rows_sha256": "bc2e97b35fb2f8ce2dc3ef7c2cec0ca299911f8b0905f67be660d427d9f68733"
+    },
+    "simulator_a2.csv": {
+      "records": 50,
+      "source_cells_and_order": "unchanged",
+      "headers": "unchanged",
+      "judgments_complete_and_binary": true,
+      "annotators": [
+        "SR"
+      ],
+      "received_sha256": "fdbef0b61aea6f7561da638bb5e1df08e0c7ebf80960fe243df7b8c8315028c1",
+      "final_sha256": "fdbef0b61aea6f7561da638bb5e1df08e0c7ebf80960fe243df7b8c8315028c1",
+      "slot_indices_valid": true,
+      "selection_and_reply_consistency": true,
+      "recorded_correct": 42,
+      "canonical_rows_sha256": "efd941af0129309bbbab4f61ccf2f72ec346bc9109dbb98077a5e1fc142bb9fe"
+    },
+    "simulator_a3.csv": {
+      "records": 47,
+      "source_cells_and_order": "unchanged",
+      "headers": "unchanged",
+      "judgments_complete_and_binary": true,
+      "annotators": [
+        "SR"
+      ],
+      "received_sha256": "785d71f1634afb9f05595ff044af3a6082cf131487b599ef908a5686d733a24b",
+      "final_sha256": "785d71f1634afb9f05595ff044af3a6082cf131487b599ef908a5686d733a24b",
+      "slot_indices_valid": true,
+      "selection_and_reply_consistency": true,
+      "recorded_correct": 39,
+      "canonical_rows_sha256": "a1be327417bb2568730e57ea7d9e80754d6f3c298923f3fc8ae6f5b6e8535d1a"
+    }
+  },
+  "question_agreement_observation": {
+    "items_per_rater": 120,
+    "criteria_per_item": 4,
+    "identical_criterion_values": 480,
+    "criterion_pairs": 480,
+    "identical_note_cells": 120,
+    "nonempty_notes_per_sheet": 26
+  },
+  "verification_scope": "Counts, source-cell preservation, binary judgments, signatures and simulator mapping/template consistency. This does not independently establish reviewer identity, independence or semantic correctness. Independent completion is recorded from the coordinator's confirmation; identical ratings do not establish independence by themselves.",
+  "benchmark_traces_or_scores_changed": false,
+  "rating_limitations": {
+    "intent_resolution_may_include_simulator_errors": true,
+    "examples": [
+      "Q006",
+      "Q019",
+      "Q102",
+      "Q113"
+    ],
+    "explanation": "These sequences ask for both missing year cutoffs, but their zero intent-resolution ratings cite the simulator repeating the recent cutoff. Returned judgments are preserved; usefulness may partly reflect the displayed replies rather than only cooperative-user question resolvability.",
+    "inference": "Question-usefulness results are descriptive and do not establish a slot benefit."
+  },
+  "hash_scope": "Received and final SHA-256 values describe raw coordinator-checkout bytes. Canonical row hashes normalize line endings to allow comparison after Git checkout on another platform."
+}

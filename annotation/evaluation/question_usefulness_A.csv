@@ -3,185 +3,185 @@ Q001,What is the name and capacity of the most popular stadium?,What is the name
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","Question: Ranked by what: capacity or number of records?
-Reply: Rank them by average attendance.",,,,,,
+Reply: Rank them by average attendance.",1,1,1,1,Subhash,
 Q002,What is the average age of the visitors whose membership level is not high?,What is the average age of the visitors whose membership level is not higher than 4?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: Does 'not high' mean membership level 1 is excluded, or does it mean levels below 5?
-Reply: I mean higher than 4.",,,,,,
+Reply: I mean higher than 4.",1,1,1,1,Subhash,
 Q003,What is the total population and average area of countries in the continent of North America whose area is big?,What is the total population and average area of countries in the continent of North America whose area is bigger than 3000 ?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: What area counts as ""big""?
-Reply: I mean bigger than 3000.",,,,,,
+Reply: I mean bigger than 3000.",1,1,1,1,Subhash,
 Q004,What is the name of the biggest shop?,What is the name of the shop that is hiring the largest number of employees?,"employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","Question: Ranked by what: number products or number of records?
-Reply: Rank them by number of records.",,,,,,
+Reply: Rank them by number of records.",1,1,1,1,Subhash,
 Q005,What are the id and type code of the main template?,What is the id and type code for the template used by the most documents?,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
 Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
 Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
 Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)","Question: What template type code counts as ""main""?
-Reply: Rank them by number of records.",,,,,,
+Reply: Rank them by number of records.",1,1,1,1,Subhash,
 Q006,What is the name of the visitor who visited both a museum opened long ago and a museum opened recently?,What is the name of the visitor who visited both a museum opened before 2009 and a museum opened after 2011?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: Which open year do you mean by ""recently opened""?
 Reply: I mean after 2011.
 Question: Which open year do you mean by ""long ago opened""?
-Reply: I mean after 2011.",,,,,,
+Reply: I mean after 2011.",1,1,1,0,Subhash,The reply gives the recent threshold but incorrectly uses it for the long-ago condition.
 Q007,Find the average life expectancy and total population for each continent where the average life expectancy is short?,Find the average life expectancy and total population for each continent where the average life expectancy is shorter than 72?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: What life expectancy counts as ""short""?
-Reply: I mean shorter than 72.",,,,,,
+Reply: I mean shorter than 72.",1,1,1,1,Subhash,
 Q008,Find the first name and country code of the top player.,Find the first name and country code of the player who did the most number of tours.,"players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","Question: Do you mean the player with the highest ranking_points or the highest ranking in the rankings table?
 Reply: Rank them by tours.
 Question: Do you mean the player with the most tours in the rankings table?
-Reply: Rank them by tours.",,,,,,
+Reply: Rank them by tours.",1,1,1,1,Subhash,
 Q009,Find the average life expectancy and total population for each continent where the average life expectancy is short?,Find the average life expectancy and total population for each continent where the average life expectancy is shorter than 72?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: What value defines a 'short' life expectancy?
-Reply: I mean shorter than 72.",,,,,,
+Reply: I mean shorter than 72.",1,1,1,1,Subhash,
 Q010,"Among the cars that do not have the minimum horsepower, what are the make ids and names of all those with few cylinders?","Among the cars that do not have the minimum horsepower , what are the make ids and names of all those with less than 4 cylinders ?","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: How many cylinders count as ""few""?
-Reply: I mean less than 4.",,,,,,
+Reply: I mean less than 4.",1,1,1,1,Subhash,
 Q011,What are the ids and names of the battles in which many people were killed in total?,What are the ids and names of the battles that led to more than 10 people killed in total.,"battle(id, name, date, bulgarian_commander, latin_commander, result)
 ship(lost_in_battle, id, name, tonnage, ship_type, location, disposition_of_ship)
 death(caused_by_ship_id, id, note, killed, injured)","Question: What does 'many people' mean in terms of the total number of killed?
-Reply: I mean more than 10.",,,,,,
+Reply: I mean more than 10.",1,1,1,1,Subhash,
 Q012,Find all airlines that have many flights.,Find all airlines that have at least 10 flights.,"airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","Question: What does 'many flights' mean? For example, should it be the top 10 airlines by flight count, or more than a certain number of flights?
-Reply: I mean at least 10.",,,,,,
+Reply: I mean at least 10.",1,1,1,1,Subhash,
 Q013,What are the id and names of the countries which have many car makers or produce the 'fiat' model?,What are the id and names of the countries which have more than 3 car makers or produce the 'fiat' model?,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: How many car makers count as ""many""?
-Reply: I mean more than 3.",,,,,,
+Reply: I mean more than 3.",1,1,1,1,Subhash,
 Q014,Show the names of students who have a high grade and have many friends.,Show the names of students who have a grade higher than 5 and have at least 2 friends.,"Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","Question: What does 'high grade' and 'many friends' mean exactly? For example, is 'high grade' above 90 or in the top 10%, and how many friends counts as 'many'?
 Reply: I mean at least 2.
 Question: What does 'high grade' mean exactly? For example, is it a grade above 90 or in the top 10% of students?
-Reply: I mean higher than 5.",,,,,,
+Reply: I mean higher than 5.",1,1,1,1,Subhash,
 Q015,What is the leading nationality among the people?,What is the most common nationality of people?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
-people(People_ID, Nationality, Name, Birth_Date, Height)",No clarification question was asked.,,,,,,
+people(People_ID, Nationality, Name, Birth_Date, Height)",No clarification question was asked.,0,0,0,0,Subhash,No clarification question was asked.
 Q016,What are the id and name of the most popular museum?,What are the id and name of the museum visited most times?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: Ranked by what: num of ticket or total spent?
-Reply: Rank them by number of records.",,,,,,
+Reply: Rank them by number of records.",1,1,1,1,Subhash,
 Q017,What is the average earnings of tall poker players?,What is the average earnings of poker players with height higher than 200?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","Question: What height counts as ""tall""?
-Reply: I mean higher than 200.",,,,,,
+Reply: I mean higher than 200.",1,1,1,1,Subhash,
 Q018,What is the total number of unique official languages spoken in the countries that became independent long ago?,What is the total number of unique official languages spoken in the countries that are founded before 1930?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: Which indepYear do you mean by ""long ago""?
-Reply: I mean before 1930.",,,,,,
+Reply: I mean before 1930.",1,1,1,1,Subhash,
 Q019,Show the citizenships shared by singers born long ago and singers born recently.,Show the citizenship shared by singers with birth year before 1945 and after 1955.,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","Question: Which birth year do you mean by ""recently""?
 Reply: I mean after 1955.
 Question: Which birth year do you mean by ""long ago""?
-Reply: I mean after 1955.",,,,,,
+Reply: I mean after 1955.",1,1,1,0,Subhash,"The long-ago threshold is answered with the recent threshold, so the intended meaning remains unresolved."
 Q020,Show the name and capacity of the busiest stadium from 2014 onward.,Show the stadium name and capacity with most number of concerts in year 2014 or after.,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","Question: Ranked by what: capacity or number of records?
-Reply: Rank them by number of concerts.",,,,,,
+Reply: Rank them by number of concerts.",1,1,1,1,Subhash,
 Q021,What is the total population and average area of countries in the continent of North America whose area is big?,What is the total population and average area of countries in the continent of North America whose area is bigger than 3000 ?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: What surface area value defines a 'big area' for countries in North America?
-Reply: I mean bigger than 3000.",,,,,,
+Reply: I mean bigger than 3000.",1,1,1,1,Subhash,
 Q022,What is the leading nationality among the people?,What is the most common nationality of people?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
-people(People_ID, Nationality, Name, Birth_Date, Height)",No clarification question was asked.,,,,,,
+people(People_ID, Nationality, Name, Birth_Date, Height)",No clarification question was asked.,0,0,0,0,Subhash,No clarification question was asked.
 Q023,Find the codes of countries that have many players.,Find the codes of countries that have more than 50 players.,"players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","Question: How many players count as ""many""?
-Reply: I mean more than 50.",,,,,,
+Reply: I mean more than 50.",1,1,1,1,Subhash,
 Q024,What are the names of poker players whose earnings are high?,What are the names of poker players whose earnings is higher than 300000?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","Question: What earnings count as ""high""?
-Reply: I mean higher than 300000.",,,,,,
+Reply: I mean higher than 300000.",1,1,1,1,Subhash,
 Q025,What is the average age of the visitors whose membership level is not high?,What is the average age of the visitors whose membership level is not higher than 4?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
-visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)",No clarification question was asked.,,,,,,
+visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)",No clarification question was asked.,0,0,0,0,Subhash,No clarification question was asked.
 Q026,Show countries where a singer above age 40 and a young singer are from.,Show countries where a singer above age 40 and a singer below 30 are from.,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","Question: What age defines a 'young singer'?
-Reply: I mean below 30.",,,,,,
+Reply: I mean below 30.",1,1,1,1,Subhash,
 Q027,What is the total population and average area of countries in the continent of North America whose area is big?,What is the total population and average area of countries in the continent of North America whose area is bigger than 3000 ?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: What area counts as ""big""?
-Reply: I mean bigger than 3000.",,,,,,
+Reply: I mean bigger than 3000.",1,1,1,1,Subhash,
 Q028,Which district has both stores with few products and stores with many products?,Which district has both stores with less than 3000 products and stores with more than 10000 products?,"employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","Question: How many number products count as ""many""?
 Reply: I mean more than 10000.
 Question: How many number products count as ""few""?
-Reply: I mean less than 3000.",,,,,,
+Reply: I mean less than 3000.",1,1,1,1,Subhash,
 Q029,What are the id and name of the most popular museum?,What are the id and name of the museum visited most times?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: Ranked by what: num of ticket or total spent?
-Reply: Rank them by number of records.",,,,,,
+Reply: Rank them by number of records.",1,1,1,1,Subhash,
 Q030,How many museums were opened after 2013 or long ago?,How many museums were opened after 2013 or before 2008?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: What does ""long ago"" mean in this context? For example, do you mean before 1900 or before 1950?
-Reply: I mean before 2008.",,,,,,
+Reply: I mean before 2008.",1,1,1,1,Subhash,
 Q031,What is the name and capacity of the most popular stadium?,What is the name and capacity for the stadium with highest average attendance?,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","Question: Do you mean the stadium with the highest attendance, based on the Highest or Average column?
-Reply: Rank them by average attendance.",,,,,,
+Reply: Rank them by average attendance.",1,1,1,1,Subhash,
 Q032,What are the names of poker players whose earnings are high?,What are the names of poker players whose earnings is higher than 300000?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","Question: What earnings count as ""high""?
-Reply: I mean higher than 300000.",,,,,,
+Reply: I mean higher than 300000.",1,1,1,1,Subhash,
 Q033,"What are the population, name and leader of the biggest country?","What are the population, name and leader of the country with the largest area?","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: Should 'biggest' refer to the country with the highest population or the largest surface area?
-Reply: Rank them by area.",,,,,,
+Reply: Rank them by area.",1,1,1,1,Subhash,
 Q034,Show the citizenships shared by singers born long ago and singers born recently.,Show the citizenship shared by singers with birth year before 1945 and after 1955.,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","Question: What years define 'long ago' and 'recently' for singer birth years?
 Reply: I'm not sure what you mean.
 Question: Do you mean singers born before 1950 as 'long ago' and those born after 2000 as 'recently'?
-Reply: I'm not sure what you mean.",,,,,,
+Reply: I'm not sure what you mean.",1,1,1,0,Subhash,"The reviewer asks relevant questions, but the user remains unsure and provides no thresholds."
 Q035,How many museums were opened after 2013 or long ago?,How many museums were opened after 2013 or before 2008?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: Which open year do you mean by ""long ago""?
-Reply: I mean before 2008.",,,,,,
+Reply: I mean before 2008.",1,1,1,1,Subhash,
 Q036,"What are the population, name and leader of the biggest country?","What are the population, name and leader of the country with the largest area?","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: Ranked by what: population or surface area?
-Reply: Rank them by area.",,,,,,
+Reply: Rank them by area.",1,1,1,1,Subhash,
 Q037,What is the name of the biggest shop?,What is the name of the shop that is hiring the largest number of employees?,"employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","Question: Ranked by what: number of products or number of records?
-Reply: Rank them by number of records.",,,,,,
+Reply: Rank them by number of records.",1,1,1,1,Subhash,
 Q038,Which cities have a medium-sized population?,What are the cities whose population is between 160000 and 900000?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: What range do you consider 'medium-sized' population?
-Reply: I mean between 160000 and 900000.",,,,,,
+Reply: I mean between 160000 and 900000.",1,1,1,1,Subhash,
 Q039,"Among the cars that do not have the minimum horsepower, what are the make ids and names of all those with few cylinders?","Among the cars that do not have the minimum horsepower , what are the make ids and names of all those with less than 4 cylinders ?","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: How many cylinders count as ""few""?
-Reply: I mean less than 4.",,,,,,
+Reply: I mean less than 4.",1,1,1,1,Subhash,
 Q040,What is the total number of unique official languages spoken in the countries that became independent long ago?,What is the total number of unique official languages spoken in the countries that are founded before 1930?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: Which indipendence year do you mean by ""long ago""?
-Reply: I mean before 1930.",,,,,,
+Reply: I mean before 1930.",1,1,1,1,Subhash,
 Q041,What are the names of all the countries that became independent recently?,What are the names of all the countries that became independent after 1950?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: Which year do you mean by ""recently""?
-Reply: I mean after 1950.",,,,,,
+Reply: I mean after 1950.",1,1,1,1,Subhash,
 Q042,Show the date and id of the transcripts with many course results.,Show the date and id of the transcript with at least 2 course results.,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
@@ -193,68 +193,68 @@ Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
 Transcript_Contents(student_course_id, transcript_id)","Question: What number of course results defines ""many""?
-Reply: I mean at least 2.",,,,,,
+Reply: I mean at least 2.",1,1,1,1,Subhash,
 Q043,What is the average age of the visitors whose membership level is not high?,What is the average age of the visitors whose membership level is not higher than 4?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
-visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)",No clarification question was asked.,,,,,,
+visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)",No clarification question was asked.,0,0,0,0,Subhash,No clarification question was asked.
 Q044,What is the name of the most successful singer?,What is the name of the singer with the largest net worth?,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","Question: Ranked by what: sales or highest position?
-Reply: Rank them by net worth.",,,,,,
+Reply: Rank them by net worth.",1,1,1,1,Subhash,
 Q045,Show countries where a singer above age 40 and a young singer are from.,Show countries where a singer above age 40 and a singer below 30 are from.,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","Question: What age counts as ""young""?
-Reply: I mean below 30.",,,,,,
+Reply: I mean below 30.",1,1,1,1,Subhash,
 Q046,"What are the population, name and leader of the biggest country?","What are the population, name and leader of the country with the largest area?","city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: Ranked by what: gnp, life expectancy or surface area?
-Reply: Rank them by area.",,,,,,
+Reply: Rank them by area.",1,1,1,1,Subhash,
 Q047,How many museums were opened after 2013 or long ago?,How many museums were opened after 2013 or before 2008?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: Which open year counts as ""long ago""?
-Reply: I mean before 2008.",,,,,,
+Reply: I mean before 2008.",1,1,1,1,Subhash,
 Q048,What is the maximum number of final tables made among poker players with low earnings?,What is the maximum number of final tables made among poker players with earnings less than 200000?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","Question: What earnings counts as ""low""?
-Reply: I mean less than 200000.",,,,,,
+Reply: I mean less than 200000.",1,1,1,1,Subhash,
 Q049,Find the average life expectancy and total population for each continent where the average life expectancy is short?,Find the average life expectancy and total population for each continent where the average life expectancy is shorter than 72?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: What life expectancy counts as ""short""?
-Reply: I mean shorter than 72.",,,,,,
+Reply: I mean shorter than 72.",1,1,1,1,Subhash,
 Q050,What are the ids and names of the battles in which many people were killed in total?,What are the ids and names of the battles that led to more than 10 people killed in total.,"battle(id, name, date, bulgarian_commander, latin_commander, result)
 ship(lost_in_battle, id, name, tonnage, ship_type, location, disposition_of_ship)
 death(caused_by_ship_id, id, note, killed, injured)","Question: How many people count as ""many""?
-Reply: I mean more than 10.",,,,,,
+Reply: I mean more than 10.",1,1,1,1,Subhash,
 Q051,Which airline is the biggest?,Which airline has most number of flights?,"airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","Question: Ranked by what: flight no or number of flights?
-Reply: Rank them by number of flights.",,,,,,
+Reply: Rank them by number of flights.",1,1,1,1,Subhash,
 Q052,What is the name and capacity of the most popular stadium?,What is the name and capacity for the stadium with highest average attendance?,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","Question: Ranked by what: average, capacity or highest?
-Reply: Rank them by average attendance.",,,,,,
+Reply: Rank them by average attendance.",1,1,1,1,Subhash,
 Q053,Which airline is the biggest?,Which airline has most number of flights?,"airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","Question: How do you define 'biggest' for an airline?
-Reply: Rank them by number of flights.",,,,,,
+Reply: Rank them by number of flights.",1,1,1,1,Subhash,
 Q054,What is the name of the most active high schooler?,What is the name of the high schooler who has the greatest number of likes?,"Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","Question: Ranked by what: grade or number of records?
-Reply: Rank them by number of likes.",,,,,,
+Reply: Rank them by number of likes.",1,1,1,1,Subhash,
 Q055,What is the average earnings of tall poker players?,What is the average earnings of poker players with height higher than 200?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","Question: What height counts as ""tall""?
-Reply: I mean higher than 200.",,,,,,
+Reply: I mean higher than 200.",1,1,1,1,Subhash,
 Q056,What is the name of the visitor who visited both a museum opened long ago and a museum opened recently?,What is the name of the visitor who visited both a museum opened before 2009 and a museum opened after 2011?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: How many years ago should we consider a museum as 'opened long ago' and how many years recently?
-Reply: I mean after 2011.",,,,,,
+Reply: I mean after 2011.",1,1,1,0,Subhash,The reply supplies only the recent threshold; the long-ago threshold remains unresolved.
 Q057,What are the id and names of the countries which have many car makers or produce the 'fiat' model?,What are the id and names of the countries which have more than 3 car makers or produce the 'fiat' model?,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: How many car makers count as ""many""?
-Reply: I mean more than 3.",,,,,,
+Reply: I mean more than 3.",1,1,1,1,Subhash,
 Q058,What are the id and names of the countries which have many car makers or produce the 'fiat' model?,What are the id and names of the countries which have more than 3 car makers or produce the 'fiat' model?,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
@@ -263,130 +263,130 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: Do you mean countries with more than 5 car makers, or countries with a high number of car makers (e.g., top 10 by count)? And what does 'fiat' refer to — the car maker, a model name, or both?
 Reply: I mean more than 3.
 Question: Does 'fiat' refer to the car maker 'Fiat' or a model name like 'Fiat 500'?
-Reply: I'm not sure what you mean.",,,,,,
+Reply: I'm not sure what you mean.",1,1,1,0,Subhash,"The car-maker threshold is answered, but the meaning of fiat remains unresolved."
 Q059,What is the maximum miles per gallon of the cars with 8 cylinders or produced long ago?,What is the maximum miles per gallon of the car with 8 cylinders or produced before 1980 ?,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: Which year do you mean by ""long ago""?
-Reply: I mean before 1980.",,,,,,
+Reply: I mean before 1980.",1,1,1,1,Subhash,
 Q060,Which airline is the biggest?,Which airline has most number of flights?,"airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","Question: Ranked by what: abbreviation or number of records?
-Reply: Rank them by number of flights.",,,,,,
+Reply: Rank them by number of flights.",1,1,1,1,Subhash,
 Q061,Show the name and capacity of the busiest stadium from 2014 onward.,Show the stadium name and capacity with most number of concerts in year 2014 or after.,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","Question: How do you define 'busiest' in terms of stadium usage?
-Reply: Rank them by number of concerts.",,,,,,
+Reply: Rank them by number of concerts.",1,1,1,1,Subhash,
 Q062,List the name of the most senior conductor.,List the name of the conductor with the most years of work.,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","Question: Do you mean the conductor with the highest age or the one who started working the earliest (highest Year_of_Work)?
-Reply: Rank them by years of work.",,,,,,
+Reply: Rank them by years of work.",1,1,1,1,Subhash,
 Q063,Which language is the most widespread in Asia?,Which language is the most popular on the Asian continent?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: Do you mean the language with the highest percentage of speakers in Asian countries, or the one spoken by the largest number of people in Asia?
 Reply: I'm not sure what you mean.
 Question: Do you mean the language with the highest percentage of speakers in Asian countries, or the one spoken by the largest number of people in Asia?
-Reply: I'm not sure what you mean.",,,,,,
+Reply: I'm not sure what you mean.",1,1,0,0,Subhash,The same clarification is repeated and the user remains unsure.
 Q064,Find the first name and country code of the top player.,Find the first name and country code of the player who did the most number of tours.,"players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","Question: Ranked by what: rank, winner rank or winner rank points?
-Reply: Rank them by tours.",,,,,,
+Reply: Rank them by tours.",1,1,1,1,Subhash,
 Q065,How many countries have many car makers?,How many countries has more than 2 car makers ?,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: How many car makers count as ""many""?
-Reply: I mean more than 2.",,,,,,
+Reply: I mean more than 2.",1,1,1,1,Subhash,
 Q066,Find all airlines that have many flights.,Find all airlines that have at least 10 flights.,"airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","Question: How many flights count as ""many""?
-Reply: I mean at least 10.",,,,,,
+Reply: I mean at least 10.",1,1,1,1,Subhash,
 Q067,What are the id and type code of the main template?,What is the id and type code for the template used by the most documents?,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
 Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
 Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
 Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)","Question: What defines the ""main template""? For example, is it the one with the latest version or the one with a specific type?
 Reply: I'm not sure what you mean.
 Question: Do you mean the template with the latest version number, or one with a specific type (like 'Standard' or 'Final')?
-Reply: I'm not sure what you mean.",,,,,,
+Reply: I'm not sure what you mean.",1,1,0,0,Subhash,The clarification is repeated in a reformulated question and the user remains unsure.
 Q068,Show the name and capacity of the busiest stadium from 2014 onward.,Show the stadium name and capacity with most number of concerts in year 2014 or after.,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
-singer_in_concert(concert_ID, Singer_ID)",No clarification question was asked.,,,,,,
+singer_in_concert(concert_ID, Singer_ID)",No clarification question was asked.,0,0,0,0,Subhash,No clarification question was asked.
 Q069,What are the ids and names of the battles in which many people were killed in total?,What are the ids and names of the battles that led to more than 10 people killed in total.,"battle(id, name, date, bulgarian_commander, latin_commander, result)
 ship(lost_in_battle, id, name, tonnage, ship_type, location, disposition_of_ship)
 death(caused_by_ship_id, id, note, killed, injured)","Question: How many killed count as ""many""?
-Reply: I mean more than 10.",,,,,,
+Reply: I mean more than 10.",1,1,1,1,Subhash,
 Q070,Which district has both stores with few products and stores with many products?,Which district has both stores with less than 3000 products and stores with more than 10000 products?,"employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","Question: How would you define 'few products' and 'many products' in terms of Number_products?
 Reply: I'm not sure what you mean.
 Question: Should 'few products' be defined as fewer than 2000 and 'many products' as more than 4000?
-Reply: I mean less than 3000.",,,,,,
+Reply: I mean less than 3000.",1,1,1,0,Subhash,The reply supplies the few-products threshold but leaves the many-products threshold unresolved.
 Q071,Find the codes of countries that have many players.,Find the codes of countries that have more than 50 players.,"players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","Question: How many players count as ""many""?
-Reply: I mean more than 50.",,,,,,
+Reply: I mean more than 50.",1,1,1,1,Subhash,
 Q072,What is the maximum miles per gallon of the cars with 8 cylinders or produced long ago?,What is the maximum miles per gallon of the car with 8 cylinders or produced before 1980 ?,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: Do you mean cars with exactly 8 cylinders or at least 8 cylinders? And what does 'produced long ago' mean — for example, year before 1950?
-Reply: I mean before 1980.",,,,,,
+Reply: I mean before 1980.",1,1,1,0,Subhash,"The year threshold is supplied, but the exact-versus-at-least-eight-cylinder ambiguity remains unresolved."
 Q073,Which language is the most widespread in Asia?,Which language is the most popular on the Asian continent?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: Ranked by what: percentage or number of records?
-Reply: Rank them by number of records.",,,,,,
+Reply: Rank them by number of records.",1,1,1,1,Subhash,
 Q074,What is the maximum number of final tables made among poker players with low earnings?,What is the maximum number of final tables made among poker players with earnings less than 200000?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","Question: What earnings counts as ""low""?
-Reply: I mean less than 200000.",,,,,,
+Reply: I mean less than 200000.",1,1,1,1,Subhash,
 Q075,Find the codes of countries that have many players.,Find the codes of countries that have more than 50 players.,"players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
-rankings(ranking_date, ranking, player_id, ranking_points, tours)",No clarification question was asked.,,,,,,
+rankings(ranking_date, ranking, player_id, ranking_points, tours)",No clarification question was asked.,0,0,0,0,Subhash,No clarification question was asked.
 Q076,"Find the name and membership level of the visitors whose membership level is high, and sort by their age from old to young.","Find the name and membership level of the visitors whose membership level is higher than 4, and sort by their age from old to young.","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: What value or range defines a 'high' membership level?
-Reply: I mean higher than 4.",,,,,,
+Reply: I mean higher than 4.",1,1,1,1,Subhash,
 Q077,Find all airlines that have many flights.,Find all airlines that have at least 10 flights.,"airlines(uid, Airline, Abbreviation, Country)
 airports(City, AirportCode, AirportName, Country, CountryAbbrev)
 flights(Airline, FlightNo, SourceAirport, DestAirport)","Question: How many flights count as ""many""?
-Reply: I mean at least 10.",,,,,,
+Reply: I mean at least 10.",1,1,1,1,Subhash,
 Q078,List the name of the most senior conductor.,List the name of the conductor with the most years of work.,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","Question: Ranked by what: age or number of records?
-Reply: Rank them by years of work.",,,,,,
+Reply: Rank them by years of work.",1,1,1,1,Subhash,
 Q079,What is the maximum number of final tables made among poker players with low earnings?,What is the maximum number of final tables made among poker players with earnings less than 200000?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","Question: What value defines 'low earnings'?
-Reply: I mean less than 200000.",,,,,,
+Reply: I mean less than 200000.",1,1,1,1,Subhash,
 Q080,What is the leading nationality among the people?,What is the most common nationality of people?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
-people(People_ID, Nationality, Name, Birth_Date, Height)",No clarification question was asked.,,,,,,
+people(People_ID, Nationality, Name, Birth_Date, Height)",No clarification question was asked.,0,0,0,0,Subhash,No clarification question was asked.
 Q081,What is the maximum miles per gallon of the cars with 8 cylinders or produced long ago?,What is the maximum miles per gallon of the car with 8 cylinders or produced before 1980 ?,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: Which year do you mean by ""long ago""?
-Reply: I mean before 1980.",,,,,,
+Reply: I mean before 1980.",1,1,1,1,Subhash,
 Q082,Which language is the most widespread in Asia?,Which language is the most popular on the Asian continent?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: Ranked by what: percentage or number of records?
-Reply: Rank them by number of records.",,,,,,
+Reply: Rank them by number of records.",1,1,1,1,Subhash,
 Q083,What are the id and type code of the main template?,What is the id and type code for the template used by the most documents?,"Ref_Template_Types(Template_Type_Code, Template_Type_Description)
 Templates(Template_ID, Version_Number, Template_Type_Code, Date_Effective_From, Date_Effective_To, Template_Details)
 Documents(Document_ID, Template_ID, Document_Name, Document_Description, Other_Details)
 Paragraphs(Paragraph_ID, Document_ID, Paragraph_Text, Other_Details)","Question: Ranked by what: date effective from or version number?
-Reply: Rank them by number of records.",,,,,,
+Reply: Rank them by number of records.",1,1,1,0,Subhash,"The reply ranks by number of records, not by a clarified definition of the main template."
 Q084,Find the first name and country code of the top player.,Find the first name and country code of the player who did the most number of tours.,"players(player_id, first_name, last_name, hand, birth_date, country_code)
 matches(best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year)
 rankings(ranking_date, ranking, player_id, ranking_points, tours)","Question: Ranked by what: rank points or number of matches?
-Reply: Rank them by tours.",,,,,,
+Reply: Rank them by tours.",1,1,1,1,Subhash,
 Q085,Which dogs have not cost their owner a lot for treatment? List the dog names.,Which dogs have not cost their owner more than 1000 for treatment ? List the dog names .,"Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
@@ -395,7 +395,7 @@ Owners(owner_id, first_name, last_name, street, city, state, zip_code, email_add
 Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_birth, gender, weight, date_arrived, date_adopted, date_departed)
 Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","Question: What does 'a lot' mean in terms of treatment cost or frequency?
-Reply: I mean more than 1000.",,,,,,
+Reply: I mean more than 1000.",1,1,1,1,Subhash,
 Q086,Which car makers produce many models and many cars? List the id and the maker.,Which are the car makers which produce at least 2 models and more than 3 car makers ? List the id and the maker .,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
@@ -404,22 +404,22 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: How many models count as ""many""?
 Reply: I mean at least 2.
 Question: How many cars count as ""many""?
-Reply: I'm not sure what you mean.",,,,,,
+Reply: I'm not sure what you mean.",1,1,1,0,Subhash,"The model threshold is answered, but the car threshold remains unresolved."
 Q087,"Find the name and membership level of the visitors whose membership level is high, and sort by their age from old to young.","Find the name and membership level of the visitors whose membership level is higher than 4, and sort by their age from old to young.","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: What level of membership counts as ""high""?
-Reply: I mean higher than 4.",,,,,,
+Reply: I mean higher than 4.",1,1,1,1,Subhash,
 Q088,Show the names of high schoolers who have many friends.,Show the names of high schoolers who have at least 3 friends.,"Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","Question: What does 'many friends' mean in this context? For example, is it 3 or more friends, or a certain percentage of all high schoolers?
-Reply: I mean at least 3.",,,,,,
+Reply: I mean at least 3.",1,1,1,1,Subhash,
 Q089,What is the name of the most successful singer?,What is the name of the singer with the largest net worth?,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","Question: Ranked by what: sales or highest position?
-Reply: Rank them by net worth.",,,,,,
+Reply: Rank them by net worth.",1,1,1,1,Subhash,
 Q090,What is the total number of unique official languages spoken in the countries that became independent long ago?,What is the total number of unique official languages spoken in the countries that are founded before 1930?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: How many years ago does 'long ago' refer to?
-Reply: I mean before 1930.",,,,,,
+Reply: I mean before 1930.",1,1,1,1,Subhash,
 Q091,Which dogs have not cost their owner a lot for treatment? List the dog names.,Which dogs have not cost their owner more than 1000 for treatment ? List the dog names .,"Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
@@ -428,23 +428,23 @@ Owners(owner_id, first_name, last_name, street, city, state, zip_code, email_add
 Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_birth, gender, weight, date_arrived, date_adopted, date_departed)
 Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","Question: What owner cost counts as ""a lot""?
-Reply: I mean more than 1000.",,,,,,
+Reply: I mean more than 1000.",1,1,1,1,Subhash,
 Q092,Show countries where a singer above age 40 and a young singer are from.,Show countries where a singer above age 40 and a singer below 30 are from.,"stadium(Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
 singer(Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
 concert(concert_ID, concert_Name, Theme, Stadium_ID, Year)
 singer_in_concert(concert_ID, Singer_ID)","Question: What age counts as ""young""?
-Reply: I mean below 30.",,,,,,
+Reply: I mean below 30.",1,1,1,1,Subhash,
 Q093,"Find the name and membership level of the visitors whose membership level is high, and sort by their age from old to young.","Find the name and membership level of the visitors whose membership level is higher than 4, and sort by their age from old to young.","museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: What level of membership counts as ""high""?
-Reply: I mean higher than 4.",,,,,,
+Reply: I mean higher than 4.",1,1,1,1,Subhash,
 Q094,Which district has both stores with few products and stores with many products?,Which district has both stores with less than 3000 products and stores with more than 10000 products?,"employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
 evaluation(Employee_ID, Year_awarded, Bonus)","Question: How many products count as ""many""?
 Reply: I mean more than 10000.
 Question: How many products count as ""few""?
-Reply: I mean less than 3000.",,,,,,
+Reply: I mean less than 3000.",1,1,1,1,Subhash,
 Q095,Which car makers produce many models and many cars? List the id and the maker.,Which are the car makers which produce at least 2 models and more than 3 car makers ? List the id and the maker .,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
@@ -453,49 +453,49 @@ car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: How many cars count as ""many""?
 Reply: I'm not sure what you mean.
 Question: How many cars count as ""many""?
-Reply: I'm not sure what you mean.",,,,,,
+Reply: I'm not sure what you mean.",1,1,0,0,Subhash,"The same unanswered clarification is repeated, leaving the car threshold unresolved."
 Q096,What are the names of poker players whose earnings are high?,What are the names of poker players whose earnings is higher than 300000?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
 people(People_ID, Nationality, Name, Birth_Date, Height)","Question: What does 'high earnings' mean in this context? For example, is it the top 10% by earnings, above the median, or above a specific amount like $100,000?
-Reply: I mean higher than 300000.",,,,,,
+Reply: I mean higher than 300000.",1,1,1,1,Subhash,
 Q097,List the name of the most senior conductor.,List the name of the conductor with the most years of work.,"conductor(Conductor_ID, Name, Age, Nationality, Year_of_Work)
 orchestra(Orchestra_ID, Orchestra, Conductor_ID, Record_Company, Year_of_Founded, Major_Record_Format)
 performance(Performance_ID, Orchestra_ID, Type, Date, Official_ratings_(millions), Weekly_rank, Share)
 show(Show_ID, Performance_ID, If_first_show, Result, Attendance)","Question: Ranked by what: age or year of work?
-Reply: Rank them by years of work.",,,,,,
+Reply: Rank them by years of work.",1,1,1,1,Subhash,
 Q098,Which car makers produce many models and many cars? List the id and the maker.,Which are the car makers which produce at least 2 models and more than 3 car makers ? List the id and the maker .,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
-cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)",No clarification question was asked.,,,,,,
+cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)",No clarification question was asked.,0,0,0,0,Subhash,No clarification question was asked.
 Q099,Which cities have a medium-sized population?,What are the cities whose population is between 160000 and 900000?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: What population do you mean by ""medium""?
-Reply: I mean between 160000 and 900000.",,,,,,
+Reply: I mean between 160000 and 900000.",1,1,1,1,Subhash,
 Q100,Show the names of high schoolers who have many friends.,Show the names of high schoolers who have at least 3 friends.,"Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","Question: How many friends count as ""many""?
-Reply: I mean at least 3.",,,,,,
+Reply: I mean at least 3.",1,1,1,1,Subhash,
 Q101,What is the name of the most successful singer?,What is the name of the singer with the largest net worth?,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","Question: How do we define 'most successful'—by net worth, song sales, or highest chart position?
-Reply: Rank them by net worth.",,,,,,
+Reply: Rank them by net worth.",1,1,1,1,Subhash,
 Q102,What is the name of the visitor who visited both a museum opened long ago and a museum opened recently?,What is the name of the visitor who visited both a museum opened before 2009 and a museum opened after 2011?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: Which open year do you mean by ""recently""?
 Reply: I mean after 2011.
 Question: Which open year do you mean by ""long ago""?
-Reply: I mean after 2011.",,,,,,
+Reply: I mean after 2011.",1,1,1,0,Subhash,The reply gives the recent threshold but incorrectly uses it for the long-ago condition.
 Q103,"Among the cars that do not have the minimum horsepower, what are the make ids and names of all those with few cylinders?","Among the cars that do not have the minimum horsepower , what are the make ids and names of all those with less than 4 cylinders ?","continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: What does 'few cylinders' mean? For example, fewer than 4, or fewer than the average?
-Reply: I mean less than 4.",,,,,,
+Reply: I mean less than 4.",1,1,1,1,Subhash,
 Q104,Show the names of students who have a high grade and have many friends.,Show the names of students who have a grade higher than 5 and have at least 2 friends.,"Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","Question: How many friends count as ""many""?
-Reply: I mean at least 2.",,,,,,
+Reply: I mean at least 2.",1,1,1,0,Subhash,"The friends threshold is answered, but the high-grade threshold remains unresolved."
 Q105,Show the date and id of the transcripts with many course results.,Show the date and id of the transcript with at least 2 course results.,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
@@ -507,7 +507,7 @@ Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
 Transcript_Contents(student_course_id, transcript_id)","Question: How many course results count as ""many""?
-Reply: I mean at least 2.",,,,,,
+Reply: I mean at least 2.",1,1,1,1,Subhash,
 Q106,Show the date and id of the transcripts with many course results.,Show the date and id of the transcript with at least 2 course results.,"Addresses(address_id, line_1, line_2, line_3, city, zip_postcode, state_province_county, country, other_address_details)
 Courses(course_id, course_name, course_description, other_details)
 Departments(department_id, department_name, department_description, other_details)
@@ -519,60 +519,60 @@ Student_Enrolment(student_enrolment_id, degree_program_id, semester_id, student_
 Student_Enrolment_Courses(student_course_id, course_id, student_enrolment_id)
 Transcripts(transcript_id, transcript_date, other_details)
 Transcript_Contents(student_course_id, transcript_id)","Question: How many courses count as ""many""?
-Reply: I mean at least 2.",,,,,,
+Reply: I mean at least 2.",1,1,1,1,Subhash,
 Q107,How many countries have many car makers?,How many countries has more than 2 car makers ?,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: What does 'many' mean in this context? For example, is it 5 or more car makers per country?
-Reply: I mean more than 2.",,,,,,
+Reply: I mean more than 2.",1,1,1,1,Subhash,
 Q108,What are the id and name of the most popular museum?,What are the id and name of the museum visited most times?,"museum(Museum_ID, Name, Num_of_Staff, Open_Year)
 visitor(ID, Name, Level_of_membership, Age)
 visit(Museum_ID, visitor_ID, Num_of_Ticket, Total_spent)","Question: How is a museum's popularity defined? For example, based on total spending or number of tickets sold?
-Reply: Rank them by number of records.",,,,,,
+Reply: Rank them by number of records.",1,1,1,1,Subhash,
 Q109,What is the average earnings of tall poker players?,What is the average earnings of poker players with height higher than 200?,"poker_player(Poker_Player_ID, People_ID, Final_Table_Made, Best_Finish, Money_Rank, Earnings)
-people(People_ID, Nationality, Name, Birth_Date, Height)",No clarification question was asked.,,,,,,
+people(People_ID, Nationality, Name, Birth_Date, Height)",No clarification question was asked.,0,0,0,0,Subhash,No clarification question was asked.
 Q110,Show the names of high schoolers who have many friends.,Show the names of high schoolers who have at least 3 friends.,"Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","Question: How many friends count as ""many""?
-Reply: I mean at least 3.",,,,,,
+Reply: I mean at least 3.",1,1,1,1,Subhash,
 Q111,What are the names of all the countries that became independent recently?,What are the names of all the countries that became independent after 1950?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: Which year do you mean by ""recently""?
-Reply: I mean after 1950.",,,,,,
+Reply: I mean after 1950.",1,1,1,1,Subhash,
 Q112,What are the names of all the countries that became independent recently?,What are the names of all the countries that became independent after 1950?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: How recent does 'recently' mean? For example, within the last 10 years?
-Reply: I mean after 1950.",,,,,,
+Reply: I mean after 1950.",1,1,1,1,Subhash,
 Q113,Show the citizenships shared by singers born long ago and singers born recently.,Show the citizenship shared by singers with birth year before 1945 and after 1955.,"singer(Singer_ID, Name, Birth_Year, Net_Worth_Millions, Citizenship)
 song(Song_ID, Title, Singer_ID, Sales, Highest_Position)","Question: Which birth year do you mean by ""recently""?
 Reply: I mean after 1955.
 Question: Which birth year do you mean by ""long ago""?
-Reply: I mean after 1955.",,,,,,
+Reply: I mean after 1955.",1,1,1,0,Subhash,"The long-ago threshold is answered with the recent threshold, so the intended meaning remains unresolved."
 Q114,How many countries have many car makers?,How many countries has more than 2 car makers ?,"continents(ContId, Continent)
 countries(CountryId, CountryName, Continent)
 car_makers(Id, Maker, FullName, Country)
 model_list(ModelId, Maker, Model)
 car_names(MakeId, Model, Make)
 cars_data(Id, MPG, Cylinders, Edispl, Horsepower, Weight, Accelerate, Year)","Question: How many car makers count as ""many""?
-Reply: I mean more than 2.",,,,,,
+Reply: I mean more than 2.",1,1,1,1,Subhash,
 Q115,What is the name of the biggest shop?,What is the name of the shop that is hiring the largest number of employees?,"employee(Employee_ID, Name, Age, City)
 shop(Shop_ID, Name, Location, District, Number_products, Manager_name)
 hiring(Shop_ID, Employee_ID, Start_from, Is_full_time)
-evaluation(Employee_ID, Year_awarded, Bonus)",No clarification question was asked.,,,,,,
+evaluation(Employee_ID, Year_awarded, Bonus)",No clarification question was asked.,0,0,0,0,Subhash,No clarification question was asked.
 Q116,Show the names of students who have a high grade and have many friends.,Show the names of students who have a grade higher than 5 and have at least 2 friends.,"Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","Question: How many friends count as ""many""?
-Reply: I mean at least 2.",,,,,,
+Reply: I mean at least 2.",1,1,1,0,Subhash,"The friends threshold is answered, but the high-grade threshold remains unresolved."
 Q117,What is the name of the most active high schooler?,What is the name of the high schooler who has the greatest number of likes?,"Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","Question: How do we define 'most active'—based on number of friends or number of likes?
-Reply: Rank them by number of likes.",,,,,,
+Reply: Rank them by number of likes.",1,1,1,1,Subhash,
 Q118,What is the name of the most active high schooler?,What is the name of the high schooler who has the greatest number of likes?,"Highschooler(ID, name, grade)
 Friend(student_id, friend_id)
 Likes(student_id, liked_id)","Question: Ranked by what: grade or id?
-Reply: Rank them by number of likes.",,,,,,
+Reply: Rank them by number of likes.",1,1,1,1,Subhash,
 Q119,Which dogs have not cost their owner a lot for treatment? List the dog names.,Which dogs have not cost their owner more than 1000 for treatment ? List the dog names .,"Breeds(breed_code, breed_name)
 Charges(charge_id, charge_type, charge_amount)
 Sizes(size_code, size_description)
@@ -581,8 +581,8 @@ Owners(owner_id, first_name, last_name, street, city, state, zip_code, email_add
 Dogs(dog_id, owner_id, abandoned_yn, breed_code, size_code, name, age, date_of_birth, gender, weight, date_arrived, date_adopted, date_departed)
 Professionals(professional_id, role_code, first_name, street, city, state, zip_code, last_name, email_address, home_phone, cell_number)
 Treatments(treatment_id, dog_id, professional_id, treatment_type_code, date_of_treatment, cost_of_treatment)","Question: What cost counts as ""a lot""?
-Reply: I mean more than 1000.",,,,,,
+Reply: I mean more than 1000.",1,1,1,1,Subhash,
 Q120,Which cities have a medium-sized population?,What are the cities whose population is between 160000 and 900000?,"city(ID, Name, CountryCode, District, Population)
 country(Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2)
 countrylanguage(CountryCode, Language, IsOfficial, Percentage)","Question: What population counts as ""medium""?
-Reply: I mean between 160000 and 900000.",,,,,,
+Reply: I mean between 160000 and 900000.",1,1,1,1,Subhash,

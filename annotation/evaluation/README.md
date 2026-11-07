@@ -1,7 +1,12 @@
 # ClarifySQL: teammate review tasks and Git workflow
 
+**Review status, 8 November 2026:** all seven sheets are complete and scored. Question reviewers are
+Subhash (A) and Manish (B). See the [scores](../../results/final/analysis/human_audits.json) and
+[validation record](../../results/final/analysis/review_validation.json). The instructions below document
+the review procedure; do not regenerate or replace the completed sheets.
+
 The training, final model experiments, ablations and three basic browser checks are complete.
-The remaining evaluation work is to judge the saved clarification questions and simulator replies.
+The review covers the saved clarification questions and simulator replies.
 The seven CSVs in this folder are the review sheets. No Kaggle run, GPU or Python setup is needed to rate them.
 
 ## 1. Choose your assigned role

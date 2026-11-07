@@ -99,7 +99,7 @@ def main():
     write_json(a.root / "analysis/verification.json", {
         "source_commit": revision, "base_model_revision": next(iter(base_revisions)), "conditions": checks,
         "scope": "Code/data hashes and SQLite execution/summary metrics reproduced locally. Test-suite means recomputed from saved flags; official variant queries were not repeated.",
-        "human_reviews": "pending"})
+        "human_reviews": "scored_separately" if (a.root / "analysis/human_audits.json").is_file() else "pending"})
 
 
 if __name__ == "__main__":

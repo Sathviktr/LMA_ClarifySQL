@@ -1,0 +1,119 @@
+{
+  "question_usefulness": {
+    "a2": {
+      "targets_uncertainty": {
+        "yes": 76,
+        "ratings": 80,
+        "rate": 0.95
+      },
+      "schema_supported": {
+        "yes": 76,
+        "ratings": 80,
+        "rate": 0.95
+      },
+      "not_repeated": {
+        "yes": 76,
+        "ratings": 80,
+        "rate": 0.95
+      },
+      "resolves_intent": {
+        "yes": 68,
+        "ratings": 80,
+        "rate": 0.85
+      },
+      "all_four": {
+        "yes": 68,
+        "ratings": 80,
+        "rate": 0.85
+      }
+    },
+    "b3": {
+      "targets_uncertainty": {
+        "yes": 70,
+        "ratings": 80,
+        "rate": 0.875
+      },
+      "schema_supported": {
+        "yes": 70,
+        "ratings": 80,
+        "rate": 0.875
+      },
+      "not_repeated": {
+        "yes": 66,
+        "ratings": 80,
+        "rate": 0.825
+      },
+      "resolves_intent": {
+        "yes": 56,
+        "ratings": 80,
+        "rate": 0.7
+      },
+      "all_four": {
+        "yes": 56,
+        "ratings": 80,
+        "rate": 0.7
+      }
+    },
+    "sft_s1": {
+      "targets_uncertainty": {
+        "yes": 74,
+        "ratings": 80,
+        "rate": 0.925
+      },
+      "schema_supported": {
+        "yes": 74,
+        "ratings": 80,
+        "rate": 0.925
+      },
+      "not_repeated": {
+        "yes": 72,
+        "ratings": 80,
+        "rate": 0.9
+      },
+      "resolves_intent": {
+        "yes": 64,
+        "ratings": 80,
+        "rate": 0.8
+      },
+      "all_four": {
+        "yes": 64,
+        "ratings": 80,
+        "rate": 0.8
+      }
+    }
+  },
+  "rater_kappa": {
+    "targets_uncertainty": 1.0,
+    "schema_supported": 1.0,
+    "not_repeated": 1.0,
+    "resolves_intent": 1.0
+  },
+  "simulator_accuracy": {
+    "simulator_a2": {
+      "correct": 42,
+      "reviewed": 50,
+      "accuracy": 0.84
+    },
+    "simulator_a3": {
+      "correct": 39,
+      "reviewed": 47,
+      "accuracy": 0.8297872340425532
+    },
+    "simulator_b3": {
+      "correct": 39,
+      "reviewed": 50,
+      "accuracy": 0.78
+    },
+    "simulator_sft_s1": {
+      "correct": 44,
+      "reviewed": 50,
+      "accuracy": 0.88
+    },
+    "simulator_sft_s2": {
+      "correct": 43,
+      "reviewed": 50,
+      "accuracy": 0.86
+    }
+  },
+  "note": "Question rates pool two independent ratings; preserve per-rater sheets and disagreements."
+}

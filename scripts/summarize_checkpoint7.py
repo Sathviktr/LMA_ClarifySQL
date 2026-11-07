@@ -59,7 +59,7 @@ def main():
         groups = [[r for r in traces[n] if r["kind"] == kind] for n in ("b3", "sft_s1", "sft_s2")]
         lines.append(f"| {kind} | {len(groups[0])} | " + " | ".join(str(sum(r["correct"] for r in g)) for g in groups) + " |")
     lines += ["", "The gains include fewer unnecessary questions on clear requests and better definition handling.",
-              "The partly answered cases remain difficult. Question usefulness still needs the blinded review.", "",
+              "The partly answered cases remain difficult. These automatic results alone do not establish question usefulness; see the separate review summary.", "",
               "## Real dialogue slice (CoSQL)", "", "| System | Correct / 59 | Decision F1 | Clarify recall / 13 |",
               "|---|---:|---:|---:|"]
     for n in ("b3", "sft_s1"):
@@ -105,8 +105,8 @@ def main():
         behavior[n] = {"counts": dict(counts), "cases": failures,
                        "note": "Observable failure types, not causal attribution of blame to a model role."}
     write_json(out / "error_analysis.json", behavior)
-    lines += ["## Still required", "", "Complete the independent question-usefulness and simulator reviews, run the live demo, and write the final report with the tradeoffs above.",
-              "Automatic missing-information and slot scores use lexical checks and have not been validated by those human reviews."]
+    lines += ["## Related review and delivery evidence", "", "This summary covers the automatic checkpoint-7 results. See the repository README for current question-review, simulator-audit, browser-demo and final-report status.",
+              "Automatic missing-information and slot scores use lexical checks. The separate review has its own scope and limitations; it does not establish semantic validity for every lexical score."]
     (out / "findings.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     import matplotlib

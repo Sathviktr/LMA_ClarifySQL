@@ -50,7 +50,7 @@ It does not establish general performance on unseen domains or validate the simu
 | definition | 14 | 3 | 8 | 7 |
 
 The gains include fewer unnecessary questions on clear requests and better definition handling.
-The partly answered cases remain difficult. Question usefulness still needs the blinded review.
+The partly answered cases remain difficult. These automatic results alone do not establish question usefulness; see the separate review summary.
 
 ## Real dialogue slice (CoSQL)
 
@@ -78,7 +78,7 @@ These totals include policy, writer and simulated-user inference. Generation sec
 The two-GPU inference cell took 40.6 minutes. CPU scoring time is not included in that cell measurement.
 Invalid outputs and limits should be reported per system; one successful retry does not erase the original invalid attempt.
 
-## Still required
+## Related review and delivery evidence
 
-Complete the independent question-usefulness and simulator reviews, run the live demo, and write the final report with the tradeoffs above.
-Automatic missing-information and slot scores use lexical checks and have not been validated by those human reviews.
+This summary covers the automatic checkpoint-7 results. See the repository README for current question-review, simulator-audit, browser-demo and final-report status.
+Automatic missing-information and slot scores use lexical checks. The separate review has its own scope and limitations; it does not establish semantic validity for every lexical score.

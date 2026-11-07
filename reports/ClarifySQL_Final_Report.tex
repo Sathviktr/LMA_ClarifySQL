@@ -8,7 +8,7 @@
 \usepackage{enumitem,amsmath,hyperref}
 \definecolor{accent}{HTML}{216975}
 \hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent,
-  pdftitle={ClarifySQL Final Project Report -- Draft},pdfauthor={GUILD4AGENTS}}
+  pdftitle={ClarifySQL Final Project Report},pdfauthor={GUILD4AGENTS}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
 \setlength{\emergencystretch}{2em}
@@ -25,7 +25,7 @@
 {\LARGE\bfseries ClarifySQL}\par
 {\large Teaching a small language model when to ask before it writes SQL}\par
 \vspace{5pt}
-{\large\bfseries Final project report --- draft}\par
+{\large\bfseries Final project report}\par
 Language Models and Agents\par
 \textbf{GUILD4AGENTS}\par
 Subhash Dangeti (2025201007)\par
@@ -36,11 +36,10 @@ Sathvik Reddy (2025201020)\par
 \href{\repo}{github.com/Sathviktr/LMA\_ClarifySQL}
 \end{center}
 
-\textbf{Status of this draft.} The final test experiments, required ablations, CoSQL analysis and
-scripted GPU demo are complete, and three basic browser cases are documented: a clear lookup, a
+\textbf{Project status.} The final test experiments, required ablations, CoSQL analysis, question-usefulness
+and simulator reviews, and scripted GPU demo are complete. Three basic browser cases are documented: a clear lookup, a
 clarification exchange and a missing-email explanation. The requested basic browser smokecheck is complete.
-Independent question-usefulness and simulator reviews, instructor access to weights and final artifact
-review remain pending. This report includes the evidence limits;
+Instructor access to weights and final artifact review remain pending. This report includes the evidence limits;
 the earlier mid-submission report is kept unchanged.
 
 \section{What we studied}
@@ -239,12 +238,61 @@ These automatic results do not by themselves establish that the trained policy a
 \subsection{Ablations}
 A2 solves 115 answerable cases, one more than seed 1. Its paired execution difference interval includes
 zero (about $-1.42$ to $+3.20$ points), as does its decision-F1 interval. One case is about 0.68 percentage
-points on this test. We therefore do not claim an execution benefit from explicit slots. Their effect on
-human-rated question usefulness remains unresolved.
+points on this test. We therefore do not claim an execution benefit from explicit slots. The small human
+review below also does not establish a usefulness advantage from adding or omitting slots.
 
 A3 has lower point estimates than seed 1. Its execution-difference interval touches zero and its decision-F1
 interval includes zero. Adding all context gives no observed improvement in this run. That does not prove
 that retrieval is necessary for every database or that full context can never help.
+
+\section{Human review of questions and simulator replies}
+Subhash and Manish each rated 120 question items: the same 40 ambiguous episodes for B3, seed 1 and A2.
+Each system has 80 pooled ratings of 40 unique episodes. The four criteria ask whether a question targets
+the missing detail, fits the schema, avoids repetition and lets a cooperative user resolve the intent.
+Items with no clarification question receive zero on all four criteria. The table gives percentages of yes ratings.
+
+\begin{center}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+System & Targets & Schema & No repeat & Resolves & All four \\
+\midrule
+B3 & 87.5 & 87.5 & 82.5 & 70.0 & 70.0 \\
+SFT seed 1 & 92.5 & 92.5 & 90.0 & 80.0 & 80.0 \\
+A2: no slots & 95.0 & 95.0 & 95.0 & 85.0 & 85.0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The coordinator confirmed independent completion by the two reviewers. Their 480 criterion values match
+exactly, as do all 26 nonblank notes. Recorded agreement is therefore 100\%, with Cohen's $\kappa=1.0$
+for each criterion. These statistics describe the submitted ratings; they do not establish independence.
+The source columns, item coverage and rating fields were checked, and the provenance confirmation is saved
+with the validation record. These are 40 sampled episodes per system, not 80 unique examples.
+
+One simulator reviewer checked 247 actual decisions: 50 each for B3, both main seeds and A2, and all 47
+available for A3. The shortfall is preserved rather than filled with duplicates.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+System & Judged correct/reviewed & Accuracy (\%) \\
+\midrule
+B3 & 39/50 & 78.00 \\
+SFT seed 1 & 44/50 & 88.00 \\
+SFT seed 2 & 43/50 & 86.00 \\
+A2 & 42/50 & 84.00 \\
+A3 & 39/47 & 82.98 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The reviews are descriptive: the sample is small, the simulator has one reviewer, and we have not tested
+the usefulness differences for statistical significance. A2 has higher point ratings than seed 1, which
+does not establish a causal advantage from adding or omitting slots. Also, the notes for Q006 and Q019
+explain low resolution ratings through simulator replies that repeat the recent cutoff for the old cutoff.
+Those ratings can therefore mix question usefulness with reply failures. We preserve them and treat this
+as a limitation of the review. The scores and validation record are listed with the other artifacts.
 
 \section{Natural dialogue and computation}
 \begin{center}
@@ -356,13 +404,12 @@ the known threshold, question-grounding and placement failures remain unchanged.
 
 \section{Limitations and work still open}
 \begin{itemize}
-\item \textbf{Human question evaluation is incomplete.} The planned sheets cover the same 40 ambiguous
-episodes for B3, seed 1 and A2, giving 120 items per rater. Two independent ratings have not been collected,
-so we report no human usefulness score or agreement statistic for this study. Earlier dataset annotation
-does not replace this evaluation.
-\item \textbf{Simulator reliability is not independently established.} The review sheets contain 247
-actual decisions: 50 each for B3, both main seeds and A2, and all 47 available for A3. The shortfall is
-disclosed rather than filled with duplicates. These human judgments remain pending.
+\item \textbf{Human review has a narrow scope.} The question review covers 40 sampled episodes for three
+systems. Perfect recorded agreement does not itself validate the review process. Some resolution notes
+mix question quality with simulator failures, and no significance test of usefulness is reported.
+\item \textbf{Simulator auditing has one reviewer.} All 247 sampled decisions were checked, including
+only 47 available for A3. The observed errors show that simulated replies remain an imperfect evaluation input;
+one review does not establish accuracy across all simulator decisions.
 \item \textbf{The data and statistics are limited.} The benchmark includes constructed vague requests,
 only eight two-slot test episodes and two training seeds. The database bootstrap does not cover every
 source of uncertainty. The CoSQL slice is small and dominated by execute labels.
@@ -374,8 +421,8 @@ runtime hashes, hidden execution trace and error paths were not captured. Softwa
 but they should not be described as a completed model-driven safety study.
 \end{itemize}
 
-The remaining submission work is to complete the independent reviews, confirm instructor access to the
-saved weights and finish the final artifact review. Improving question
+The remaining submission work is to confirm instructor access to the saved weights and finish the final
+artifact review. Improving question
 grounding, checking unresolved intent before execution and testing SQL on more variants are useful
 follow-ups. Any new intervention should be reported as a new version rather than silently changing the
 already measured benchmark conditions.
@@ -392,6 +439,8 @@ Artifact & Repository location or recorded source \\
 \midrule
 Final test and CoSQL & \file{results/final/}, source commit \file{428e743} \\
 Paired intervals & \file{results/final/analysis/paired_bootstrap.json} \\
+Human-review scores & \file{results/final/analysis/human_audits.json} \\
+Review validation and provenance & \file{results/final/analysis/review_validation.json} \\
 Original demo archive & \file{results/demo/checkpoint8/received.zip}, source \file{0d75a73} \\
 Demo verification and variants & \file{results/demo/checkpoint8/analysis/} \\
 Browser clarification evidence & \file{results/demo/browser_evidence_2026-11-08.json} \\
@@ -428,7 +477,8 @@ in one Windows process.
 Within this fixed experiment, training improves execution and decision F1 compared with prompting.
 The gains include fewer unnecessary questions and better use of definitions, while abstention becomes
 less reliable. We do not establish an execution advantage from explicit slots or strong generalization
-to real clarification turns. The demo makes the remaining problems concrete: poorly grounded choices,
+to real clarification turns. The small human review gives higher usefulness point ratings for seed 1 than
+B3, and for A2 than seed 1; it does not establish a slot benefit. The demo makes the remaining problems concrete: poorly grounded choices,
 unresolved thresholds and an incorrect query that happens to return the expected answer. These limits
 are part of the result and guide the next version of the system.
 

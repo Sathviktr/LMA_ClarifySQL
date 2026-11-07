@@ -64,5 +64,5 @@
     }
   },
   "scope": "Code/data hashes and SQLite execution/summary metrics reproduced locally. Test-suite means recomputed from saved flags; official variant queries were not repeated.",
-  "human_reviews": "pending"
+  "human_reviews": "scored_separately"
 }
