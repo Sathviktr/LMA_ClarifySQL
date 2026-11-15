@@ -1,6 +1,11 @@
 # Personal learning notes (kept on your own machine, never committed)
 learning/
-reports/ClarifySQL_Mid_Submission.tex
+
+reports/
+ClarifySQL_Mid_Submission.tex
+ClarifySQL_Final_Report.tex
+ClarifySQL_Poster.pdf
+ClarifySQL_Poster.pptx
 
 # Keep the anonymous-review system key on the coordinator's machine
 annotation/evaluation/question_key.csv
