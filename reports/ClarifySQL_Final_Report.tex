@@ -18,7 +18,7 @@
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcommand{\repo}{https://github.com/Sathviktr/LMA_ClarifySQL}
 \newcommand{\file}[1]{\nolinkurl{#1}}
-\newcommand{\reportdate}{8 November 2026}
+\newcommand{\reportdate}{15 November 2026}
 
 \begin{document}
 \begin{center}
@@ -36,13 +36,22 @@ Sathvik Reddy (2025201020)\par
 \href{\repo}{github.com/Sathviktr/LMA\_ClarifySQL}
 \end{center}
 
-\textbf{Project status.} The final test experiments, required ablations, CoSQL analysis, question-usefulness
-and simulator reviews, and scripted GPU demo are complete. Three basic browser cases are documented: a clear lookup, a
-clarification exchange and a missing-email explanation. The requested basic browser smokecheck is complete.
-The repository and saved results have been checked; instructor access to weights remains unverified. This report includes the evidence limits;
-the earlier mid-submission report is kept unchanged.
+\begin{abstract}
+Text-to-SQL models can write a valid query even when a user's request is missing an important detail.
+We built ClarifySQL to study when a small language model should inspect the database, ask a question,
+execute a query or abstain. We train QLoRA policy adapters for Qwen3-4B-Instruct-2507 while keeping the
+SQL writer fixed. Our constructed dataset has 307 training, 53 validation and 188 test episodes, with
+a separate check on 59 CoSQL turns. On 148 answerable test episodes, the two trained seeds average
+76.35\% execution accuracy, compared with 63.51\% for the prompted agent. The gain is 12.84 percentage
+points, with a 95\% paired database-bootstrap interval of [5.55, 19.08]. However, correct abstention
+declines, the no-slot ablation does not establish a benefit from explicit slots, and natural-dialogue
+results are mixed. Human reviews and a fictional university demo show remaining problems with question
+wording, unresolved details and SQL that returns the right answer by coincidence. Code, saved results
+and reproduction instructions are available at \url{\repo}.
+\end{abstract}
 
-\section{What we studied}
+\section{Introduction}
+
 If someone asks, ``Which is the best department?'', the database cannot tell us what the person means
 by ``best''. It could mean average marks or placement rate. A model may produce valid SQL while
 silently choosing the wrong meaning.
@@ -61,7 +70,82 @@ A slot is a missing detail such as an age cutoff or ranking measure. Our final t
 comparison on execution and decision F1. It does not establish an execution advantage for explicit slots.
 The trained policies also abstain less reliably on requests for missing data.
 
-\section{System design}
+\section{Literature Review}
+
+Spider studies text-to-SQL across different database schemas~\cite{spider}. It provides questions,
+SQL and relational databases for testing schema generalization. We use its databases and source queries
+to create clear and vague requests. Our task also asks whether an agent should inspect, clarify or
+abstain before writing SQL, so our scores are not directly comparable with the original Spider leaderboard.
+
+CoSQL extends database querying to conversations, including clarification and requests that cannot be
+answered~\cite{cosql}. We use a small reviewed slice to check action decisions in natural dialogue.
+TrustSQL studies reliable SQL generation for feasible requests and abstention for infeasible
+ones~\cite{trustsql}. It motivates our missing-information cases, although we use our own decision and
+abstention metrics rather than its penalty-based benchmark score.
+
+Interactive semantic parsing also studies when to ask a user for help. MISP keeps a predicted semantic
+parse as its state and identifies where user intervention is needed~\cite{misp}. ClarifySQL shares this
+motivation but trains a four-action controller and keeps a separate SQL writer fixed. We compare
+prompting and training this controller with the same tools and limits; we do not run a direct comparison
+with MISP.
+
+QLoRA trains low-rank adapters through a frozen 4-bit model to reduce training memory~\cite{qlora}.
+We use it with the instruction-tuned Qwen3-4B-Instruct-2507 model~\cite{qwen} to fit the work within free
+GPU resources. Zhong et al. evaluate SQL on database variants to reduce the chance that an incorrect
+query passes on one database~\cite{testsuite}. This is why we include test-suite accuracy alongside
+ordinary execution accuracy.
+
+\section{Dataset Created / Used}
+
+We use Spider database questions and SQL~\cite{spider} to construct clear and vague requests, CoSQL
+dialogue turns~\cite{cosql} for a separate natural-conversation check, and TrustSQL examples~\cite{trustsql}
+for requests that cannot be answered from the available information. The episode splits are organized
+by database.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Split & Episodes & Policy training/evaluation states \\
+\midrule
+Training & 307 & 602 \\
+Validation & 53 & 101 \\
+Final test & 188 & Not used for training or checkpoint choice \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The test set covers 20 databases and contains 79 clear, 47 single-slot ambiguous, 8 two-slot,
+14 definition-resolved and 40 unanswerable episodes. Thus execution accuracy has 148 answerable cases.
+The separate reviewed CoSQL slice has 59 turns: 45 execute, 13 clarify and 1 abstain. Earlier dialogue
+is included in the CoSQL input; only the first non-inspect decision is scored.
+
+The final episode test uses Spider's public development databases. All 20 were also used in an earlier
+1,034-question frozen-writer diagnostic, before the final agent comparison. The episode training,
+validation and test databases remain disjoint. Public benchmark content may also overlap with the
+base model's pretraining; we cannot rule this out. These limits matter when interpreting generalization.
+
+\subsection{The dataset we created}
+We organize the source examples into five episode types. Clear episodes keep a complete request.
+Single-slot and two-slot episodes remove one or two intended details, such as a cutoff or ranking
+measure. Definition episodes leave a vague term that a stored glossary can resolve. Unanswerable
+episodes ask for information that the database does not store.
+
+Each episode records a database ID, the visible request, the intended first decision, hidden intended
+details and a reference action path. Answerable episodes also have reference SQL. The policy never
+receives the reference SQL or hidden answers. The simulator uses the hidden details when replying, and
+the oracle receives the fully specified source request. We expand the reference paths into supervised
+policy states, giving the 602 training and 101 validation states in the table above.
+
+The annotation records include request editing, first-decision labels, disagreement resolution,
+a training audit and a cleaned CoSQL slice. The training audit drops 33 weak episodes; disagreement
+resolution drops eight test episodes. The final retained validation set has the 53 episodes used
+for checkpoint selection. The edited data and review sheets are in \file{data/episodes/} and
+\file{annotation/}.
+
+\section{Methodology}
+
+\subsection{Agent design and execution}
+
 The policy chooses one JSON action at a time. The controller validates the action, stores replies and
 tool results, and enforces the episode limits.
 
@@ -101,33 +185,7 @@ SQL execution uses a fixed database path, a read-only connection, a single-SELEC
 SQLite authorizer that blocks writes and other disallowed operations. Row and time limits constrain
 query execution. The fictional-data demo also removes sample-value inspection from its allowed tools.
 
-\section{Data and training}
-We use Spider database questions and SQL~\cite{spider} to construct clear and vague requests, CoSQL
-dialogue turns~\cite{cosql} for a separate natural-conversation check, and TrustSQL examples~\cite{trustsql}
-for requests that cannot be answered from the available information. The episode splits are organized
-by database.
-
-\begin{center}
-\begin{tabular}{lrr}
-\toprule
-Split & Episodes & Policy training/evaluation states \\
-\midrule
-Training & 307 & 602 \\
-Validation & 53 & 101 \\
-Final test & 188 & Not used for training or checkpoint choice \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The test set covers 20 databases and contains 79 clear, 47 single-slot ambiguous, 8 two-slot,
-14 definition-resolved and 40 unanswerable episodes. Thus execution accuracy has 148 answerable cases.
-The separate reviewed CoSQL slice has 59 turns: 45 execute, 13 clarify and 1 abstain. Earlier dialogue
-is included in the CoSQL input; only the first non-inspect decision is scored.
-
-The final episode test uses Spider's public development databases. All 20 were also used in an earlier
-1,034-question frozen-writer diagnostic, before the final agent comparison. The episode training,
-validation and test databases remain disjoint. Public benchmark content may also overlap with the
-base model's pretraining; we cannot rule this out. These limits matter when interpreting generalization.
+\subsection{Policy training and checkpoint selection}
 
 We train the policy with QLoRA~\cite{qlora}: the base model is frozen in 4-bit NF4 storage, and low-rank
 adapter weights are trained. The saved recipe uses rank 16, alpha 32, dropout 0.05, a micro-batch of one
@@ -141,11 +199,75 @@ F1 rounded to 0.01, then slot accuracy, then the recorded candidate order. Three
 0.98; two also tie on slot accuracy. The selected recipe is learning rate $2\times10^{-4}$, epoch 3.
 This is a selection rule, not evidence that the tied scores are statistically equivalent.
 
-Before the final runs, eight test reference phrases were corrected for scoring in
-\file{data/episodes/slot_terms.json}. The episode requests, training states, hidden simulator details
-and model outputs were not rewritten. The automatic slot score remains a lexical proxy.
+\subsection{Reproducibility and repository}
 
-\section{Experiments and scoring}
+The repository README gives setup, data download, saved-result verification and GPU rerun instructions:
+\href{https://github.com/Sathviktr/LMA_ClarifySQL#reproducibility}{GitHub reproducibility README}.
+The final report source and PDF are kept together in \file{reports/}.
+
+The code, derived episodes, training logs, final traces and analysis are in \url{\repo}. Raw benchmark
+databases and large weights are kept outside Git. The saved phase6 notebook output, run 363373340,
+contains \file{sft_s1}, \file{sft_s2} and \file{a2_s1}; instructor access to that output has not been verified.
+The selected seed-1 weight hash agrees between the benchmark and the demo.
+
+\begin{tabularx}{\linewidth}{@{}lY@{}}
+\toprule
+Artifact & Repository location or recorded source \\
+\midrule
+Final test and CoSQL & \file{results/final/}, source commit \file{428e743} \\
+Paired intervals & \file{results/final/analysis/paired_bootstrap.json} \\
+Human-review scores & \file{results/final/analysis/human_audits.json} \\
+Review validation and provenance & \file{results/final/analysis/review_validation.json} \\
+Repository completion audit & \file{reports/PROJECT_COMPLETION_CHECK.md} \\
+Original demo archive & \file{results/demo/checkpoint8/received.zip}, source \file{0d75a73} \\
+Demo verification and variants & \file{results/demo/checkpoint8/analysis/} \\
+Browser clarification evidence & \file{results/demo/browser_evidence_2026-11-08.json} \\
+Browser lookup/email evidence & \file{results/demo/browser_cases_2026-11-08.json} \\
+Training and selected recipe & \file{results/train/} and saved phase6 output \\
+GPU workflows & Notebooks 01--08 and their readable builder scripts \\
+\bottomrule
+\end{tabularx}
+
+To reproduce CPU verification after installing the project and setting \file{CLARIFYSQL_DATA} to the
+downloaded benchmark directory:
+\begin{verbatim}
+python scripts/verify_final.py
+python scripts/analyze_demo.py
+\end{verbatim}
+Both verification commands and the 40 selected tests also pass from a new local clone of commit
+\file{34500af}, using the existing venv and external benchmark data. This is a clean-code check, not
+a fresh dependency installation or another GPU run. Test-suite means are recomputed from saved flags;
+the official variant queries are not repeated in that CPU check. The exact scope and commands are saved
+in \file{results/reproducibility_checkpoint8.json}.
+
+Frozen-run manifests check code, data and weight fingerprints before resuming. Pin the recorded source
+revision to resume an original run; later source changes must not be mixed into those traces. The original
+demo ZIP is preserved byte-for-byte and includes the tiny fictional database. Source verification reads
+Git blobs so Windows newline conversion does not create a false mismatch.
+
+The measured runs record a consistent base-model revision, but the current loader does not pass an
+explicit revision and the resume fingerprint omits that revision. Source, data and adapter hashes
+therefore do not by themselves enforce the same base-model bytes in a future run. Exact reruns need
+the recorded base weights as well as the recorded source and adapters.
+
+The local audit on 8 November passed 210 CPU tests in one process and the tiny training-loop test in a separate
+process, with one CPU thread and MKLDNN disabled for that training test. These software checks cover
+data, tools, safety, controller behavior, inference, training, notebooks and evaluation. An earlier combined
+Windows run had a native PyTorch failure in the training fixture, so we keep the two-process distinction.
+All ten benchmark conditions and the original seven demo outcomes were also reproduced from saved artifacts;
+this audit did not repeat GPU inference or the official database-variant queries.
+
+\section{Experiment Runs}
+
+We first checked the SQL writer, built and reviewed the episode data, and ran the prompted agent
+on validation. We then used the validation split to select a training recipe, trained the two main
+seeds and the no-slot adapter, and ran the frozen final comparisons. Notebooks 01--06 contain the
+pilot, data and training stages; notebooks 07 and 08 run final evaluation and the demo.
+
+Eight final-test conditions each cover all 188 episodes. Two additional CoSQL runs each cover the same
+59 reviewed turns. The main comparison changes the action policy while keeping the base model,
+SQL writer, tools and episode limits the same.
+
 \begin{tabularx}{\linewidth}{@{}lY@{}}
 \toprule
 Condition & Purpose \\
@@ -165,6 +287,57 @@ other conditions have repair opportunities. B1, B2 and the oracle always use an 
 their decision F1 is identical under the fixed test labels.
 A3 supplies the full schema and glossary while leaving inspection tools available; it does not remove tools.
 
+\subsection{Compute and run costs}
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Test condition & Total calls & Total input tokens & Generation seconds \\
+\midrule
+B3 & 862 & 605,038 & 1,198.2 \\
+SFT seed 1 & 570 & 216,401 & 528.5 \\
+SFT seed 2 & 552 & 207,348 & 558.2 \\
+A2 & 573 & 205,609 & 479.5 \\
+A3 & 525 & 273,484 & 664.9 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+These totals include policy, writer and simulator inference. Generation time is elapsed time in generation
+calls, not isolated GPU-kernel time. The two-GPU inference cell took about 40.6 minutes, excluding later
+CPU scoring. B3 reaches an episode limit twice; the main trained seeds have no limit outcomes. Seed 2
+still has a nonzero invalid output-attempt rate (0.006), so recovered retries should not be described as
+every generated output being valid. No paid model API was used for these experiments.
+
+\section{Ablations}
+
+\subsection{A2: remove explicit slots}
+The main policy writes explicit missing-information slots alongside its action. A2 is trained separately
+without those fields, using the other main settings. This tests whether writing the slots helps beyond
+learning the action policy.
+
+A2 solves 115 answerable cases, one more than seed 1. Its paired execution difference interval includes
+zero (about $-1.42$ to $+3.20$ points), as does its decision-F1 interval. One case is about 0.68 percentage
+points on this test. We therefore do not claim an execution benefit from explicit slots. The small human
+review below also does not establish a usefulness advantage from adding or omitting slots.
+
+\subsection{A3: supply the full schema and glossary}
+
+A3 uses the seed-1 adapter with the full schema and all glossary definitions in its policy prompt.
+Inspection tools stay available. It tests this context choice without retraining the adapter.
+
+A3 has lower point estimates than seed 1. Its execution-difference interval touches zero and its decision-F1
+interval includes zero. Adding all context gives no observed improvement in this run. That does not prove
+that retrieval is necessary for every database or that full context can never help.
+
+Ablations without memory, intent checks or repair were optional in the earlier plan. We did not run
+these conditions, and we report no results for them.
+
+\section{Evaluations}
+
+\subsection{Metrics and uncertainty}
+
 We report execution accuracy on the 148 answerable cases and decision macro-F1 over all 188 episodes.
 Decision F1 treats clarify, execute and abstain equally by averaging their class F1 values. We also use
 the official test-suite evaluator~\cite{testsuite}, with the predicted values preserved, to check SQL on
@@ -175,10 +348,15 @@ is measured on the 79 clear requests.
 For uncertainty, we resample all 20 databases with replacement 5,000 times. Both policies are evaluated
 on the same resampled databases. For each draw we keep both seed comparisons and their mean. Resampling
 databases preserves related questions within each database; it does not measure variation over all
-possible training seeds or eliminate simulator error. The first comparison below is primary; ablations
-and the CoSQL slice are exploratory.
+possible training seeds or eliminate simulator error. The two-seed mean trained-policy comparison
+against B3 is primary; ablations and the CoSQL slice are exploratory.
 
-\section{Final test results}
+Before the final runs, eight test reference phrases were corrected for scoring in
+\file{data/episodes/slot_terms.json}. The episode requests, training states, hidden simulator details
+and model outputs were not rewritten. The automatic slot score remains a lexical proxy.
+
+\subsection{Final test results}
+
 \begin{center}
 \small
 \begin{tabular}{lrrrrr}
@@ -241,17 +419,8 @@ B3 asks questions on 21 of 79 clear requests; seed 1 does so on 2 and seed 2 on 
 avoiding unnecessary questions and handling definitions better. Two-slot requests remain difficult.
 These automatic results do not by themselves establish that the trained policy asks more useful questions.
 
-\subsection{Ablations}
-A2 solves 115 answerable cases, one more than seed 1. Its paired execution difference interval includes
-zero (about $-1.42$ to $+3.20$ points), as does its decision-F1 interval. One case is about 0.68 percentage
-points on this test. We therefore do not claim an execution benefit from explicit slots. The small human
-review below also does not establish a usefulness advantage from adding or omitting slots.
+\subsection{Human review of questions and simulator replies}
 
-A3 has lower point estimates than seed 1. Its execution-difference interval touches zero and its decision-F1
-interval includes zero. Adding all context gives no observed improvement in this run. That does not prove
-that retrieval is necessary for every database or that full context can never help.
-
-\section{Human review of questions and simulator replies}
 Subhash and Manish each rated 120 question items: the same 40 ambiguous episodes for B3, seed 1 and A2.
 Each system has 80 pooled ratings of 40 unique episodes. The four criteria ask whether a question targets
 the missing detail, fits the schema, avoids repetition and lets a cooperative user resolve the intent.
@@ -300,7 +469,8 @@ explain low resolution ratings through simulator replies that repeat the recent 
 Those ratings can therefore mix question usefulness with reply failures. We preserve them and treat this
 as a limitation of the review. The scores and validation record are listed with the other artifacts.
 
-\section{Natural dialogue and computation}
+\subsection{Natural dialogue evaluation}
+
 \begin{center}
 \begin{tabular}{lrrr}
 \toprule
@@ -318,28 +488,8 @@ An always-execute policy has higher accuracy because 45 labels are execute, alth
 lower. This small, imbalanced slice provides mixed evidence about natural-dialogue generalization.
 The single abstention example cannot establish reliable abstention behavior.
 
-\begin{center}
-\small
-\begin{tabular}{lrrr}
-\toprule
-Test condition & Total calls & Total input tokens & Generation seconds \\
-\midrule
-B3 & 862 & 605,038 & 1,198.2 \\
-SFT seed 1 & 570 & 216,401 & 528.5 \\
-SFT seed 2 & 552 & 207,348 & 558.2 \\
-A2 & 573 & 205,609 & 479.5 \\
-A3 & 525 & 273,484 & 664.9 \\
-\bottomrule
-\end{tabular}
-\end{center}
+\subsection{Fictional university demo}
 
-These totals include policy, writer and simulator inference. Generation time is elapsed time in generation
-calls, not isolated GPU-kernel time. The two-GPU inference cell took about 40.6 minutes, excluding later
-CPU scoring. B3 reaches an episode limit twice; the main trained seeds have no limit outcomes. Seed 2
-still has a nonzero invalid output-attempt rate (0.006), so recovered retries should not be described as
-every generated output being valid. No paid model API was used for these experiments.
-
-\section{Fictional university demo}
 The demo uses made-up departments, students, marks and placement flags. The same session engine can
 pause for a real reply in Gradio or receive a predefined reply during an automatic check. Model text and
 SQL appear in plain text boxes. Queries use the same read-only executor, and sharing requires credentials.
@@ -361,7 +511,7 @@ Student emails & Correctly names the missing email information and abstains. \\
 \bottomrule
 \end{tabularx}
 
-\subsection{A hidden false positive}
+\subsubsection{A hidden false positive}
 The placement query divides \file{COUNT(p.student_id)} by \file{COUNT(s.id)}. Every student has a
 placement row, including students with \file{placed=0}. All departments therefore receive predicted
 rate 1, and Computing happens to be returned after the tie. The intended rate uses the indicator, such
@@ -383,7 +533,7 @@ Gradio construction succeeds with version 6.30.0. The archive does not demonstra
 sharing or an actual user conversation. The scripted model run uses 21 calls and about 56.4 seconds
 of generation time; model loading takes about 48.8 seconds separately.
 
-\subsection{Three documented basic browser cases}
+\subsubsection{Three documented basic browser cases}
 Three browser printouts supplied on 8 November cover the requested basic smokecheck.
 
 \textbf{Clear lookup.} Page 1 of \file{tc1.pdf} shows ``List the names of all departments'', the status
@@ -408,7 +558,8 @@ The captures support interface use, not a new benchmark score or a claim that ev
 Their observations and file hashes are recorded separately from the scripted run. The original 5/7 and
 the known threshold, question-grounding and placement failures remain unchanged.
 
-\section{Limitations and work still open}
+\section{Limitations}
+
 \begin{itemize}
 \item \textbf{Human review has a narrow scope.} The question review covers 40 sampled episodes for three
 systems. Perfect recorded agreement does not itself validate the review process. Some resolution notes
@@ -434,60 +585,8 @@ grounding, checking unresolved intent before execution and testing SQL on more v
 follow-ups. Any new intervention should be reported as a new version rather than silently changing the
 already measured benchmark conditions.
 
-\section{Reproduction and artifact status}
-The code, derived episodes, training logs, final traces and analysis are in \url{\repo}. Raw benchmark
-databases and large weights are kept outside Git. The saved phase6 notebook output, run 363373340,
-contains \file{sft_s1}, \file{sft_s2} and \file{a2_s1}; instructor access to that output has not been verified.
-The selected seed-1 weight hash agrees between the benchmark and the demo.
+\section{Conclusions}
 
-\begin{tabularx}{\linewidth}{@{}lY@{}}
-\toprule
-Artifact & Repository location or recorded source \\
-\midrule
-Final test and CoSQL & \file{results/final/}, source commit \file{428e743} \\
-Paired intervals & \file{results/final/analysis/paired_bootstrap.json} \\
-Human-review scores & \file{results/final/analysis/human_audits.json} \\
-Review validation and provenance & \file{results/final/analysis/review_validation.json} \\
-Repository completion audit & \file{reports/PROJECT_COMPLETION_CHECK.md} \\
-Original demo archive & \file{results/demo/checkpoint8/received.zip}, source \file{0d75a73} \\
-Demo verification and variants & \file{results/demo/checkpoint8/analysis/} \\
-Browser clarification evidence & \file{results/demo/browser_evidence_2026-11-08.json} \\
-Browser lookup/email evidence & \file{results/demo/browser_cases_2026-11-08.json} \\
-Training and selected recipe & \file{results/train/} and saved phase6 output \\
-GPU workflows & Notebooks 01--08 and their readable builder scripts \\
-\bottomrule
-\end{tabularx}
-
-To reproduce CPU verification after installing the project and setting \file{CLARIFYSQL_DATA} to the
-downloaded benchmark directory:
-\begin{verbatim}
-python scripts/verify_final.py
-python scripts/analyze_demo.py
-\end{verbatim}
-Both verification commands and the 40 selected tests also pass from a new local clone of commit
-\file{34500af}, using the existing venv and external benchmark data. This is a clean-code check, not
-a fresh dependency installation or another GPU run. Test-suite means are recomputed from saved flags;
-the official variant queries are not repeated in that CPU check. The exact scope and commands are saved
-in \file{results/reproducibility_checkpoint8.json}.
-
-Frozen-run manifests check code, data and weight fingerprints before resuming. Pin the recorded source
-revision to resume an original run; later source changes must not be mixed into those traces. The original
-demo ZIP is preserved byte-for-byte and includes the tiny fictional database. Source verification reads
-Git blobs so Windows newline conversion does not create a false mismatch.
-
-The measured runs record a consistent base-model revision, but the current loader does not pass an
-explicit revision and the resume fingerprint omits that revision. Source, data and adapter hashes
-therefore do not by themselves enforce the same base-model bytes in a future run. Exact reruns need
-the recorded base weights as well as the recorded source and adapters.
-
-The latest local audit passes 210 CPU tests in one process and the tiny training-loop test in a separate
-process, with one CPU thread and MKLDNN disabled for that training test. These software checks cover
-data, tools, safety, controller behavior, inference, training, notebooks and evaluation. An earlier combined
-Windows run had a native PyTorch failure in the training fixture, so we keep the two-process distinction.
-All ten benchmark conditions and the original seven demo outcomes were also reproduced from saved artifacts;
-this audit did not repeat GPU inference or the official database-variant queries.
-
-\section{What we conclude}
 Within this fixed experiment, training improves execution and decision F1 compared with prompting.
 The gains include fewer unnecessary questions and better use of definitions, while abstention becomes
 less reliable. We do not establish an execution advantage from explicit slots or strong generalization
@@ -496,18 +595,28 @@ B3, and for A2 than seed 1; it does not establish a slot benefit. The demo makes
 unresolved thresholds and an incorrect query that happens to return the expected answer. These limits
 are part of the result and guide the next version of the system.
 
+\clearpage
 \begin{thebibliography}{9}
 \raggedright
 \bibitem{spider} T. Yu et al. \emph{Spider: A Large-Scale Human-Labeled Dataset for Complex and Cross-Domain
-Semantic Parsing and Text-to-SQL Task}. 2018. \url{https://arxiv.org/abs/1809.08887}.
+Semantic Parsing and Text-to-SQL Task}. EMNLP, pp. 3911--3921, 2018.
+\url{https://aclanthology.org/D18-1425/}.
 \bibitem{cosql} T. Yu et al. \emph{CoSQL: A Conversational Text-to-SQL Challenge Towards Cross-Domain Natural
-Language Interfaces to Databases}. 2019. \url{https://arxiv.org/abs/1909.05378}.
-\bibitem{trustsql} TrustSQL project. Dataset and implementation. \url{https://github.com/glee4810/TrustSQL}.
-\bibitem{qlora} T. Dettmers et al. \emph{QLoRA: Efficient Finetuning of Quantized LLMs}. 2023.
+Language Interfaces to Databases}. EMNLP-IJCNLP, pp. 1962--1979, 2019.
+\url{https://aclanthology.org/D19-1204/}.
+\bibitem{trustsql} G. Lee, W. Chay, S. Cho and E. Choi.
+\emph{TrustSQL: Benchmarking Text-to-SQL Reliability with Penalty-Based Scoring}.
+arXiv:2403.15879, 2024. \url{https://arxiv.org/abs/2403.15879}.
+\bibitem{misp} Z. Yao, Y. Su, H. Sun and W.-t. Yih.
+\emph{Model-based Interactive Semantic Parsing: A Unified Framework and A Text-to-SQL Case Study}.
+EMNLP-IJCNLP, pp. 5447--5458, 2019. \url{https://aclanthology.org/D19-1547/}.
+\bibitem{qlora} T. Dettmers, A. Pagnoni, A. Holtzman and L. Zettlemoyer.
+\emph{QLoRA: Efficient Finetuning of Quantized LLMs}. NeurIPS, 2023.
 \url{https://arxiv.org/abs/2305.14314}.
 \bibitem{qwen} Qwen team. \emph{Qwen3-4B-Instruct-2507 model card}.
-\url{https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507}.
-\bibitem{testsuite} Official text-to-SQL test-suite evaluator.
-\url{https://github.com/taoyds/test-suite-sql-eval}.
+2025. \url{https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507}.
+\bibitem{testsuite} R. Zhong, T. Yu and D. Klein.
+\emph{Semantic Evaluation for Text-to-SQL with Distilled Test Suites}.
+EMNLP, pp. 396--411, 2020. \url{https://aclanthology.org/2020.emnlp-main.29/}.
 \end{thebibliography}
 \end{document}

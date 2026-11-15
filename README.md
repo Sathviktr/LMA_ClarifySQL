@@ -16,6 +16,101 @@ guess silently and can return a confident but wrong answer. ClarifySQL fine-tune
 The tuned policy is compared with the same model used with a prompt only, with the same tools, SQL writer
 and limits. Everything runs on free Kaggle/Colab T4 GPUs, without any paid API.
 
+## Reproducibility
+
+Repository: **https://github.com/Sathviktr/LMA_ClarifySQL**. The editable final report is
+[LaTeX](reports/ClarifySQL_Final_Report.tex), with the compiled [PDF](reports/ClarifySQL_Final_Report.pdf).
+All commands below run from the repository root.
+
+### 1. Get the code and install the CPU environment
+
+```powershell
+git clone https://github.com/Sathviktr/LMA_ClarifySQL.git
+cd LMA_ClarifySQL
+git rev-parse HEAD
+```
+
+Keep the full Git history: the verification scripts read the source at the original experiment commits.
+A source ZIP or a shallow clone alone is not enough for these checks. Follow
+[Local setup](#local-setup-windows-cpu) below to create the environment, install the package and set
+`CLARIFYSQL_DATA`. Python 3.13 was used for the recorded local checks; the package requires Python 3.10 or later.
+The CPU requirements use minimum versions, so they do not specify an identical environment. The saved
+[audit runtime](results/final/analysis/repository_audit_2026-11-08.json) and each GPU run's environment record
+show the versions actually used. Evaluation and demo notebooks use their respective
+[evaluation](requirements-eval.txt) and [demo](requirements-demo.txt) requirements.
+
+### 2. Download the benchmark data
+
+```powershell
+python -I scripts/download_data.py
+```
+
+This downloads Spider, CoSQL and TrustSQL into `CLARIFYSQL_DATA` and compares archive checksums with
+[data/manifest.json](data/manifest.json). If a download is rate-limited, the script prints the manual
+download link and expected local filename. It records the downloaded manifest in both the data folder
+and the repository. Keep the committed [splits](data/splits/splits.json),
+[reviewed episodes](data/episodes/) and [training states](data/sft/) when reproducing the reported experiment;
+the human review and paraphrasing stages do not need to be repeated.
+
+### 3. Check the saved results on CPU
+
+```powershell
+python scripts/verify_final.py
+python scripts/analyze_final.py --root results/final --repeats 5000
+python scripts/summarize_checkpoint7.py
+python scripts/analyze_demo.py
+python scripts/annotation_status.py
+```
+
+These commands verify the saved traces and source/database hashes, regenerate the metric and bootstrap
+tables, summarize the findings, and replay the saved demo SQL on fictional data. Analysis scripts write
+their derived files under `results/`. They do not generate new model predictions. `verify_final.py`
+recomputes test-suite means from the saved correctness flags; it does not rerun all database variants.
+The [local tests](#local-setup-windows-cpu) check the software separately.
+
+To score new predictions with the official test-suite evaluator, also download the variant databases:
+
+```powershell
+python -I scripts/download_data.py --only testsuite
+python scripts/score_final_testsuite.py --root results/final
+```
+
+The evaluator is cloned automatically at its recorded commit. The scoring script fills missing flags;
+existing flags in the published results are retained. The completed human-review summary is in
+[human_audits.json](results/final/analysis/human_audits.json). Recomputing that summary with
+`python scripts/score_eval_audits.py` needs the coordinator's private, uncommitted system key;
+the public checkout contains the completed review sheets and published scores.
+
+### 4. Run the model experiments on Kaggle
+
+| Goal | Notebook and required input | Main output |
+|---|---|---|
+| Train and select policy adapters | [06_sft_final.ipynb](notebooks/06_sft_final.ipynb), using the committed training states | `final_adapters/`, `choice.json`, training logs |
+| Run the eight test conditions and two CoSQL conditions | [07_final_evaluation.ipynb](notebooks/07_final_evaluation.ipynb), with all three saved adapters attached | `checkpoint7_results.zip` |
+| Run the scripted demo or launch Gradio | [08_demo.ipynb](notebooks/08_demo.ipynb), with the seed-1 adapter attached | `checkpoint8_results.zip` |
+
+The saved weights are in the Notebook Output of
+[sathviktr/phase6, run 363373340](https://www.kaggle.com/code/sathviktr/phase6/edit/run/363373340):
+`final_adapters/{sft_s1,sft_s2,a2_s1}` and `final_adapters/choice.json`.
+They are external to GitHub, and instructor access to that saved output is **not yet verified**.
+`checkpoint6_results.zip` contains metrics and logs, not the adapter weights. If the saved output is
+unavailable, notebook 06 can train replacement adapters; those are a new run rather than the original weights.
+See the detailed [checkpoint 7](#reproduce-checkpoint-7) and [checkpoint 8](#reproduce-checkpoint-8)
+instructions below for Kaggle settings and output locations.
+
+The reported final evaluation used source commit `428e74397d379c4202a62262885e99ed65e7c62e`;
+the scripted demo used `0d75a73fcad56855749210bce915ad74dd50f8b0`.
+Set notebook 07's `REVISION` to the final-evaluation commit when resuming that original run. The recorded
+base model is `Qwen/Qwen3-4B-Instruct-2507`, revision
+`cdbee75f17c01a7cc42f958dc650907174af0554`. The current loader does not enforce that model revision,
+and the resume fingerprint omits it, so code and adapter pinning alone do not guarantee an identical rerun.
+Greedy decoding also does not guarantee identical outputs across hardware and library versions.
+
+The main evidence is in [final analysis](results/final/analysis/),
+[training selection](results/train/selection.json), [demo analysis](results/demo/checkpoint8/analysis/) and
+the [completion check](reports/PROJECT_COMPLETION_CHECK.md). The recorded clean-checkout check reused an
+existing environment and external data; it did not reinstall dependencies or repeat GPU inference.
+
 ## Project status
 
 | Phase | Content | Status |
@@ -171,12 +266,13 @@ not need repeating while `model` and `db` remain available in the interactive se
 ### Reproduce checkpoint 7
 
 Use [notebook 07](notebooks/07_final_evaluation.ipynb). It runs the required final comparisons without retraining.
-Its setup cell clones or updates this GitHub repository and prints the exact commit used. Push the new
-evaluation files before running it. No source Dataset upload is required for the default GitHub route.
+Its setup cell clones or updates this GitHub repository and prints the exact commit used. The evaluation
+source is already in this repository. No source Dataset upload is required for the default GitHub route.
 Attach the saved **Notebook Output** of `sathviktr/phase6`, run **363373340**, containing
 `final_adapters/{sft_s1,sft_s2,a2_s1}` and `choice.json`. The downloaded `checkpoint6_results.zip`
 contains only logs/metrics and does not include weights. Select GPU T4 x2, enable Internet and save a version
-with Save & Run All. Return `checkpoint7_results.zip` for analysis and the independent human review step.
+with Save & Run All. The export is `/kaggle/working/checkpoint7_results.zip`; the published run has already
+been scored and reviewed.
 
 For an optional source-ZIP fallback, run `python scripts/prepare_checkpoint7.py`, upload the resulting
 `outputs/clarifysql_checkpoint7_source.zip` as a private Kaggle Dataset, and set `SOURCE = 'archive'`
@@ -233,23 +329,36 @@ Training configurations are saved in `results/train/*.json`; final run identitie
 ## Local setup (Windows, CPU)
 
 ```powershell
-py -3.13 -m venv C:\Users\<you>\venvs\clarifysql        # keep the venv outside OneDrive
-C:\Users\<you>\venvs\clarifysql\Scripts\activate
+py -3.13 -m venv "$env:USERPROFILE\venvs\clarifysql"
+& "$env:USERPROFILE\venvs\clarifysql\Scripts\Activate.ps1"
 python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
 python -m pip install -r requirements.txt
 python -m pip install -e .
-python -m pytest
+$env:CLARIFYSQL_DATA = "$env:USERPROFILE\clarifysql_data"
 ```
 
 Large raw data (about 1 GB) is stored in the folder named by the `CLARIFYSQL_DATA` environment variable
 (default: `data/raw/`, gitignored). Keeping it outside OneDrive avoids syncing it:
 
 ```powershell
-setx CLARIFYSQL_DATA C:\Users\<you>\clarifysql_data
+setx CLARIFYSQL_DATA "$env:USERPROFILE\clarifysql_data"
 ```
 
-For the current PowerShell session, also set `$env:CLARIFYSQL_DATA = 'C:\Users\<you>\clarifysql_data'`.
-Dataset-dependent tests skip if that folder is not configured and downloaded.
+The first setup block sets the variable for the current session; `setx` applies to future terminals.
+Download the data using the [reproducibility instructions](#2-download-the-benchmark-data), then run:
+
+```powershell
+$env:OMP_NUM_THREADS = '1'
+$env:MKL_NUM_THREADS = '1'
+python -m pytest tests --ignore=tests/test_train_torch.py
+python -c "import torch, pytest; torch.set_num_threads(1); torch.backends.mkldnn.enabled = False; raise SystemExit(pytest.main(['tests/test_train_torch.py']))"
+```
+
+The recorded Windows CPU check passed **210 tests**, then the **one tiny-model training test** in a
+separate process with MKLDNN disabled. Running them separately avoids a native PyTorch crash observed
+when the training test followed the full suite in the same process. The training test needs the model
+tokenizer in the local Hugging Face cache and skips if it is absent; it does not load the full 4B model.
+Dataset-dependent tests skip when the data is unavailable. These CPU tests do not repeat the GPU experiments.
 
 ## GPU work (Kaggle first, Colab as backup)
 
